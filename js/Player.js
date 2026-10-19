@@ -24,7 +24,8 @@ export default class Player {
             w: false,
             a: false,
             s: false,
-            d: false 
+            d: false,
+            e: false
         };
 
         this.mousePos = {
@@ -48,7 +49,8 @@ export default class Player {
                 currentFrame: 0,
                 timer: 0,
                 frameWidth: 0, 
-                frameHeight: 0
+                frameHeight: 0,
+                loop: true
             },
             [PLAYER_STATES.MOVE]: {
                 texture: new Image(),
@@ -57,12 +59,35 @@ export default class Player {
                 currentFrame: 0,
                 timer: 0,
                 frameWidth: 0,
-                frameHeight: 0
+                frameHeight: 0,
+                loop: true
+            },
+            [PLAYER_STATES.GRAB]: {
+                texture: new Image(),
+                frameCount: 8,
+                frameSpeed: 12,
+                currentFrame: 0,
+                timer: 0,
+                frameWidth: 0,
+                frameHeight: 0,
+                loop: false
+            },
+            [PLAYER_STATES.DEATH]: {
+                texture: new Image(),
+                frameCount: 8,
+                frameSpeed: 12,
+                currentFrame: 0,
+                timer: 0,
+                frameWidth: 0,
+                frameHeight: 0,
+                loop: false
             }
         };
 
-        this.animations[PLAYER_STATES.IDLE].texture.src = "../assets/playerIdle.png";
-        this.animations[PLAYER_STATES.MOVE].texture.src = "../assets/playerWalk.png";
+        this.animations[PLAYER_STATES.IDLE].texture.src = "../assets/";
+        this.animations[PLAYER_STATES.MOVE].texture.src = "../assets/";
+        this.animations[PLAYER_STATES.GRAB].texture.src = "../assets/";
+        this.animations[PLAYER_STATES.DEATH].texture.src = "../assets/";
 
         for (let key in this.animations) {
             const anim = this.animations[key];
@@ -81,8 +106,8 @@ export default class Player {
         }); 
         document.addEventListener("mousedown", (e) => {
             if (e.target.id === "GameCanvas") {
-            this.MousePos(e.target, e);
-    }
+            this.#MousePos(e.target, e);
+        }
         });
 
     }
@@ -98,9 +123,6 @@ export default class Player {
 
     movePlayer(dt)
     {
-        //const previousState = this.state;
-
-
         if (this.keys.ArrowRight || this.keys.d || this.keys.ArrowLeft || this.keys.a 
             || this.keys.ArrowUp || this.keys.w || this.keys.ArrowDown || this.keys.s) {
             this.mousePos.x = 0;
@@ -148,19 +170,26 @@ export default class Player {
 
                 factor = (this.speed * dt) / vLength;
 
-                this.x = this.x + factor * vector.x;
-                this.y = this.y + factor * vector.y;
+                this.x += factor * vector.x;
+                this.y += factor * vector.y;
             }
         }
 
         this.x += this.speedX * dt;
         this.y += this.speedY * dt;
 
-        /*if (this.speedX !== 0 || this.speedY !== 0) {
-            this.state = PLAYER_STATES.MOVE;
+        const isMovingByKeyboard = this.speedX !== 0 || this.speedY !== 0;
+        const isMovingByMouse = this.mousePos.x !== 0 && this.mousePos.y !== 0;
+
+        if (isMovingByKeyboard || isMovingByMouse) {
+            if (this.state !== PLAYER_STATES.GRAB && this.state !== PLAYER_STATES.DEATH) {
+                this.state = PLAYER_STATES.MOVE;
+            }
         } else {
-            this.state = PLAYER_STATES.IDLE;
-        }*/
+            if (this.state !== PLAYER_STATES.GRAB && this.state !== PLAYER_STATES.DEATH) {
+                this.state = PLAYER_STATES.IDLE;
+            }
+        }
 
         this.animationTime += dt;
 
@@ -169,7 +198,22 @@ export default class Player {
 
     }
 
-    #MakeVector(x, y, point2) {
+    objectNear(distance, object)
+    {
+        if(distance < 10 || this.mousePos == object.pos/*will be replaced by collider*/) {
+            //object grabbed
+        }
+    }
+
+    grabObject(distance, object) 
+    {
+        if((distance < 10 && this.keys.e) || (distance < 10 && this.mousePos == object.pos/*will be replaced by collider*/)) {
+            //object grabbed
+        }
+    }
+
+    #MakeVector(x, y, point2)
+    {
         let xDist, yDist;
 
         xDist = point2.x - x;
@@ -181,14 +225,14 @@ export default class Player {
         };
     }
 
-    #Length (vector)
+    #Length(vector)
     {
         return Math.sqrt(vector.x * vector.x + vector.y * vector.y);
 
     }
 
     
-    MousePos(canvas, e)
+    #MousePos(canvas, e)
     {
         let rect = canvas.getBoundingClientRect();
         this.mousePos.x = e.clientX - rect.left - this.size / 2;
@@ -215,8 +259,13 @@ export default class Player {
 
     draw(ctx)
     {
-            
-        ctx.fillStyle= "blue";
+        if (this.state === PLAYER_STATES.IDLE) {
+            ctx.fillStyle = "black";
+        } else if (this.state === PLAYER_STATES.MOVE) {
+            ctx.fillStyle = "blue";
+        } else if (this.state === PLAYER_STATES.GRAB) {
+            ctx.fillStyle = "green";
+        }
         ctx.fillRect(this.x, this.y, this.size, this.size);
         /*const anim = this.animations[this.state];
 
