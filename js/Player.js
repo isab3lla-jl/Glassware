@@ -1,102 +1,39 @@
+import Sprite from './Sprite.js';
+
 const PLAYER_STATES = {
     IDLE: "IDLE",
     MOVE: "MOVE",
     GRAB: "GRAB",
-    DEATH: "DEATH"
+    //DEATH: "DEATH"
 };
 
-export default class Player {
-    constructor(x, y)
-    {
-        this.x = x;
-        this.y = y;
-        this.size = 60;
+export default class Player extends Sprite {
+    constructor(x, y) {
+        super(x, y, 30);
+
         this.speed = 200;
         this.speedX = 0;
         this.speedY = 0;
         this.enabled = true;
 
         this.keys = {
-            ArrowRight: false,
-            ArrowLeft: false,
-            ArrowUp: false,
-            ArrowDown: false,
-            w: false,
-            a: false,
-            s: false,
-            d: false,
-            e: false
+            ArrowRight: false, ArrowLeft: false, ArrowUp: false, ArrowDown: false,
+            w: false, a: false, s: false, d: false, e: false
         };
 
-        this.mousePos = {
-            x: 0.0,
-            y: 0.0
-        };
-        
-        this.baseScale = 1;
-        this.scale = 1;
-        this.breathingIntensity = 0.1;
-        this.breathingFrec = 0.5;
-        this.animationTime = 0;
-
-/*
         this.state = PLAYER_STATES.IDLE;
-        this.animations = {
-            [PLAYER_STATES.IDLE]: {
-                texture: new Image(),
-                frameCount: 7,
-                frameSpeed: 10,
-                currentFrame: 0,
-                timer: 0,
-                frameWidth: 0, 
-                frameHeight: 0,
-                loop: true
-            },
-            [PLAYER_STATES.MOVE]: {
-                texture: new Image(),
-                frameCount: 8,
-                frameSpeed: 12,
-                currentFrame: 0,
-                timer: 0,
-                frameWidth: 0,
-                frameHeight: 0,
-                loop: true
-            },
-            [PLAYER_STATES.GRAB]: {
-                texture: new Image(),
-                frameCount: 8,
-                frameSpeed: 12,
-                currentFrame: 0,
-                timer: 0,
-                frameWidth: 0,
-                frameHeight: 0,
-                loop: false
-            },
-            [PLAYER_STATES.DEATH]: {
-                texture: new Image(),
-                frameCount: 8,
-                frameSpeed: 12,
-                currentFrame: 0,
-                timer: 0,
-                frameWidth: 0,
-                frameHeight: 0,
-                loop: false
-            }
-        };
+        this.initAnimations({
+            //[PLAYER_STATES.IDLE]:  { src: "../assets/idle_sheet.png",  frameCount: 7, frameSpeed: 10, loop: true },
+            //[PLAYER_STATES.MOVE]:  { src: "../assets/move_sheet.png",  frameCount: 8, frameSpeed: 12, loop: true },
+            //[PLAYER_STATES.GRAB]:  { src: "../assets/grab_sheet.png",  frameCount: 8, frameSpeed: 12, loop: false },
+            //[PLAYER_STATES.DEATH]: { src: "../assets/death_sheet.png", frameCount: 8, frameSpeed: 12, loop: false }
+        });
 
-        this.animations[PLAYER_STATES.IDLE].texture.src = "../assets/";
-        this.animations[PLAYER_STATES.MOVE].texture.src = "../assets/";
-        this.animations[PLAYER_STATES.GRAB].texture.src = "../assets/";
-        this.animations[PLAYER_STATES.DEATH].texture.src = "../assets/";
+        this.hitboxOffset = { x: 10, y: 10 };
+        this.hitboxWidth = this.size - (this.hitboxOffset.x * 2);
+        this.hitboxHeight = this.size - (this.hitboxOffset.y * 2);
 
-        for (let key in this.animations) {
-            const anim = this.animations[key];
-            anim.texture.onload = () => {
-                anim.frameWidth = anim.texture.width / anim.frameCount;
-                anim.frameHeight = anim.texture.height;
-            };
-        }
-*/
+
         window.addEventListener("keydown", (e) => {
             if (e.key in this.keys) this.keys[e.key] = true;
         });
@@ -104,84 +41,36 @@ export default class Player {
         window.addEventListener("keyup", (e) => {
             if (e.key in this.keys) this.keys[e.key] = false;
         }); 
-        document.addEventListener("mousedown", (e) => {
-            if (e.target.id === "GameCanvas") {
-            this.#MousePos(e.target, e);
-        }
-        });
-
     }
 
-    update(dt)
-    {
-        // En la sesión 3 veremos qué es 'dt'
-        if (this.enabled == true) {
-            this.movePlayer(dt);
-            //this.updateAnimation(dt);
+    update(dt, mapData) {
+        if (this.enabled === true) {
+            this.movePlayer(dt, mapData);
+            this.updateSprite(dt);
         }
     }
 
-    movePlayer(dt)
-    {
-        if (this.keys.ArrowRight || this.keys.d || this.keys.ArrowLeft || this.keys.a 
-            || this.keys.ArrowUp || this.keys.w || this.keys.ArrowDown || this.keys.s) {
-            this.mousePos.x = 0;
-            this.mousePos.y = 0;
-        }
+    movePlayer(dt, mapData) {
 
-        //key movements
-        if (this.keys.ArrowRight || this.keys.d) {
-            //console.log(this.keys.ArrowRight);
-            this.speedX = this.speed;
-        }
-        if (!this.keys.ArrowRight && !this.keys.d) {
-            //console.log(this.keys.ArrowRight);
-            this.speedX = 0;
-        }
-        if (this.keys.ArrowLeft || this.keys.a) {
-            this.speedX = -this.speed;
-        }
-        if (this.keys.ArrowUp || this.keys.w) {
-            this.speedY = -this.speed;
-        }
-        if (!this.keys.ArrowUp && !this.keys.w) {
-            this.speedY = 0;
-        }
-        if (this.keys.ArrowDown || this.keys.s) {
-            this.speedY = this.speed;
-        }
+        if (this.keys.ArrowRight || this.keys.d) this.speedX = this.speed;
+        if (!this.keys.ArrowRight && !this.keys.d) this.speedX = 0;
+        if (this.keys.ArrowLeft || this.keys.a) this.speedX = -this.speed;
+        
+        if (this.keys.ArrowUp || this.keys.w) this.speedY = -this.speed;
+        if (!this.keys.ArrowUp && !this.keys.w) this.speedY = 0;
+        if (this.keys.ArrowDown || this.keys.s) this.speedY = this.speed;
 
-        //mouse movement
-        if (this.mousePos.x != 0 && this.mousePos.y != 0) {
-            let vector, vLength, factor;
+        let targetX = this.speedX * dt;
+        let targetY = this.speedY * dt;
 
-            vector = this.#MakeVector(this.x, this.y, this.mousePos);
-            vLength = this.#Length(vector);
-
-            if (vLength <= this.speed * dt) {
-
-                this.x = this.mousePos.x;
-                this.y = this.mousePos.y;
-
-                this.mousePos.x = 0;
-                this.mousePos.y = 0;
-
-            } else {
-
-                factor = (this.speed * dt) / vLength;
-
-                this.x += factor * vector.x;
-                this.y += factor * vector.y;
-            }
-        }
-
-        this.x += this.speedX * dt;
-        this.y += this.speedY * dt;
+        this.x += targetX;
+        if (this.#checkCollision(mapData)) this.x -= targetX;
+        this.y += targetY;
+        if (this.#checkCollision(mapData)) this.y -= targetY;
 
         const isMovingByKeyboard = this.speedX !== 0 || this.speedY !== 0;
-        const isMovingByMouse = this.mousePos.x !== 0 && this.mousePos.y !== 0;
 
-        if (isMovingByKeyboard || isMovingByMouse) {
+        if (isMovingByKeyboard) {
             if (this.state !== PLAYER_STATES.GRAB && this.state !== PLAYER_STATES.DEATH) {
                 this.state = PLAYER_STATES.MOVE;
             }
@@ -190,109 +79,50 @@ export default class Player {
                 this.state = PLAYER_STATES.IDLE;
             }
         }
-
-        this.animationTime += dt;
-
-        const breathOffset = Math.sin(this.animationTime * this.breathingFrec * Math.PI * 2) * this.breathingIntensity;
-        this.scale = this.baseScale + breathOffset;
-
     }
 
-    objectNear(distance, object)
-    {
-        if(distance < 10 || this.mousePos == object.pos/*will be replaced by collider*/) {
-            //object grabbed
-        }
-    }
+    #checkCollision(mapData) {
+        const collisionLayer = mapData.layers.find(layer => layer.name === "Collision");
+        if (!collisionLayer) return false;
 
-    grabObject(distance, object) 
-    {
-        if((distance < 10 && this.keys.e) || (distance < 10 && this.mousePos == object.pos/*will be replaced by collider*/)) {
-            //object grabbed
-        }
-    }
+        const tileW = mapData.tilewidth;
+        const tileH = mapData.tileheight;
+        const mapWidthInTiles = mapData.width;
 
-    #MakeVector(x, y, point2)
-    {
-        let xDist, yDist;
+        const left = this.x + this.hitboxOffset.x;
+        const right = this.x + this.hitboxOffset.x + this.hitboxWidth;
+        const top = this.y + this.hitboxOffset.y;
+        const bottom = this.y + this.hitboxOffset.y + this.hitboxHeight;
 
-        xDist = point2.x - x;
-        yDist = point2.y - y;
+        const startTileX = Math.floor(left / tileW);
+        const endTileX = Math.floor(right / tileW);
+        const startTileY = Math.floor(top / tileH);
+        const endTileY = Math.floor(bottom / tileH);
 
-        return {
-            x: xDist,
-            y: yDist
-        };
-    }
+        for (let tileY = startTileY; tileY <= endTileY; tileY++) {
+            for (let tileX = startTileX; tileX <= endTileX; tileX++) {
+                
+                const tileIndex = tileX + (tileY * mapWidthInTiles);
+                const tileId = collisionLayer.data[tileIndex];
 
-    #Length(vector)
-    {
-        return Math.sqrt(vector.x * vector.x + vector.y * vector.y);
-
-    }
-
-    
-    #MousePos(canvas, e)
-    {
-        let rect = canvas.getBoundingClientRect();
-        this.mousePos.x = e.clientX - rect.left - this.size / 2;
-        this.mousePos.y = e.clientY - rect.top - this.size / 2;
-        console.log(this.mousePos.x, this.mousePos.y);
-    }
-
-    /*updateAnimation(dt) {
-        const anim = this.animations[this.state];
-        
-        if (!anim || anim.frameWidth === 0) return;
-
-        anim.timer += dt;
-
-        if (anim.timer >= 1.0 / anim.frameSpeed) {
-            anim.timer = 0;
-            anim.currentFrame++;
-
-            if (anim.currentFrame >= anim.frameCount) {
-                anim.currentFrame = 0;
+                if (tileId > 0) {
+                    return true;
+                }
             }
         }
-    }*/
 
-    draw(ctx)
-    {
-        if (this.state === PLAYER_STATES.IDLE) {
-            ctx.fillStyle = "black";
-        } else if (this.state === PLAYER_STATES.MOVE) {
-            ctx.fillStyle = "blue";
-        } else if (this.state === PLAYER_STATES.GRAB) {
-            ctx.fillStyle = "green";
+        return false;
+    }
+
+    objectNear(distance, object) {
+        if (distance < 10) { 
+
         }
-        ctx.fillRect(this.x, this.y, this.size, this.size);
-        /*const anim = this.animations[this.state];
+    }
 
-        ctx.save();
+    grabObject(distance, object) {
+        if (distance < 10 && this.keys.e) { 
 
-        const centerX = this.x + this.size / 2;
-        const centerY = this.y + this.size / 2;
-
-        ctx.translate(centerX, centerY);
-        ctx.scale(this.scale, this.scale);
-
-        const srcX = anim.frameWidth * anim.currentFrame;
-        const srcY = 0;
-        const srcW = anim.frameWidth;
-        const srcH = anim.frameHeight;
-
-        const destX = -this.size / 2;
-        const destY = -this.size / 2;
-        const destW = this.size;
-        const destH = this.size;
-
-        ctx.drawImage(
-            anim.texture,
-            srcX, srcY, srcW, srcH,
-            destX, destY, destW, destH
-        );
-
-        ctx.restore();*/
+        }
     }
 }
