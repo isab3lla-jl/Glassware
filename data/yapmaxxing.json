@@ -1,0 +1,10 @@
+{
+  "npc_elder_intro": [
+    { "speaker": "Char1", "text": "epic place holder text" },
+    { "speaker": "Char 2", "text": "67" },
+    { "speaker": "Char1", "text": "67" }
+  ],
+  "mystic_signpost": [
+    { "speaker": "Signpost", "text": "sic seben" }
+  ]
+}
