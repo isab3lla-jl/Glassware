@@ -1,4 +1,6 @@
-import Player from './Player.js';
+import Player from "./Player.js";
+import NPC from "./Npc.js";
+import DialogueManager, { loadDialogueData } from "./dialogueManager.js";
 
 export default class Game {
     constructor(canvasId) {
@@ -6,30 +8,44 @@ export default class Game {
         this.ctx = this.canvas.getContext('2d');
 
         this.player = new Player(60, 70);
+
+        this.dialogueManager = new DialogueManager();
+        
+        this.npc = [new NPC(420, 400, "Npc", "npc_elder_intro")];
         
         this.mapLoaded = false;
         this.mapData = null;
         this.mapImage = new Image();
 
-        this.loadMap('../data/mapData.json', '../assets/Tilemaps/mockMapGlassware.png');
+        this.loadGameAssets();
         
         this.lastTime = 0;
 
         window.addEventListener('keydown', (e) => {
             console.log(e.key);
             if (e.key === 'Escape') this.togglePause();
+
+             if (this.dialogueManager.isActive && (e.key === "Enter" || e.code === "Space")) {
+                this.dialogueManager.nextLine();
+                
+                if (!this.dialogueManager.isActive) {
+                    this.player.enabled = true;
+                }
+            }
         });
     }
 
-    async loadMap(jsonPath, pngPath) {
-        const response = await fetch(jsonPath);
+    async loadGameAssets() {
+        await loadDialogueData();
+        const response = await fetch('../data/mapData.json');
         this.mapData = await response.json();
         
-        this.mapImage.src = pngPath;
+        this.mapImage.src = '../assets/Tilemaps/mockMapGlassware.png';
         this.mapImage.onload = () => {
             this.mapLoaded = true;
         };
     }
+    
 
     start() {
         this.lastTime = performance.now();
@@ -37,8 +53,30 @@ export default class Game {
     }
 
     update(dt) {
-        if (!this.mapLoaded) return;
-        this.player.update(dt, this.mapData);
+        if (!this.mapLoaded) {
+            console.log("Update pausado: esperando que mapLoaded sea true");
+            return;
+        }
+        
+        if (!this.dialogueManager.isActive) {
+            this.player.update(dt, this.mapData);
+        }
+
+        for (let npc of this.npc) {
+            npc.update(dt);
+
+            if (!this.dialogueManager.isActive && npc.playerIsNear(this.player)) {
+                if (this.player.keys.e) {
+                    const key = npc.interact(); 
+                    
+                    this.dialogueManager.startDialogue(key);
+                    
+                    this.player.enabled = false;
+                    this.player.keys.e = false; 
+                    break;
+                }
+            }
+        }
     }
 
     draw() {
@@ -48,7 +86,13 @@ export default class Game {
             this.ctx.drawImage(this.mapImage, 0, 0);
         }
         
+
+        this.npc.forEach(npc => npc.draw(this.ctx, this.player));
         this.player.draw(this.ctx);
+
+        if (this.dialogueManager.isActive) {
+            this.dialogueManager.drawDialogue(this.ctx, this.canvas.width, this.canvas.height);
+        }
     }
 
     loop(currentTime) {

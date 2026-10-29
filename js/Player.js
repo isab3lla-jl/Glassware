@@ -1,4 +1,4 @@
-import Sprite from './Sprite.js';
+import Sprite from "./Sprite.js";
 
 const PLAYER_STATES = {
     IDLE: "IDLE",
@@ -83,6 +83,7 @@ export default class Player extends Sprite {
 
     #checkCollision(mapData) {
         const collisionLayer = mapData.layers.find(layer => layer.name === "Collision");
+        //const sceneChangeTrigger = mapData.layers.find(layer => layer.name === "...");
         if (!collisionLayer) return false;
 
         const tileW = mapData.tilewidth;
