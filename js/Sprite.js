@@ -6,6 +6,7 @@ export default class Sprite {
 
         this.state = "IDLE"; 
         this.animations = {};
+        this.flipX = false;
     }
 
     initAnimations(animationConfig) {
@@ -19,10 +20,13 @@ export default class Sprite {
             anim.timer = 0;
             anim.frameWidth = 0;
             anim.frameHeight = 0;
+            
 
             anim.texture.onload = () => {
-                anim.frameWidth = anim.texture.width / anim.frameCount;
-                anim.frameHeight = anim.texture.height;
+                const cols = anim.colsPerRow || anim.frameCount;
+                anim.frameWidth = anim.texture.width / cols;
+                const rows = anim.totalRows || 1; 
+                anim.frameHeight = anim.texture.height / rows;
             };
         }
     }
@@ -51,9 +55,9 @@ export default class Sprite {
         const anim = this.animations[this.state];
 
         if (!anim || anim.frameWidth === 0) {
-            if (this.state === "IDLE") ctx.fillStyle = "black";
-            else if (this.state === "MOVE") ctx.fillStyle = "blue";
-            else if (this.state === "GRAB") ctx.fillStyle = "green";
+            if (this.state.includes("IDLE")) ctx.fillStyle = "black";
+            else if (this.state.includes("MOVE")) ctx.fillStyle = "blue";
+            else if (this.state.includes("GRAB")) ctx.fillStyle = "green";
             else ctx.fillStyle = "red";
             
             ctx.fillRect(this.x, this.y, this.size, this.size);
@@ -67,8 +71,14 @@ export default class Sprite {
 
         ctx.translate(centerX, centerY);
 
+        if (this.flipX) {
+            ctx.scale(-1, 1);
+        }
+
         const srcX = anim.frameWidth * anim.currentFrame;
-        const srcY = 0;
+        const rowOffset = anim.frameRow > 0 ? anim.frameRow - 1 : 0;
+        const srcY = anim.frameHeight * rowOffset;
+        
         const srcW = anim.frameWidth;
         const srcH = anim.frameHeight;
 

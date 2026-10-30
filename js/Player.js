@@ -1,15 +1,29 @@
 import Sprite from "./Sprite.js";
 
 const PLAYER_STATES = {
-    IDLE: "IDLE",
-    MOVE: "MOVE",
-    GRAB: "GRAB",
+    IDLE_FRONT: "IDLE_FRONT",
+    IDLE_SIDE: "IDLE_SIDE",
+    IDLE_BACK: "IDLE_BACK",
+
+    MOVE_FRONT: "MOVE_FRONT",
+    MOVE_SIDE: "MOVE_SIDE",
+    MOVE_BACK: "MOVE_BACK",
+
+    GRAB_FRONT: "GRAB_FRONT",
+    GRAB_SIDE: "GRAB_SIDE",
+    GRAB_BACK: "GRAB_BACK",
     //DEATH: "DEATH"
+};
+
+const FACING = {
+    FRONT: "FRONT",
+    SIDE: "SIDE",
+    BACK: "BACK"
 };
 
 export default class Player extends Sprite {
     constructor(x, y) {
-        super(x, y, 30);
+        super(x, y, 32);
 
         this.speed = 200;
         this.speedX = 0;
@@ -21,12 +35,22 @@ export default class Player extends Sprite {
             w: false, a: false, s: false, d: false, e: false
         };
 
-        this.state = PLAYER_STATES.IDLE;
+        this.state = PLAYER_STATES.IDLE_FRONT;
+        this.facing = FACING.FRONT; 
         this.initAnimations({
-            //[PLAYER_STATES.IDLE]:  { src: "../assets/idle_sheet.png",  frameCount: 7, frameSpeed: 10, loop: true },
-            //[PLAYER_STATES.MOVE]:  { src: "../assets/move_sheet.png",  frameCount: 8, frameSpeed: 12, loop: true },
-            //[PLAYER_STATES.GRAB]:  { src: "../assets/grab_sheet.png",  frameCount: 8, frameSpeed: 12, loop: false },
-            //[PLAYER_STATES.DEATH]: { src: "../assets/death_sheet.png", frameCount: 8, frameSpeed: 12, loop: false }
+            [PLAYER_STATES.IDLE_FRONT]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 8, totalRows: 8, frameSpeed: 5, loop: true },
+            [PLAYER_STATES.IDLE_SIDE]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 2, totalRows: 8, frameSpeed: 5, loop: true },
+            [PLAYER_STATES.IDLE_BACK]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 5, totalRows: 8, frameSpeed: 5, loop: true },
+
+            [PLAYER_STATES.MOVE_FRONT]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 7, totalRows: 8, frameSpeed: 6, loop: true },
+            [PLAYER_STATES.MOVE_SIDE]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 4, colsPerRow: 4, frameRow: 1, totalRows: 8, frameSpeed: 6, loop: true },
+            [PLAYER_STATES.MOVE_BACK]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 4, totalRows: 8, frameSpeed: 6, loop: true },
+
+            [PLAYER_STATES.GRAB_FRONT]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 6, totalRows: 8, frameSpeed: 4, loop: false },
+            [PLAYER_STATES.GRAB_SIDE]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 2, totalRows: 8, frameSpeed: 4, loop: false },
+            [PLAYER_STATES.GRAB_BACK]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 3, totalRows: 8, frameSpeed: 4, loop: false },
+
+            //[PLAYER_STATES.DEATH]: { src: "../assets/CharSprites/Opal-Sheet.png", frameCount: 8, colsPerRow: 4, frameRow: 4, totalRows: 10, frameSpeed: 12, loop: false }
         });
 
         this.hitboxOffset = { x: 10, y: 10 };
@@ -46,11 +70,14 @@ export default class Player extends Sprite {
     update(dt, mapData) {
         if (this.enabled === true) {
             this.movePlayer(dt, mapData);
+            this.updatePlayerState();
             this.updateSprite(dt);
         }
     }
 
     movePlayer(dt, mapData) {
+        this.speedX = 0;
+        this.speedY = 0;
 
         if (this.keys.ArrowRight || this.keys.d) this.speedX = this.speed;
         if (!this.keys.ArrowRight && !this.keys.d) this.speedX = 0;
@@ -67,18 +94,48 @@ export default class Player extends Sprite {
         if (this.#checkCollision(mapData)) this.x -= targetX;
         this.y += targetY;
         if (this.#checkCollision(mapData)) this.y -= targetY;
+    }
 
-        const isMovingByKeyboard = this.speedX !== 0 || this.speedY !== 0;
+    updatePlayerState() {
+        if (this.state.startsWith("GRAB")) {
+            return;
+        }
 
-        if (isMovingByKeyboard) {
-            if (this.state !== PLAYER_STATES.GRAB && this.state !== PLAYER_STATES.DEATH) {
-                this.state = PLAYER_STATES.MOVE;
+        const isMoving = this.speedX !== 0 || this.speedY !== 0;
+
+        if (isMoving) {
+            if (this.speedY > 0) {
+                this.facing = FACING.FRONT;
+                this.state = PLAYER_STATES.MOVE_FRONT;
+            } else if (this.speedY < 0) {
+                this.facing = FACING.BACK;
+                this.state = PLAYER_STATES.MOVE_BACK;
+            } else if (this.speedX > 0) {
+                this.facing = FACING.SIDE;
+                this.state = PLAYER_STATES.MOVE_SIDE;
+                this.flipX = false;
+            } else if (this.speedX < 0) {
+                this.facing = FACING.SIDE;
+                this.state = PLAYER_STATES.MOVE_SIDE;
+                this.flipX = true;
             }
         } else {
-            if (this.state !== PLAYER_STATES.GRAB && this.state !== PLAYER_STATES.DEATH) {
-                this.state = PLAYER_STATES.IDLE;
-            }
+            if (this.facing === FACING.FRONT) this.state = PLAYER_STATES.IDLE_FRONT;
+            if (this.facing === FACING.BACK)  this.state = PLAYER_STATES.IDLE_BACK;
+            if (this.facing === FACING.SIDE)  this.state = PLAYER_STATES.IDLE_SIDE;
         }
+    }
+
+    grab() {
+        if (this.facing === FACING.FRONT) this.state = PLAYER_STATES.GRAB_FRONT;
+        if (this.facing === FACING.BACK)  this.state = PLAYER_STATES.GRAB_BACK;
+        if (this.facing === FACING.SIDE)  this.state = PLAYER_STATES.GRAB_SIDE;
+        
+        setTimeout(() => {
+            if (this.facing === FACING.FRONT) this.state = PLAYER_STATES.IDLE_FRONT;
+            if (this.facing === FACING.BACK) this.state = PLAYER_STATES.IDLE_BACK;
+            if (this.facing === FACING.SIDE) this.state = PLAYER_STATES.IDLE_SIDE;
+        }, 300);
     }
 
     #checkCollision(mapData) {
@@ -113,17 +170,5 @@ export default class Player extends Sprite {
         }
 
         return false;
-    }
-
-    objectNear(distance, object) {
-        if (distance < 10) { 
-
-        }
-    }
-
-    grabObject(distance, object) {
-        if (distance < 10 && this.keys.e) { 
-
-        }
     }
 }
