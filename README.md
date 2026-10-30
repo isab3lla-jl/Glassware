@@ -1,5 +1,5 @@
 # Glassware
-Search for a thief in the streets of Victorian Era London while solving puzzles to help you find a most elusive sustance. WIP
+Search for a thief in the streets of a city inspired by the Victorian Era London while solving puzzles to help you find a most elusive substance. WIP
 
 # Description
 WIP
@@ -73,6 +73,8 @@ Mexicans when you dont buy their game
                                  . ..                 ....
                                  .. ..
                                  .. ..
+
+
 # Documentation
 [GDD](https://docs.google.com/document/d/1nboF5sFjEiqOrtMtmK_Eqbee0qxwbKtq3zZtUOIzk1M/edit?tab=t.0)
 [Game Script](https://ellipsus.com/read/3WKE1P6rRdFuwOkjqvuRiF/Glassware---Script)
