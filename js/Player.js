@@ -23,9 +23,9 @@ const FACING = {
 
 export default class Player extends Sprite {
     constructor(x, y) {
-        super(x, y, 32);
+        super(x, y, 27, 33);
 
-        this.speed = 200;
+        this.speed = 125;
         this.speedX = 0;
         this.speedY = 0;
         this.enabled = true;
@@ -54,8 +54,8 @@ export default class Player extends Sprite {
         });
 
         this.hitboxOffset = { x: 10, y: 10 };
-        this.hitboxWidth = this.size - (this.hitboxOffset.x * 2);
-        this.hitboxHeight = this.size - (this.hitboxOffset.y * 2);
+        this.hitboxWidth = this.width - (this.hitboxOffset.x * 2);
+        this.hitboxHeight = this.height - (this.hitboxOffset.y * 2);
 
 
         window.addEventListener("keydown", (e) => {

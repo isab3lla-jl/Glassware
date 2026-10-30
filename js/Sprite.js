@@ -1,8 +1,9 @@
 export default class Sprite {
-    constructor(x, y, size = 60) {
+    constructor(x, y, width = 30, height = 30) {
         this.x = x;
         this.y = y;
-        this.size = size;
+        this.width = width;
+        this.height = height;
 
         this.state = "IDLE"; 
         this.animations = {};
@@ -60,14 +61,14 @@ export default class Sprite {
             else if (this.state.includes("GRAB")) ctx.fillStyle = "green";
             else ctx.fillStyle = "red";
             
-            ctx.fillRect(this.x, this.y, this.size, this.size);
+            ctx.fillRect(this.x, this.y, this.width, this.height);
             return;
         }
 
         ctx.save();
 
-        const centerX = this.x + this.size / 2;
-        const centerY = this.y + this.size / 2;
+        const centerX = this.x + this.width / 2;
+        const centerY = this.y + this.height / 2;
 
         ctx.translate(centerX, centerY);
 
@@ -82,10 +83,10 @@ export default class Sprite {
         const srcW = anim.frameWidth;
         const srcH = anim.frameHeight;
 
-        const destX = -this.size / 2;
-        const destY = -this.size / 2;
-        const destW = this.size;
-        const destH = this.size;
+        const destX = -this.width / 2;
+        const destY = -this.height / 2;
+        const destW = this.width;
+        const destH = this.height;
 
         ctx.drawImage(
             anim.texture,

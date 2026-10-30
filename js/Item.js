@@ -7,7 +7,7 @@ const ITEM_STATES = {
  
 export default class Item extends Sprite{
     constructor(x, y, name = "item") {
-        super(x, y, 20);
+        super(x, y, 20, 20);
         
         this.name = name;
         this.active = true;
@@ -23,13 +23,13 @@ export default class Item extends Sprite{
     }
 
     playerIsNear(player) {
-        const playerCenterX = player.x + player.size / 2;
-        const playerCenterY = player.y + player.size / 2;
-        const npcCenterX = this.x + this.size / 2;
-        const npcCenterY = this.y + this.size / 2;
+        const playerCenterX = player.x + player.width / 2;
+        const playerCenterY = player.y + player.height / 2;
+        const itemCenterX = this.x + this.width / 2;
+        const itemCenterY = this.y + this.height / 2;
 
-        const dx = playerCenterX - npcCenterX;
-        const dy = playerCenterY - npcCenterY;
+        const dx = playerCenterX - itemCenterX;
+        const dy = playerCenterY - itemCenterY;
 
         return Math.hypot(dx, dy) < 60;
     }
@@ -49,7 +49,7 @@ export default class Item extends Sprite{
             
             const bounce = Math.sin(performance.now() / 150) * 3;
             
-            const indicatorX = this.x + (this.size / 2);
+            const indicatorX = this.x + (this.width / 2);
             const indicatorY = this.y - 10 + bounce;
 
             ctx.save();

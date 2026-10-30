@@ -6,7 +6,7 @@ const NPC_STATES = {
 
 export default class NPC extends Sprite{
     constructor (x, y, dialogueKey = "npc_elder_intro") {
-        super(x, y, 30);
+        super(x, y, 30, 30);
 
         this.dialogueKey = dialogueKey;
         this.active = true;
@@ -21,10 +21,10 @@ export default class NPC extends Sprite{
     }
 
     playerIsNear(player) {
-        const playerCenterX = player.x + player.size / 2;
-        const playerCenterY = player.y + player.size / 2;
-        const npcCenterX = this.x + this.size / 2;
-        const npcCenterY = this.y + this.size / 2;
+        const playerCenterX = player.x + player.width / 2;
+        const playerCenterY = player.y + player.height / 2;
+        const npcCenterX = this.x + this.width / 2;
+        const npcCenterY = this.y + this.height / 2;
 
         const dx = playerCenterX - npcCenterX;
         const dy = playerCenterY - npcCenterY;
@@ -43,7 +43,7 @@ export default class NPC extends Sprite{
             
             const bounce = Math.sin(performance.now() / 150) * 3;
             
-            const indicatorX = this.x + (this.size / 2);
+            const indicatorX = this.x + (this.width / 2);
             const indicatorY = this.y - 10 + bounce;
 
             ctx.save();
