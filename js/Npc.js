@@ -1,14 +1,13 @@
-import Sprite from "../js/Sprite.js";
+import Sprite from "./Sprite.js";
 
 const NPC_STATES = {
     IDLE: "IDLE"
 };
 
 export default class NPC extends Sprite{
-    constructor (x, y, name = "NPC", dialogueKey = "npc_elder_intro") {
+    constructor (x, y, dialogueKey = "npc_elder_intro") {
         super(x, y, 30);
 
-        this.name = name;
         this.dialogueKey = dialogueKey;
         this.active = true;
         this.state = NPC_STATES.IDLE;
@@ -63,6 +62,4 @@ export default class NPC extends Sprite{
             ctx.restore();
         }
     }
-
-
 }

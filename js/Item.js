@@ -1,97 +1,71 @@
+import Sprite from "./Sprite.js";
+
 const ITEM_STATES = {
     IDLE: "IDLE",
-    HOVER: "HOVER",
     GRAB: "GRAB"
 };
  
-export default class Item {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.size = 40;
-
+export default class Item extends Sprite{
+    constructor(x, y, name = "item") {
+        super(x, y, 20);
+        
+        this.name = name;
+        this.active = true;
         this.state = ITEM_STATES.IDLE;
-        //placeholder
-        /*
-        this.animations = {
-            [ITEM_STATES.IDLE]: {
-                texture: new Image(),
-                frameCount: 7,
-                frameSpeed: 0,
-                currentFrame: 0,
-                timer: 0,
-                frameWidth: 0, 
-                frameHeight: 0,
-                loop: false
-            },
-            [ITEM_STATES.HOVER]: {
-                texture: new Image(),
-                frameCount: 8,
-                frameSpeed: 12,
-                currentFrame: 0,
-                timer: 0,
-                frameWidth: 0,
-                frameHeight: 0,
-                loop: false
-            }
-        };
+        this.initAnimations({
+            //[ITEM_STATES.IDLE]:  { src: "../assets/idle_sheet.png",  frameCount: 7, frameSpeed: 10, loop: true }
+            //[ITEM_STATES.GRAB]:  { src: "../assets/idle_sheet.png",  frameCount: 7, frameSpeed: 10, loop: false }
+        });
+    }
 
-        this.animations[ITEM_STATES.IDLE].texture.src = "../assets/";
-        this.animations[ITEM_STATES.HOVER].texture.src = "../assets/";
+    update(dt) {
+        this.updateSprite(dt);
+    }
 
-        for (let key in this.animations) {
-            const anim = this.animations[key];
-            anim.texture.onload = () => {
-                anim.frameWidth = anim.texture.width / anim.frameCount;
-                anim.frameHeight = anim.texture.height;
-            };
+    playerIsNear(player) {
+        const playerCenterX = player.x + player.size / 2;
+        const playerCenterY = player.y + player.size / 2;
+        const npcCenterX = this.x + this.size / 2;
+        const npcCenterY = this.y + this.size / 2;
+
+        const dx = playerCenterX - npcCenterX;
+        const dy = playerCenterY - npcCenterY;
+
+        return Math.hypot(dx, dy) < 60;
+    }
+
+    grab() {
+        this.state = ITEM_STATES.GRAB;
+        this.active = false;
+        return this.name;
+    }
+
+    draw(ctx, player) {
+        if (!this.active) return;
+
+        super.draw(ctx);
+
+        if (this.playerIsNear(player)) {
+            
+            const bounce = Math.sin(performance.now() / 150) * 3;
+            
+            const indicatorX = this.x + (this.size / 2);
+            const indicatorY = this.y - 10 + bounce;
+
+            ctx.save();
+
+            ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+            ctx.beginPath();
+            ctx.arc(indicatorX, indicatorY - 5, 10, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = "#ffae00";
+            ctx.font = "bold 12px monospace";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("E", indicatorX, indicatorY - 5);
+
+            ctx.restore();
         }
-*/
-
-        this.canGrab = true;
     }
-
-    update(dt)
-    {
-
-    }
-
-    draw(ctx)
-    {
-        if (this.state === ITEM_STATES.IDLE) {
-            ctx.fillStyle = "orange";
-        } else if (this.state === ITEM_STATES.HOVER) {
-            ctx.fillStyle = "red";
-        } else if (this.state === ITEM_STATES.GRAB) {
-            ctx.fillStyle = "crimson";
-        }
-        ctx.fillRect(this.x, this.y, this.size, this.size);
-        /*const anim = this.animations[this.state];
-
-        ctx.save();
-
-        const centerX = this.x + this.size / 2;
-        const centerY = this.y + this.size / 2;
-
-        ctx.translate(centerX, centerY);
-
-        const srcX = anim.frameWidth * anim.currentFrame;
-        const srcY = 0;
-        const srcW = anim.frameWidth;
-        const srcH = anim.frameHeight;
-
-        const destX = -this.size / 2;
-        const destY = -this.size / 2;
-        const destW = this.size;
-        const destH = this.size;
-
-        ctx.drawImage(
-            anim.texture,
-            srcX, srcY, srcW, srcH,
-            destX, destY, destW, destH
-        );
-
-        ctx.restore();*/
-    }
-    
 }
