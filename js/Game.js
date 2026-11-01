@@ -3,10 +3,25 @@ import NPC from "./Npc.js";
 import Item from "./Item.js";
 import DialogueManager, { loadDialogueData } from "./dialogueManager.js";
 
+const GAME_STATES = {
+    MAIN_MENU: "MAIN_MENU",
+    PLAY: "PLAY",
+    PAUSE: "PAUSE",
+    GAME_OVER: "GAME_OVER"
+}
+
 export default class Game {
     constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
         this.ctx = this.canvas.getContext('2d');
+
+        this.domMenus = {
+            main: document.getElementById("main-menu"),
+            pause: document.getElementById("pause-menu"),
+            gameOver: document.getElementById("game-over-menu")
+        };
+
+        this.gameState = GAME_STATES.MAIN_MENU;
 
         this.player = new Player(60, 70);
 
@@ -27,18 +42,74 @@ export default class Game {
         
         this.lastTime = 0;
 
-        window.addEventListener('keydown', (e) => {
-            console.log(e.key);
-            if (e.key === 'Escape') this.togglePause();
+        this.setupMenuEvents();
+    }
 
-             if (this.dialogueManager.isActive && (e.key === "Enter" || e.code === "Space")) {
+    setupMenuEvents() {
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.togglePause();
+            }
+
+            if (this.dialogueManager.isActive && (e.key === "Enter" || e.code === "Space")) {
                 this.dialogueManager.nextLine();
-                
-                if (!this.dialogueManager.isActive) {
-                    this.player.enabled = true;
-                }
+                if (!this.dialogueManager.isActive) this.player.enabled = true;
             }
         });
+
+        document.getElementById("btn-start").addEventListener("click", () => {
+            this.changeState(GAME_STATES.PLAY);
+        });
+
+        document.getElementById("btn-resume").addEventListener("click", () => {
+            this.changeState(GAME_STATES.PLAY);
+        });
+
+        const btnExit = document.getElementById("btn-exit");
+        if (btnExit) {
+            btnExit.addEventListener("click", () => {
+                this.changeState(GAME_STATES.MAIN_MENU);
+            });
+        }
+
+        document.getElementById("btn-restart").addEventListener("click", () => {
+            this.restartGame();
+        });
+    }
+
+    changeState(newState) {
+        this.gameState = newState;
+
+        this.domMenus.main.classList.add("hidden");
+        this.domMenus.pause.classList.add("hidden");
+        this.domMenus.gameOver.classList.add("hidden");
+
+        if (this.gameState === GAME_STATES.MAIN_MENU) {
+            this.domMenus.main.classList.remove("hidden");
+        } else if (this.gameState === GAME_STATES.PAUSE) {
+            this.domMenus.pause.classList.remove("hidden");
+        } else if (this.gameState === GAME_STATES.GAME_OVER) {
+            this.domMenus.gameOver.classList.remove("hidden");
+        }
+    }
+
+    togglePause() {
+        if (this.gameState === GAME_STATES.PLAY) {
+            this.changeState(GAME_STATES.PAUSE);
+        } else if (this.gameState === GAME_STATES.PAUSE) {
+            this.changeState(GAME_STATES.PLAY);
+        }
+    }
+
+    restartGame() {
+        this.inventory = [];
+        this.player.x = 60;
+        this.player.y = 70;
+        this.player.enabled = true;
+        
+        this.items.forEach(item => item.active = true);
+
+        this.changeState(GAME_STATES.PLAY);
     }
 
     async loadGameAssets() {
@@ -63,6 +134,8 @@ export default class Game {
             console.log("Update pausado: esperando que mapLoaded sea true");
             return;
         }
+
+        if (this.gameState !== GAME_STATES.PLAY) return;
         
         if (!this.dialogueManager.isActive) {
             this.player.update(dt, this.mapData);
@@ -115,12 +188,11 @@ export default class Game {
         this.npcs.forEach(npcs => npcs.draw(this.ctx, this.player));
         this.player.draw(this.ctx);
         
-        this.drawHotbar();
+        if (this.gameState === GAME_STATES.PLAY || this.gameState === GAME_STATES.PAUSE) this.drawHotbar();
 
         if (this.dialogueManager.isActive) {
             this.dialogueManager.drawDialogue(this.ctx, this.canvas.width, this.canvas.height);
         }
-
     }
 
     loop(currentTime) {

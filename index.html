@@ -3,11 +3,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Glassware :p</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <canvas id="GameCanvas" width="640" height="480"
-        style="border: 2px solid #444; background: #111; display: block; margin: 20px auto;">
-        </canvas>
+        <div id="game-container">
+            <canvas id="GameCanvas" width="720" height="480">
+            </canvas>
+            <div id="main-menu" class="game-ui-layer">
+                <h1>Glassware</h1>
+                <button id="btn-start">Jugar</button>
+            </div>
+            <div id="pause-menu" class="game-ui-layer hidden">
+                <h2>Juego Pausado</h2>
+                <button id="btn-resume">Continuar [Esc]</button>
+                <button id="btn-exit">Salir al Menú</button>
+            </div>
+            <div id="game-over-menu" class="game-ui-layer hidden">
+                <h2 style="color: #a00e0e;">HAS MUERTO</h2>
+                <button id="btn-restart">Reiniciar</button>
+            </div>
+        </div>
     </body>
     <script type="module" src="js/main.js"></script>
 </html>
