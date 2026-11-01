@@ -1,6 +1,5 @@
 import Player from "./Player.js";
-import NPC from "./Npc.js";
-import Item from "./Item.js";
+import MapManager from "./MapManager.js";
 import DialogueManager, { loadDialogueData } from "./dialogueManager.js";
 
 const GAME_STATES = {
@@ -22,27 +21,21 @@ export default class Game {
         };
 
         this.gameState = GAME_STATES.MAIN_MENU;
-
         this.player = new Player(60, 70);
-
         this.dialogueManager = new DialogueManager();
         
-        this.npcs = [new NPC(420, 400, "npc_elder_intro")];
+        this.mapManager = new MapManager()
 
-        this.items = [new Item(480, 100, "67")];
+        this.npcs = [];
+        this.items = [];
 
         this.inventory = [];
         this.maxInventorySlots = 6;
-        
-        this.mapLoaded = false;
-        this.mapData = null;
-        this.mapImage = new Image();
 
-        this.loadGameAssets();
-        
         this.lastTime = 0;
 
         this.setupMenuEvents();
+        this.loadGameAssets();
     }
 
     setupMenuEvents() {
@@ -114,15 +107,49 @@ export default class Game {
 
     async loadGameAssets() {
         await loadDialogueData();
-        const response = await fetch('../data/mapData.json');
-        this.mapData = await response.json();
+        await this.mapManager.loadMap("map1", this);
+        this.mapLoaded = this.mapManager.hasLoaded();
         
-        this.mapImage.src = '../assets/Tilemaps/mockMapGlassware.png';
-        this.mapImage.onload = () => {
-            this.mapLoaded = true;
-        };
+        if (this.mapLoaded) {
+            const spawn = this.mapManager.getDefaultSpawn();
+            this.player.x = spawn.x;
+            this.player.y = spawn.y;
+        }
     }
-    
+
+    checkMapTriggers() {
+        const triggers = this.mapManager.getTriggers();
+        const playerHitbox = {
+            left: this.player.x + this.player.hitboxOffset.x,
+            right: this.player.x + this.player.hitboxOffset.x + this.player.hitboxWidth,
+            top: this.player.y + this.player.hitboxOffset.y,
+            bottom: this.player.y + this.player.hitboxOffset.y + this.player.hitboxHeight
+        };
+
+        for (let trigger of triggers) {
+            if (playerHitbox.right > trigger.x &&
+                playerHitbox.left < trigger.x + trigger.width &&
+                playerHitbox.bottom > trigger.y &&
+                playerHitbox.top < trigger.y + trigger.height) {
+                
+                this.executeMapTransition(trigger.targetMap, trigger.targetPlayerX, trigger.targetPlayerY);
+                break;
+            }
+        }
+    }
+
+    async executeMapTransition(nextMapKey, newX, newY) {
+        this.gameState = GAME_STATES.MAIN_MENU;
+        
+        console.log(`Next zone: ${nextMapKey}...`);
+        const success = await this.mapManager.loadMap(nextMapKey, this);
+        
+        if (success) {
+            this.player.x = newX;
+            this.player.y = newY;
+            this.gameState = GAME_STATES.PLAY;
+        }
+    }
 
     start() {
         this.lastTime = performance.now();
@@ -138,7 +165,8 @@ export default class Game {
         if (this.gameState !== GAME_STATES.PLAY) return;
         
         if (!this.dialogueManager.isActive) {
-            this.player.update(dt, this.mapData);
+            this.player.update(dt, this.mapManager.getCurrentData());
+            this.checkMapTriggers();
         }
 
         for (let npcs of this.npcs) {
@@ -180,7 +208,32 @@ export default class Game {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         if (this.mapLoaded) {
-            this.ctx.drawImage(this.mapImage, 0, 0);
+            this.ctx.drawImage(this.mapManager.getScaleImage(), 0, 0);
+        }
+
+        if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
+            const triggers = this.mapManager.getTriggers();
+            
+            this.ctx.save();
+            triggers.forEach(trigger => {
+                this.ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
+                this.ctx.fillRect(trigger.x, trigger.y, trigger.width, trigger.height);
+                
+                this.ctx.strokeStyle = "#00ff00";
+                this.ctx.lineWidth = 2;
+                this.ctx.strokeRect(trigger.x, trigger.y, trigger.width, trigger.height);
+
+                this.ctx.fillStyle = "#ffffff";
+                this.ctx.font = "bold 10px monospace";
+                this.ctx.textAlign = "center";
+                this.ctx.textBaseline = "middle";
+                this.ctx.fillText(
+                    `A: ${trigger.targetMap}`, 
+                    trigger.x + (trigger.width / 2), 
+                    trigger.y + (trigger.height / 2)
+                );
+            });
+            this.ctx.restore();
         }
         
 
