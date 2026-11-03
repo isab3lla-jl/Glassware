@@ -55,7 +55,8 @@ export default class Game {
         });
 
         document.getElementById("btn-resume").addEventListener("click", () => {
-            this.changeState(GAME_STATES.PLAY);
+            this.restartGame();
+            //this.changeState(GAME_STATES.PLAY);
         });
 
         const btnExit = document.getElementById("btn-exit");
@@ -94,15 +95,23 @@ export default class Game {
         }
     }
 
-    restartGame() {
+    async restartGame() {
         this.inventory = [];
-        this.player.x = 60;
-        this.player.y = 70;
-        this.player.enabled = true;
-        
-        this.items.forEach(item => item.active = true);
+        this.gameState = GAME_STATES.MAIN_MENU;
+        await this.mapManager.loadMap("map1", this);
+    
+        this.mapLoaded = this.mapManager.hasLoaded();
 
-        this.changeState(GAME_STATES.PLAY);
+        if (this.mapLoaded) {
+            const spawn = this.mapManager.getDefaultSpawn();
+            this.player.x = spawn.x;
+            this.player.y = spawn.y;
+            
+
+            this.player.enabled = true;
+
+            this.changeState(GAME_STATES.PLAY);
+        }
     }
 
     async loadGameAssets() {
@@ -186,6 +195,10 @@ export default class Game {
         }
 
         for (let items of this.items) {
+            if (this.inventory.includes(items.name)) {
+                items.active = false;
+            }
+
             if (!items.active) continue;
 
             items.update(dt);
@@ -236,8 +249,11 @@ export default class Game {
             this.ctx.restore();
         }
         
-
-        this.items.forEach(items => items.draw(this.ctx, this.player));
+        for (let items of this.items) {
+            if (!this.inventory.includes(items.name) && items.active) {
+                items.draw(this.ctx, this.player);
+            }
+        }
         this.npcs.forEach(npcs => npcs.draw(this.ctx, this.player));
         this.player.draw(this.ctx);
         
