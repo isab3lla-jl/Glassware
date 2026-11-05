@@ -36,7 +36,8 @@ export default class MapManager {
                     {
                         x: 0, y: 100, width: 40, height: 100,
                         targetMap: "map1",
-                        targetPlayerX: 655, targetPlayerY: 55
+                        targetPlayerX: 655, targetPlayerY: 55,
+                        requiredItem: "sword"
                     }
                 ]
             }

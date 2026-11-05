@@ -6,16 +6,13 @@ const ITEM_STATES = {
 };
  
 export default class Item extends Sprite{
-    constructor(x, y, name = "item") {
+    constructor(x, y, name = "item", animationConfig = {} ) {
         super(x, y, 20, 20);
         
         this.name = name;
         this.active = true;
         this.state = ITEM_STATES.IDLE;
-        this.initAnimations({
-            //[ITEM_STATES.IDLE]:  { src: "../assets/idle_sheet.png",  frameCount: 7, frameSpeed: 10, loop: true }
-            //[ITEM_STATES.GRAB]:  { src: "../assets/idle_sheet.png",  frameCount: 7, frameSpeed: 10, loop: false }
-        });
+        this.initAnimations(animationConfig);
     }
 
     update(dt) {

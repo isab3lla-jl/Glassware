@@ -5,15 +5,13 @@ const NPC_STATES = {
 };
 
 export default class NPC extends Sprite{
-    constructor (x, y, dialogueKey = "npc_elder_intro") {
+    constructor (x, y, dialogueKey = "npc_elder_intro", animationConfig = {}) {
         super(x, y, 30, 30);
 
         this.dialogueKey = dialogueKey;
         this.active = true;
         this.state = NPC_STATES.IDLE;
-        this.initAnimations({
-            //[NPC_STATES.IDLE]:  { src: "../assets/idle_sheet.png",  frameCount: 7, frameSpeed: 10, loop: true }
-        });
+        this.initAnimations(animationConfig);
     }
 
     update(dt) {

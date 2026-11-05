@@ -30,6 +30,7 @@ export default class Game {
         this.items = [];
 
         this.inventory = [];
+        this.discarded = [];
         this.maxInventorySlots = 6;
 
         this.lastTime = 0;
@@ -55,8 +56,8 @@ export default class Game {
         });
 
         document.getElementById("btn-resume").addEventListener("click", () => {
-            this.restartGame();
-            //this.changeState(GAME_STATES.PLAY);
+            //this.restartGame();
+            this.changeState(GAME_STATES.PLAY);
         });
 
         const btnExit = document.getElementById("btn-exit");
@@ -141,6 +142,19 @@ export default class Game {
                 playerHitbox.bottom > trigger.y &&
                 playerHitbox.top < trigger.y + trigger.height) {
                 
+                if (trigger.requiredItem) {
+                    const itemIndex = this.inventory.indexOf(trigger.requiredItem);
+                    //delete trigger.requiredItem;
+
+                    if (itemIndex === -1) {
+                        break;
+                    }
+                    this.discarded.push(trigger.requiredItem);
+                    console.log(this.discarded);
+                    this.inventory.splice(itemIndex, 1); 
+                }
+
+                delete trigger.requiredItem;
                 this.executeMapTransition(trigger.targetMap, trigger.targetPlayerX, trigger.targetPlayerY);
                 break;
             }
@@ -195,7 +209,7 @@ export default class Game {
         }
 
         for (let items of this.items) {
-            if (this.inventory.includes(items.name)) {
+            if (this.inventory.includes(items.name) || this.discarded.includes(items.name)) {
                 items.active = false;
             }
 
@@ -250,7 +264,7 @@ export default class Game {
         }
         
         for (let items of this.items) {
-            if (!this.inventory.includes(items.name) && items.active) {
+            if ((!this.inventory.includes(items.name) && !this.discarded.includes(items.name)) && items.active) {
                 items.draw(this.ctx, this.player);
             }
         }
