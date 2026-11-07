@@ -17,6 +17,16 @@ export default class DialogueManager {
         this.currentIndex = 0;
     }
 
+    async loadFont() {
+        const pixelFont = new FontFace(
+            'PixelifySans',
+            'url(./assets/fonts/PixelifySans-VariableFont_wght.ttf)'
+        );
+        
+        const loadedFont = await pixelFont.load();
+        document.fonts.add(loadedFont);
+    }
+
     startDialogue(conversationKey) {
         if (!dialogueDatabase[conversationKey]) {
         console.warn(`Conversation' ${conversationKey}' is not in JSON.`);
@@ -80,18 +90,18 @@ export default class DialogueManager {
         const boxX = (canvasWidth - boxWidth) / 2;
         const boxY = canvasHeight - boxHeight - 20;
 
-        ctx.fillStyle = "rgba(10, 10, 25, 0.9)"; 
+        ctx.fillStyle = "rgba(0, 0, 0, 0.9)";
         ctx.strokeStyle = "#ffffff";             
         ctx.lineWidth = 3;
         ctx.fillRect(boxX, boxY, boxWidth, boxHeight);
         ctx.strokeRect(boxX, boxY, boxWidth, boxHeight);
 
-        ctx.fillStyle = "#ffae00";               
-        ctx.font = "bold 18px monospace";
+        ctx.fillStyle = "#ff9500";               
+        ctx.font = "20px 'PixelifySans'";
         ctx.fillText(currentLine.speaker, boxX + 25, boxY + 35);
 
         ctx.fillStyle = "#ffffff";
-        ctx.font = "16px monospace";
+        ctx.font = "16px 'PixelifySans'";
         
         const paddingX = 25;
         const maxTextWidth = boxWidth - (paddingX * 2);
@@ -106,7 +116,7 @@ export default class DialogueManager {
         }
         
         ctx.fillStyle = "#888888";
-        ctx.font = "12px monospace";
-        ctx.fillText("[Enter to continue]", boxX + boxWidth - 180, boxY + boxHeight - 15);
+        ctx.font = "12px 'PixelifySans'";
+        ctx.fillText("[Enter or space to continue]", boxX + boxWidth - 220, boxY + boxHeight - 15);
     }
 }

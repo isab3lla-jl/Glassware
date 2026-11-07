@@ -34,6 +34,9 @@ export default class Game {
         this.maxInventorySlots = 6;
 
         this.lastTime = 0;
+        
+        this.gameDuration = 10; //seconds
+        this.timer = this.gameDuration;
 
         this.setupMenuEvents();
         this.loadGameAssets();
@@ -60,11 +63,11 @@ export default class Game {
             this.changeState(GAME_STATES.PLAY);
         });
 
-        const btnExit = document.getElementById("btn-exit");
-        if (btnExit) {
-            btnExit.addEventListener("click", () => {
+        const btnsExit = document.getElementsByClassName("btn-exit");
+        for(let i = 0; i < btnsExit.length; i++) {
+            btnsExit[i].addEventListener("click", () => {
                 this.changeState(GAME_STATES.MAIN_MENU);
-            });
+            })
         }
 
         document.getElementById("btn-restart").addEventListener("click", () => {
@@ -99,9 +102,11 @@ export default class Game {
     async restartGame() {
         this.inventory = [];
         this.gameState = GAME_STATES.MAIN_MENU;
-        await this.mapManager.loadMap("map1", this);
+        await this.mapManager.loadMap("bar", this);
     
         this.mapLoaded = this.mapManager.hasLoaded();
+
+        this.timer = this.gameDuration;
 
         if (this.mapLoaded) {
             const spawn = this.mapManager.getDefaultSpawn();
@@ -116,8 +121,16 @@ export default class Game {
     }
 
     async loadGameAssets() {
+        const pixelFont = new FontFace(
+            'PixelifySans',
+            'url(./assets/fonts/PixelifySans-VariableFont_wght.ttf)'
+        );
+
+        const loadedFont = await pixelFont.load();
+        document.fonts.add(loadedFont);
+        
         await loadDialogueData();
-        await this.mapManager.loadMap("map1", this);
+        await this.mapManager.loadMap("bar", this);
         this.mapLoaded = this.mapManager.hasLoaded();
         
         if (this.mapLoaded) {
@@ -190,6 +203,11 @@ export default class Game {
         if (!this.dialogueManager.isActive) {
             this.player.update(dt, this.mapManager.getCurrentData());
             this.checkMapTriggers();
+            this.timer -= dt;
+            if (this.timer <= 0) {
+                this.timer = 0;
+                this.changeState(GAME_STATES.GAME_OVER);
+             }
         }
 
         for (let npcs of this.npcs) {
@@ -231,11 +249,31 @@ export default class Game {
         }
     }
 
+    formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.ceil(seconds % 60);
+
+        const paddedMinutes = String(minutes).padStart(2, '0');
+        const paddedSeconds = String(remainingSeconds).padStart(2, '0');
+
+        return `${paddedMinutes}:${paddedSeconds}`;
+    }
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         if (this.mapLoaded) {
             this.ctx.drawImage(this.mapManager.getScaleImage(), 0, 0);
+        }
+
+        if (this.gameState === GAME_STATES.PLAY) {
+            this.ctx.save();
+            this.ctx.fillStyle = "#ffffff";
+            this.ctx.font = "20px 'PixelifySans'";
+            this.ctx.shadowColor = "black";
+            this.ctx.shadowBlur = 4;
+            this.ctx.fillText(`Time: ${this.formatTime(this.timer)}`, 20, 40);
+            this.ctx.restore();
         }
 
         if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
@@ -251,7 +289,7 @@ export default class Game {
                 this.ctx.strokeRect(trigger.x, trigger.y, trigger.width, trigger.height);
 
                 this.ctx.fillStyle = "#ffffff";
-                this.ctx.font = "bold 10px monospace";
+                this.ctx.font = "10px 'PixelifySans'";
                 this.ctx.textAlign = "center";
                 this.ctx.textBaseline = "middle";
                 this.ctx.fillText(
@@ -278,17 +316,6 @@ export default class Game {
         }
     }
 
-    loop(currentTime) {
-        const dt = (currentTime - this.lastTime) / 1000;
-        this.lastTime = currentTime;
-        // Límite de dt para evitar colapsos al cambiar de pestaña
-        if (dt < 0.1) { 
-                this.update(dt);
-        }
-        this.draw();
-        requestAnimationFrame((time) => this.loop(time));
-    }
-
     drawHotbar(){
         const slots = this.maxInventorySlots;
         const slotSize = 32;
@@ -301,8 +328,8 @@ export default class Game {
 
         this.ctx.save();
 
-        this.ctx.fillStyle = "rgba(60, 60, 60, 0.85)";
-        this.ctx.strokeStyle = "#1e1e1e";
+        this.ctx.fillStyle = "rgba(76, 38, 38, 0.69)";
+        this.ctx.strokeStyle = "#3f1818";
         this.ctx.lineWidth = 3;
         this.ctx.fillRect(x, y, hotbarWidth, hotbarHeight);
         this.ctx.strokeRect(x, y, hotbarWidth, hotbarHeight);
@@ -311,15 +338,15 @@ export default class Game {
             const slotX = x + padding + (i * (slotSize + padding));
             const slotY = y + padding;
 
-            this.ctx.fillStyle = "rgba(139, 139, 139, 0.5)";
-            this.ctx.strokeStyle = "#373737";
+            this.ctx.fillStyle = "rgba(90, 42, 42, 0.69)";
+            this.ctx.strokeStyle = "#3f1818";
             this.ctx.lineWidth = 2;
             this.ctx.fillRect(slotX, slotY, slotSize, slotSize);
             this.ctx.strokeRect(slotX, slotY, slotSize, slotSize);
 
             if (this.inventory[i]) {
                 this.ctx.fillStyle = "#ffffff";
-                this.ctx.font = "10px sans-serif";
+                this.ctx.font = "10px 'PixelifySans'";
                 this.ctx.textAlign = "center";
                 this.ctx.textBaseline = "middle";
 
@@ -329,5 +356,16 @@ export default class Game {
         }
 
         this.ctx.restore();
+    }
+
+    loop(currentTime) {
+        const dt = (currentTime - this.lastTime) / 1000;
+        this.lastTime = currentTime;
+        // Límite de dt para evitar colapsos al cambiar de pestaña
+        if (dt < 0.1) { 
+                this.update(dt);
+        }
+        this.draw();
+        requestAnimationFrame((time) => this.loop(time));
     }
 }
