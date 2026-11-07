@@ -4,40 +4,85 @@ import Item from "./Item.js";
 export default class MapManager {
     constructor() {
         this.maps = {
-            "map1": {
-                imageSrc: '../assets/Tilemaps/mockMapGlassware.png',
-                jsonDataSrc: '../data/mapData.json',
-                playerDefaultSpawn: { x: 60, y: 70 },
+            "bar": {
+                imageSrc: '../assets/Tilemaps/barTilemap.png',
+                jsonDataSrc: '../data/maps/barTilemap.json',
+                playerDefaultSpawn: { x: 350, y: 150 },
                 npcs: [
-                    { x: 420, y: 400, key: "npc_elder_intro" }
+                    { x: 250, y: 230, key: "npc_elder_intro" }
                 ],
                 items: [
-                    { x: 480, y: 100, name: "67" }
                 ],
                 triggers: [
                     {
-                        x: 710, y: 0, width: 40, height: 110,
-                        targetMap: "map2",
-                        targetPlayerX: 50, targetPlayerY: 100
+                        x: 337, y: 360, width: 46, height: 55,
+                        targetMap: "barStreet",
+                        targetPlayerX: 490, targetPlayerY: 90
                     }
                 ]
             },
-            "map2": {
-                imageSrc: '../assets/Tilemaps/mockMapGlassware.png',
-                jsonDataSrc: '../data/mapData.json',
-                playerDefaultSpawn: { x: 30, y: 70 },
+            "barStreet": {
+                imageSrc: '../assets/Tilemaps/barStreetTilemap.png',
+                jsonDataSrc: '../data/maps/barStreetTilemap.json',
+                playerDefaultSpawn: { x: 490, y: 90 },
                 npcs: [
                     { x: 300, y: 200, key: "mystic_signpost" }
                 ],
                 items: [
-                    { x: 600, y: 400, name: "sword" }
                 ],
                 triggers: [
                     {
-                        x: 0, y: 100, width: 40, height: 100,
-                        targetMap: "map1",
-                        targetPlayerX: 655, targetPlayerY: 55,
-                        requiredItem: "sword"
+                        x: 480, y: 50, width: 48, height: 35,
+                        targetMap: "bar",
+                        targetPlayerX: 348, targetPlayerY: 320,
+                    },
+                    {
+                        x: 680, y: 96, width: 40, height: 300,
+                        targetMap: "homeStreet",
+                        targetPlayerX: 50, targetPlayerY: 240,
+                    }
+                ]
+            },
+            "homeStreet": {
+                imageSrc: '../assets/Tilemaps/homeStreetTilemap.png',
+                jsonDataSrc: '../data/maps/homeStreetTilemap.json',
+                playerDefaultSpawn: { x: 560, y: 100 },
+                npcs: [
+                ],
+                items: [
+                ],
+                triggers: [
+                    {
+                        x: 552, y: 50, width: 48, height: 35,
+                        targetMap: "room",
+                        targetPlayerX: 347, targetPlayerY: 320,
+                    },
+                    {
+                        x: 0, y: 96, width: 40, height: 300,
+                        targetMap: "barStreet",
+                        targetPlayerX: 655, targetPlayerY: 240,
+                    },
+                    {
+                        x: 190, y: 440, width: 265, height: 40,
+                        targetMap: "streetOne",
+                        targetPlayerX: 655, targetPlayerY: 240,
+                        requiredItem: "money"
+                    }
+                ]
+            },
+            "room": {
+                imageSrc: '../assets/Tilemaps/roomTilemap.png',
+                jsonDataSrc: '../data/maps/roomTilemap.json',
+                playerDefaultSpawn: { x: 350, y: 150 },
+                npcs: [
+                ],
+                items: [
+                ],
+                triggers: [
+                    {
+                        x: 337, y: 360, width: 46, height: 55,
+                        targetMap: "homeStreet",
+                        targetPlayerX: 560, targetPlayerY: 100
                     }
                 ]
             }
