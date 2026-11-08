@@ -52,6 +52,14 @@ export default class Sprite {
         }
     }
 
+    isAnimationFinished() {
+        const anim = this.animations[this.state];
+        
+        if (!anim) return false;
+
+        return anim.currentFrame === anim.frameCount - 1;
+    }
+
     draw(ctx) {
         const anim = this.animations[this.state];
 

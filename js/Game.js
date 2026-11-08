@@ -114,13 +114,19 @@ export default class Game {
 
         this.timer = this.gameDuration;
 
+        this.player.state = "IDLE_FRONT";
+        this.player.facing = "FRONT";
+        this.player.enabled = true;
+
+        if (this.player.animations["DEATH"]) {
+            this.player.animations["DEATH"].currentFrame = 0;
+            this.player.animations["DEATH"].timer = 0;
+        }
+
         if (this.mapLoaded) {
             const spawn = this.mapManager.getDefaultSpawn();
             this.player.x = spawn.x;
             this.player.y = spawn.y;
-            
-
-            this.player.enabled = true;
 
             this.changeState(GAME_STATES.PLAY);
         }
@@ -205,14 +211,24 @@ export default class Game {
         }
 
         if (this.gameState !== GAME_STATES.PLAY) return;
+
+        if (this.player.state === "DEATH") {
+            this.player.updateSprite(dt); 
+
+            if (this.player.isAnimationFinished()) {
+                this.changeState(GAME_STATES.GAME_OVER);
+            }
+            return;
+        }
         
         if (!this.dialogueManager.isActive) {
-            this.player.update(dt, this.mapManager.getCurrentData());
+            this.player.update(dt, this.mapManager.getCurrentData(), this.timer);
             this.checkMapTriggers();
             this.timer -= dt;
             if (this.timer <= 0) {
                 this.timer = 0;
-                this.changeState(GAME_STATES.GAME_OVER);
+                this.player.state = "DEATH";
+                this.player.enabled = false;
              }
         }
 

@@ -12,7 +12,7 @@ const PLAYER_STATES = {
     GRAB_FRONT: "GRAB_FRONT",
     GRAB_SIDE: "GRAB_SIDE",
     GRAB_BACK: "GRAB_BACK",
-    //DEATH: "DEATH"
+    DEATH: "DEATH"
 };
 
 const FACING = {
@@ -50,7 +50,7 @@ export default class Player extends Sprite {
             [PLAYER_STATES.GRAB_SIDE]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 2, totalRows: 8, frameSpeed: 2, loop: false },
             [PLAYER_STATES.GRAB_BACK]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 3, totalRows: 8, frameSpeed: 2, loop: false },
 
-            //[PLAYER_STATES.DEATH]: { src: "../assets/CharSprites/Opal-Sheet.png", frameCount: 8, colsPerRow: 4, frameRow: 4, totalRows: 10, frameSpeed: 12, loop: false }
+            [PLAYER_STATES.DEATH]: { src: "../assets/CharSprites/OpalDeath-Sheet.png", frameCount: 22, frameSpeed: 8, loop: false }
         });
 
         this.hitboxOffset = { x: 10, y: 10 };
@@ -67,10 +67,10 @@ export default class Player extends Sprite {
         }); 
     }
 
-    update(dt, mapData) {
+    update(dt, mapData, timer) {
         if (this.enabled === true) {
             this.movePlayer(dt, mapData);
-            this.updatePlayerState();
+            this.updatePlayerState(timer);
             this.updateSprite(dt);
         }
     }
@@ -96,9 +96,13 @@ export default class Player extends Sprite {
         if (this.#checkCollision(mapData)) this.y -= targetY;
     }
 
-    updatePlayerState() {
+    updatePlayerState(timer) {
         if (this.state.startsWith("GRAB")) {
             return;
+        }
+
+        if (timer <= 0) {
+            this.state = PLAYER_STATES.DEATH;
         }
 
         const isMoving = this.speedX !== 0 || this.speedY !== 0;
