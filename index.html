@@ -4,25 +4,60 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Glassware :p</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://googleapis.com">
+        <link rel="preconnect" href="https://gstatic.com" crossorigin>
+        <link href="https://googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="game-container">
             <canvas id="GameCanvas" width="720" height="480">
             </canvas>
+            
             <div id="main-menu" class="game-ui-layer">
-                <h1>Glassware</h1>
-                <button id="btn-start">Jugar</button>
+                <div class="language-switcher-container">
+                    <select id="language-switcher">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+                <div class="content">
+                    <h1>Glassware</h1>
+
+                    <button id="btn-start" data-lang="play">Play</button>
+                    <button id="btn-out" data-lang="back">Go Back</button>
+                </div>
             </div>
             <div id="pause-menu" class="game-ui-layer hidden">
-                <h2>Juego Pausado</h2>
-                <button id="btn-resume">Continuar [Esc]</button>
-                <button id="btn-exit">Salir al Menú</button>
+                <h2 data-lang="pause">Pause</h2>
+                <button id="btn-resume" data-lang="cont">Continue (Esc)</button>
+                <button class="btn-exit" data-lang="main">Main Menu</button>
             </div>
             <div id="game-over-menu" class="game-ui-layer hidden">
-                <h2 style="color: #a00e0e;">HAS MUERTO</h2>
-                <button id="btn-restart">Reiniciar</button>
+                <h2 style="color: #a00e0e;" data-lang="ded">YOU'VE BEEN CONSUMED</h2>
+                <button id="btn-restart" data-lang="res">Restart</button>
+                <button class="btn-exit" data-lang="main">Main Menu</button>
             </div>
         </div>
     </body>
     <script type="module" src="js/main.js"></script>
+    <script>
+        document.getElementById('language-switcher').addEventListener('change', function() {
+            let lang = this.value;
+            loadLanguageFile(lang);
+        });
+
+        function loadLanguageFile(lang) {
+            fetch(`data/languagesUI/${lang}.json`)
+                .then(response => response.json())
+                .then(data => applyTranslations(data));
+            }
+
+        function applyTranslations(translations) {
+            const elements = document.querySelectorAll('[data-lang]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-lang');
+                element.innerText = translations[key];
+            });
+        }
+    </script>
 </html>

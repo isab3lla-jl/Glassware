@@ -1,13 +1,23 @@
 let dialogueDatabase = {};
 
-export async function loadDialogueData() {
-  try {
-    const response = await fetch("./data/yapmaxxing.json");
-    dialogueDatabase = await response.json();
-    console.log("Dialogues loaded.");
-  } catch (error) {
-    console.error("Error while loading dialogue", error);
-  }
+export async function loadDialogueData(lang) {
+    if (lang === "es") {
+        try {
+            const response = await fetch("./data/dialogues/yapmaxxing.json");
+            dialogueDatabase = await response.json();
+            console.log("Es dialogues loaded.");
+        } catch (error) {
+            console.error("Error while loading dialogue", error);
+        }
+    } else if (lang === "en") {
+        try {
+            const response = await fetch("./data/dialogues/yapmaxxing.json");
+            dialogueDatabase = await response.json();
+            console.log("En dialogues loaded.");
+        } catch (error) {
+            console.error("Error while loading dialogue", error);
+        }
+    }
 }
 
 export default class DialogueManager {

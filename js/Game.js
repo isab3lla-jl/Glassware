@@ -22,7 +22,13 @@ export default class Game {
 
         this.gameState = GAME_STATES.MAIN_MENU;
         this.player = new Player(60, 70);
+
         this.dialogueManager = new DialogueManager();
+        this.lang = "en";
+        document.getElementById('language-switcher').addEventListener('change', async (e) => {
+            this.lang = e.target.value;
+            await loadDialogueData(this.lang); 
+        });
         
         this.mapManager = new MapManager()
 
@@ -129,7 +135,7 @@ export default class Game {
         const loadedFont = await pixelFont.load();
         document.fonts.add(loadedFont);
         
-        await loadDialogueData();
+        await loadDialogueData(this.lang);
         await this.mapManager.loadMap("bar", this);
         this.mapLoaded = this.mapManager.hasLoaded();
         
@@ -272,7 +278,7 @@ export default class Game {
             this.ctx.font = "20px 'PixelifySans'";
             this.ctx.shadowColor = "black";
             this.ctx.shadowBlur = 4;
-            this.ctx.fillText(`Time: ${this.formatTime(this.timer)}`, 20, 40);
+            this.ctx.fillText(`${this.formatTime(this.timer)}`, 20, 40);
             this.ctx.restore();
         }
 
