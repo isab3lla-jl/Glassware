@@ -1,10 +1,23 @@
 {
   "npc_elder_intro": [
-    { "speaker": "Char1", "text": "epic place holder text" },
-    { "speaker": "Char 2", "text": "67" },
-    { "speaker": "Char1", "text": "67" }
+    {
+      "speaker": "Old Man",
+      "text": "epic placeholder text"
+    },
+    {
+      "speaker": "Opal",
+      "text": "67"
+    },
+    {
+      "speaker": "Pld Man",
+      "text": "67",
+      "triggerFlag": "hasTalkedToElder" 
+    }
   ],
   "mystic_signpost": [
-    { "speaker": "Signpost", "text": "sic seben" }
+    {
+      "speaker": "signpost",
+      "text": "sic seben"
+    }
   ]
 }

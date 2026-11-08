@@ -1,6 +1,7 @@
 import Player from "./Player.js";
 import MapManager from "./MapManager.js";
 import DialogueManager, { loadDialogueData } from "./dialogueManager.js";
+import ChapterManager from "./chapterManager.js";
 
 const GAME_STATES = {
     MAIN_MENU: "MAIN_MENU",
@@ -30,7 +31,8 @@ export default class Game {
             await loadDialogueData(this.lang); 
         });
         
-        this.mapManager = new MapManager()
+        this.chapterManager = new ChapterManager();
+        this.mapManager = new MapManager();
 
         this.npcs = [];
         this.items = [];
@@ -41,7 +43,7 @@ export default class Game {
 
         this.lastTime = 0;
         
-        this.gameDuration = 10; //seconds
+        this.gameDuration = 100; //seconds
         this.timer = this.gameDuration;
 
         this.setupMenuEvents();
@@ -55,7 +57,7 @@ export default class Game {
             }
 
             if (this.dialogueManager.isActive && (e.key === "Enter" || e.code === "Space")) {
-                this.dialogueManager.nextLine();
+                this.dialogueManager.nextLine(this);
                 if (!this.dialogueManager.isActive) this.player.enabled = true;
             }
         });
@@ -124,7 +126,7 @@ export default class Game {
         }
 
         if (this.mapLoaded) {
-            const spawn = this.mapManager.getDefaultSpawn();
+            const spawn = this.mapManager.getDefaultSpawn(this);
             this.player.x = spawn.x;
             this.player.y = spawn.y;
 
@@ -146,7 +148,7 @@ export default class Game {
         this.mapLoaded = this.mapManager.hasLoaded();
         
         if (this.mapLoaded) {
-            const spawn = this.mapManager.getDefaultSpawn();
+            const spawn = this.mapManager.getDefaultSpawn(this);
             this.player.x = spawn.x;
             this.player.y = spawn.y;
         }
@@ -189,7 +191,6 @@ export default class Game {
     async executeMapTransition(nextMapKey, newX, newY) {
         this.gameState = GAME_STATES.MAIN_MENU;
         
-        console.log(`Next zone: ${nextMapKey}...`);
         const success = await this.mapManager.loadMap(nextMapKey, this);
         
         if (success) {

@@ -1,0 +1,23 @@
+{
+  "npc_elder_intro": [
+    {
+      "speaker": "Anciano",
+      "text": "texto placeholder aca bien aca"
+    },
+    {
+      "speaker": "Opal",
+      "text": "67"
+    },
+    {
+      "speaker": "Anciano",
+      "text": "67",
+      "triggerFlag": "hasTalkedToElder" 
+    }
+  ],
+  "mystic_signpost": [
+    {
+      "speaker": "signpost",
+      "text": "seissiete"
+    }
+  ]
+}

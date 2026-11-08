@@ -1,91 +1,13 @@
 import NPC from "./Npc.js";
 import Item from "./Item.js";
 
+import { prologueMaps } from "./chapterMapsConfigs/prologueMaps.js";
+import { CHAPTERS } from "./chapterManager.js";
+
 export default class MapManager {
     constructor() {
-        this.maps = {
-            "bar": {
-                imageSrc: '../assets/Tilemaps/barTilemap.png',
-                jsonDataSrc: '../data/maps/barTilemap.json',
-                playerDefaultSpawn: { x: 350, y: 150 },
-                npcs: [
-                    { x: 250, y: 230, key: "npc_elder_intro" }
-                ],
-                items: [
-                ],
-                triggers: [
-                    {
-                        x: 337, y: 360, width: 46, height: 55,
-                        targetMap: "barStreet",
-                        targetPlayerX: 490, targetPlayerY: 90
-                    }
-                ]
-            },
-            "barStreet": {
-                imageSrc: '../assets/Tilemaps/barStreetTilemap.png',
-                jsonDataSrc: '../data/maps/barStreetTilemap.json',
-                playerDefaultSpawn: { x: 490, y: 90 },
-                npcs: [
-                    { x: 300, y: 200, key: "mystic_signpost" }
-                ],
-                items: [
-                ],
-                triggers: [
-                    {
-                        x: 480, y: 50, width: 48, height: 35,
-                        targetMap: "bar",
-                        targetPlayerX: 348, targetPlayerY: 320,
-                    },
-                    {
-                        x: 680, y: 96, width: 40, height: 300,
-                        targetMap: "homeStreet",
-                        targetPlayerX: 50, targetPlayerY: 240,
-                    }
-                ]
-            },
-            "homeStreet": {
-                imageSrc: '../assets/Tilemaps/homeStreetTilemap.png',
-                jsonDataSrc: '../data/maps/homeStreetTilemap.json',
-                playerDefaultSpawn: { x: 560, y: 100 },
-                npcs: [
-                ],
-                items: [
-                ],
-                triggers: [
-                    {
-                        x: 552, y: 50, width: 48, height: 35,
-                        targetMap: "room",
-                        targetPlayerX: 347, targetPlayerY: 320,
-                    },
-                    {
-                        x: 0, y: 96, width: 40, height: 300,
-                        targetMap: "barStreet",
-                        targetPlayerX: 655, targetPlayerY: 240,
-                    },
-                    {
-                        x: 190, y: 440, width: 265, height: 40,
-                        targetMap: "streetOne",
-                        targetPlayerX: 655, targetPlayerY: 240,
-                        requiredItem: "money"
-                    }
-                ]
-            },
-            "room": {
-                imageSrc: '../assets/Tilemaps/roomTilemap.png',
-                jsonDataSrc: '../data/maps/roomTilemap.json',
-                playerDefaultSpawn: { x: 350, y: 150 },
-                npcs: [
-                ],
-                items: [
-                ],
-                triggers: [
-                    {
-                        x: 337, y: 360, width: 46, height: 55,
-                        targetMap: "homeStreet",
-                        targetPlayerX: 560, targetPlayerY: 100
-                    }
-                ]
-            }
+        this.chapterLibrary = {
+            [CHAPTERS.PROLOGUE]: prologueMaps
         };
 
         this.currentMapKey = null;
@@ -98,15 +20,27 @@ export default class MapManager {
         this.activeTriggers = [];
     }
 
+    getMapsForCurrentChapter(gameInstance) {
+        if (!gameInstance || !gameInstance.chapterManager) {
+            return prologueMaps;
+        }
+        
+        const currentChapter = gameInstance.chapterManager.currentChapter;
+        
+        return this.chapterLibrary[currentChapter] || prologueMaps;
+    }
+
     async loadMap(mapKey, gameInstance) {
-        if (!this.maps[mapKey]) {
+        const currentChapterMaps = this.getMapsForCurrentChapter(gameInstance);
+        const mapConfig = currentChapterMaps[mapKey];
+
+        if (!mapConfig) {
             console.error(`Map "${mapKey}" doesn't exist.`);
             return false;
         }
 
         this.isLoaded = false;
         this.currentMapKey = mapKey;
-        const mapConfig = this.maps[mapKey];
 
         try {
             const response = await fetch(mapConfig.jsonDataSrc);
@@ -118,8 +52,19 @@ export default class MapManager {
                 this.mapImage.onerror = (err) => reject(err);
             });
 
-            this.activeNpcs = mapConfig.npcs.map(n => new NPC(n.x, n.y, n.key));
-            this.activeItems = mapConfig.items.map(i => new Item(i.x, i.y, i.name));
+            let runtimeNpcs = [...mapConfig.npcs];
+            let runtimeItems = [...mapConfig.items];
+
+            if (mapKey === "bar" && gameInstance.chapterManager.getFlag("hasTalkedToElder")) {
+                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "npc_elder_intro");
+                runtimeItems.push({ x: 320, y: 180, name: "key" });
+            }
+            if (mapKey === "barStreet" && gameInstance.chapterManager.getFlag("hasTalkedToElder")) {
+                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "mystic_signpost");
+            }
+
+            this.activeNpcs = runtimeNpcs.map(n => new NPC(n.x, n.y, n.key));
+            this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name));
             this.activeTriggers = mapConfig.triggers || [];
 
             gameInstance.npcs = this.activeNpcs;
@@ -138,5 +83,8 @@ export default class MapManager {
     getScaleImage() { return this.mapImage; }
     hasLoaded() { return this.isLoaded; }
     getTriggers() { return this.activeTriggers; }
-    getDefaultSpawn() { return this.maps[this.currentMapKey].playerDefaultSpawn; }
+    getDefaultSpawn(gameInstance) { 
+        const currentChapterMaps = this.getMapsForCurrentChapter(gameInstance);
+        return currentChapterMaps[this.currentMapKey].playerDefaultSpawn; 
+    }
 }

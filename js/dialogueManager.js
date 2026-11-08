@@ -3,9 +3,8 @@ let dialogueDatabase = {};
 export async function loadDialogueData(lang) {
     if (lang === "es") {
         try {
-            const response = await fetch("./data/dialogues/yapmaxxing.json");
+            const response = await fetch("./data/dialogues/palabreria.json");
             dialogueDatabase = await response.json();
-            console.log("Es dialogues loaded.");
         } catch (error) {
             console.error("Error while loading dialogue", error);
         }
@@ -13,7 +12,6 @@ export async function loadDialogueData(lang) {
         try {
             const response = await fetch("./data/dialogues/yapmaxxing.json");
             dialogueDatabase = await response.json();
-            console.log("En dialogues loaded.");
         } catch (error) {
             console.error("Error while loading dialogue", error);
         }
@@ -47,12 +45,28 @@ export default class DialogueManager {
         this.currentIndex = 0;
     }
 
-    nextLine() {
+    nextLine(gameInstance) {
         if (!this.isActive) return;
 
         this.currentIndex++;
         if (this.currentIndex >= this.currentConversation.length) {
+            this.checkDialogueTriggers(gameInstance);
             this.endDialogue();
+        }
+    }
+
+    checkDialogueTriggers(gameInstance) {
+        if (!gameInstance || !gameInstance.chapterManager || !this.currentConversation) return;
+
+        const lastLine = this.currentConversation[this.currentConversation.length - 1];
+        
+        if (lastLine) {
+            if (lastLine.triggerFlag) {
+                gameInstance.chapterManager.setFlag(lastLine.triggerFlag, true);
+            }
+            if (lastLine.triggerChapter) {
+                gameInstance.chapterManager.advanceChapter(lastLine.triggerChapter);
+            }
         }
     }
 
