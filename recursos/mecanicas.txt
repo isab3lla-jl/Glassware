@@ -1,0 +1,6 @@
+Prologo
+
+Opal cierra el bar, camina a casa y entra. Al inspeccionar el lugar, encuentra señales de que alguien irrumpió y confirma que el vial fue robado. Este hecho inicia la investigación.
+Mecánicas: desplazamiento, interacción con puertas e inspección del escenario.
+
+Las pistas llevan a Opal a la casa del ladrón, cuya puerta está cerrada. All

@@ -1,0 +1,35 @@
+Prologo
+
+Opal cierra el bar, camina a casa y entra. Al inspeccionar el lugar, encuentra señales de que alguien irrumpió y confirma que el vial fue robado. Este hecho inicia la investigación.
+
+Mecánicas: desplazamiento, interacción con puertas e inspección del escenario.
+
+
+Acto 1
+
+Las pistas llevan a Opal a la casa del ladrón, cuya puerta está cerrada. Allí encuentra a Benette, cliente habitual y cerrajero. Benette acepta ayudar a cambio de una farola, una botella de ginebra, monedas y una ganzúa.. Opal ya tiene la ginebra y las monedas; debe revisar tres almacenes para encontrar la ganzúa y la farola  que aparece en los edificios de alrededor.. Al entregar los tres objetos, Benette abre la puerta.
+
+Mecánicas: exploración, inventario, búsqueda fija de objetos y entrega de requisitos para desbloquear el avance.
+
+Acto 2
+
+En el sueño aparece Onix, la sombra y alter ego de Opal. Presenta tres acertijos: alcoholismo, cigarro y farola. Para responder, Opal selecciona una botella de ginebra, cigarros y una farola. Cada respuesta correcta permite avanzar; al resolver los tres, Opal se libera de Onix y despierta antes de bajar del tren. Una regla posible es permitir reintentar el mismo acertijo.
+
+Mecánicas: asociación de pistas con objetos, selección de respuestas y progresión por etapas.
+
+Acto 3
+
+Opal llega al enorme manicomio y recorre pasillos y habitaciones hasta encontrar el cuarto correcto. Allí localiza y confronta al ladrón. El personal interpreta la situación como una crisis psicótica, confunde a Opal con un paciente y lo encierra.
+
+Mecánicas: exploración de un edificio amplio, búsqueda del objetivo y encuentro narrativo. La secuencia actual no contempla combate ni escape dentro de este acto.
+
+
+MECANICAS COMPLEMENTARIAS 
+
+Llaves y cerraduras
+
+Una nota con números puede orientar la búsqueda de la cerradura correcta entre varias puertas o pasadizos. Opal también puede encontrar llaves en cajas o fabricar una con una vara de metal y alambres.
+
+Pistas de orientación
+
+Huellas, un diario, una fotografía e iniciales pueden aportar información para seguir una ruta o deducir por dónde continuar.
