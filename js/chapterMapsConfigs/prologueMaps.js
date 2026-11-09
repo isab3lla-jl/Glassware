@@ -4,7 +4,7 @@ export const prologueMaps = {
         jsonDataSrc: '../data/maps/prologue/barTilemap.json',
         playerDefaultSpawn: { x: 350, y: 150 },
         npcs: [
-            { x: 250, y: 230, key: "npc_elder_intro" }
+            { x: 250, y: 230, key: "bennet_dialogue" }
         ],
         items: [
         ],
