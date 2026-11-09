@@ -1,0 +1,18 @@
+{
+  "bennet_dialogue": [
+    { "speaker": "Opal", "text": "Been a while since I've seen you Bennet, what are you having tonight?" },
+    { "speaker": "Bennet", "text": "Yeah, it has. Just the usual please." },
+    { "speaker": "Opal", "text": "Right away! How's the business going by the way?" },
+    { "speaker":"Bennet", "text": "There isn't a lack of clients but my hands aren't as steady as they used to be, I'm going to have to close down the workshop im afraid."},
+    { "speaker":"Opal", "text": "I'm quite sorry to hear that, who's gonna help me when I get locked out now?"},
+    { "speaker":"Bennet", "text": "Oh I'm sure there's plenty of  reputable locksmiths around here Opal, I'm sure you'll find someone capable."},
+    { "speaker":"Opal", "text": "I hope so sir. Have that last drink on the house, we're about to close out for the night."},
+    { "speaker":"Bennet", "text": "Thanks Opal, I appreciate it."},
+    { "speaker":"Bennet", "text": "You have a nice night now."},
+    { "speaker":"Opal", "text": "You too, don't be a stranger and come around for a chat more often."}
+
+  ],
+  "Sign": [
+    { "speaker": "Sign", "text": "not ominous text" }
+  ]
+}
