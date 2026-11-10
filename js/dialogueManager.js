@@ -74,6 +74,9 @@ export default class DialogueManager {
         this.isActive = false;
         this.currentConversation = null;
         this.currentIndex = 0;
+
+        const event = new CustomEvent("dialogue_finished");
+        document.dispatchEvent(event);
     }
 
     getCurrentLine() {

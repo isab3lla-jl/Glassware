@@ -25,7 +25,6 @@ export default class Player extends Sprite {
     constructor(x, y) {
         super(x, y, 27, 33);
 
-        this.speed = 125;
         this.speedX = 0;
         this.speedY = 0;
         this.enabled = true;

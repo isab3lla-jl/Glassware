@@ -1,12 +1,28 @@
+import { NPC_STATES } from "../Npc.js";
+
+
 export const prologueMaps = {
     "bar": {
         imageSrc: '../assets/Tilemaps/prologue/barTilemap.png',
         jsonDataSrc: '../data/maps/prologue/barTilemap.json',
         playerDefaultSpawn: { x: 350, y: 150 },
         npcs: [
-            { x: 250, y: 230, key: "bennet_dialogue" }
+            {
+                x: 250, y: 230, key: "bennet_dialogue",
+                animationConfig: {
+                    [NPC_STATES.SIDE]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
+                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true },
+                    [NPC_STATES.FRONT]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true }
+                }
+            }
         ],
         items: [
+            {
+                x: 440, y: 115, name: "key",
+                animationConfig: {
+                    [NPC_STATES.IDLE]: { src: "../../assets/ItemSprites/key.png", frameCount: 1, frameSpeed: 1, loop: true }
+                }
+            }
         ],
         triggers: [
             {

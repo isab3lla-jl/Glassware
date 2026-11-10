@@ -7,7 +7,8 @@ const GAME_STATES = {
     MAIN_MENU: "MAIN_MENU",
     PLAY: "PLAY",
     PAUSE: "PAUSE",
-    GAME_OVER: "GAME_OVER"
+    GAME_OVER: "GAME_OVER",
+    GAME_END: "GAME_END"
 }
 
 export default class Game {
@@ -72,10 +73,11 @@ export default class Game {
         });
 
         const btnsExit = document.getElementsByClassName("btn-exit");
-        for(let i = 0; i < btnsExit.length; i++) {
-            btnsExit[i].addEventListener("click", () => {
+        for (let i = 0; i < btnsExit.length; i++) {
+            btnsExit[i].addEventListener("click", async () => {
+                await this.restartGame(); 
                 this.changeState(GAME_STATES.MAIN_MENU);
-            })
+            });
         }
 
         document.getElementById("btn-restart").addEventListener("click", () => {
@@ -110,6 +112,8 @@ export default class Game {
     async restartGame() {
         this.inventory = [];
         this.gameState = GAME_STATES.MAIN_MENU;
+        this.chapterManager.setFlag("hasTalkedToElder", false);
+        this.chapterManager.setFlag("sawRoomCutscene", false);
         await this.mapManager.loadMap("bar", this);
     
         this.mapLoaded = this.mapManager.hasLoaded();
@@ -171,7 +175,6 @@ export default class Game {
                 
                 if (trigger.requiredItem) {
                     const itemIndex = this.inventory.indexOf(trigger.requiredItem);
-                    //delete trigger.requiredItem;
 
                     if (itemIndex === -1) {
                         break;
@@ -197,6 +200,22 @@ export default class Game {
             this.player.x = newX;
             this.player.y = newY;
             this.gameState = GAME_STATES.PLAY;
+
+            if (nextMapKey === "room" && !this.chapterManager.getFlag("sawRoomCutscene")) {
+                
+                this.chapterManager.setFlag("sawRoomCutscene", true);
+
+                const roomCutscene = [
+                    { type: "WALK", who: "player", direction: "UP", time: 400 },
+                    { type: "WALK", who: "player", direction: "LEFT", time: 500 },
+                    { type: "WALK", who: "player", direction: "UP", time: 800 },
+                    { type: "WALK", who: "player", direction: "RIGHT", time: 1100 },
+                    { type: "STAND", who: "player", direction: "SIDE", flipX: true, time: 500 }
+                    //{ type: "TEXT", key: "monologo_habitacion" }
+                ];
+
+                this.mapManager.startCutscene(roomCutscene, this);
+            }
         }
     }
 
@@ -221,24 +240,29 @@ export default class Game {
             }
             return;
         }
-        
-        if (!this.dialogueManager.isActive) {
+
+        this.player.updateCutsceneMovement(dt);
+
+        if (!this.dialogueManager.isActive && !this.mapManager.isCutscenePlaying) {
+            //console.log(this.player.x, this.player.y, this.player.animationConfig);
             this.player.update(dt, this.mapManager.getCurrentData(), this.timer);
             this.checkMapTriggers();
+
             this.timer -= dt;
             if (this.timer <= 0) {
                 this.timer = 0;
                 this.player.state = "DEATH";
                 this.player.enabled = false;
-             }
+            }
         }
 
-        for (let npcs of this.npcs) {
-            npcs.update(dt);
+        for (let npc of this.npcs) {
+            npc.update(dt);
+            npc.updateCutsceneMovement(dt);
 
-            if (!this.dialogueManager.isActive && npcs.playerIsNear(this.player)) {
+            if (!this.dialogueManager.isActive && !this.mapManager.isCutscenePlaying && npc.playerIsNear(this.player)) {
                 if (this.player.keys.e) {
-                    const key = npcs.interact(); 
+                    const key = npc.interact(); 
                     
                     this.dialogueManager.startDialogue(key);
                     
@@ -263,7 +287,7 @@ export default class Game {
                     const itemName = items.grab();
                     this.inventory.push(itemName);
                 } else {
-                    console.log("full inventory")
+                    console.log("full inventory");
                 }
 
                 this.player.keys.e = false;
@@ -271,6 +295,7 @@ export default class Game {
             }
         }
     }
+
 
     formatTime(seconds) {
         const minutes = Math.floor(seconds / 60);
