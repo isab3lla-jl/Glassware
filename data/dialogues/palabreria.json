@@ -1,23 +1,113 @@
 {
-  "npc_elder_intro": [
-    {
-      "speaker": "Anciano",
-      "text": "texto placeholder aca bien aca"
+  "bennet_dialogue": [
+    { 
+      "speaker": "Opal",
+      "text":"Tiene rato que no te veo Bennet, ¿Qué vas a tomar?"
     },
+    {
+      "speaker": "Bennet",
+      "text":"Si, ha pasado un tiempo. Lo de siempre esta bien."
+     },
     {
       "speaker": "Opal",
-      "text": "67"
+      "text":"Sale enseguida."
     },
     {
-      "speaker": "Anciano",
-      "text": "67",
-      "triggerFlag": "hasTalkedToElder" 
+      "speaker":"Opal",
+      "text":"¿Por cierto, como va el negocio?"
+    },  
+    {
+      "speaker":"Bennet",
+      "text":"No faltan clientes pero mis manos ya no son tan firmes como antes"
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Creo que voy a tener que cerrar el taller."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Lamento que sea asi, ¿Quién me va a ayudar cuando se me olviden las llaves?"
+    },
+    {
+      "speaker":"Bennet",
+      "text":"No te preocupes, estoy seguro que hay bastantes cerrajeros de confianza por aqui Opal"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Espero que si."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Tomese ese trago que va por cuenta de la casa, ya vamos a cerrar."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Gracias Opal, lo aprecio."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Ten bonita noche."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Tú también, cuídiate."
+    }
+
+  ],
+  "locked_door": [
+    {
+      "speaker":"Opal",
+      "text":"Chingada madre, se me volvieron a olvidar las llaves.",
+      "triggerFlag":"checkedDoor"
+  }
+  ],
+  "grabbed_keys": [
+    {
+      "speaker":"Opal",
+      "text":"Ahi estan, tengo que cuidarlas mas..."
+    },
+    {
+      "speaker":"",
+      "text":"Agarraste la llave de Casa de Opal"
+
     }
   ],
-  "mystic_signpost": [
+  "first_onyx_cutscene": [
     {
-      "speaker": "signpost",
-      "text": "seissiete"
+      "speaker":"Onyx",
+      "text":"Holi!"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Ay, ya apareciste otra vez"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Tu Vialsito ese es muy molesto, ¿Sabes?"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Ya nunca me dejas aparecerme."
+    },
+    {
+      "speaker":"Opal",
+      "text":"¿Y por que crees que es?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Por un dia que duermo bien y te apareces inmediatamente."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Supongo que lo necesitabas, te ves todavia peor que lo normal ;)"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Ya dejame en paz."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Ugh, nunca me dejas divertirme."
     }
   ]
 }
