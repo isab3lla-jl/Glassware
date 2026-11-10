@@ -13,6 +13,8 @@
             <canvas id="GameCanvas" width="720" height="480">
             </canvas>
             
+
+            <div id="fade-overlay" class="hidden"></div>
             <div id="main-menu" class="game-ui-layer">
                 <div class="language-switcher-container">
                     <select id="language-switcher">
@@ -34,7 +36,13 @@
             </div>
             <div id="game-over-menu" class="game-ui-layer hidden">
                 <h2 style="color: #a00e0e;" data-lang="ded">YOU'VE BEEN CONSUMED</h2>
-                <button id="btn-restart" data-lang="res">Restart</button>
+                <button class="btn-restart" data-lang="res">Restart</button>
+                <button class="btn-exit" data-lang="main">Main Menu</button>
+            </div>
+            <div id="game-end-menu" class="game-ui-layer hidden">
+                <h2 data-lang="end">THE END...</h2>
+                <p data-lang="end_p">Thanks for playing!</p>
+                <button class="btn-restart" data-lang="res">Restart</button>
                 <button class="btn-exit" data-lang="main">Main Menu</button>
             </div>
         </div>

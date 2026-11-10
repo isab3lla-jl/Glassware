@@ -29,7 +29,16 @@ export const prologueMaps = {
                 x: 337, y: 360, width: 46, height: 55,
                 targetMap: "barStreet",
                 targetPlayerX: 490, targetPlayerY: 90
-            }
+            },
+            /* cutscene trigger en mapa ej
+            {
+            x: 200, y: 150, width: 32, height: 32,
+            flagRequired: "idfk",
+            cutscene: [
+                { type: "STAND", who: "player", facing: "SIDE", flipX: true, time: 500 },
+                { type: "TEXT", key: "idfk" }
+            ]
+        }*/
         ]
     },
     "barStreet": {

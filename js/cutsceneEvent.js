@@ -16,10 +16,23 @@ export default class CutsceneEvent {
             ? this.gameInstance.player 
             : this.map.activeNpcs.find(n => n.key === this.event.who);
 
-        if (targetEntity && this.event.facing) {
-            targetEntity.facing = this.event.facing;
-            if (this.event.facing === "SIDE" && this.event.flipX !== undefined) {
-                targetEntity.flipX = this.event.flipX;
+        if (targetEntity && this.event.direction) {
+            const dir = this.event.direction;
+
+            if (dir === "LEFT") {
+                targetEntity.state = "IDLE_SIDE";
+                targetEntity.facing = "SIDE";
+                targetEntity.flipX = true;
+            } else if (dir === "RIGHT") {
+                targetEntity.state = "IDLE_SIDE";
+                targetEntity.facing = "SIDE";
+                targetEntity.flipX = false;
+            } else if (dir === "UP") {
+                targetEntity.state = "IDLE_BACK";
+                targetEntity.facing = "BACK";
+            } else if (dir === "DOWN") {
+                targetEntity.state = "IDLE_FRONT";
+                targetEntity.facing = "FRONT";
             }
         }
 
@@ -29,6 +42,7 @@ export default class CutsceneEvent {
             resolve();
         }
     }
+
 
     WALK(resolve) {
         const targetEntity = this.event.who === "player" 
@@ -68,4 +82,44 @@ export default class CutsceneEvent {
         document.addEventListener("dialogue_finished", handleDialogueComplete);
         this.gameInstance.dialogueManager.startDialogue(this.event.key);
     }
+
+    GAME_END(resolve) {
+        if (!this.gameInstance) {
+            resolve();
+            return;
+        }
+        this.gameInstance.changeState("GAME_END");
+        resolve();
+    }
+
+    FADE(resolve) {
+        if (!this.gameInstance || !this.gameInstance.domMenus.fade) {
+            resolve();
+            return;
+        }
+
+        const fadeEl = this.gameInstance.domMenus.fade;
+        const fadeDuration = this.event.time || 800; 
+
+        if (this.event.direction === "IN") {
+            fadeEl.classList.remove("hidden");
+
+            requestAnimationFrame(() => {
+                fadeEl.classList.add("show-black");
+            });
+            
+            setTimeout(() => {
+                resolve();
+            }, fadeDuration);
+
+        } else if (this.event.direction === "OUT") {
+            fadeEl.classList.remove("show-black");
+
+            setTimeout(() => {
+                fadeEl.classList.add("hidden");
+                resolve();
+            }, fadeDuration);
+        }
+    }
+
 }

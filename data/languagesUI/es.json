@@ -6,5 +6,7 @@
     "cont": "Continuar (Esc)",
     "main": "Menú principal",
     "ded": "HAS SIDO CONSUMIDO",
-    "res": "Reiniciar"
+    "res": "Reiniciar",
+    "end": "THE END...",
+    "end_p": "Thanks for playing!"
 }
