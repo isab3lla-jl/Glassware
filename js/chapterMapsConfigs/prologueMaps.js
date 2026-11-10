@@ -17,12 +17,6 @@ export const prologueMaps = {
             }
         ],
         items: [
-            {
-                x: 440, y: 115, name: "key",
-                animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "../../assets/ItemSprites/key.png", frameCount: 1, frameSpeed: 1, loop: true }
-                }
-            }
         ],
         triggers: [
             {
@@ -30,15 +24,15 @@ export const prologueMaps = {
                 targetMap: "barStreet",
                 targetPlayerX: 490, targetPlayerY: 90
             },
-            /* cutscene trigger en mapa ej
+            /*cutscene trigger en mapa ej
             {
-            x: 200, y: 150, width: 32, height: 32,
-            flagRequired: "idfk",
-            cutscene: [
-                { type: "STAND", who: "player", facing: "SIDE", flipX: true, time: 500 },
-                { type: "TEXT", key: "idfk" }
-            ]
-        }*/
+                x: 200, y: 150, width: 32, height: 32,
+                flagRequired: "idfk",
+                cutscene: [
+                    { type: "STAND", who: "player", facing: "SIDE", flipX: true, time: 500 },
+                    { type: "TEXT", key: "idfk" }
+                ]
+            }*/
         ]
     },
     "barStreet": {
@@ -46,7 +40,6 @@ export const prologueMaps = {
         jsonDataSrc: '../data/maps/prologue/barStreetTilemap.json',
         playerDefaultSpawn: { x: 490, y: 90 },
         npcs: [
-            { x: 300, y: 200, key: "mystic_signpost" }
         ],
         items: [
         ],
@@ -76,6 +69,12 @@ export const prologueMaps = {
                 x: 552, y: 50, width: 48, height: 35,
                 targetMap: "room",
                 targetPlayerX: 347, targetPlayerY: 320,
+                requiredItem: "key"
+            },
+            {
+                x: 552, y: 50, width: 48, height: 50,
+                dialogueKey: "locked_door",
+                flagRequired: "doorDialogue"    
             },
             {
                 x: 0, y: 96, width: 40, height: 300,

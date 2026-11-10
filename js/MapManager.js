@@ -1,4 +1,4 @@
-import NPC from "./Npc.js";
+import NPC, { NPC_STATES } from "./Npc.js";
 import Item from "./Item.js";
 import CutsceneEvent from "./CutsceneEvent.js";
 
@@ -58,10 +58,19 @@ export default class MapManager {
             let runtimeNpcs = [...mapConfig.npcs];
             let runtimeItems = [...mapConfig.items];
 
-            if (mapKey === "bar" && gameInstance.chapterManager.getFlag("hasTalkedToElder")) {
-                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "npc_elder_intro");
-                runtimeItems.push({ x: 320, y: 180, name: "key" });
+            if (mapKey === "bar" && gameInstance.chapterManager.getFlag("checkedDoor")) {
+                runtimeItems.push({ 
+                    x: 400, 
+                    y: 160, 
+                    name: "key", 
+                    animationConfig: {
+                        [NPC_STATES.IDLE]: { src: "./assets/ItemSprites/key.png", frameCount: 1, frameSpeed: 1, loop: true }
+                    }
+                });
+                
+                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "bennet_dialogue");
             }
+            
             if (mapKey === "barStreet" && gameInstance.chapterManager.getFlag("hasTalkedToElder")) {
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "mystic_signpost");
             }

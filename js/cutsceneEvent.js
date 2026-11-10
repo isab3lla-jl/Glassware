@@ -1,3 +1,5 @@
+import NPC from "./Npc.js"; 
+
 export default class CutsceneEvent {
     constructor({ map, event, gameInstance }) {
         this.map = map;
@@ -83,14 +85,47 @@ export default class CutsceneEvent {
         this.gameInstance.dialogueManager.startDialogue(this.event.key);
     }
 
-    GAME_END(resolve) {
-        if (!this.gameInstance) {
+    ADD_NPC(resolve) {
+        if (!this.gameInstance || !this.map) {
             resolve();
             return;
         }
-        this.gameInstance.changeState("GAME_END");
+
+        const newNpc = new NPC(
+            this.event.x, 
+            this.event.y, 
+            this.event.npcKey
+        );
+
+        newNpc.key = this.event.npcKey; 
+
+        if (this.event.animationConfig) {
+            newNpc.initAnimations(this.event.animationConfig);
+        }
+
+        this.map.activeNpcs.push(newNpc);
+        this.gameInstance.npcs.push(newNpc);
+
         resolve();
     }
+
+    
+    REMOVE_NPC(resolve) {
+        if (!this.gameInstance || !this.map) {
+            resolve();
+            return;
+        }
+
+        const npcToLeave = this.event.npcKey;
+
+        this.map.activeNpcs = this.map.activeNpcs.filter(n => n.key !== npcToLeave);
+        this.gameInstance.npcs = this.gameInstance.npcs.filter(n => n.key !== npcToLeave);
+
+        console.log(`[Cutscene] NPC '${npcToLeave}' has been removed`);
+        
+        resolve();
+    }
+
 
     FADE(resolve) {
         if (!this.gameInstance || !this.gameInstance.domMenus.fade) {
@@ -122,4 +157,12 @@ export default class CutsceneEvent {
         }
     }
 
+    GAME_END(resolve) {
+        if (!this.gameInstance) {
+            resolve();
+            return;
+        }
+        this.gameInstance.changeState("GAME_END");
+        resolve();
+    }
 }

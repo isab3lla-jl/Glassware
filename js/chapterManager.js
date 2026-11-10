@@ -10,7 +10,8 @@ export default class ChapterManager {
         this.currentChapter = CHAPTERS.PROLOGUE;
         
         this.flags = {
-            hasTalkedToElder: false,
+            checkedDoor: false,
+            doorDialogue: false,
             sawRoomCutscene: false
         };
     }

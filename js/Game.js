@@ -1,4 +1,5 @@
 import Player from "./Player.js";
+import { NPC_STATES } from "./Npc.js";
 import MapManager from "./MapManager.js";
 import DialogueManager, { loadDialogueData } from "./dialogueManager.js";
 import ChapterManager from "./chapterManager.js";
@@ -192,6 +193,18 @@ export default class Game {
                     this.mapManager.startCutscene(trigger.cutscene, this);
                     break;
                 }
+
+                if (trigger.dialogueKey) {
+                    if (this.chapterManager.getFlag(trigger.flagRequired)) {
+                        continue; 
+                    }
+
+                    this.chapterManager.setFlag(trigger.flagRequired, true);
+
+                    this.player.enabled = false;
+                    this.dialogueManager.startDialogue(trigger.dialogueKey);
+                    break;
+                }
                 
                 if (trigger.requiredItem) {
                     const itemIndex = this.inventory.indexOf(trigger.requiredItem);
@@ -233,9 +246,21 @@ export default class Game {
                     { type: "STAND", who: "player", direction: "RIGHT", time: 500 },
                     { type: "FADE", direction: "IN" },
                     { type: "STAND", who: "player", direction: "LEFT", time: 50 },
+                    { 
+                        type: "ADD_NPC", 
+                        npcKey: "onyx", 
+                        x: 330, 
+                        y: 165,
+                        animationConfig: {
+                            [NPC_STATES.IDLE]:  { src: "../../assets/CharSprites/Onyx.png", frameCount: 1, frameSpeed: 1, loop: true }
+                        }
+                    },
                     { type: "FADE", direction: "OUT"},
-                    { type: "STAND", who: "player", direction: "LEFT", time: 10000 },
-                    //{ type: "TEXT", key: "first_onyx_cutscene" },
+                    //{ type: "WALK", who: "onyx", direction: "UP", time: 400, },
+                    { type: "TEXT", key: "first_onyx_cutscene" },
+                    { type: "FADE", direction: "IN" },
+                    { type: "REMOVE_NPC", npcKey: "onyx"},
+                    { type: "FADE", direction: "OUT"},
                     {type: "GAME_END"}
                 ];
 
@@ -349,7 +374,7 @@ export default class Game {
             this.ctx.restore();
         }
 
-        if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
+        /*if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
             const triggers = this.mapManager.getTriggers();
             
             this.ctx.save();
@@ -372,7 +397,7 @@ export default class Game {
                 );
             });
             this.ctx.restore();
-        }
+        }*/
         
         for (let items of this.items) {
             if ((!this.inventory.includes(items.name) && !this.discarded.includes(items.name)) && items.active) {

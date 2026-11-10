@@ -46,7 +46,7 @@ export default class NPC extends Sprite{
             
             const indicatorX = this.x + (this.width / 2);
             const indicatorY = this.y - 10 + bounce;
-
+            
             ctx.save();
 
             ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
