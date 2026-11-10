@@ -67,6 +67,11 @@ canvas {
     border: 4px solid #A13300;
 }
 
+.game-ui-layer button:active {
+    transform: scale(0.95);
+    transition: transform 0.05s ease;
+}
+
 .language-switcher-container {    
     position: relative;
     display: inline-block;
@@ -102,6 +107,23 @@ canvas {
     top: 50%;
     transform: translateY(-50%);
     color: #8F2100;
+}
+
+#fade-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 800ms ease;
+    pointer-events: none;
+}
+
+#fade-overlay.show-black {
+    opacity: 1;
 }
 
 .hidden {

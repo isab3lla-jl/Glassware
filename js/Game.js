@@ -19,7 +19,9 @@ export default class Game {
         this.domMenus = {
             main: document.getElementById("main-menu"),
             pause: document.getElementById("pause-menu"),
-            gameOver: document.getElementById("game-over-menu")
+            gameOver: document.getElementById("game-over-menu"),
+            gameEnd: document.getElementById("game-end-menu"),
+            fade: document.getElementById("fade-overlay")
         };
 
         this.gameState = GAME_STATES.MAIN_MENU;
@@ -75,14 +77,17 @@ export default class Game {
         const btnsExit = document.getElementsByClassName("btn-exit");
         for (let i = 0; i < btnsExit.length; i++) {
             btnsExit[i].addEventListener("click", async () => {
-                await this.restartGame(); 
+                await this.restartGame();
                 this.changeState(GAME_STATES.MAIN_MENU);
             });
         }
 
-        document.getElementById("btn-restart").addEventListener("click", () => {
-            this.restartGame();
-        });
+        const btnsRestart = document.getElementsByClassName("btn-restart");
+        for (let i = 0; i < btnsRestart.length; i++) {
+            btnsRestart[i].addEventListener("click", async () => {
+                await this.restartGame();
+            });
+        }
     }
 
     changeState(newState) {
@@ -91,6 +96,7 @@ export default class Game {
         this.domMenus.main.classList.add("hidden");
         this.domMenus.pause.classList.add("hidden");
         this.domMenus.gameOver.classList.add("hidden");
+        this.domMenus.gameEnd.classList.add("hidden");
 
         if (this.gameState === GAME_STATES.MAIN_MENU) {
             this.domMenus.main.classList.remove("hidden");
@@ -98,6 +104,8 @@ export default class Game {
             this.domMenus.pause.classList.remove("hidden");
         } else if (this.gameState === GAME_STATES.GAME_OVER) {
             this.domMenus.gameOver.classList.remove("hidden");
+        } else if (this.gameState === GAME_STATES.GAME_END) {
+            this.domMenus.gameEnd.classList.remove("hidden");
         }
     }
 
@@ -167,11 +175,23 @@ export default class Game {
             bottom: this.player.y + this.player.hitboxOffset.y + this.player.hitboxHeight
         };
 
+
         for (let trigger of triggers) {
             if (playerHitbox.right > trigger.x &&
                 playerHitbox.left < trigger.x + trigger.width &&
                 playerHitbox.bottom > trigger.y &&
                 playerHitbox.top < trigger.y + trigger.height) {
+
+                if (trigger.cutscene) {
+                    if (this.chapterManager.getFlag(trigger.flagRequired)) {
+                        continue; 
+                    }
+
+                    this.chapterManager.setFlag(trigger.flagRequired, true);
+
+                    this.mapManager.startCutscene(trigger.cutscene, this);
+                    break;
+                }
                 
                 if (trigger.requiredItem) {
                     const itemIndex = this.inventory.indexOf(trigger.requiredItem);
@@ -210,8 +230,13 @@ export default class Game {
                     { type: "WALK", who: "player", direction: "LEFT", time: 500 },
                     { type: "WALK", who: "player", direction: "UP", time: 800 },
                     { type: "WALK", who: "player", direction: "RIGHT", time: 1100 },
-                    { type: "STAND", who: "player", direction: "SIDE", flipX: true, time: 500 }
-                    //{ type: "TEXT", key: "monologo_habitacion" }
+                    { type: "STAND", who: "player", direction: "RIGHT", time: 500 },
+                    { type: "FADE", direction: "IN" },
+                    { type: "STAND", who: "player", direction: "LEFT", time: 50 },
+                    { type: "FADE", direction: "OUT"},
+                    { type: "STAND", who: "player", direction: "LEFT", time: 10000 },
+                    //{ type: "TEXT", key: "first_onyx_cutscene" },
+                    {type: "GAME_END"}
                 ];
 
                 this.mapManager.startCutscene(roomCutscene, this);
