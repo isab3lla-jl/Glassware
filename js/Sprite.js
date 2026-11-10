@@ -8,6 +8,10 @@ export default class Sprite {
         this.state = "IDLE"; 
         this.animations = {};
         this.flipX = false;
+
+        this.cutsceneTimer = 0;
+        this.cutsceneDirection = null;
+        this.speed = 125;
     }
 
     initAnimations(animationConfig) {
@@ -51,6 +55,43 @@ export default class Sprite {
             }
         }
     }
+
+    startCutsceneWalk(direction, duration) {
+        this.cutsceneDirection = direction;
+        this.cutsceneTimer = duration / 1000;
+
+        if (direction === "LEFT")  { this.state = "MOVE_SIDE"; this.flipX = true; }
+        if (direction === "RIGHT") { this.state = "MOVE_SIDE"; this.flipX = false; }
+        if (direction === "UP")    { this.state = "MOVE_BACK"; }
+        if (direction === "DOWN")  { this.state = "MOVE_FRONT"; }
+    }
+
+    updateCutsceneMovement(dt) {
+        if (this.cutsceneTimer > 0 && this.cutsceneDirection) {
+            this.cutsceneTimer -= dt;
+            const moveAmt = this.speed * dt;
+
+            if (this.cutsceneDirection === "LEFT")  this.x -= moveAmt;
+            if (this.cutsceneDirection === "RIGHT") this.x += moveAmt;
+            if (this.cutsceneDirection === "UP")    this.y -= moveAmt;
+            if (this.cutsceneDirection === "DOWN")  this.y += moveAmt;
+
+            if (this.cutsceneTimer <= 0) {
+                this.cutsceneTimer = 0;
+                this.cutsceneDirection = null;
+
+                if (this.state === "MOVE_SIDE")  this.state = "IDLE_SIDE";
+                if (this.state === "MOVE_BACK")  this.state = "IDLE_BACK";
+                if (this.state === "MOVE_FRONT") this.state = "IDLE_FRONT";
+
+                const event = new CustomEvent("finished_free_walk", {
+                    detail: { npcKey: this.key || "player" }
+                });
+                document.dispatchEvent(event);
+            }
+        }
+    }
+
 
     isAnimationFinished() {
         const anim = this.animations[this.state];

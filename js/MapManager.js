@@ -1,5 +1,6 @@
 import NPC from "./Npc.js";
 import Item from "./Item.js";
+import CutsceneEvent from "./CutsceneEvent.js";
 
 import { prologueMaps } from "./chapterMapsConfigs/prologueMaps.js";
 import { CHAPTERS } from "./chapterManager.js";
@@ -18,6 +19,8 @@ export default class MapManager {
         this.activeNpcs = [];
         this.activeItems = [];
         this.activeTriggers = [];
+
+        this.isCutscenePlaying = false;
     }
 
     getMapsForCurrentChapter(gameInstance) {
@@ -63,8 +66,8 @@ export default class MapManager {
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "mystic_signpost");
             }
 
-            this.activeNpcs = runtimeNpcs.map(n => new NPC(n.x, n.y, n.key));
-            this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name));
+            this.activeNpcs = runtimeNpcs.map(n => new NPC(n.x, n.y, n.key, n.animationConfig));
+            this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name, i.animationConfig));
             this.activeTriggers = mapConfig.triggers || [];
 
             gameInstance.npcs = this.activeNpcs;
@@ -77,6 +80,23 @@ export default class MapManager {
             console.error(`Error al cargar el mapa "${mapKey}":`, error);
             return false;
         }
+    }
+
+    async startCutscene(eventQueue, gameInstance) {
+        this.isCutscenePlaying = true;
+        gameInstance.player.enabled = false;
+
+        for (let eventConfig of eventQueue) {
+            const eventHandler = new CutsceneEvent({ 
+                map: this, 
+                event: eventConfig, 
+                gameInstance: gameInstance 
+            });
+            await eventHandler.init();
+        }
+
+        this.isCutscenePlaying = false;
+        gameInstance.player.enabled = true;
     }
 
     getCurrentData() { return this.mapData; }

@@ -1,7 +1,9 @@
 import Sprite from "./Sprite.js";
 
-const NPC_STATES = {
-    IDLE: "IDLE"
+export const NPC_STATES = {
+    IDLE: "IDLE",
+    SIDE: "SIDE",
+    FRONT: "FRONT"
 };
 
 export default class NPC extends Sprite{
@@ -9,9 +11,10 @@ export default class NPC extends Sprite{
         super(x, y, 30, 30);
 
         this.dialogueKey = dialogueKey;
+        this.animationConfig = animationConfig;
         this.active = true;
         this.state = NPC_STATES.IDLE;
-        this.initAnimations(animationConfig);
+        this.initAnimations(this.animationConfig);
     }
 
     update(dt) {
@@ -51,7 +54,7 @@ export default class NPC extends Sprite{
             ctx.arc(indicatorX, indicatorY - 5, 10, 0, Math.PI * 2);
             ctx.fill();
 
-            ctx.fillStyle = "#ffae00";
+            ctx.fillStyle = "#ff9500";
             ctx.font = "bold 12px monospace";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";

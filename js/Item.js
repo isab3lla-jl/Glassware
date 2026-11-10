@@ -1,8 +1,7 @@
 import Sprite from "./Sprite.js";
 
 const ITEM_STATES = {
-    IDLE: "IDLE",
-    GRAB: "GRAB"
+    IDLE: "IDLE"
 };
  
 export default class Item extends Sprite{
@@ -10,9 +9,10 @@ export default class Item extends Sprite{
         super(x, y, 20, 20);
         
         this.name = name;
+        this.animationConfig = animationConfig;
         this.active = true;
         this.state = ITEM_STATES.IDLE;
-        this.initAnimations(animationConfig);
+        this.initAnimations(this.animationConfig);
     }
 
     update(dt) {
