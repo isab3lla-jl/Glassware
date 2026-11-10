@@ -71,7 +71,43 @@
       "text":"You grabbed Opal's House Key"
 
     }
+  ],
+  "first_onyx_cutscene": [
+    {
+      "speaker":"Onyx",
+      "text":"Hi there!"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Oh great, you again."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"That little Vial of yours is really annoying you know?"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"You never let me hang around anymore."
+    },
+    {
+      "speaker":"Opal",
+      "text":"And why do you think that is?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"The one day that I sleep well and you show up immediately."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Onyx: Well you did need it… You look way worse than usual ;)"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Fuck off already."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Ugh, you're never any fun"
+    }
   ]
-
-  
 }
