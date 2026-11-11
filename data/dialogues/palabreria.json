@@ -1,4 +1,7 @@
 {
+  "title_prologue": {
+    "title": "Prólogo"
+  },
   "bennet_dialogue": [
     { 
       "speaker": "Opal",
@@ -6,7 +9,7 @@
     },
     {
       "speaker": "Bennet",
-      "text":"Si, ha pasado un tiempo. Lo de siempre esta bien."
+      "text":"Sí, ha pasado un tiempo. Lo de siempre está bien."
      },
     {
       "speaker": "Opal",
@@ -14,11 +17,11 @@
     },
     {
       "speaker":"Opal",
-      "text":"¿Por cierto, como va el negocio?"
+      "text":"¿Por cierto, cómo va el negocio?"
     },  
     {
       "speaker":"Bennet",
-      "text":"No faltan clientes pero mis manos ya no son tan firmes como antes"
+      "text":"No faltan clientes, pero mis manos ya no son tan firmes como antes"
     },
     {
       "speaker":"Bennet",
@@ -26,7 +29,7 @@
     },
     {
       "speaker":"Opal",
-      "text":"Lamento que sea asi, ¿Quién me va a ayudar cuando se me olviden las llaves?"
+      "text":"Lamento que sea así, ¿Quién me va a ayudar cuando se me olviden las llaves?"
     },
     {
       "speaker":"Bennet",
@@ -81,7 +84,7 @@
   "grabbed_keys": [
     {
       "speaker":"Opal",
-      "text":"Ahi estan, tengo que cuidarlas mas...",
+      "text":"Ahí estan, tengo que cuidarlas mas...",
       "triggerFlag":"grabbedKey"
     },
     {
@@ -101,7 +104,7 @@
     },
     {
       "speaker":"Onyx",
-      "text":"Tu Vialsito ese es muy molesto, ¿Sabes?"
+      "text":"Tu Vialsito ese es muy molesto, ¿sabes?"
     },
     {
       "speaker":"Onyx",
@@ -109,7 +112,7 @@
     },
     {
       "speaker":"Opal",
-      "text":"¿Y por que crees que es?"
+      "text":"¿Y por qué crees que es?"
     },
     {
       "speaker":"Opal",
@@ -117,15 +120,18 @@
     },
     {
       "speaker":"Onyx",
-      "text":"Supongo que lo necesitabas, te ves todavia peor que lo normal ;)"
+      "text":"Supongo que lo necesitabas, te ves todavía peor que lo normal ;)"
     },
     {
       "speaker":"Opal",
-      "text":"Ya dejame en paz."
+      "text":"Ya déjame en paz."
     },
     {
       "speaker":"Onyx",
       "text":"Ugh, nunca me dejas divertirme."
     }
-  ]
+  ],
+  "title_chapter_1": {
+    "title": "Acto 1"
+  }
 }

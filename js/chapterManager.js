@@ -5,17 +5,23 @@ export const CHAPTERS = {
     CHAPTER_3: "CHAPTER_3"
 };
 
+const CHAPTER_ORDER = Object.values(CHAPTERS);
+
 export default class ChapterManager {
     constructor() {
         this.currentChapter = CHAPTERS.PROLOGUE;
         
-        this.flags = {
+        this.defaultFlags = {
+            //prologue flags
             talkedToBennet: false,
             doorDialogue: false,
             checkedDoor: false,
             grabbedKey: false,
             sawRoomCutscene: false
         };
+
+
+        this.flags = { ...this.defaultFlags };
     }
 
     getFlag(flagName) {
@@ -39,10 +45,24 @@ export default class ChapterManager {
         return baseKey;
     }
 
-    /*advanceChapter(nextChapter) {
-        if (CHAPTERS[nextChapter]) {
-            this.currentChapter = nextChapter;
-            console.log(`[New chapter unlocked: ${this.currentChapter}!`);
+    advanceChapter(nextChapter = null) {
+        if (!nextChapter) {
+            const i = CHAPTER_ORDER.indexOf(this.currentChapter);
+            nextChapter = CHAPTER_ORDER[i + 1];
         }
-    }*/
+
+        if (!nextChapter || !(nextChapter in CHAPTERS)) {
+            console.warn(`Can't advance to chapter "${nextChapter}".`);
+            return false;
+        }
+
+        this.currentChapter = nextChapter;
+        console.log(`New chapter unlocked: ${this.currentChapter}`);
+        return true;
+    }
+
+    reset() {
+        this.currentChapter = CHAPTERS.PROLOGUE;
+        this.flags = { ...this.defaultFlags };
+    }
 }

@@ -18,6 +18,10 @@ export async function loadDialogueData(lang) {
     }
 }
 
+export function getEntry(key) {
+    return dialogueDatabase[key];
+}
+
 export default class DialogueManager {
     constructor() {
         this.isActive = false;
@@ -65,7 +69,7 @@ export default class DialogueManager {
                 gameInstance.chapterManager.setFlag(lastLine.triggerFlag, true);
             }
             if (lastLine.triggerChapter) {
-                gameInstance.chapterManager.advanceChapter(lastLine.triggerChapter);
+                gameInstance.advanceChapter(lastLine.triggerChapter);
             }
         }
     }

@@ -1,4 +1,7 @@
 {
+  "title_prologue": {
+    "title": "Prologue"
+  },
   "bennet_dialogue": [
     { 
       "speaker": "Opal",
@@ -126,5 +129,8 @@
       "speaker":"Onyx",
       "text":"Ugh, you're never any fun"
     }
-  ]
+  ],
+  "title_chapter_1": {
+    "title": "Act 1"
+  }
 }

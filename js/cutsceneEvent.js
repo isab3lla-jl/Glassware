@@ -1,4 +1,5 @@
-import NPC from "./Npc.js"; 
+import NPC from "./Npc.js";
+import { getEntry } from "./dialogueManager.js";
 
 export default class CutsceneEvent {
     constructor({ map, event, gameInstance }) {
@@ -150,6 +151,28 @@ export default class CutsceneEvent {
         resolve();
     }
 
+        
+    async CHANGE_MAP(resolve) {
+        if (!this.gameInstance) {
+            resolve();
+            return;
+        }
+
+        console.log(`[Cutscene] Map change to: ${this.event.targetMap}`);
+
+        await this.gameInstance.executeMapTransition(
+            this.event.targetMap, 
+            this.event.x, 
+            this.event.y
+        );
+
+        this.gameInstance.player.enabled = false;
+
+        setTimeout(() => {
+            resolve();
+        }, 100);
+    }
+
 
     FADE(resolve) {
         if (!this.gameInstance || !this.gameInstance.domMenus.fade) {
@@ -181,6 +204,70 @@ export default class CutsceneEvent {
                 resolve();
             }, fadeDuration);
         }
+    }
+
+    TITLE_CARD(resolve) {
+        const game = this.gameInstance;
+        if (!game) {
+            resolve();
+            return;
+        }
+
+        const key = this.event.key
+            ?? `title_${game.chapterManager.currentChapter.toLowerCase()}`;
+        const entry = getEntry(key) || {};
+
+        const fadeEl = game.domMenus.fade;
+        const fromBlack = fadeEl && fadeEl.classList.contains("show-black");
+        if (fromBlack) {
+            fadeEl.classList.remove("show-black");
+            fadeEl.classList.add("hidden");
+        }
+
+        const fadeIn = fromBlack ? 0 : (this.event.fadeIn ?? 600);
+        const hold = this.event.hold ?? 2000;
+        const fadeOut = this.event.fadeOut ?? 600;
+
+        game.titleCard = {
+            title: entry.title ?? this.event.title ?? "",
+            subtitle: entry.subtitle ?? this.event.subtitle ?? "",
+            startTime: performance.now(),
+            fadeIn, hold, fadeOut
+        };
+
+        this._setTimeout(() => {
+            game.titleCard = null;
+            resolve();
+        }, fadeIn + hold + fadeOut);
+    }
+
+    ADVANCE_CHAPTER(resolve) {
+        const game = this.gameInstance;
+
+        if (!game || !game.chapterManager.advanceChapter(this.event.chapter)) {
+            resolve();
+            return;
+        }
+
+        const startMap = this.event.startMap
+            ?? this.map.getChapterStartMap(game.chapterManager.currentChapter);
+
+        this.map.loadMap(startMap, game).then((success) => {
+            if (this.cancelled) return;
+
+            if (success) {
+                const spawn = this.event.spawn ?? this.map.getDefaultSpawn(game);
+                game.player.x = spawn.x;
+                game.player.y = spawn.y;
+
+                if (this.event.resetTimer) game.timer = game.gameDuration;
+                if (this.event.clearInventory) {
+                    game.inventory = [];
+                    game.discarded = [];
+                }
+            }
+            resolve();
+        });
     }
 
     GAME_END(resolve) {

@@ -45,6 +45,8 @@ export default class Game {
         this.discarded = [];
         this.maxInventorySlots = 6;
 
+        this.titleCard = null;
+
         this.lastTime = 0;
         
         this.gameDuration = 100; //seconds
@@ -55,7 +57,7 @@ export default class Game {
     }
 
     setupMenuEvents() {
-        window.addEventListener('keydown', (e) => {
+        window.addEventListener('keyup', (e) => {
             if (e.key === 'Escape') {
                 this.togglePause();
             }
@@ -68,6 +70,7 @@ export default class Game {
 
         document.getElementById("btn-start").addEventListener("click", () => {
             this.changeState(GAME_STATES.PLAY);
+            this.showChapterTitle();
         });
 
         document.getElementById("btn-resume").addEventListener("click", () => {
@@ -87,6 +90,7 @@ export default class Game {
         for (let i = 0; i < btnsRestart.length; i++) {
             btnsRestart[i].addEventListener("click", async () => {
                 await this.restartGame();
+                this.showChapterTitle();
             });
         }
     }
@@ -126,11 +130,7 @@ export default class Game {
         this.discarded = [];
         this.gameState = GAME_STATES.MAIN_MENU;
 
-        this.chapterManager.setFlag("talkedToBennet", false);
-        this.chapterManager.setFlag("doorDialogue", false);
-        this.chapterManager.setFlag("checkedDoor", false);
-        this.chapterManager.setFlag("grabbedKey", false);
-        this.chapterManager.setFlag("sawRoomCutscene", false);
+        this.chapterManager.reset()
 
         await this.mapManager.loadMap("bar", this);
         this.mapLoaded = this.mapManager.hasLoaded();
@@ -245,6 +245,11 @@ export default class Game {
                 this.inventory.splice(itemIndex, 1);
             }
 
+            if (trigger.advanceChapter) {
+                this.advanceChapter(trigger.advanceChapter);
+                break;
+            }
+
             delete trigger.requiredItem;
             this.executeMapTransition(trigger.targetMap, trigger.targetPlayerX, trigger.targetPlayerY);
             break;
@@ -272,6 +277,7 @@ export default class Game {
                     { type: "WALK", who: "player", direction: "RIGHT", time: 1100 },
                     { type: "STAND", who: "player", direction: "RIGHT", time: 500 },
                     { type: "FADE", direction: "IN" },
+                    { type: "CHANGE_MAP", targetMap: "roomChest", x: 422, y: 168 },
                     { type: "STAND", who: "player", direction: "LEFT", time: 50 },
                     { 
                         type: "ADD_NPC", 
@@ -288,13 +294,21 @@ export default class Game {
                     { type: "FADE", direction: "IN" },
                     { type: "REMOVE_NPC", npcKey: "onyx"},
                     { type: "FADE", direction: "OUT"},
-                    { type: "STAND", who: "player", direction: "FRONT", time: 500 },
-                    { type: "GAME_END" }
+                    { type: "STAND", who: "player", direction: "FRONT", time: 500 }
+//                    { type: "GAME_END" }
                 ];
 
                 this.mapManager.startCutscene(roomCutscene, this);
             }
         }
+    }
+
+    advanceChapter(nextChapter = null) {
+        this.mapManager.startCutscene([
+            { type: "FADE", direction: "IN" },
+            { type: "ADVANCE_CHAPTER", chapter: nextChapter },
+            { type: "TITLE_CARD" }
+        ], this);
     }
 
     start() {
@@ -303,6 +317,7 @@ export default class Game {
     }
 
     update(dt) {
+        //console.log(this.player.x, this.player.y)
         if (!this.mapLoaded) {
             console.log("Update pausado: esperando que mapLoaded sea true");
             return;
@@ -392,6 +407,53 @@ export default class Game {
         return `${paddedMinutes}:${paddedSeconds}`;
     }
 
+    showChapterTitle() {
+        const key = `title_${this.chapterManager.currentChapter.toLowerCase()}`;
+        this.mapManager.startCutscene([
+            { type: "TITLE_CARD", key }
+        ], this);
+    }
+
+    drawTitleCard() {
+        const card = this.titleCard;
+        if (!card) return;
+
+        const elapsed = performance.now() - card.startTime;
+        let alpha;
+        if (elapsed < card.fadeIn) {
+            alpha = elapsed / card.fadeIn;
+        } else if (elapsed < card.fadeIn + card.hold) {
+            alpha = 1;
+        } else {
+            alpha = 1 - (elapsed - card.fadeIn - card.hold) / card.fadeOut;
+        }
+        alpha = Math.max(0, Math.min(1, alpha));
+
+        const cx = this.canvas.width / 2;
+        const cy = this.canvas.height / 2;
+
+        this.ctx.save();
+        this.ctx.globalAlpha = alpha;
+
+        this.ctx.fillStyle = "#0A0A14FF";
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.ctx.textAlign = "center";
+        this.ctx.textBaseline = "middle";
+
+        this.ctx.fillStyle = "#ffffff";
+        this.ctx.font = "40px 'PixelifySans'";
+        this.ctx.fillText(card.title, cx, card.subtitle ? cy - 15 : cy);
+
+        if (card.subtitle) {
+            this.ctx.fillStyle = "#ff9500";
+            this.ctx.font = "18px 'PixelifySans'";
+            this.ctx.fillText(card.subtitle, cx, cy + 25);
+        }
+
+        this.ctx.restore();
+    }
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -447,6 +509,8 @@ export default class Game {
         if (this.dialogueManager.isActive) {
             this.dialogueManager.drawDialogue(this.ctx, this.canvas.width, this.canvas.height);
         }
+
+        this.drawTitleCard();
     }
 
     drawHotbar(){

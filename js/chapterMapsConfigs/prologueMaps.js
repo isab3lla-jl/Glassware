@@ -91,8 +91,7 @@ export const prologueMaps = {
             },
             {
                 x: 190, y: 440, width: 265, height: 40,
-                targetMap: "streetOne",
-                targetPlayerX: 655, targetPlayerY: 240,
+                advanceChapter: "CHAPTER_1",
                 requiredItem: "money"
             }
         ]
@@ -104,6 +103,30 @@ export const prologueMaps = {
         npcs: [
         ],
         items: [
+        ],
+        triggers: [
+            {
+                x: 337, y: 360, width: 46, height: 55,
+                targetMap: "homeStreet",
+                targetPlayerX: 560, targetPlayerY: 100
+            }
+        ]
+    },
+    "roomChest": {
+        imageSrc: '../assets/Tilemaps/prologue/roomChestTilemap.png',
+        jsonDataSrc: '../data/maps/prologue/roomTilemap.json',
+        playerDefaultSpawn: { x: 422, y: 168 },
+        npcs: [
+        ],
+        items: [
+            {
+                x: 480, y: 260, 
+                name: "money",
+                //dialogueKey: "grabbed_keys", 
+                /*animationConfig: {
+                    [NPC_STATES.IDLE]: { src: "./assets/ItemSprites/key.png", frameCount: 1, frameSpeed: 1, loop: true }
+                }*/
+            }
         ],
         triggers: [
             {

@@ -1,15 +1,25 @@
 import NPC, { NPC_STATES } from "./Npc.js";
 import Item from "./Item.js";
-import CutsceneEvent from "./CutsceneEvent.js";
+import CutsceneEvent from "./cutsceneEvent.js";
 
 import { prologueMaps } from "./chapterMapsConfigs/prologueMaps.js";
+import { chapter1Maps } from "./chapterMapsConfigs/chap1Maps.js";
+
 import { CHAPTERS } from "./chapterManager.js";
 
 export default class MapManager {
     constructor() {
         this.chapterLibrary = {
-            [CHAPTERS.PROLOGUE]: prologueMaps
+            [CHAPTERS.PROLOGUE]: prologueMaps,
+            [CHAPTERS.CHAPTER_1]: chapter1Maps
         };
+
+        this.chapterStartMaps = {
+            [CHAPTERS.PROLOGUE]: "bar",
+            [CHAPTERS.CHAPTER_1]: "streetOne"
+        };
+
+        this.loadId = 0;
 
         this.currentMapKey = null;
         this.mapImage = new Image();
@@ -23,6 +33,10 @@ export default class MapManager {
         this.isCutscenePlaying = false;
         this.cutsceneId = 0;
         this.currentCutsceneEvent = null;
+    }
+
+    getChapterStartMap(chapter) {
+        return this.chapterStartMaps[chapter];
     }
 
     getMapsForCurrentChapter(gameInstance) {
@@ -46,16 +60,20 @@ export default class MapManager {
 
         this.isLoaded = false;
         this.currentMapKey = mapKey;
+        const loadId = ++this.loadId; 
 
         try {
             const response = await fetch(mapConfig.jsonDataSrc);
-            this.mapData = await response.json();
+            const data = await response.json();
+            if (loadId !== this.loadId) return false;
+            this.mapData = data;
 
             await new Promise((resolve, reject) => {
                 this.mapImage.src = mapConfig.imageSrc;
                 this.mapImage.onload = () => resolve();
                 this.mapImage.onerror = (err) => reject(err);
             });
+            if (loadId !== this.loadId) return false;
 
             let runtimeNpcs = mapConfig.npcs 
                 ? mapConfig.npcs.map(npc => ({ ...npc })) 
@@ -139,6 +157,8 @@ export default class MapManager {
             fadeEl.classList.remove("show-black");
             fadeEl.classList.add("hidden");
         }
+
+        gameInstance.titleCard = null;
 
         gameInstance.player.cutsceneTimer = 0;
         gameInstance.player.cutsceneDirection = null;
