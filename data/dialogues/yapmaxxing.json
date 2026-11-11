@@ -50,16 +50,33 @@
     },
     {
       "speaker":"Opal",
-      "text":"You too, take care."
+      "text":"You too, take care.",
+      "triggerFlag":"talkedToBennet"
     }
 
+  ],
+  "bennet_repeat": [
+    {
+      "speaker":"Bennet",
+      "text":"You have a nice night now."
+    },
+    {
+      "speaker":"Opal",
+      "text":"You too, take care."
+    }
   ],
   "locked_door": [
     {
       "speaker":"Opal",
       "text":"Goddamn it, forgot the key again.",
       "triggerFlag":"checkedDoor"
-  }
+    }
+  ],
+  "check_bar": [
+    {
+      "speaker":"Opal",
+      "text":"I should check the bar"
+    }
   ],
   "grabbed_keys": [
     {
@@ -68,8 +85,8 @@
     },
     {
       "speaker":"",
-      "text":"You grabbed Opal's House Key"
-
+      "text":"You grabbed Opal's House Key",
+      "triggerFlag":"grabbedKey"
     }
   ],
   "first_onyx_cutscene": [

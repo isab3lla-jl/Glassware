@@ -9,6 +9,9 @@ export const prologueMaps = {
         npcs: [
             {
                 x: 250, y: 230, key: "bennet_dialogue",
+                dialogueVariants: [
+                    { flag: "talkedToBennet", key: "bennet_repeat" }
+                ],
                 animationConfig: {
                     [NPC_STATES.SIDE]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
                     [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true },
@@ -74,7 +77,12 @@ export const prologueMaps = {
             {
                 x: 552, y: 50, width: 48, height: 50,
                 dialogueKey: "locked_door",
-                flagRequired: "doorDialogue"    
+                dialogueVariants: [
+                    { flag: "checkedDoor", key: "check_bar" }
+                ],
+                flagRequired: "doorDialogue",
+                repeatable: true,
+                disabledByFlag: "grabbedKey"
             },
             {
                 x: 0, y: 96, width: 40, height: 300,

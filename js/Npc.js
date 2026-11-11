@@ -7,11 +7,12 @@ export const NPC_STATES = {
 };
 
 export default class NPC extends Sprite{
-    constructor (x, y, dialogueKey = "key", animationConfig = {}) {
+    constructor (x, y, dialogueKey = "key", animationConfig = {}, dialogueVariants = []) {
         super(x, y, 27, 33);
 
         this.dialogueKey = dialogueKey;
         this.animationConfig = animationConfig;
+        this.dialogueVariants = dialogueVariants;
         this.active = true;
         this.state = NPC_STATES.IDLE;
         this.initAnimations(this.animationConfig);
@@ -33,7 +34,10 @@ export default class NPC extends Sprite{
         return Math.hypot(dx, dy) < 90;
     }
 
-    interact() {
+    interact(chapterManager) {
+        if (chapterManager) {
+            return chapterManager.resolveDialogueKey(this.dialogueKey, this.dialogueVariants);
+        }
         return this.dialogueKey;
     }
 

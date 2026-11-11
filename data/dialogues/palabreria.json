@@ -50,9 +50,20 @@
     },
     {
       "speaker":"Opal",
-      "text":"Tú también, cuídiate."
+      "text":"Tú también, cuídiate.",
+      "triggerFlag":"talkedToBennet"
     }
 
+  ],
+  "bennet_repeat": [
+    {
+      "speaker":"Bennet",
+      "text":"Ten bonita noche."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Tú también, cuídiate."
+    }
   ],
   "locked_door": [
     {
@@ -61,10 +72,17 @@
       "triggerFlag":"checkedDoor"
   }
   ],
+  "check_bar": [
+    {
+      "speaker":"Opal",
+      "text":"Debería checar el bar"
+    }
+  ],
   "grabbed_keys": [
     {
       "speaker":"Opal",
-      "text":"Ahi estan, tengo que cuidarlas mas..."
+      "text":"Ahi estan, tengo que cuidarlas mas...",
+      "triggerFlag":"grabbedKey"
     },
     {
       "speaker":"",

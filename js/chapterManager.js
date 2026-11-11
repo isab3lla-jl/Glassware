@@ -10,8 +10,10 @@ export default class ChapterManager {
         this.currentChapter = CHAPTERS.PROLOGUE;
         
         this.flags = {
-            checkedDoor: false,
+            talkedToBennet: false,
             doorDialogue: false,
+            checkedDoor: false,
+            grabbedKey: false,
             sawRoomCutscene: false
         };
     }
@@ -25,6 +27,16 @@ export default class ChapterManager {
             this.flags[flagName] = value;
             console.log(`Flag '${flagName}' has been updated to: ${value}`);
         }
+    }
+
+    resolveDialogueKey(baseKey, variants = []) {
+        for (const variant of variants) {
+            const expected = variant.value ?? true;
+            if (this.getFlag(variant.flag) === expected) {
+                return variant.key;
+            }
+        }
+        return baseKey;
     }
 
     /*advanceChapter(nextChapter) {

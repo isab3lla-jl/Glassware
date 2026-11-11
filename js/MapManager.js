@@ -83,7 +83,7 @@ export default class MapManager {
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "mystic_signpost");
             }
 
-            this.activeNpcs = runtimeNpcs.map(n => new NPC(n.x, n.y, n.key, n.animationConfig));
+            this.activeNpcs = runtimeNpcs.map(n => new NPC(n.x, n.y, n.key, n.animationConfig, n.dialogueVariants));
             this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name, i.dialogueKey, i.animationConfig));
             this.activeTriggers = mapConfig.triggers 
                 ? mapConfig.triggers.map(trigger => ({ ...trigger }))

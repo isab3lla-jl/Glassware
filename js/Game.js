@@ -126,8 +126,10 @@ export default class Game {
         this.discarded = [];
         this.gameState = GAME_STATES.MAIN_MENU;
 
-        this.chapterManager.setFlag("checkedDoor", false);
+        this.chapterManager.setFlag("talkedToBennet", false);
         this.chapterManager.setFlag("doorDialogue", false);
+        this.chapterManager.setFlag("checkedDoor", false);
+        this.chapterManager.setFlag("grabbedKey", false);
         this.chapterManager.setFlag("sawRoomCutscene", false);
 
         await this.mapManager.loadMap("bar", this);
@@ -184,49 +186,68 @@ export default class Game {
 
 
         for (let trigger of triggers) {
-            if (playerHitbox.right > trigger.x &&
+            const overlapping =
+                playerHitbox.right > trigger.x &&
                 playerHitbox.left < trigger.x + trigger.width &&
                 playerHitbox.bottom > trigger.y &&
-                playerHitbox.top < trigger.y + trigger.height) {
+                playerHitbox.top < trigger.y + trigger.height;
 
-                if (trigger.cutscene) {
-                    if (this.chapterManager.getFlag(trigger.flagRequired)) {
-                        continue; 
-                    }
+            if (!overlapping) {
+                trigger.locked = false;
+                continue;
+            }
 
-                    this.chapterManager.setFlag(trigger.flagRequired, true);
+            if (trigger.disabledByFlag && this.chapterManager.getFlag(trigger.disabledByFlag)) {
+                continue;
+            }
 
-                    this.mapManager.startCutscene(trigger.cutscene, this);
-                    break;
+            if (trigger.cutscene) {
+                if (this.chapterManager.getFlag(trigger.flagRequired)) {
+                    continue;
                 }
 
-                if (trigger.dialogueKey) {
-                    if (this.chapterManager.getFlag(trigger.flagRequired)) {
-                        continue; 
-                    }
+                this.chapterManager.setFlag(trigger.flagRequired, true);
 
-                    this.chapterManager.setFlag(trigger.flagRequired, true);
-
-                    this.player.enabled = false;
-                    this.dialogueManager.startDialogue(trigger.dialogueKey);
-                    break;
-                }
-                
-                if (trigger.requiredItem) {
-                    const itemIndex = this.inventory.indexOf(trigger.requiredItem);
-
-                    if (itemIndex === -1) {
-                        continue;
-                    }
-                    this.discarded.push(trigger.requiredItem);
-                    console.log(this.discarded);
-                    this.inventory.splice(itemIndex, 1); 
-                }
-
-                delete trigger.requiredItem;
-                this.executeMapTransition(trigger.targetMap, trigger.targetPlayerX, trigger.targetPlayerY);
+                this.mapManager.startCutscene(trigger.cutscene, this);
                 break;
             }
+
+            if (trigger.dialogueKey) {
+                if (trigger.repeatable) {
+                    if (trigger.locked) continue;
+                    trigger.locked = true;
+                } else if (this.chapterManager.getFlag(trigger.flagRequired)) {
+                    continue;
+                }
+
+                if (trigger.flagRequired) {
+                    this.chapterManager.setFlag(trigger.flagRequired, true);
+                }
+
+                const key = this.chapterManager.resolveDialogueKey(
+                    trigger.dialogueKey,
+                    trigger.dialogueVariants
+                );
+
+                this.dialogueManager.startDialogue(key);
+                this.player.enabled = !this.dialogueManager.isActive;
+                break;
+            }
+
+            if (trigger.requiredItem) {
+                const itemIndex = this.inventory.indexOf(trigger.requiredItem);
+
+                if (itemIndex === -1) {
+                    continue;
+                }
+                this.discarded.push(trigger.requiredItem);
+                console.log(this.discarded);
+                this.inventory.splice(itemIndex, 1);
+            }
+
+            delete trigger.requiredItem;
+            this.executeMapTransition(trigger.targetMap, trigger.targetPlayerX, trigger.targetPlayerY);
+            break;
         }
     }
 
@@ -319,7 +340,7 @@ export default class Game {
 
             if (!this.dialogueManager.isActive && !this.mapManager.isCutscenePlaying && npc.playerIsNear(this.player)) {
                 if (this.player.keys.e) {
-                    const key = npc.interact(); 
+                    const key = npc.interact(this.chapterManager);
                     
                     this.dialogueManager.startDialogue(key);
                     
