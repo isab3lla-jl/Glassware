@@ -122,14 +122,16 @@ export default class CutsceneEvent {
             this.event.npcKey
         );
 
-        newNpc.key = this.event.npcKey; 
+        newNpc.key = this.event.npcKey;
+        newNpc.showPrompt = false;
 
         if (this.event.animationConfig) {
             newNpc.initAnimations(this.event.animationConfig);
         }
 
+        
         this.map.activeNpcs.push(newNpc);
-        this.gameInstance.npcs.push(newNpc);
+        this.gameInstance.npcs = this.map.activeNpcs;
 
         resolve();
     }
@@ -144,7 +146,7 @@ export default class CutsceneEvent {
         const npcToLeave = this.event.npcKey;
 
         this.map.activeNpcs = this.map.activeNpcs.filter(n => n.key !== npcToLeave);
-        this.gameInstance.npcs = this.gameInstance.npcs.filter(n => n.key !== npcToLeave);
+        this.gameInstance.npcs = this.map.activeNpcs;
 
         console.log(`[Cutscene] NPC '${npcToLeave}' has been removed`);
         

@@ -3,7 +3,13 @@ import Sprite from "./Sprite.js";
 export const NPC_STATES = {
     IDLE: "IDLE",
     SIDE: "SIDE",
-    FRONT: "FRONT"
+    FRONT: "FRONT",
+    IDLE_FRONT: "IDLE_FRONT",
+    IDLE_SIDE: "IDLE_SIDE",
+    IDLE_BACK: "IDLE_BACK",
+    MOVE_FRONT: "MOVE_FRONT",
+    MOVE_SIDE: "MOVE_SIDE",
+    MOVE_BACK: "MOVE_BACK"
 };
 
 export default class NPC extends Sprite{
@@ -13,6 +19,7 @@ export default class NPC extends Sprite{
         this.dialogueKey = dialogueKey;
         this.animationConfig = animationConfig;
         this.dialogueVariants = dialogueVariants;
+        this.showPrompt = true;
         this.active = true;
         this.state = NPC_STATES.IDLE;
         this.initAnimations(this.animationConfig);
@@ -44,7 +51,7 @@ export default class NPC extends Sprite{
     draw(ctx, player) {
         super.draw(ctx);
 
-        if (this.playerIsNear(player)) {
+        if (this.showPrompt !== false && this.playerIsNear(player)) {
             
             const bounce = Math.sin(performance.now() / 150) * 3;
             

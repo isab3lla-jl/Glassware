@@ -282,14 +282,22 @@ export default class Game {
                     { 
                         type: "ADD_NPC", 
                         npcKey: "onyx", 
-                        x: 330, 
-                        y: 165,
+                        x: 250, 
+                        y: 300,
                         animationConfig: {
-                            [NPC_STATES.IDLE]:  { src: "../../assets/CharSprites/Onyx.png", frameCount: 1, frameSpeed: 1, loop: true }
+                            [NPC_STATES.IDLE]:       { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 4, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 5, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 6, frameSpeed: 4, loop: true }
                         }
                     },
                     { type: "FADE", direction: "OUT"},
-                    //{ type: "WALK", who: "onyx", direction: "UP", time: 400, },
+                    { type: "STAND", who: "onyx", direction: "FRONT", time: 100 },
+                    { type: "WALK", who: "onyx", direction: "UP", time: 950, },
+                    { type: "WALK", who: "onyx", direction: "RIGHT", time: 550, },
                     { type: "TEXT", key: "first_onyx_cutscene" },
                     { type: "FADE", direction: "IN" },
                     { type: "REMOVE_NPC", npcKey: "onyx"},
