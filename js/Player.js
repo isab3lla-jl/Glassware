@@ -52,7 +52,7 @@ export default class Player extends Sprite {
             [PLAYER_STATES.DEATH]: { src: "../assets/CharSprites/OpalDeath-Sheet.png", frameCount: 22, frameSpeed: 8, loop: false }
         });
 
-        this.hitboxOffset = { x: 3, y: 6 }; //y: 4 (asegurarme que los caminos para personaje tengan 2 tiles de altura)
+        this.hitboxOffset = { x: 3, y: 4 }; //y: 4 (asegurarme que los caminos para personaje tengan 2 tiles de altura)
         this.hitboxWidth = this.width - (this.hitboxOffset.x * 2);
         this.hitboxHeight = this.height - (this.hitboxOffset.y * 2);
 

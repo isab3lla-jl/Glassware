@@ -5,10 +5,11 @@ const ITEM_STATES = {
 };
  
 export default class Item extends Sprite{
-    constructor(x, y, name = "item", animationConfig = {} ) {
+    constructor(x, y, name = "item", dialogueKey = "", animationConfig = {} ) {
         super(x, y, 20, 20);
         
         this.name = name;
+        this.dialogueKey = dialogueKey;
         this.animationConfig = animationConfig;
         this.active = true;
         this.state = ITEM_STATES.IDLE;

@@ -339,10 +339,17 @@ export default class Game {
 
             items.update(dt);
 
+            if (this.dialogueManager.isActive || this.mapManager.isCutscenePlaying) continue;
+
             if (items.playerIsNear(this.player) && this.player.keys.e) {
                 if (this.inventory.length < this.maxInventorySlots) {
                     const itemName = items.grab();
                     this.inventory.push(itemName);
+
+                    if (items.dialogueKey) {
+                        this.dialogueManager.startDialogue(items.dialogueKey);
+                        this.player.enabled = false;
+                    }
                 } else {
                     console.log("full inventory");
                 }

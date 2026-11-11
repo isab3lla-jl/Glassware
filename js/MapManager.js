@@ -69,7 +69,8 @@ export default class MapManager {
                 runtimeItems.push({ 
                     x: 400, 
                     y: 160, 
-                    name: "key", 
+                    name: "key",
+                    dialogueKey: "grabbed_keys", 
                     animationConfig: {
                         [NPC_STATES.IDLE]: { src: "./assets/ItemSprites/key.png", frameCount: 1, frameSpeed: 1, loop: true }
                     }
@@ -83,7 +84,7 @@ export default class MapManager {
             }
 
             this.activeNpcs = runtimeNpcs.map(n => new NPC(n.x, n.y, n.key, n.animationConfig));
-            this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name, i.animationConfig));
+            this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name, i.dialogueKey, i.animationConfig));
             this.activeTriggers = mapConfig.triggers 
                 ? mapConfig.triggers.map(trigger => ({ ...trigger }))
                 : [];
