@@ -5,12 +5,36 @@ export default class CutsceneEvent {
         this.map = map;
         this.event = event;
         this.gameInstance = gameInstance;
+
+        this.timeouts = [];
+        this.listeners = [];
+        this.cancelled = false;
+        this._resolve = null;
     }
 
     init() {
         return new Promise((resolve) => {
+            this._resolve = resolve;
             this[this.event.type](resolve);
         });
+    }
+
+    _setTimeout(fn, ms) {
+        this.timeouts.push(setTimeout(fn, ms));
+    }
+
+    _addListener(name, handler) {
+        document.addEventListener(name, handler);
+        this.listeners.push([name, handler]);
+    }
+
+    cancel() {
+        this.cancelled = true;
+        this.timeouts.forEach(clearTimeout);
+        this.listeners.forEach(([name, handler]) => document.removeEventListener(name, handler));
+        this.timeouts = [];
+        this.listeners = [];
+        if (this._resolve) this._resolve();
     }
 
     STAND(resolve) {
@@ -39,7 +63,7 @@ export default class CutsceneEvent {
         }
 
         if (this.event.time) {
-            setTimeout(() => resolve(), this.event.time);
+            this._setTimeout(() => resolve(), this.event.time);
         } else {
             resolve();
         }
@@ -65,7 +89,7 @@ export default class CutsceneEvent {
             }
         };
 
-        document.addEventListener("finished_free_walk", handleMoveComplete);
+        this._addListener("finished_free_walk", handleMoveComplete);
         const duration = this.event.time || 500;
         targetEntity.startCutsceneWalk(this.event.direction, duration);
     }
@@ -81,7 +105,7 @@ export default class CutsceneEvent {
             resolve();
         };
 
-        document.addEventListener("dialogue_finished", handleDialogueComplete);
+        this._addListener("dialogue_finished", handleDialogueComplete);
         this.gameInstance.dialogueManager.startDialogue(this.event.key);
     }
 
@@ -134,23 +158,25 @@ export default class CutsceneEvent {
         }
 
         const fadeEl = this.gameInstance.domMenus.fade;
-        const fadeDuration = this.event.time || 800; 
+        const fadeDuration = this.event.time || 800;
 
         if (this.event.direction === "IN") {
             fadeEl.classList.remove("hidden");
 
             requestAnimationFrame(() => {
-                fadeEl.classList.add("show-black");
+                if (!this.cancelled) {
+                    fadeEl.classList.add("show-black");
+                }
             });
-            
-            setTimeout(() => {
+
+            this._setTimeout(() => {
                 resolve();
             }, fadeDuration);
 
         } else if (this.event.direction === "OUT") {
             fadeEl.classList.remove("show-black");
 
-            setTimeout(() => {
+            this._setTimeout(() => {
                 fadeEl.classList.add("hidden");
                 resolve();
             }, fadeDuration);
