@@ -55,10 +55,15 @@ export default class MapManager {
                 this.mapImage.onerror = (err) => reject(err);
             });
 
-            let runtimeNpcs = [...mapConfig.npcs];
-            let runtimeItems = [...mapConfig.items];
+            let runtimeNpcs = mapConfig.npcs 
+                ? mapConfig.npcs.map(npc => ({ ...npc })) 
+                : [];
+                
+            let runtimeItems = mapConfig.items 
+                ? mapConfig.items.map(item => ({ ...item })) 
+                : [];
 
-            if (mapKey === "bar" && gameInstance.chapterManager.getFlag("checkedDoor")) {
+            if (mapKey === "bar" && gameInstance.chapterManager.getFlag("doorDialogue")) {
                 runtimeItems.push({ 
                     x: 400, 
                     y: 160, 
@@ -77,7 +82,9 @@ export default class MapManager {
 
             this.activeNpcs = runtimeNpcs.map(n => new NPC(n.x, n.y, n.key, n.animationConfig));
             this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name, i.animationConfig));
-            this.activeTriggers = mapConfig.triggers || [];
+            this.activeTriggers = mapConfig.triggers 
+                ? mapConfig.triggers.map(trigger => ({ ...trigger }))
+                : [];
 
             gameInstance.npcs = this.activeNpcs;
             gameInstance.items = this.activeItems;

@@ -7,7 +7,7 @@ export const NPC_STATES = {
 };
 
 export default class NPC extends Sprite{
-    constructor (x, y, dialogueKey = "npc_elder_intro", animationConfig = {}) {
+    constructor (x, y, dialogueKey = "key", animationConfig = {}) {
         super(x, y, 27, 33);
 
         this.dialogueKey = dialogueKey;

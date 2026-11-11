@@ -120,11 +120,14 @@ export default class Game {
 
     async restartGame() {
         this.inventory = [];
+        this.discarded = [];
         this.gameState = GAME_STATES.MAIN_MENU;
-        this.chapterManager.setFlag("hasTalkedToElder", false);
+
+        this.chapterManager.setFlag("checkedDoor", false);
+        this.chapterManager.setFlag("doorDialogue", false);
         this.chapterManager.setFlag("sawRoomCutscene", false);
+
         await this.mapManager.loadMap("bar", this);
-    
         this.mapLoaded = this.mapManager.hasLoaded();
 
         this.timer = this.gameDuration;
@@ -261,7 +264,8 @@ export default class Game {
                     { type: "FADE", direction: "IN" },
                     { type: "REMOVE_NPC", npcKey: "onyx"},
                     { type: "FADE", direction: "OUT"},
-                    {type: "GAME_END"}
+                    { type: "STAND", who: "player", direction: "FRONT", time: 500 },
+                    { type: "GAME_END" }
                 ];
 
                 this.mapManager.startCutscene(roomCutscene, this);
