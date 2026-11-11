@@ -32,7 +32,6 @@ export default class Item extends Sprite{
     }
 
     grab() {
-        this.state = ITEM_STATES.GRAB;
         this.active = false;
         return this.name;
     }

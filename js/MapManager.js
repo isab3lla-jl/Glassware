@@ -21,6 +21,8 @@ export default class MapManager {
         this.activeTriggers = [];
 
         this.isCutscenePlaying = false;
+        this.cutsceneId = 0;
+        this.currentCutsceneEvent = null;
     }
 
     getMapsForCurrentChapter(gameInstance) {
@@ -99,20 +101,46 @@ export default class MapManager {
     }
 
     async startCutscene(eventQueue, gameInstance) {
+        const myId = ++this.cutsceneId;
         this.isCutscenePlaying = true;
         gameInstance.player.enabled = false;
 
         for (let eventConfig of eventQueue) {
-            const eventHandler = new CutsceneEvent({ 
-                map: this, 
-                event: eventConfig, 
-                gameInstance: gameInstance 
+            if (myId !== this.cutsceneId) return;
+
+            const eventHandler = new CutsceneEvent({
+                map: this,
+                event: eventConfig,
+                gameInstance: gameInstance
             });
+            this.currentCutsceneEvent = eventHandler;
             await eventHandler.init();
+
+            if (myId !== this.cutsceneId) return;
         }
 
+        this.currentCutsceneEvent = null;
         this.isCutscenePlaying = false;
         gameInstance.player.enabled = true;
+    }
+
+    cancelCutscene(gameInstance) {
+        this.cutsceneId++;
+
+        if (this.currentCutsceneEvent) {
+            this.currentCutsceneEvent.cancel();
+            this.currentCutsceneEvent = null;
+        }
+        this.isCutscenePlaying = false;
+
+        const fadeEl = gameInstance.domMenus.fade;
+        if (fadeEl) {
+            fadeEl.classList.remove("show-black");
+            fadeEl.classList.add("hidden");
+        }
+
+        gameInstance.player.cutsceneTimer = 0;
+        gameInstance.player.cutsceneDirection = null;
     }
 
     getCurrentData() { return this.mapData; }

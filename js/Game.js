@@ -119,6 +119,9 @@ export default class Game {
     }
 
     async restartGame() {
+        this.mapManager.cancelCutscene(this);
+        if (this.dialogueManager.isActive) this.dialogueManager.endDialogue();
+        
         this.inventory = [];
         this.discarded = [];
         this.gameState = GAME_STATES.MAIN_MENU;
@@ -213,7 +216,7 @@ export default class Game {
                     const itemIndex = this.inventory.indexOf(trigger.requiredItem);
 
                     if (itemIndex === -1) {
-                        break;
+                        continue;
                     }
                     this.discarded.push(trigger.requiredItem);
                     console.log(this.discarded);
