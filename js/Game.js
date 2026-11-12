@@ -582,17 +582,6 @@ export default class Game {
             this.ctx.font = "20px 'PixelifySans'";
             this.ctx.shadowColor = "black";
             this.ctx.shadowBlur = 4;
-
-            const boxW = ctx.measureText(text).width + 32;
-            const boxH = 34;
-            const x = (this.canvas.width - boxW) / 2;
-            const y = 20;
-
-            ctx.fillStyle = "rgba(0, 0, 0, 0.75)";
-            ctx.strokeStyle = "#eeeeee";
-            ctx.lineWidth = 2;
-            ctx.fillRect(x, y, boxW, boxH);
-            ctx.strokeRect(x, y, boxW, boxH);
             this.ctx.fillText(`${this.formatTime(this.timer)}`, 20, 40);
             this.ctx.restore();
         }
