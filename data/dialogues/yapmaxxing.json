@@ -101,8 +101,7 @@
   "need_money": [
     {
       "speaker":"Opal",
-      "text":"I need money before going that way...",
-      "triggerFlag":"grabbedMoney"
+      "text":"I need money before going that way..."
     }
   ],
   "grabbed_keys": [
