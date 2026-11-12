@@ -3,8 +3,13 @@
     "title": "Prologue"
   },
 
-  "hint_move": {"text": "Use WASD or the arrow keys to move" },
+  "hint_move": { "text": "Use WASD or the arrow keys to move" },
   "hint_interact": { "text": "Press E to interact" },
+  "hint_quest": { "text": "Opal's notes are on the left side of the screen. Use them as a guide." },
+
+  "quest_go_home": { "text": "Go home" },
+  "quest_find_key": { "text": "Find the key" },
+  "quest_get_vial": { "text": "Get vial in time" },
   
   "bennet_dialogue": [
     { 

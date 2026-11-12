@@ -15,6 +15,7 @@ export default class ChapterManager {
             //tutorial flags
             tutorialMove: false,
             tutorialInteract: false,
+            tutorialQuest: false,
             //prologue flags
             talkedToBennet: false,
             doorDialogue: false,
