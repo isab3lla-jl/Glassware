@@ -60,7 +60,6 @@
       "text":"You too, take care.",
       "triggerFlag":"talkedToBennet"
     }
-
   ],
   "bennet_repeat": [
     {
@@ -70,6 +69,15 @@
     {
       "speaker":"Opal",
       "text":"You too, take care."
+    }
+  ],
+  "prologue_kitty": [
+    {
+      "speaker":"Kitty",
+      "text":"Meow"
+    },{
+      "speaker":"Kitty",
+      "text":":3"
     }
   ],
   "locked_door": [
