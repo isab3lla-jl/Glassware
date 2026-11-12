@@ -175,6 +175,20 @@ export default class CutsceneEvent {
         this._setTimeout(() => resolve(), 100);
     }
 
+    START_TIMER(resolve) {
+        const game = this.gameInstance;
+        if (game) {
+            if (this.event.reset) game.timer = game.gameDuration;
+            game.timerActive = true;
+        }
+        resolve();
+    }
+
+    STOP_TIMER(resolve) {
+        if (this.gameInstance) this.gameInstance.timerActive = false;
+        resolve();
+    }
+
 
     FADE(resolve) {
         if (!this.gameInstance || !this.gameInstance.domMenus.fade) {

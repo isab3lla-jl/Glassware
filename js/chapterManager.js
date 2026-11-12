@@ -12,6 +12,9 @@ export default class ChapterManager {
         this.currentChapter = CHAPTERS.PROLOGUE;
         
         this.defaultFlags = {
+            //tutorial flags
+            tutorialMove: false,
+            tutorialInteract: false,
             //prologue flags
             talkedToBennet: false,
             doorDialogue: false,

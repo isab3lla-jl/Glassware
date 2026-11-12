@@ -122,7 +122,7 @@ export default class DialogueManager {
         const boxY = canvasHeight - boxHeight - 20;
 
         ctx.fillStyle = "rgba(0, 0, 0, 0.9)";
-        ctx.strokeStyle = "#ffffff";             
+        ctx.strokeStyle = "#eeeeee";             
         ctx.lineWidth = 3;
         ctx.fillRect(boxX, boxY, boxWidth, boxHeight);
         ctx.strokeRect(boxX, boxY, boxWidth, boxHeight);
@@ -131,7 +131,7 @@ export default class DialogueManager {
         ctx.font = "20px 'PixelifySans'";
         ctx.fillText(currentLine.speaker, boxX + 25, boxY + 35);
 
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle = "#eeeeee";
         ctx.font = "16px 'PixelifySans'";
         
         const paddingX = 25;

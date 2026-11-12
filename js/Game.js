@@ -1,8 +1,8 @@
 import Player from "./Player.js";
 import { NPC_STATES } from "./Npc.js";
 import MapManager from "./MapManager.js";
-import DialogueManager, { loadDialogueData } from "./dialogueManager.js";
-import ChapterManager from "./chapterManager.js";
+import DialogueManager, { loadDialogueData, getEntry } from "./dialogueManager.js";
+import ChapterManager, { CHAPTERS } from "./chapterManager.js";
 
 const GAME_STATES = {
     MAIN_MENU: "MAIN_MENU",
@@ -38,6 +38,8 @@ export default class Game {
         this.chapterManager = new ChapterManager();
         this.mapManager = new MapManager();
 
+        this.hint = null;
+
         this.npcs = [];
         this.items = [];
 
@@ -51,6 +53,7 @@ export default class Game {
         
         this.gameDuration = 100; //seconds
         this.timer = this.gameDuration;
+        this.timerActive = false;
 
         this.setupMenuEvents();
         this.loadGameAssets();
@@ -136,6 +139,7 @@ export default class Game {
         this.mapLoaded = this.mapManager.hasLoaded();
 
         this.timer = this.gameDuration;
+        this.timerActive = false;
 
         this.player.state = "IDLE_FRONT";
         this.player.facing = "FRONT";
@@ -337,6 +341,7 @@ export default class Game {
                     { type: "REMOVE_NPC", npcKey: "onyx"},
                     { type: "FADE", direction: "OUT"},
                     { type: "STAND", who: "player", direction: "DOWN", time: 500 },
+                    { type: "START_TIMER" }
 //                  { type: "GAME_END" }
                 ];
 
@@ -383,12 +388,16 @@ export default class Game {
             this.player.update(dt, this.mapManager.getCurrentData(), this.timer);
             this.checkMapTriggers();
 
-            this.timer -= dt;
-            if (this.timer <= 0) {
-                this.timer = 0;
-                this.player.state = "DEATH";
-                this.player.enabled = false;
+            if (this.timerActive) {
+                this.timer -= dt;
+                if (this.timer <= 0) {
+                    this.timer = 0;
+                    this.player.state = "DEATH";
+                    this.player.enabled = false;
+                }
             }
+
+            
         }
 
         for (let npc of this.npcs) {
@@ -400,6 +409,7 @@ export default class Game {
                     const key = npc.interact(this.chapterManager);
                     
                     this.dialogueManager.startDialogue(key);
+                    this.chapterManager.setFlag("tutorialInteract", true);
                     
                     this.player.enabled = false;
                     this.player.keys.e = false; 
@@ -423,6 +433,7 @@ export default class Game {
                 if (this.inventory.length < this.maxInventorySlots) {
                     const itemName = items.grab();
                     this.inventory.push(itemName);
+                    this.chapterManager.setFlag("tutorialInteract", true);
 
                     if (items.triggerFlag) {
                         this.chapterManager.setFlag(items.triggerFlag, true);
@@ -440,8 +451,66 @@ export default class Game {
                 break;
             }
         }
+
+        this.updateHint();
     }
 
+    updateHint() {
+        this.hint = null;
+
+        const onTutorialMap =
+            this.chapterManager.currentChapter === CHAPTERS.PROLOGUE && this.mapManager.currentMapKey === "bar";
+
+        if (!onTutorialMap) return;
+        if (this.dialogueManager.isActive || this.mapManager.isCutscenePlaying) return;
+
+        if (!this.chapterManager.getFlag("tutorialMove")) {
+            if (this.player.speedX !== 0 || this.player.speedY !== 0) {
+                this.chapterManager.setFlag("tutorialMove", true);
+            } else {
+                this.hint = "hint_move";
+            }
+            return;
+        }
+
+        if (!this.chapterManager.getFlag("tutorialInteract")) {
+            const nearSomething =
+                this.npcs.some(n => n.showPrompt !== false && n.playerIsNear(this.player)) ||
+                this.items.some(i => i.active && i.playerIsNear(this.player));
+
+            if (nearSomething) this.hint = "hint_interact";
+        }
+    }
+
+    drawHint() {
+        if (!this.hint || this.gameState !== GAME_STATES.PLAY) return;
+
+        const text = getEntry(this.hint)?.text;
+        if (!text) return;
+
+        const ctx = this.ctx;
+        ctx.save();
+
+        ctx.font = "16px 'PixelifySans'";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        const boxW = ctx.measureText(text).width + 32;
+        const boxH = 34;
+        const x = (this.canvas.width - boxW) / 2;
+        const y = 20;
+
+        ctx.fillStyle = "rgba(0, 0, 0, 0.75)";
+        ctx.strokeStyle = "#ff9500";
+        ctx.lineWidth = 2;
+        ctx.fillRect(x, y, boxW, boxH);
+        ctx.strokeRect(x, y, boxW, boxH);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText(text, this.canvas.width / 2, y + boxH / 2);
+
+        ctx.restore();
+    }
 
     formatTime(seconds) {
         const minutes = Math.floor(seconds / 60);
@@ -507,12 +576,23 @@ export default class Game {
             this.ctx.drawImage(this.mapManager.getScaleImage(), 0, 0);
         }
 
-        if (this.gameState === GAME_STATES.PLAY) {
+        if (this.gameState === GAME_STATES.PLAY && this.timerActive) {
             this.ctx.save();
-            this.ctx.fillStyle = "#ffffff";
+            this.ctx.fillStyle = "#eeeeee";
             this.ctx.font = "20px 'PixelifySans'";
             this.ctx.shadowColor = "black";
             this.ctx.shadowBlur = 4;
+
+            const boxW = ctx.measureText(text).width + 32;
+            const boxH = 34;
+            const x = (this.canvas.width - boxW) / 2;
+            const y = 20;
+
+            ctx.fillStyle = "rgba(0, 0, 0, 0.75)";
+            ctx.strokeStyle = "#eeeeee";
+            ctx.lineWidth = 2;
+            ctx.fillRect(x, y, boxW, boxH);
+            ctx.strokeRect(x, y, boxW, boxH);
             this.ctx.fillText(`${this.formatTime(this.timer)}`, 20, 40);
             this.ctx.restore();
         }
@@ -556,6 +636,7 @@ export default class Game {
             this.dialogueManager.drawDialogue(this.ctx, this.canvas.width, this.canvas.height);
         }
 
+        this.drawHint();
         this.drawTitleCard();
     }
 

@@ -2,6 +2,10 @@
   "title_prologue": {
     "title": "Prólogo"
   },
+
+  "hint_move": {"text": "Usa WASD o las flechas para mvoerte" },
+  "hint_interact": { "text": "Presiona E para interactuar" },
+  
   "bennet_dialogue": [
     { 
       "speaker": "Opal",

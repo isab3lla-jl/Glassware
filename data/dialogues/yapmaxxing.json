@@ -2,6 +2,10 @@
   "title_prologue": {
     "title": "Prologue"
   },
+
+  "hint_move": {"text": "Use WASD or the arrow keys to move" },
+  "hint_interact": { "text": "Press E to interact" },
+  
   "bennet_dialogue": [
     { 
       "speaker": "Opal",
