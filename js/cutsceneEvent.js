@@ -199,18 +199,14 @@ export default class CutsceneEvent {
         const fadeEl = this.gameInstance.domMenus.fade;
         const fadeDuration = this.event.time || 800;
 
+        fadeEl.style.transitionDuration = `${fadeDuration}ms`;
+
         if (this.event.direction === "IN") {
             fadeEl.classList.remove("hidden");
+            void fadeEl.offsetWidth;
+            fadeEl.classList.add("show-black");
 
-            requestAnimationFrame(() => {
-                if (!this.cancelled) {
-                    fadeEl.classList.add("show-black");
-                }
-            });
-
-            this._setTimeout(() => {
-                resolve();
-            }, fadeDuration);
+            this._setTimeout(() => resolve(), fadeDuration);
 
         } else if (this.event.direction === "OUT") {
             fadeEl.classList.remove("show-black");

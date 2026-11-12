@@ -110,7 +110,12 @@ export default class MapManager {
                 npc.flipX = n.flipX ?? false;
                 return npc;
             });
-            this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name, i.dialogueKey, i.animationConfig, i.triggerFlag));
+            this.activeItems = runtimeItems.map(i => {
+                const item = new Item(i.x, i.y, i.name, i.dialogueKey, i.animationConfig, i.triggerFlag);
+                item.pickup = i.pickup ?? true;
+                item.once = i.once ?? false;
+                return item;
+            });
             this.activeTriggers = mapConfig.triggers 
                 ? mapConfig.triggers.map(trigger => ({ ...trigger }))
                 : [];

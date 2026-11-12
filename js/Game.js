@@ -438,7 +438,22 @@ export default class Game {
             if (this.dialogueManager.isActive || this.mapManager.isCutscenePlaying) continue;
 
             if (items.playerIsNear(this.player) && this.player.keys.e) {
-                if (this.inventory.length < this.maxInventorySlots) {
+                if (!items.pickup) {
+
+                    this.chapterManager.setFlag("tutorialInteract", true);
+
+                    if (items.triggerFlag) {
+                        this.chapterManager.setFlag(items.triggerFlag, true);
+                    }
+
+                    if (items.dialogueKey) {
+                        this.dialogueManager.startDialogue(items.dialogueKey);
+                        this.player.enabled = !this.dialogueManager.isActive;
+                    }
+
+                    if (items.once) items.active = false;
+
+                } else if (this.inventory.length < this.maxInventorySlots) {
                     const itemName = items.grab();
                     this.inventory.push(itemName);
                     this.chapterManager.setFlag("tutorialInteract", true);
@@ -652,7 +667,7 @@ export default class Game {
             this.ctx.restore();
         }
 
-        /*if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
+        if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
             const triggers = this.mapManager.getTriggers();
             
             this.ctx.save();
@@ -675,7 +690,7 @@ export default class Game {
                 );
             });
             this.ctx.restore();
-        }*/
+        }
         
         for (let items of this.items) {
             if ((!this.inventory.includes(items.name) && !this.discarded.includes(items.name)) && items.active) {

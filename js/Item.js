@@ -12,6 +12,8 @@ export default class Item extends Sprite{
         this.dialogueKey = dialogueKey;
         this.triggerFlag = triggerFlag;
         this.animationConfig = animationConfig;
+        this.pickup = true;
+        this.once = false; 
         this.active = true;
         this.state = ITEM_STATES.IDLE;
         this.initAnimations(this.animationConfig);
