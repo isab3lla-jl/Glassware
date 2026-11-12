@@ -201,6 +201,10 @@ export default class Game {
                 continue;
             }
 
+            if (trigger.requiredFlag && !this.chapterManager.getFlag(trigger.requiredFlag)) {
+                continue;
+            }
+
             if (trigger.cutscene) {
                 if (this.chapterManager.getFlag(trigger.flagRequired)) {
                     continue;
@@ -237,7 +241,7 @@ export default class Game {
             if (trigger.requiredItem) {
                 const itemIndex = this.inventory.indexOf(trigger.requiredItem);
 
-                if (itemIndex === -1) {
+                if ((itemIndex === -1)) {
                     continue;
                 }
                 this.discarded.push(trigger.requiredItem);
@@ -251,6 +255,7 @@ export default class Game {
             }
 
             delete trigger.requiredItem;
+            console.log(trigger.requiredItem);
             this.executeMapTransition(trigger.targetMap, trigger.targetPlayerX, trigger.targetPlayerY);
             break;
         }
@@ -283,7 +288,7 @@ export default class Game {
                         type: "ADD_NPC", 
                         npcKey: "onyx", 
                         x: 250, 
-                        y: 300,
+                        y: 290,
                         animationConfig: {
                             [NPC_STATES.IDLE]:       { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
                             [NPC_STATES.IDLE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
@@ -295,15 +300,44 @@ export default class Game {
                         }
                     },
                     { type: "FADE", direction: "OUT"},
-                    { type: "STAND", who: "onyx", direction: "FRONT", time: 100 },
-                    { type: "WALK", who: "onyx", direction: "UP", time: 950, },
-                    { type: "WALK", who: "onyx", direction: "RIGHT", time: 550, },
+                    { type: "STAND", who: "onyx", direction: "DOWN", time: 500 },
+                    { type: "WALK", who: "onyx", direction: "UP", time: 970, },
+                    { type: "WALK", who: "onyx", direction: "RIGHT", time: 750, },
                     { type: "TEXT", key: "first_onyx_cutscene" },
                     { type: "FADE", direction: "IN" },
                     { type: "REMOVE_NPC", npcKey: "onyx"},
                     { type: "FADE", direction: "OUT"},
-                    { type: "STAND", who: "player", direction: "FRONT", time: 500 }
-//                    { type: "GAME_END" }
+                    { type: "WALK", who: "player", direction: "LEFT", time: 1100 },
+                    { type: "WALK", who: "player", direction: "DOWN", time: 800 },
+                    { type: "WALK", who: "player", direction: "RIGHT", time: 500 },
+                    { type: "WALK", who: "player", direction: "DOWN", time: 230 },
+                    { type: "FADE", direction: "IN" },
+                    { 
+                        type: "ADD_NPC", 
+                        npcKey: "onyx", 
+                        x: 250, 
+                        y: 170,
+                        animationConfig: {
+                            [NPC_STATES.IDLE]:       { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 4, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 5, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 6, frameSpeed: 4, loop: true }
+                        }
+                    },
+                    { type: "FADE", direction: "OUT"},
+                    { type: "TEXT", key: "first_onyx_cutscene_pt2" },
+                    { type: "WALK", who: "player", direction: "RIGHT", time: 850 },
+                    { type: "WALK", who: "player", direction: "UP", time: 250 },
+                    { type: "STAND", who: "player", direction: "RIGHT", time: 500 },
+                    { type: "TEXT", key: "first_onyx_cutscene_pt3" },
+                    { type: "FADE", direction: "IN" },
+                    { type: "REMOVE_NPC", npcKey: "onyx"},
+                    { type: "FADE", direction: "OUT"},
+                    { type: "STAND", who: "player", direction: "DOWN", time: 500 },
+//                  { type: "GAME_END" }
                 ];
 
                 this.mapManager.startCutscene(roomCutscene, this);
@@ -325,7 +359,7 @@ export default class Game {
     }
 
     update(dt) {
-        //console.log(this.player.x, this.player.y)
+        //console.log(this.discarded)
         if (!this.mapLoaded) {
             console.log("Update pausado: esperando que mapLoaded sea true");
             return;
@@ -389,6 +423,10 @@ export default class Game {
                 if (this.inventory.length < this.maxInventorySlots) {
                     const itemName = items.grab();
                     this.inventory.push(itemName);
+
+                    if (items.triggerFlag) {
+                        this.chapterManager.setFlag(items.triggerFlag, true);
+                    }
 
                     if (items.dialogueKey) {
                         this.dialogueManager.startDialogue(items.dialogueKey);

@@ -32,7 +32,7 @@ export const prologueMaps = {
                 x: 200, y: 150, width: 32, height: 32,
                 flagRequired: "idfk",
                 cutscene: [
-                    { type: "STAND", who: "player", facing: "SIDE", flipX: true, time: 500 },
+                    { type: "STAND", who: "player", direction: "LEFT", time: 500 },
                     { type: "TEXT", key: "idfk" }
                 ]
             }*/
@@ -93,6 +93,18 @@ export const prologueMaps = {
                 x: 190, y: 440, width: 265, height: 40,
                 advanceChapter: "CHAPTER_1",
                 requiredItem: "money"
+            },
+            {
+                x: 190, y: 440, width: 265, height: 40,
+                dialogueKey: "need_money",
+                repeatable: true,
+                disabledByFlag: "grabbedMoney"
+            },
+            {
+                x: 552, y: 50, width: 48, height: 35,
+                targetMap: "roomChest",
+                targetPlayerX: 347, targetPlayerY: 320,
+                requiredFlag: "sawRoomCutscene"
             }
         ]
     },
@@ -120,12 +132,12 @@ export const prologueMaps = {
         ],
         items: [
             {
-                x: 480, y: 260, 
+                x: 482, y: 260, 
                 name: "money",
-                //dialogueKey: "grabbed_keys", 
-                /*animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "./assets/ItemSprites/key.png", frameCount: 1, frameSpeed: 1, loop: true }
-                }*/
+                dialogueKey: "grabbed_money", 
+                animationConfig: {
+                    [NPC_STATES.IDLE]: { src: "./assets/ItemSprites/Coins.png", frameCount: 1, frameSpeed: 1, loop: true }
+                }
             }
         ],
         triggers: [

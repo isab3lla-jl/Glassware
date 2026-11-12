@@ -60,10 +60,10 @@ export default class Sprite {
         this.cutsceneDirection = direction;
         this.cutsceneTimer = duration / 1000;
 
-        if (direction === "LEFT")  { this.state = "MOVE_SIDE"; this.flipX = true; }
-        if (direction === "RIGHT") { this.state = "MOVE_SIDE"; this.flipX = false; }
-        if (direction === "UP")    { this.state = "MOVE_BACK"; }
-        if (direction === "DOWN")  { this.state = "MOVE_FRONT"; }
+        if (direction === "LEFT")  { this.state = "MOVE_SIDE";  this.facing = "SIDE";  this.flipX = true; }
+        if (direction === "RIGHT") { this.state = "MOVE_SIDE";  this.facing = "SIDE";  this.flipX = false; }
+        if (direction === "UP")    { this.state = "MOVE_BACK";  this.facing = "BACK"; }
+        if (direction === "DOWN")  { this.state = "MOVE_FRONT"; this.facing = "FRONT"; }
     }
 
     updateCutsceneMovement(dt) {

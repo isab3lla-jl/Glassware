@@ -81,6 +81,13 @@
       "text":"I should check the bar"
     }
   ],
+  "need_money": [
+    {
+      "speaker":"Opal",
+      "text":"I need money before going that way...",
+      "triggerFlag":"grabbedMoney"
+    }
+  ],
   "grabbed_keys": [
     {
       "speaker":"Opal",
@@ -128,6 +135,78 @@
     {
       "speaker":"Onyx",
       "text":"Ugh, you're never any fun"
+    }
+  ],
+  "first_onyx_cutscene_pt2": [
+    {
+      "speaker":"Onyx",
+      "text":"Oh, before I forget... Aren't you missing something?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"What are you talking about?"
+
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Nothing, nothing, it's just that..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"..."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Spit it out! I have things to do."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Your chest is open."
+    },
+    {
+      "speaker":"Opal",
+      "text":"...what?"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"I thought I'd let you know, since your oh so precious vial is supposed to be there ;)"
+    }
+  ],
+  "first_onyx_cutscene_pt3": [
+    {
+      "speaker":"Opal",
+      "text":"Shit, shit, shit! It isn't here..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Poor little thing, I guess I'll have stick around for longer"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"I might even become you :)"
+    },
+    {
+      "speaker":"Opal",
+      "text":"..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Of course, if you don't want that, you have to get to it fast ♪♪"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Remember, time is ticking"
+    }
+  ],
+  "grabbed_money": [
+    {
+      "speaker":"Opal",
+      "text":"I need to find my vial soon..."
+    },
+    {
+      "speaker":"",
+      "text":"You grabbed money."
+
     }
   ],
   "title_chapter_1": {

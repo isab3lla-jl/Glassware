@@ -102,7 +102,7 @@ export default class MapManager {
             }
 
             this.activeNpcs = runtimeNpcs.map(n => new NPC(n.x, n.y, n.key, n.animationConfig, n.dialogueVariants));
-            this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name, i.dialogueKey, i.animationConfig));
+            this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name, i.dialogueKey, i.animationConfig, i.triggerFlag));
             this.activeTriggers = mapConfig.triggers 
                 ? mapConfig.triggers.map(trigger => ({ ...trigger }))
                 : [];

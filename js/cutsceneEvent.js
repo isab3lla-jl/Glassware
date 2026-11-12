@@ -168,11 +168,11 @@ export default class CutsceneEvent {
             this.event.y
         );
 
+        if (this.cancelled) return;
+
         this.gameInstance.player.enabled = false;
 
-        setTimeout(() => {
-            resolve();
-        }, 100);
+        this._setTimeout(() => resolve(), 100);
     }
 
 

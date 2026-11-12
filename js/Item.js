@@ -5,11 +5,12 @@ const ITEM_STATES = {
 };
  
 export default class Item extends Sprite{
-    constructor(x, y, name = "item", dialogueKey = "", animationConfig = {} ) {
+    constructor(x, y, name = "item", dialogueKey = "", animationConfig = {}, triggerFlag = "" ) {
         super(x, y, 20, 20);
         
         this.name = name;
         this.dialogueKey = dialogueKey;
+        this.triggerFlag = triggerFlag;
         this.animationConfig = animationConfig;
         this.active = true;
         this.state = ITEM_STATES.IDLE;
@@ -51,12 +52,12 @@ export default class Item extends Sprite{
 
             ctx.save();
 
-            ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+            ctx.fillStyle = "rgba(255, 149, 0, 0.6)";
             ctx.beginPath();
             ctx.arc(indicatorX, indicatorY - 5, 10, 0, Math.PI * 2);
             ctx.fill();
 
-            ctx.fillStyle = "#ffae00";
+            ctx.fillStyle = "black";
             ctx.font = "bold 12px monospace";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";

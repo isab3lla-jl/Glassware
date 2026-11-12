@@ -33,11 +33,11 @@
     },
     {
       "speaker":"Bennet",
-      "text":"No te preocupes, estoy seguro que hay bastantes cerrajeros de confianza por aqui Opal"
+      "text":"No te preocupes, estoy seguro que hay bastantes cerrajeros de confianza por aquí, Opal"
     },
     {
       "speaker":"Opal",
-      "text":"Espero que si."
+      "text":"Espero que sí."
     },
     {
       "speaker":"Opal",
@@ -81,6 +81,13 @@
       "text":"Debería checar el bar"
     }
   ],
+  "need_money": [
+    {
+      "speaker":"Opal",
+      "text":"Necesito dinero antes de ir hacia allá...",
+      "triggerFlag":"grabbedMoney"
+    }
+  ],
   "grabbed_keys": [
     {
       "speaker":"Opal",
@@ -104,7 +111,7 @@
     },
     {
       "speaker":"Onyx",
-      "text":"Tu Vialsito ese es muy molesto, ¿sabes?"
+      "text":"Tu frasquito ese es muy molesto, ¿sabes?"
     },
     {
       "speaker":"Onyx",
@@ -129,6 +136,78 @@
     {
       "speaker":"Onyx",
       "text":"Ugh, nunca me dejas divertirme."
+    }
+  ],
+  "first_onyx_cutscene_pt2": [
+    {
+      "speaker":"Onyx",
+      "text":"Oh, antes de que se me olvide... No te falta algo?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"¿De qué me estás hablando?"
+
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Nada, nada, solo es..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"..."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Ya dilo! Tengo cosas que hacer."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Tu cofre está abierto."
+    },
+    {
+      "speaker":"Opal",
+      "text":"¿...qué?"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Creí que te haría saber, ya que tu preciado frasco está ahí ;)"
+    }
+  ],
+  "first_onyx_cutscene_pt3": [
+    {
+      "speaker":"Opal",
+      "text":"Mierda, mierda, mierda! No está aquí..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Pobre de ti, supongo que me tendré que quedar más tiempo"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Quizas incluso me convertiré en ti :)"
+    },
+    {
+      "speaker":"Opal",
+      "text":"..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Claro, si no quieres eso, tienes que actuar rápido ♪♪"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Recuerda, el tiempo corre"
+    }
+  ],
+  "grabbed_money": [
+    {
+      "speaker":"Opal",
+      "text":"I need to find my vial soon..."
+    },
+    {
+      "speaker":"",
+      "text":"Agarraste dinero."
+
     }
   ],
   "title_chapter_1": {

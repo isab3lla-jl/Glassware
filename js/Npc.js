@@ -60,12 +60,12 @@ export default class NPC extends Sprite{
             
             ctx.save();
 
-            ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+            ctx.fillStyle = "rgba(255, 149, 0, 0.6)";
             ctx.beginPath();
             ctx.arc(indicatorX, indicatorY - 5, 10, 0, Math.PI * 2);
             ctx.fill();
 
-            ctx.fillStyle = "#ff9500";
+            ctx.fillStyle = "black";
             ctx.font = "bold 12px monospace";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
