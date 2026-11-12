@@ -3,6 +3,7 @@ import { NPC_STATES } from "./Npc.js";
 import MapManager from "./MapManager.js";
 import DialogueManager, { loadDialogueData, getEntry } from "./dialogueManager.js";
 import ChapterManager, { CHAPTERS } from "./chapterManager.js";
+import { QUESTS } from "./quests.js";
 
 const GAME_STATES = {
     MAIN_MENU: "MAIN_MENU",
@@ -39,6 +40,7 @@ export default class Game {
         this.mapManager = new MapManager();
 
         this.hint = null;
+        this.hintTimer = 0;
 
         this.npcs = [];
         this.items = [];
@@ -140,6 +142,7 @@ export default class Game {
 
         this.timer = this.gameDuration;
         this.timerActive = false;
+        this.hintTimer = 0;
 
         this.player.state = "IDLE_FRONT";
         this.player.facing = "FRONT";
@@ -308,14 +311,12 @@ export default class Game {
                     { type: "WALK", who: "onyx", direction: "UP", time: 970, },
                     { type: "WALK", who: "onyx", direction: "RIGHT", time: 750, },
                     { type: "TEXT", key: "first_onyx_cutscene" },
-                    { type: "FADE", direction: "IN" },
+                    { type: "STAND", who: "onyx", direction: "RIGHT", time: 1000 },
                     { type: "REMOVE_NPC", npcKey: "onyx"},
-                    { type: "FADE", direction: "OUT"},
                     { type: "WALK", who: "player", direction: "LEFT", time: 1100 },
                     { type: "WALK", who: "player", direction: "DOWN", time: 800 },
                     { type: "WALK", who: "player", direction: "RIGHT", time: 500 },
                     { type: "WALK", who: "player", direction: "DOWN", time: 230 },
-                    { type: "FADE", direction: "IN" },
                     { 
                         type: "ADD_NPC", 
                         npcKey: "onyx", 
@@ -331,15 +332,14 @@ export default class Game {
                             [NPC_STATES.MOVE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 6, frameSpeed: 4, loop: true }
                         }
                     },
-                    { type: "FADE", direction: "OUT"},
+                    { type: "STAND", who: "onyx", direction: "DOWN", time: 1000 },
                     { type: "TEXT", key: "first_onyx_cutscene_pt2" },
                     { type: "WALK", who: "player", direction: "RIGHT", time: 850 },
                     { type: "WALK", who: "player", direction: "UP", time: 250 },
                     { type: "STAND", who: "player", direction: "RIGHT", time: 500 },
                     { type: "TEXT", key: "first_onyx_cutscene_pt3" },
-                    { type: "FADE", direction: "IN" },
+                    { type: "STAND", who: "onyx", direction: "DOWN", time: 1000 },
                     { type: "REMOVE_NPC", npcKey: "onyx"},
-                    { type: "FADE", direction: "OUT"},
                     { type: "STAND", who: "player", direction: "DOWN", time: 500 },
                     { type: "START_TIMER" }
 //                  { type: "GAME_END" }
@@ -452,10 +452,10 @@ export default class Game {
             }
         }
 
-        this.updateHint();
+        this.updateHint(dt);
     }
 
-    updateHint() {
+    updateHint(dt) {
         this.hint = null;
 
         const onTutorialMap =
@@ -467,8 +467,19 @@ export default class Game {
         if (!this.chapterManager.getFlag("tutorialMove")) {
             if (this.player.speedX !== 0 || this.player.speedY !== 0) {
                 this.chapterManager.setFlag("tutorialMove", true);
+                this.hint = "hint_quest";
             } else {
                 this.hint = "hint_move";
+            }
+            return;
+        }
+
+        if (!this.chapterManager.getFlag("tutorialQuest")) {
+            this.hint = "hint_quest";
+            this.hintTimer += dt;
+            if (this.hintTimer >= 10) {
+                this.chapterManager.setFlag("tutorialQuest", true);
+                this.hintTimer = 0;
             }
             return;
         }
@@ -508,6 +519,53 @@ export default class Game {
 
         ctx.fillStyle = "#ffffff";
         ctx.fillText(text, this.canvas.width / 2, y + boxH / 2);
+
+        ctx.restore();
+    }
+
+    getVisibleQuests() {
+        const met = (flags) => flags.every(f => this.chapterManager.getFlag(f));
+        const quests = QUESTS[this.chapterManager.currentChapter] || [];
+
+        return quests
+            .filter(q => (!q.showWhen || met(q.showWhen)) && !(q.hideWhen && met(q.hideWhen)))
+            .map(q => ({...q, done: !!(q.doneWhen && met(q.doneWhen)) }))
+            .sort((a,b) => (a.type === "main" ? 0 : 1) - (b.type === "main" ? 0 : 1));
+    }
+
+    drawQuests() {
+        if (this.gameState !== GAME_STATES.PLAY && this.gameState !== GAME_STATES.PAUSE) return;
+        if (this.mapManager.isCutscenePlaying) return;
+
+        const quests = this.getVisibleQuests();
+        if (quests.length === 0) return;
+
+        const ctx = this.ctx;
+        ctx.save();
+        ctx.textAlign = "left";
+        ctx.textBaseline = "alphabetic";
+        ctx.shadowColor = "black";
+        ctx.shadowBlur = 4;
+
+        let y = 70;
+
+        for (const q of quests) {
+            const isMain = q.type === "main";
+            const x = isMain ? 20 : 34;
+            const text = getEntry(q.key)?.text ?? q.key;
+            const line = `${isMain ? ">" : "-"} ${text}`;
+
+            ctx.font = isMain ? "16px 'PixelifySans'" : "13px 'PixelifySans'";
+            ctx.fillStyle = q.done ? "#888888" : (isMain ? "#ff9500" : "#ffffff");
+            ctx.fillText(line, x, y);
+
+            if (q.done) {
+                const w = ctx.measureText(line).width;
+                ctx.fillRect(x, y - 4, w, 1);
+            }
+
+            y += isMain ? 24 : 20;
+        }
 
         ctx.restore();
     }
@@ -620,6 +678,8 @@ export default class Game {
         this.player.draw(this.ctx);
         
         if (this.gameState === GAME_STATES.PLAY || this.gameState === GAME_STATES.PAUSE) this.drawHotbar();
+
+        this.drawQuests();
 
         if (this.dialogueManager.isActive) {
             this.dialogueManager.drawDialogue(this.ctx, this.canvas.width, this.canvas.height);

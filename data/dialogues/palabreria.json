@@ -5,6 +5,11 @@
 
   "hint_move": {"text": "Usa WASD o las flechas para mvoerte" },
   "hint_interact": { "text": "Presiona E para interactuar" },
+  "hint_quest": { "text": "Las notas de Opal están en el lado izquierdo de la pantalla. Úsalas como guía." },
+
+  "quest_go_home": { "text": "Ir a casa" },
+  "quest_find_key": { "text": "Encontrar la llave" },
+  "quest_get_vial": { "text": "Encontrar el frasco a tiempo" },
   
   "bennet_dialogue": [
     { 
@@ -103,13 +108,12 @@
   "grabbed_keys": [
     {
       "speaker":"Opal",
-      "text":"Ahí estan, tengo que cuidarlas mas...",
-      "triggerFlag":"grabbedKey"
+      "text":"Ahí estan, tengo que cuidarlas mas..."
     },
     {
       "speaker":"",
-      "text":"Agarraste la llave de Casa de Opal"
-
+      "text":"Agarraste la llave de Casa de Opal",
+      "triggerFlag":"grabbedKey"
     }
   ],
   "first_onyx_cutscene": [
