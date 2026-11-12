@@ -8,7 +8,7 @@ export const prologueMaps = {
         playerDefaultSpawn: { x: 350, y: 150 },
         npcs: [
             {
-                x: 250, y: 230, key: "bennet_dialogue",
+                x: 250, y: 230, key: "bennet_dialogue", interactable: true,
                 dialogueVariants: [
                     { flag: "talkedToBennet", key: "bennet_repeat" }
                 ],
@@ -16,6 +16,22 @@ export const prologueMaps = {
                     [NPC_STATES.SIDE]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
                     [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true },
                     [NPC_STATES.FRONT]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true }
+                }
+            },
+            {
+                x: 504, y: 168, key: "grace", interactable: false,
+                state: NPC_STATES.SIDE,
+                flipX: true,
+                animationConfig: {
+                    [NPC_STATES.SIDE]: { src: "../../assets/NPCSprites/GraceGWNOHAT.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
+                    [NPC_STATES.IDLE_FRONT]: { src: "../../assets/NPCSprites/GraceGWNOHAT.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true },
+                    [NPC_STATES.FRONT]: { src: "../../assets/NPCSprites/GraceGWNOHAT.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true }
+                }
+            },
+            {
+                x: 480, y: 216, key: "finley_dialogue", interactable: false, //true cuando este el diálogo
+                animationConfig: {
+                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/FinleyGW-Sheet.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true }
                 }
             }
         ],
@@ -27,15 +43,14 @@ export const prologueMaps = {
                 targetMap: "barStreet",
                 targetPlayerX: 490, targetPlayerY: 90
             },
-            /*cutscene trigger en mapa ej
+            //cutscene trigger en mapa ej
             {
-                x: 200, y: 150, width: 32, height: 32,
-                flagRequired: "idfk",
+                x: 337, y: 330, width: 46, height: 30,
+                flagRequired: "graceTurn",
                 cutscene: [
-                    { type: "STAND", who: "player", direction: "LEFT", time: 500 },
-                    { type: "TEXT", key: "idfk" }
+                    { type: "STAND", who: "grace", direction: "DOWN", time: 2000 },
                 ]
-            }*/
+            }
         ]
     },
     "barStreet": {
@@ -44,7 +59,7 @@ export const prologueMaps = {
         playerDefaultSpawn: { x: 490, y: 90 },
         npcs: [
             {
-                x: 100, y: 100, key: "prologue_kitty",
+                x: 100, y: 100, key: "prologue_kitty", interactable: true,
                 animationConfig: {
                     
                     [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/Kitties-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 2, loop: true }
@@ -99,7 +114,7 @@ export const prologueMaps = {
             {
                 x: 190, y: 440, width: 265, height: 40,
                 advanceChapter: "CHAPTER_1",
-                requiredItem: "money"
+                requiredFlag: "grabbedMoney"
             },
             {
                 x: 190, y: 440, width: 265, height: 40,
@@ -144,7 +159,8 @@ export const prologueMaps = {
                 dialogueKey: "grabbed_money", 
                 animationConfig: {
                     [NPC_STATES.IDLE]: { src: "./assets/ItemSprites/Coins.png", frameCount: 1, frameSpeed: 1, loop: true }
-                }
+                },
+                triggerFlag: "grabbedMoney"
             }
         ],
         triggers: [

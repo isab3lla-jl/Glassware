@@ -95,13 +95,21 @@ export default class MapManager {
                 });
                 
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "bennet_dialogue");
+                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "grace");
+                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "finley_dialogue");
             }
             
-            if (mapKey === "barStreet" && gameInstance.chapterManager.getFlag("hasTalkedToElder")) {
+            /*if (mapKey === "barStreet" && gameInstance.chapterManager.getFlag("hasTalkedToElder")) {
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "mystic_signpost");
-            }
+            }*/
 
-            this.activeNpcs = runtimeNpcs.map(n => new NPC(n.x, n.y, n.key, n.animationConfig, n.dialogueVariants));
+            this.activeNpcs = runtimeNpcs.map(n => {
+                const npc = new NPC(n.x, n.y, n.key, n.interactable, n.animationConfig, n.dialogueVariants);
+                npc.key = n.key;
+                if (n.state) npc.state = n.state;
+                npc.flipX = n.flipX ?? false;
+                return npc;
+            });
             this.activeItems = runtimeItems.map(i => new Item(i.x, i.y, i.name, i.dialogueKey, i.animationConfig, i.triggerFlag));
             this.activeTriggers = mapConfig.triggers 
                 ? mapConfig.triggers.map(trigger => ({ ...trigger }))

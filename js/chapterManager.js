@@ -18,10 +18,12 @@ export default class ChapterManager {
             tutorialQuest: false,
             //prologue flags
             talkedToBennet: false,
+            graceTurn: false,
             doorDialogue: false,
             checkedDoor: false,
             grabbedKey: false,
-            sawRoomCutscene: false
+            sawRoomCutscene: false,
+            grabbedMoney: false
         };
 
 
