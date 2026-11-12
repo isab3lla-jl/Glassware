@@ -60,7 +60,6 @@
       "text":"Tú también, cuídiate.",
       "triggerFlag":"talkedToBennet"
     }
-
   ],
   "bennet_repeat": [
     {
@@ -70,6 +69,15 @@
     {
       "speaker":"Opal",
       "text":"Tú también, cuídiate."
+    }
+  ],
+  "prologue_kitty": [
+    {
+      "speaker":"Estúpido Gato",
+      "text":"Miau"
+    },{
+      "speaker":"Estúpido Gato",
+      "text":":3"
     }
   ],
   "locked_door": [
