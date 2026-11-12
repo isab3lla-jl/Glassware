@@ -1,4 +1,5 @@
 import Player from "./Player.js";
+import { ITEM_ICONS } from "./itemIcons.js";
 import { NPC_STATES } from "./Npc.js";
 import MapManager from "./MapManager.js";
 import DialogueManager, { loadDialogueData, getEntry } from "./dialogueManager.js";
@@ -44,10 +45,17 @@ export default class Game {
 
         this.npcs = [];
         this.items = [];
+        this.itemIcons = {};
+        for (const [name, src] of Object.entries(ITEM_ICONS)) {
+            const img = new Image();
+            img.src = src;
+            this.itemIcons[name] = img;
+        }
 
         this.inventory = [];
         this.discarded = [];
         this.maxInventorySlots = 6;
+        
 
         this.titleCard = null;
 
@@ -404,7 +412,7 @@ export default class Game {
             npc.update(dt);
             npc.updateCutsceneMovement(dt);
 
-            if (!this.dialogueManager.isActive && !this.mapManager.isCutscenePlaying && npc.playerIsNear(this.player)) {
+            if (npc.interactable && !this.dialogueManager.isActive && !this.mapManager.isCutscenePlaying && npc.playerIsNear(this.player)) {
                 if (this.player.keys.e) {
                     const key = npc.interact(this.chapterManager);
                     
@@ -477,7 +485,7 @@ export default class Game {
         if (!this.chapterManager.getFlag("tutorialQuest")) {
             this.hint = "hint_quest";
             this.hintTimer += dt;
-            if (this.hintTimer >= 10) {
+            if (this.hintTimer >= 8) {
                 this.chapterManager.setFlag("tutorialQuest", true);
                 this.hintTimer = 0;
             }
@@ -701,8 +709,8 @@ export default class Game {
 
         this.ctx.save();
 
-        this.ctx.fillStyle = "rgba(76, 38, 38, 0.69)";
-        this.ctx.strokeStyle = "#3f1818";
+        this.ctx.fillStyle = "rgba(189, 122, 28, 0.4)";
+        this.ctx.strokeStyle = "rgb(209, 133, 27)";
         this.ctx.lineWidth = 3;
         this.ctx.fillRect(x, y, hotbarWidth, hotbarHeight);
         this.ctx.strokeRect(x, y, hotbarWidth, hotbarHeight);
@@ -711,20 +719,36 @@ export default class Game {
             const slotX = x + padding + (i * (slotSize + padding));
             const slotY = y + padding;
 
-            this.ctx.fillStyle = "rgba(90, 42, 42, 0.69)";
-            this.ctx.strokeStyle = "#3f1818";
+            this.ctx.fillStyle = "rgba(189, 122, 28, 0.4)";
+            this.ctx.strokeStyle = "rgb(156, 103, 29)";
             this.ctx.lineWidth = 2;
             this.ctx.fillRect(slotX, slotY, slotSize, slotSize);
             this.ctx.strokeRect(slotX, slotY, slotSize, slotSize);
 
             if (this.inventory[i]) {
-                this.ctx.fillStyle = "#ffffff";
-                this.ctx.font = "10px 'PixelifySans'";
-                this.ctx.textAlign = "center";
-                this.ctx.textBaseline = "middle";
+                const name = this.inventory[i];
+                const icon = this.itemIcons[name];
 
-                //ctx.drawImage(itemIcon, slotX + 4, 32, 32);
-                this.ctx.fillText(this.inventory[i].substring(0, 5), slotX + (slotSize / 2), slotY + (slotSize / 2));
+                if (icon && icon.complete && icon.naturalWidth > 0) {
+                    const maxSize = slotSize - 8;
+                    const scale = Math.min(maxSize / icon.naturalWidth, maxSize / icon.naturalHeight);
+                    const w = icon.naturalWidth * scale;
+                    const h = icon.naturalHeight * scale;
+
+                    this.ctx.imageSmoothingEnabled = false;
+                    this.ctx.drawImage(
+                        icon,
+                        slotX + (slotSize - w) / 2,
+                        slotY + (slotSize - h) / 2,
+                        w, h
+                    );
+                } else {
+                    this.ctx.fillStyle = "#ffffff";
+                    this.ctx.font = "10px 'PixelifySans'";
+                    this.ctx.textAlign = "center";
+                    this.ctx.textBaseline = "middle";
+                    this.ctx.fillText(name.substring(0, 5), slotX + (slotSize / 2), slotY + (slotSize / 2));
+                }
             }
         }
 

@@ -13,13 +13,14 @@ export const NPC_STATES = {
 };
 
 export default class NPC extends Sprite{
-    constructor (x, y, dialogueKey = "key", animationConfig = {}, dialogueVariants = []) {
+    constructor (x, y, dialogueKey = "key", interactable = true,  animationConfig = {}, dialogueVariants = []) {
         super(x, y, 27, 33);
 
         this.dialogueKey = dialogueKey;
         this.animationConfig = animationConfig;
         this.dialogueVariants = dialogueVariants;
-        this.showPrompt = true;
+        this.interactable = interactable;
+        this.showPrompt = interactable;
         this.active = true;
         this.state = NPC_STATES.IDLE;
         this.initAnimations(this.animationConfig);
