@@ -8,9 +8,9 @@ export const prologueMaps = {
         playerDefaultSpawn: { x: 350, y: 150 },
         npcs: [
             {
-                x: 250, y: 230, key: "bennet_dialogue", interactable: true,
+                x: 250, y: 230, key: "bennet_bar_dialogue", interactable: true,
                 dialogueVariants: [
-                    { flag: "talkedToBennet", key: "bennet_repeat" }
+                    { flag: "talkedToBennet", key: "bennet_bar_repeat" }
                 ],
                 animationConfig: {
                     [NPC_STATES.SIDE]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
