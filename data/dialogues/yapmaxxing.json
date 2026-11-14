@@ -11,18 +11,38 @@
   "quest_find_key": { "text": "Find the key" },
   "quest_get_vial": { "text": "Get vial in time" },
   
-  "bennet_dialogue": [
+  "bennet_bar_dialogue": [
     { 
-      "speaker": "Opal",
+      "speaker":"Opal",
       "text":"Been a while since I've seen you Bennet, what are you having tonight?" 
     },
     {
-      "speaker": "Bennet",
-      "text":"Yeah, it has been. Just the usual please."
+      "speaker":"Bennet",
+      "text":"Yeah, it has been."
+     },
+     {
+      "speaker":"Bennet",
+      "text":"Just the usual please."
      },
     {
-      "speaker": "Opal",
+      "speaker":"Opal",
       "text":"Right away!"
+    },
+    {
+      "speaker":"Opal",
+      "text":"How's that stray cat doing?"
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Oh, quite well actually."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"He eats quite a lot."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Good to hear, he was really cute."
     },
     {
       "speaker":"Opal",
@@ -66,7 +86,7 @@
       "triggerFlag":"talkedToBennet"
     }
   ],
-  "bennet_repeat": [
+  "bennet_bar_repeat": [
     {
       "speaker":"Bennet",
       "text":"You have a nice night now."
@@ -95,24 +115,34 @@
   "check_bar": [
     {
       "speaker":"Opal",
-      "text":"I should check the bar"
+      "text":"I should check the bar."
     }
   ],
   "need_money": [
     {
       "speaker":"Opal",
-      "text":"I need money before going that way..."
+      "text":"I should grab my money before going that way..."
     }
   ],
   "grabbed_keys": [
     {
       "speaker":"Opal",
-      "text":"There you are, gotta stop forgetting these..."
+      "text":"There you are, gotta stop forgetting this..."
     },
     {
       "speaker":"",
       "text":"You grabbed Opal's House Key",
       "triggerFlag":"grabbedKey"
+    }
+  ],
+  "going_to_bed_home": [
+    {
+      "speaker":"Opal",
+      "text":"I'm so fucking tired."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I should stop sneaking in drinks at work..."
     }
   ],
   "first_onyx_cutscene": [
@@ -130,7 +160,7 @@
     },
     {
       "speaker":"Onyx",
-      "text":"You never let me hang around anymore."
+      "text":"I never get to hang around."
     },
     {
       "speaker":"Opal",
@@ -138,7 +168,7 @@
     },
     {
       "speaker":"Opal",
-      "text":"The one day that I sleep well and you show up immediately."
+      "text":"I don't even get to sleep well and you show up immediately."
     },
     {
       "speaker":"Onyx",
@@ -150,22 +180,22 @@
     },
     {
       "speaker":"Onyx",
-      "text":"Ugh, you're never any fun"
+      "text":"Ugh, you're never any fun."
     }
   ],
   "first_onyx_cutscene_pt2": [
     {
       "speaker":"Onyx",
-      "text":"Oh, before I forget... Aren't you missing something?"
+      "text":"Clueless as ever I see."
     },
     {
       "speaker":"Opal",
-      "text":"What are you talking about?"
+      "text":"What now?"
 
     },
     {
       "speaker":"Onyx",
-      "text":"Nothing, nothing, it's just that..."
+      "text":"Nothing, nothing..."
     },
     {
       "speaker":"Onyx",
@@ -181,47 +211,83 @@
     },
     {
       "speaker":"Opal",
-      "text":"...what?"
+      "text":"..."
+    },
+    {
+      "speaker":"Opal",
+      "text":"What?"
     },
     {
       "speaker":"Onyx",
-      "text":"I thought I'd let you know, since your oh so precious vial is supposed to be there ;)"
+      "text":"Out of all your weird habits sleepwalking isn't one of them, is it?"
     }
   ],
   "first_onyx_cutscene_pt3": [
     {
       "speaker":"Opal",
-      "text":"Shit, shit, shit! It isn't here..."
+      "text":"Why's it not here?"
     },
     {
       "speaker":"Onyx",
-      "text":"Poor little thing, I guess I'll have stick around for longer"
-    },
-    {
-      "speaker":"Onyx",
-      "text":"I might even become you :)"
+      "text":"Lost your little Vial now? "
     },
     {
       "speaker":"Opal",
-      "text":"..."
+      "text":"Where the fuck is it? Did someone get in?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Why didn't they grab the money?"
     },
     {
       "speaker":"Onyx",
-      "text":"Of course, if you don't want that, you have to get to it fast ♪♪"
+      "text":"Maybe they're just really into weird looking glass containers?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Shut the fuck up! I need to think."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I think that creep from the bar was following me last night..."
     },
     {
       "speaker":"Onyx",
-      "text":"Remember, time is ticking"
+      "text":"Maybe if you were doing something other than drinking on the job, you would remember things more clearly."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I gotta find Finley, he was drinking with that creep last night."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Maybe he knows something."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"A half-assed plan as always!"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Guess you get to enjoy my company a little longer ;)"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Just what I needed..."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I need to hurry up. I can't bear Onyx for too long..."
     }
   ],
   "grabbed_money": [
     {
       "speaker":"Opal",
-      "text":"I need to find my vial soon..."
+      "text":"Never hurts to have full pockets."
     },
     {
       "speaker":"",
-      "text":"You grabbed money."
+      "text":"You grabbed some money."
 
     }
   ],
