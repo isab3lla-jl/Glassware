@@ -293,5 +293,409 @@
   ],
   "title_chapter_1": {
     "title": "Act 1"
+  },
+  "finley_questions": [
+    {
+      "speaker":"Opal",
+      "text":"Finley, I need to talk to you."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Its urgent."
+    },
+    {
+      "speaker":"Finley",
+      "text":"Hey Opal, I'm so sorry I didn't pay my tab yesterday."
+    },
+    {
+      "speaker":"Finley",
+      "text":"Here, let me gi-"
+    },
+    {
+      "speaker":"Opal",
+      "text":"I'm not here about that Finley, I need to ask you some questions"
+    },
+    {
+      "speaker":"Finley",
+      "text":"Sure thing I guess... What do you need to know?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"That person you were drinking with yesterday, you know them well?"
+    },
+    {
+      "speaker":"Finley",
+      "text":"Not really, I try to make small talk but they barely answer"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Do you know anything about them? I need to find them."
+    },
+    {
+      "speaker":"Finley",
+      "text":"I guess they like yellow? They had a really pretty pocket watch with some sort of yellow stuff embedded in it."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Ok..."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Did you at least see where they went after they left?"
+    },
+    {
+      "speaker":"Finley",
+      "text":"Not yesterday, but they always seem to head straight down the street that's right outside your house."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Alright, thank you Finley"
+    },
+    {
+      "speaker":"Finley",
+      "text":"You're welcome."
+    },
+    {
+      "speaker":"Finley",
+      "text":"Oh, here's your mone-"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Not now Finley, I don't have time"
+    },
+    {
+      "speaker":"Finley",
+      "text":"See you later then..."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Bye."
+    }
+  ],
+  "locked_grace_door":[
+    {
+      "speaker":"Opal",
+      "text":"Fuck, of course its locked."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I need to get in, the Vial has got to be there."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Bennet lives somewhere around here, maybe he could help."
+    }
+  ],
+  "grace_locked_door_repeat": [
+    {
+      "speaker":"Opal",
+      "text":"Still locked."
+    }
+  ],
+  "bennet_cat_interact":
+  [
+    {
+      "speaker":"Opal",
+      "text":"It's that stray Bennet is taking care of."
+    },
+    {
+      "speaker":"Opal",
+      "text":"How are you doing buddy?"
+    },
+    {
+      "speaker":"Cat",
+      "text":"Mreowww"
+    }
+  ],
+  "bennet_help":[
+    {
+      "speaker":"Bennet",
+      "text":"Opal, what a surprise!"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Hey Bennet, how's the day treating you?"
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Same as always, not much to do."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Did you need something?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"To be honest I'm interested in learning how to lockpick, thought about it all night after you said you're closing down the workshop."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Really? I'd love to teach you!"
+    },
+    {
+      "speaker":"Bennet",
+      "text":"I'm afraid I sold my tools though, you're going to have to wait while I procure some new ones."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I can get them for you! I'd rather start as soon as possible."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Well there might be some spare picks in one of the abandoned warehouses around here, but you're going to have to look around for them..."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"I'm afraid I'm also going to have to ask you for a few drinks Opal, they help my hands not be so shaky."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Sure thing, I'll find the lockpicks and bring back a bottle."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Thank you Opal."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"I'm glad to see you're eager to learn, I'll wait for you to come back."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"And don't fall for the cats tricks, I already fed him!"
+    },
+    {
+      "speaker":"Opal",
+      "text":"I'll keep it in mind, thank you Bennet."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Go on then, good luck!"
+    }
+  ],
+  "trash_interact_1": [
+    {
+      "speaker":"Opal",
+      "text":"Just junk here."
+    }
+  ],
+  "trash_interact_2":[
+    {
+      "speaker":"Opal",
+      "text":"Nothing useful..."
+    }
+  ],
+  "trash_interact_3":[
+    {
+      "speaker":"Opal",
+      "text":"Gross..."
+    }
+  ],
+  "trash_interact_4":[
+    {
+      "speaker":"Opal",
+      "text":"Why even store this?"
+    }
+  ],
+  "hidden_item_interact":[
+    {
+      "speaker":"Opal",
+      "text":"Looks like a lockpicking set, but rusted but it should work for Bennet."
+    },
+    {
+      "speaker":"",
+      "text":"You got a Lockpicking Set."
+    }
+  ],
+  "grab_bar_bottle":[
+    {
+      "speaker":"Opal",
+      "text":"I've drank more than enough of these, what's one more off my own books?"
+    }
+  ],
+  "bennet_interact_bottle_only": [
+    {
+      "speaker":"Opal",
+      "text":"Here you go."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Thank you Opal, I really appreciate it."
+    },
+    {
+      "speaker":"Opal",
+      "text":"It's no problem Bennet, you're the one helping me here"
+    },
+    {
+      "speaker":"Opal",
+      "text":"I'll return once I find some lockpicks"
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Good luck!"
+    }
+  ],
+  "bennet_interact_lockpicks_only": [
+    {
+      "speaker":"Opal",
+      "text":"Hey Bennet, do these work?"
+    },
+    {
+      "speaker":"Bennet",
+      "text":"They're a bit worn but they should work for a beginner."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I'll return with the drinks then."
+    }
+  ],
+  "bennet_interact_with_both_items": [
+    {
+      "speaker":"Opal",
+      "text":"Here's what you asked for."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Great, lets get started!"
+    },
+    {
+      "speaker":"Bennet",
+      "text":"You're just going to watch me open this lock for now, ok?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Go ahead, you're the master."
+    },
+    {
+      "speaker":"",
+      "text":"(Bennet opens the lock slowly, carefully explaining each step to you."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Not too hard, right?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Doesn't seem too hard, mind if I give it a try?"
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Go ahead, tell me if you struggle with something"
+    },
+    {
+      "speaker":"",
+      "text":"(You follow Bennet's guide and open the lock with ease."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Seems like you're a natural Opal, that was really good!"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Thanks Bennet, guess your skill rubbed off on me."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I need to be on my way now though, I have some things to do."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Of course, it got a bit late with all the searching around you had to do."
+    },
+    {
+      "speaker":"Bennet",
+      "text":"Take the pick set with you so you can keep practicing, I hope to see you again soon for another class."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I'll try my best to find the time for it, see you around Bennet."
+    },
+    {
+      "speaker":"Opal",
+      "text":"(I should be able to open that door now.)"
+    }
+
+  ],
+  "grace_clue_1":[
+    {
+      "speaker":"Opal",
+      "text":"This is entirely useless."
+    }
+  ],
+  "grace_clue_2":[
+    {
+      "speaker":"Opal",
+      "text":"All of these look similar, but there's something off about them..."
+    }
+  ],
+  "grace_clue_3":[
+    {
+      "speaker":"Opal",
+      "text":"I don't even know what this is, I'm at a loss."
+    }
+  ],
+  "grace_right_clue": [
+    {
+      "speaker":"Opal",
+      "text":"Hmm, what's this?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Mental Asylum papers? I thought that dress looked weird..."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Looks like there's some sort of payment letter here too."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Adressed to Grace huh? At least I got a name now."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Looks like the asylum is in the midst of the city, I'm gonna have to use the train."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I need to head over there and look for the bastard, can't afford to sit around here."
+    }
+  ],
+"train_dialogue":[
+  {
+    "speaker":"Onyx",
+    "text":"Well look at you being productive for once!"
+  },
+  {
+    "speaker":"Opal",
+    "text":"I've a got a damn good incentive"
+  },
+  {
+    "speaker":"Onyx",
+    "text":"You're still taking too long ;)"
+  },
+  {
+    "speaker":"Opal",
+    "text":"Shut up, I'll get it back."
+  },
+  {
+    "speaker":"Opal",
+    "text":"I just need to find that fucking thief."
+  },
+  {
+    "speaker":"Onyx",
+    "text":"Oh yeah, such an adequate task for a hungover and barely functioning."
+  },
+  {
+    "speaker":"Opal",
+    "text":"Go away, I need to think how to get into that asylum."
+  },
+  {
+    "speaker":"Onyx",
+    "text":"Oh well, I'm gonna stick around for a while."
+  },
+  {
+    "speaker":"Onyx",
+    "text":"I'll let you wallow in your thoughts some more."
   }
+]
 }
