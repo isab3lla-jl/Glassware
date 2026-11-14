@@ -57,13 +57,17 @@ export default class Player extends Sprite {
         this.hitboxHeight = this.height - (this.hitboxOffset.y * 2);
 
 
+        const normalizeKey = (e) => e.key.length === 1 ? e.key.toLowerCase() : e.key;
+
         window.addEventListener("keydown", (e) => {
-            if (e.key in this.keys) this.keys[e.key] = true;
+            const key = normalizeKey(e);
+            if (key in this.keys) this.keys[key] = true;
         });
 
         window.addEventListener("keyup", (e) => {
-            if (e.key in this.keys) this.keys[e.key] = false;
-        }); 
+            const key = normalizeKey(e);
+            if (key in this.keys) this.keys[key] = false;
+        });
     }
 
     update(dt, mapData, timer) {
@@ -78,13 +82,13 @@ export default class Player extends Sprite {
         this.speedX = 0;
         this.speedY = 0;
 
-        if (this.keys.ArrowRight || this.keys.d) this.speedX = this.speed;
+        if (this.keys.ArrowRight || this.keys.d || this.keys.D) this.speedX = this.speed;
         if (!this.keys.ArrowRight && !this.keys.d) this.speedX = 0;
-        if (this.keys.ArrowLeft || this.keys.a) this.speedX = -this.speed;
+        if (this.keys.ArrowLeft || this.keys.a || this.keys.A) this.speedX = -this.speed;
         
-        if (this.keys.ArrowUp || this.keys.w) this.speedY = -this.speed;
+        if (this.keys.ArrowUp || this.keys.w || this.keys.W) this.speedY = -this.speed;
         if (!this.keys.ArrowUp && !this.keys.w) this.speedY = 0;
-        if (this.keys.ArrowDown || this.keys.s) this.speedY = this.speed;
+        if (this.keys.ArrowDown || this.keys.s || this.keys.S) this.speedY = this.speed;
 
         let targetX = this.speedX * dt;
         let targetY = this.speedY * dt;
