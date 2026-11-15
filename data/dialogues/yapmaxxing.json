@@ -100,10 +100,10 @@
   ],
   "prologue_kitty": [
     {
-      "speaker":"Kitty",
+      "speaker":"Kitty", "portrait": "orangeCat",
       "text":"Meow"
     },{
-      "speaker":"Kitty",
+      "speaker":"Kitty", "portrait": "orangeCat",
       "text":":3"
     }
   ],
@@ -425,7 +425,7 @@
       "text":"How are you doing buddy?"
     },
     {
-      "speaker":"Cat",
+      "speaker":"Cat", "portrait": "calicoCat",
       "text":"Mreowww"
     }
   ],

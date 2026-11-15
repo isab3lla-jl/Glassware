@@ -99,11 +99,11 @@
   ],
   "prologue_kitty": [
     {
-      "speaker": "Kitty",
+      "speaker": "Kitty", "portrait": "orangeCat",
       "text": "Miau"
     },
     {
-      "speaker": "Kitty",
+      "speaker": "Kitty", "portrait": "orangeCat",
       "text": ":3"
     }
   ],
@@ -424,7 +424,7 @@
       "text": "¿Cómo estás, amiguito?"
     },
     {
-      "speaker": "Cat",
+      "speaker": "Cat", "portrait": "calicoCat",
       "text": "Miauuu."
     }
   ],
