@@ -21,6 +21,7 @@ export default class NPC extends Sprite{
         this.dialogueVariants = dialogueVariants;
         this.interactable = interactable;
         this.showPrompt = interactable;
+        this.giveItem = null;
         this.active = true;
         this.state = NPC_STATES.IDLE;
         this.initAnimations(this.animationConfig);
@@ -44,7 +45,7 @@ export default class NPC extends Sprite{
 
     interact(chapterManager) {
         if (chapterManager) {
-            return chapterManager.resolveDialogueKey(this.dialogueKey, this.dialogueVariants);
+            return chapterManager.resolveDialogueKey(this.dialogueKey, this.dialogueVariants, this.requiredItems);
         }
         return this.dialogueKey;
     }

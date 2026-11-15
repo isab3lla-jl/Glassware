@@ -306,6 +306,7 @@
   "quest_look_for_clues": { "text": "Look for hidden clues inside the house" },
   "quest_go_to_assylum": { "text": "Get to the asylum" },
   "quest_go_to_train_station": { "text": "Go to the train station" },
+  "quest_get_off_train": { "text": "Get off the train" },
 
 "unavailable_door":[
    {
@@ -723,6 +724,12 @@
     {
       "speaker":"Onyx",
       "text":"I'll let you wallow in your thoughts some more."
+    }
+  ],
+  "leave_train": [
+    {
+      "speaker": "Opal",
+      "text": "I need to leave."
     }
   ]
 }

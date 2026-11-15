@@ -103,15 +103,20 @@ export const QUESTS = {
             id: "go_to_assylum",
             type: "main",
             key: "quest_go_to_assylum",
-            showWhen: ["readGracePapers"],
-            //hideWhen: ["readGracePapers"]
+            showWhen: ["readGracePapers"]
         },
         {
             id: "go_to_train_station",
             type: "side",
             key: "quest_go_to_train_station",
             showWhen: ["readGracePapers"],
-            //hideWhen: ["readGracePapers"]
+            hideWhen: ["sawTrainCutscene"]
+        },
+        {
+            id: "get_off_train",
+            type: "side",
+            key: "quest_get_off_train",
+            showWhen: ["sawTrainCutscene"]
         },
     ]
 };

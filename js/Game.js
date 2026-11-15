@@ -358,6 +358,49 @@ export default class Game {
 
                 this.mapManager.startCutscene(roomCutscene, this);
             }
+
+            if (nextMapKey === "trainCar1" && !this.chapterManager.getFlag("sawTrainCutscene")) {
+                
+                this.chapterManager.setFlag("sawTrainCutscene", true);
+
+                const trainCutscene = [
+                    { type: "WALK", who: "player", direction: "UP", time: 700 },
+                    { type: "WALK", who: "player", direction: "RIGHT", time: 1400 },
+                    { type: "CHANGE_MAP", targetMap: "trainCar2", x: 155, y: 223 },
+                    { type: "WALK", who: "player", direction: "RIGHT", time: 500 },
+                    { type: "WALK", who: "player", direction: "UP", time: 550 },
+                    { type: "STAND", who: "player", direction: "LEFT", time: 500 },
+                    { 
+                        type: "ADD_NPC", 
+                        npcKey: "onyx", 
+                        x: 168, 
+                        y: 153,
+                        animationConfig: {
+                            [NPC_STATES.IDLE]:       { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 4, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 5, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 6, frameSpeed: 4, loop: true }
+                        }
+                    },
+                    { type: "STAND", who: "onyx", direction: "RIGHT", time: 500 },
+                    { type: "TEXT", key: "train_dialogue" },
+                    { type: "FADE", direction: "IN" },
+                    { type: "REMOVE_NPC", npcKey: "onyx"},
+                    { type: "FADE", direction: "OUT" },
+                    { type: "WALK", who: "player", direction: "DOWN", time: 550 },
+                    { type: "WALK", who: "player", direction: "LEFT", time: 500 },
+                    { type: "CHANGE_MAP", targetMap: "trainCar1", x: 540, y: 210 },
+                    { type: "WALK", who: "player", direction: "LEFT", time: 1400 },
+                    { type: "STAND", who: "player", direction: "DOWN", time: 500 },
+                    //{ type: "GAME_END" }
+                ];
+
+                
+                this.mapManager.startCutscene(trainCutscene, this);
+            }
         }
     }
 
@@ -417,56 +460,71 @@ export default class Game {
 
             if (npc.interactable && !this.dialogueManager.isActive && !this.mapManager.isCutscenePlaying && npc.playerIsNear(this.player)) {
                 if (this.player.keys.e) {
-                    const key = npc.interact(this.chapterManager);
-                    
+                    let key;
+                    const give = npc.giveItem;
+                    const itemIndex = give ? this.inventory.indexOf(give.item) : -1;
+                    const alreadyGiven = give?.triggerFlag && this.chapterManager.getFlag(give.triggerFlag);
+
+                    if (give && itemIndex !== -1 && !alreadyGiven) {
+                        this.inventory.splice(itemIndex, 1);
+                        this.discarded.push(give.item);
+
+                        if (give.triggerFlag) {
+                            this.chapterManager.setFlag(give.triggerFlag, true);
+                        }
+                        key = give.dialogueKey;
+                    } else {
+                        key = npc.interact(this.chapterManager);
+                    }
+
                     this.dialogueManager.startDialogue(key);
                     this.chapterManager.setFlag("tutorialInteract", true);
-                    
-                    this.player.enabled = false;
-                    this.player.keys.e = false; 
+
+                    this.player.enabled = !this.dialogueManager.isActive;
+                    this.player.keys.e = false;
                     break;
                 }
             }
         }
 
-        for (let items of this.items) {
-            if (this.inventory.includes(items.name) || this.discarded.includes(items.name)) {
-                items.active = false;
+        for (let item of this.items) {
+            if (this.inventory.includes(item.name) || this.discarded.includes(item.name)) {
+                item.active = false;
             }
 
-            if (!items.active) continue;
+            if (!item.active) continue;
 
-            items.update(dt);
+            item.update(dt);
 
             if (this.dialogueManager.isActive || this.mapManager.isCutscenePlaying) continue;
 
-            if (items.playerIsNear(this.player) && this.player.keys.e) {
-                if (!items.pickup) {
+            if (item.playerIsNear(this.player) && this.player.keys.e) {
+                if (!item.pickup) {
 
                     this.chapterManager.setFlag("tutorialInteract", true);
 
-                    if (items.triggerFlag) {
-                        this.chapterManager.setFlag(items.triggerFlag, true);
+                    if (item.triggerFlag) {
+                        this.chapterManager.setFlag(item.triggerFlag, true);
                     }
 
-                    if (items.dialogueKey) {
-                        this.dialogueManager.startDialogue(items.dialogueKey);
+                    if (item.dialogueKey) {
+                        this.dialogueManager.startDialogue(item.dialogueKey);
                         this.player.enabled = !this.dialogueManager.isActive;
                     }
 
-                    if (items.once) items.active = false;
+                    if (item.once) item.active = false;
 
                 } else if (this.inventory.length < this.maxInventorySlots) {
-                    const itemName = items.grab();
+                    const itemName = item.grab();
                     this.inventory.push(itemName);
                     this.chapterManager.setFlag("tutorialInteract", true);
 
-                    if (items.triggerFlag) {
-                        this.chapterManager.setFlag(items.triggerFlag, true);
+                    if (item.triggerFlag) {
+                        this.chapterManager.setFlag(item.triggerFlag, true);
                     }
 
-                    if (items.dialogueKey) {
-                        this.dialogueManager.startDialogue(items.dialogueKey);
+                    if (item.dialogueKey) {
+                        this.dialogueManager.startDialogue(item.dialogueKey);
                         this.player.enabled = false;
                     }
                 } else {
@@ -670,7 +728,7 @@ export default class Game {
             this.ctx.restore();
         }
 
-        /*if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
+        if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
             const triggers = this.mapManager.getTriggers();
             
             this.ctx.save();
@@ -693,7 +751,7 @@ export default class Game {
                 );
             });
             this.ctx.restore();
-        }*/
+        }//*/
         
         for (let items of this.items) {
             if ((!this.inventory.includes(items.name) && !this.discarded.includes(items.name)) && items.active) {
@@ -727,7 +785,7 @@ export default class Game {
 
         this.ctx.save();
 
-        this.ctx.fillStyle = "rgba(189, 122, 28, 0.4)";
+        this.ctx.fillStyle = "rgb(189, 122, 28)";
         this.ctx.strokeStyle = "rgb(209, 133, 27)";
         this.ctx.lineWidth = 3;
         this.ctx.fillRect(x, y, hotbarWidth, hotbarHeight);
@@ -737,8 +795,8 @@ export default class Game {
             const slotX = x + padding + (i * (slotSize + padding));
             const slotY = y + padding;
 
-            this.ctx.fillStyle = "rgba(189, 122, 28, 0.4)";
-            this.ctx.strokeStyle = "rgb(156, 103, 29)";
+            this.ctx.fillStyle = "rgb(144, 87, 8)";
+            this.ctx.strokeStyle = "rgb(98, 64, 16)";
             this.ctx.lineWidth = 2;
             this.ctx.fillRect(slotX, slotY, slotSize, slotSize);
             this.ctx.strokeRect(slotX, slotY, slotSize, slotSize);

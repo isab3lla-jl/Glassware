@@ -201,12 +201,11 @@ export const chapter1Maps = {
         triggers: [
             //cutscene trigger train door
             {
-                x: 168, y: 144, width: 48, height: 64, //not set (ask twin)
-                requiredFlag: "readGracePapers", // not set yet
-                flagRequired: "trainCutscene", // unsure if it will be necesary, maybe not
-                cutscene: [
-                    //{ type: "STAND", who: "grace", direction: "DOWN", time: 2000 }, //not set yet
-                ]
+                x: 168, y: 144, width: 48, height: 64,
+                targetMap: "trainCar1",
+                targetPlayerX: 350, targetPlayerY: 320,
+                requiredItem: "money",
+                requiredFlag: "readGracePapers",
             },
             {
                 x: 168, y: 144, width: 48, height: 74,
@@ -218,8 +217,30 @@ export const chapter1Maps = {
                 x: 264, y: 440, width: 192, height: 40,
                 targetMap: "crossStreet",
                 targetPlayerX: 360, targetPlayerY: 85,
-            }
+            },
         ]
+    },
+    "trainCar1": {
+        imageSrc: '../assets/Tilemaps/chap1/trainCar2.png',
+        jsonDataSrc: '../data/maps/chap1/trainCar2.json',
+        playerDefaultSpawn: { x: 360, y: 50 },
+        triggers: [
+            {
+                x: 336, y: 350, width: 48, height: 40,
+                advanceChapter: "CHAPTER_2",
+                requiredFlag: "sawTrainCutscene"
+            },
+            {
+                x: 560, y: 216, width: 40, height: 48,
+                dialogueKey: "leave_train",
+                repeatable: true,
+            },
+        ]
+    },
+    "trainCar2": {
+        imageSrc: '../assets/Tilemaps/chap1/trainCar1.png',
+        jsonDataSrc: '../data/maps/chap1/trainCar1.json',
+        playerDefaultSpawn: { x: 360, y: 50 },
     },
     "finleyStreet": {
         imageSrc: '../assets/Tilemaps/chap1/finleyStreet.png',
@@ -249,7 +270,7 @@ export const chapter1Maps = {
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [
             {
-                x: 648, y: 144, key: "bennet_cat_interact", interactable: true,
+                x: 648, y: 144, key: "bennet_cat_interact", interactable: true, flipX: true,
                 animationConfig: {
                     [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/Kitties-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 2, loop: true }
                 }
@@ -284,8 +305,13 @@ export const chapter1Maps = {
         npcs: [
             {
                 x: 384, y: 168, key: "bennet_help", interactable: true,
+                giveItem: {
+                    item: "gin",
+                    dialogueKey: "bennet_interact_bottle_only",
+                    triggerFlag: "givenGin",
+                },
                 dialogueVariants: [
-                    { flags: ["ginGrabbed", "lockpicksGrabbed", "talkedToBennetHouse" ], key: "bennet_interact_with_both_items" },
+                    { flags: ["ginGrabbed", "lockpicksGrabbed", "talkedToBennetHouse" ], key: "bennet_interact_with_both_items", requiredItem: "gin" },
                     { flags: ["ginGrabbed", "talkedToBennetHouse" ], key: "bennet_interact_bottle_only" },
                     { flag: "lockpicksGrabbed", key: "bennet_interact_lockpicks_only" },
                 ],
@@ -465,13 +491,12 @@ export const chapter1Maps = {
             ],
             items: [
                 {
-                    x: 384, y: 120, 
+                    x: 192, y: 134, 
                     name: "gin",
                     dialogueKey: "grab_bar_bottle", 
-                    /*animationConfig: {
-                        [NPC_STATES.IDLE]: { src: "./assets/ItemSprites/Coins.png", frameCount: 1, frameSpeed: 1, loop: true }
-                    },*/
-                    //triggerFlag: "ginGrabbed"
+                    animationConfig: {
+                        [NPC_STATES.IDLE]: { src: "./assets/ItemSprites/GinBottle.png", frameCount: 1, frameSpeed: 1, loop: true }
+                    },
                 }
             ],
             triggers: [
