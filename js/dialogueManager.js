@@ -1,3 +1,12 @@
+import { PORTRAITS } from "./portraits.js";
+
+const portraitImages = {};
+for (const [name, p] of Object.entries(PORTRAITS)) {
+    const img = new Image();
+    img.src = p.src;
+    portraitImages[name] = img;
+}
+
 let dialogueDatabase = {};
 
 export async function loadDialogueData(lang) {
@@ -110,6 +119,28 @@ export default class DialogueManager {
         return lines;
     }
 
+    drawPortrait(ctx, line, boxX, boxY, boxWidth) {
+        const key = line.portrait ?? line.speaker;
+        const config = PORTRAITS[key];
+        const img = portraitImages[key];
+
+        if (!config || !img || !img.complete || img.naturalWidth === 0) return;
+
+        const maxHeight = 110;
+        const scale = maxHeight / img.naturalHeight;
+        const w = img.naturalWidth * scale;
+        const h = img.naturalHeight * scale;
+
+        const bob = Math.sin(performance.now() / 180) * 3;
+        const x = config.side === "right" ? boxX + boxWidth - w - 20 : boxX + 20;
+        const y = boxY - h + 6 + bob;
+
+        ctx.save();
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(img, x, y, w, h);
+        ctx.restore();
+    }
+
     drawDialogue(ctx, canvasWidth, canvasHeight) {
         if (!this.isActive) return;
 
@@ -120,6 +151,8 @@ export default class DialogueManager {
         const boxHeight = 140;
         const boxX = (canvasWidth - boxWidth) / 2;
         const boxY = canvasHeight - boxHeight - 20;
+
+        this.drawPortrait(ctx, currentLine, boxX, boxY, boxWidth);
 
         ctx.fillStyle = "rgba(0, 0, 0, 0.9)";
         ctx.strokeStyle = "#eeeeee";             

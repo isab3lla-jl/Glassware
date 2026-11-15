@@ -315,7 +315,6 @@
     "text": "I don't need to go in there right now."
   }
 ],
-
   "finley_questions": [
     {
       "speaker":"Opal",
@@ -416,8 +415,7 @@
       "text":"Still locked."
     }
   ],
-  "bennet_cat_interact":
-  [
+  "bennet_cat_interact": [
     {
       "speaker":"Opal",
       "text":"It's that stray Bennet is taking care of."
@@ -642,7 +640,6 @@
       "text":"(I should be able to open that door now.)",
       "triggerFlag": "locksmithSkills"
     }
-
   ],
   "grace_clue_1":[
     {
