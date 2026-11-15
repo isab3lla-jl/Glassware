@@ -304,7 +304,7 @@
   "quest_get_bottle": { "text": "Get bottle" },
   "quest_get_lockpicks": { "text": "Get lockpicking tools" },
   "quest_look_for_clues": { "text": "Look for hidden clues inside the house" },
-  "quest_go_to_assylum": { "text": "Get to the assylum" },
+  "quest_go_to_assylum": { "text": "Get to the asylum" },
   "quest_go_to_train_station": { "text": "Go to the train station" },
 
 "unavailable_door":[
@@ -688,41 +688,41 @@
     }
   ],
 "train_dialogue":[
-  {
-    "speaker":"Onyx",
-    "text":"Well look at you being productive for once!"
-  },
-  {
-    "speaker":"Opal",
-    "text":"I've a got a damn good incentive"
-  },
-  {
-    "speaker":"Onyx",
-    "text":"You're still taking too long ;)"
-  },
-  {
-    "speaker":"Opal",
-    "text":"Shut up, I'll get it back."
-  },
-  {
-    "speaker":"Opal",
-    "text":"I just need to find that fucking thief."
-  },
-  {
-    "speaker":"Onyx",
-    "text":"Oh yeah, such an adequate task for a hungover and barely functioning."
-  },
-  {
-    "speaker":"Opal",
-    "text":"Go away, I need to think how to get into that asylum."
-  },
-  {
-    "speaker":"Onyx",
-    "text":"Oh well, I'm gonna stick around for a while."
-  },
-  {
-    "speaker":"Onyx",
-    "text":"I'll let you wallow in your thoughts some more."
-  }
-]
+    {
+      "speaker":"Onyx",
+      "text":"Well look at you being productive for once!"
+    },
+    {
+      "speaker":"Opal",
+      "text":"I've a got a damn good incentive"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"You're still taking too long ;)"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Shut up, I'll get it back."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I just need to find that fucking thief."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Oh yeah, such an adequate task for someone hungover and barely functioning."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Go away, I need to think about how to get into that asylum."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Oh well, I'm gonna stick around for a while."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"I'll let you wallow in your thoughts some more."
+    }
+  ]
 }
