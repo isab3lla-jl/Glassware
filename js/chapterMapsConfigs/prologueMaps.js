@@ -61,7 +61,6 @@ export const prologueMaps = {
             {
                 x: 100, y: 100, key: "prologue_kitty", interactable: true,
                 animationConfig: {
-                    
                     [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/Kitties-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 2, loop: true }
                 }
             }

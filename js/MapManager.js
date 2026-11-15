@@ -94,7 +94,7 @@ export default class MapManager {
                     }
                 });
                 
-                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "bennet_dialogue");
+                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "bennet_bar_dialogue");
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "grace");
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "finley_dialogue");
             }
@@ -113,6 +113,7 @@ export default class MapManager {
             this.activeItems = runtimeItems.map(i => {
                 const item = new Item(i.x, i.y, i.name, i.dialogueKey, i.animationConfig, i.triggerFlag);
                 item.pickup = i.pickup ?? true;
+                item.visible = i.visible ?? true;
                 item.once = i.once ?? false;
                 return item;
             });

@@ -61,7 +61,7 @@ export default class Game {
 
         this.lastTime = 0;
         
-        this.gameDuration = 100; //seconds
+        this.gameDuration = 1000; //seconds
         this.timer = this.gameDuration;
         this.timerActive = false;
 
@@ -264,13 +264,16 @@ export default class Game {
                 this.inventory.splice(itemIndex, 1);
             }
 
+            if (trigger.triggerFlag) {
+                this.chapterManager.setFlag(trigger.triggerFlag, true);
+            }
+
             if (trigger.advanceChapter) {
                 this.advanceChapter(trigger.advanceChapter);
                 break;
             }
 
             delete trigger.requiredItem;
-            console.log(trigger.requiredItem);
             this.executeMapTransition(trigger.targetMap, trigger.targetPlayerX, trigger.targetPlayerY);
             break;
         }
@@ -349,8 +352,8 @@ export default class Game {
                     { type: "STAND", who: "onyx", direction: "DOWN", time: 1000 },
                     { type: "REMOVE_NPC", npcKey: "onyx"},
                     { type: "STAND", who: "player", direction: "DOWN", time: 500 },
-                    { type: "START_TIMER" }
-//                  { type: "GAME_END" }
+                    { type: "START_TIMER" },
+                    //{ type: "GAME_END" }
                 ];
 
                 this.mapManager.startCutscene(roomCutscene, this);
@@ -667,7 +670,7 @@ export default class Game {
             this.ctx.restore();
         }
 
-        if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
+        /*if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
             const triggers = this.mapManager.getTriggers();
             
             this.ctx.save();
@@ -690,7 +693,7 @@ export default class Game {
                 );
             });
             this.ctx.restore();
-        }
+        }*/
         
         for (let items of this.items) {
             if ((!this.inventory.includes(items.name) && !this.discarded.includes(items.name)) && items.active) {
@@ -719,7 +722,7 @@ export default class Game {
         const hotbarWidth = (slotSize * slots) + (padding * (slots + 1));
         const hotbarHeight = slotSize + (padding * 2);
 
-        const x = (this.canvas.width - hotbarWidth) / 2;
+        const x = 20;
         const y = this.canvas.height - hotbarHeight - 20;
 
         this.ctx.save();
