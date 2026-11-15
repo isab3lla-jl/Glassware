@@ -7,6 +7,7 @@
   "hint_interact": { "text": "Press E to interact" },
   "hint_quest": { "text": "Opal's notes are on the left side of the screen. Use them as a guide." },
 
+  "quests_title": { "text": "Notes" },
   "quest_go_home": { "text": "Go home" },
   "quest_find_key": { "text": "Find the key" },
   "quest_get_vial": { "text": "Get vial in time" },
@@ -304,8 +305,9 @@
   "quest_get_bottle": { "text": "Get bottle" },
   "quest_get_lockpicks": { "text": "Get lockpicking tools" },
   "quest_look_for_clues": { "text": "Look for hidden clues inside the house" },
-  "quest_go_to_assylum": { "text": "Get to the assylum" },
+  "quest_go_to_assylum": { "text": "Get to the asylum" },
   "quest_go_to_train_station": { "text": "Go to the train station" },
+  "quest_get_off_train": { "text": "Get off the train" },
 
 "unavailable_door":[
    {
@@ -688,41 +690,47 @@
     }
   ],
 "train_dialogue":[
-  {
-    "speaker":"Onyx",
-    "text":"Well look at you being productive for once!"
-  },
-  {
-    "speaker":"Opal",
-    "text":"I've a got a damn good incentive"
-  },
-  {
-    "speaker":"Onyx",
-    "text":"You're still taking too long ;)"
-  },
-  {
-    "speaker":"Opal",
-    "text":"Shut up, I'll get it back."
-  },
-  {
-    "speaker":"Opal",
-    "text":"I just need to find that fucking thief."
-  },
-  {
-    "speaker":"Onyx",
-    "text":"Oh yeah, such an adequate task for a hungover and barely functioning."
-  },
-  {
-    "speaker":"Opal",
-    "text":"Go away, I need to think how to get into that asylum."
-  },
-  {
-    "speaker":"Onyx",
-    "text":"Oh well, I'm gonna stick around for a while."
-  },
-  {
-    "speaker":"Onyx",
-    "text":"I'll let you wallow in your thoughts some more."
-  }
-]
+    {
+      "speaker":"Onyx",
+      "text":"Well look at you being productive for once!"
+    },
+    {
+      "speaker":"Opal",
+      "text":"I've a got a damn good incentive"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"You're still taking too long ;)"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Shut up, I'll get it back."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I just need to find that fucking thief."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Oh yeah, such an adequate task for someone hungover and barely functioning."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Go away, I need to think about how to get into that asylum."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Oh well, I'm gonna stick around for a while."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"I'll let you wallow in your thoughts some more."
+    }
+  ],
+  "leave_train": [
+    {
+      "speaker": "Opal",
+      "text": "I need to leave."
+    }
+  ]
 }

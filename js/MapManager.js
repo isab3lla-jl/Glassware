@@ -98,6 +98,22 @@ export default class MapManager {
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "grace");
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "finley_dialogue");
             }
+
+            if (mapKey === "homeStreet" && gameInstance.chapterManager.getFlag("grabbedKey")) {
+                runtimeNpcs.push({
+                    x: 672,
+                    y: 384,
+                    key: "grace",
+                    interactable: false,
+                    animationConfig: {
+                        [NPC_STATES.IDLE]: { src: "./assets/NPCSprites/GraceGWNOHAT.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true }
+                    }
+                });
+            }
+
+            if (mapKey === "homeStreet" && gameInstance.chapterManager.getFlag("sawRoomCutscene")) {
+                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "grace");
+            }
             
             /*if (mapKey === "barStreet" && gameInstance.chapterManager.getFlag("hasTalkedToElder")) {
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "mystic_signpost");
@@ -106,6 +122,7 @@ export default class MapManager {
             this.activeNpcs = runtimeNpcs.map(n => {
                 const npc = new NPC(n.x, n.y, n.key, n.interactable, n.animationConfig, n.dialogueVariants);
                 npc.key = n.key;
+                npc.giveItem = n.giveItem ?? null;
                 if (n.state) npc.state = n.state;
                 npc.flipX = n.flipX ?? false;
                 return npc;
