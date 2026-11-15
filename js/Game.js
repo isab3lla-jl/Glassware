@@ -633,6 +633,21 @@ export default class Game {
 
         let y = 70;
 
+        const title = getEntry("quests_title")?.text;
+        if (title) {
+            const label = title.toUpperCase();
+
+            ctx.font = "14px 'PixelifySans'";
+            ctx.fillStyle = "#ffffff";
+            ctx.fillText(label, 20, y);
+
+            const w = Math.max(ctx.measureText(label).width, 110);
+            ctx.fillStyle = "#ff9500";
+            ctx.fillRect(20, y + 6, w, 2);
+
+            y += 30;
+        }
+
         for (const q of quests) {
             const isMain = q.type === "main";
             const x = isMain ? 20 : 34;
