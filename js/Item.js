@@ -13,7 +13,8 @@ export default class Item extends Sprite{
         this.triggerFlag = triggerFlag;
         this.animationConfig = animationConfig;
         this.pickup = true;
-        this.once = false; 
+        this.visible = true;
+        this.once = false;
         this.active = true;
         this.state = ITEM_STATES.IDLE;
         this.initAnimations(this.animationConfig);
@@ -43,7 +44,7 @@ export default class Item extends Sprite{
     draw(ctx, player) {
         if (!this.active) return;
 
-        super.draw(ctx);
+         if (this.visible) super.draw(ctx);
 
         if (this.playerIsNear(player)) {
             

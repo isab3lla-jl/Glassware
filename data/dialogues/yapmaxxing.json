@@ -10,6 +10,7 @@
   "quest_go_home": { "text": "Go home" },
   "quest_find_key": { "text": "Find the key" },
   "quest_get_vial": { "text": "Get vial in time" },
+  "quest_find_finley": { "text": "Find Finley" },
   
   "bennet_bar_dialogue": [
     { 
@@ -287,13 +288,32 @@
     },
     {
       "speaker":"",
-      "text":"You grabbed some money."
-
+      "text":"You grabbed some money.",
+      "triggerFlag":"grabbedMoney"
     }
   ],
   "title_chapter_1": {
     "title": "Act 1"
   },
+
+  "quest_talk_to_finley": { "text": "Talk to Finley" },
+  "quest_find_grace_house": { "text": "Find Grace's house" },
+  "quest_open_grace_door": { "text": "Open Grace's Ddor" },
+  "quest_find_bennet": { "text": "Find Bennet" },
+  "quest_talk_to_bennet": { "text": "Talk to Bennet" },
+  "quest_get_bottle": { "text": "Get bottle" },
+  "quest_get_lockpicks": { "text": "Get lockpicking tools" },
+  "quest_look_for_clues": { "text": "Look for hidden clues inside the house" },
+  "quest_go_to_assylum": { "text": "Get to the assylum" },
+  "quest_go_to_train_station": { "text": "Go to the train station" },
+
+"unavailable_door":[
+   {
+    "speaker": "Opal",
+    "text": "I don't need to go in there right now."
+  }
+],
+
   "finley_questions": [
     {
       "speaker":"Opal",
@@ -369,7 +389,8 @@
     },
     {
       "speaker":"Opal",
-      "text":"Bye."
+      "text":"Bye.",
+      "triggerFlag": "talkedToFinley"
     }
   ],
   "locked_grace_door":[
@@ -383,7 +404,8 @@
     },
     {
       "speaker":"Opal",
-      "text":"Bennet lives somewhere around here, maybe he could help."
+      "text":"Bennet lives somewhere around here, maybe he could help.",
+      "triggerFlag": "checkedGraceDoor"
     }
   ],
   "grace_locked_door_repeat": [
@@ -470,7 +492,8 @@
     },
     {
       "speaker":"Bennet",
-      "text":"Go on then, good luck!"
+      "text":"Go on then, good luck!",
+      "triggerFlag": "talkedToBennetHouse"
     }
   ],
   "trash_interact_1": [
@@ -500,17 +523,19 @@
   "hidden_item_interact":[
     {
       "speaker":"Opal",
-      "text":"Looks like a lockpicking set, but rusted but it should work for Bennet."
+      "text":"Looks like a lockpicking set, but rusted, it should work for Bennet."
     },
     {
       "speaker":"",
-      "text":"You got a Lockpicking Set."
+      "text":"You got a Lockpicking Set.",
+      "triggerFlag": "lockpicksGrabbed"
     }
   ],
   "grab_bar_bottle":[
     {
       "speaker":"Opal",
-      "text":"I've drank more than enough of these, what's one more off my own books?"
+      "text":"I've drank more than enough of these, what's one more off my own books?",
+      "triggerFlag": "ginGrabbed"
     }
   ],
   "bennet_interact_bottle_only": [
@@ -612,7 +637,8 @@
     },
     {
       "speaker":"Opal",
-      "text":"(I should be able to open that door now.)"
+      "text":"(I should be able to open that door now.)",
+      "triggerFlag": "locksmithSkills"
     }
 
   ],
@@ -657,7 +683,8 @@
     },
     {
       "speaker":"Opal",
-      "text":"I need to head over there and look for the bastard, can't afford to sit around here."
+      "text":"I need to head over there and look for the bastard, can't afford to sit around here.",
+      "triggerFlag": "readGracePapers"
     }
   ],
 "train_dialogue":[

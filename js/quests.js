@@ -22,6 +22,96 @@ export const QUESTS = {
             key: "quest_get_vial",
             showWhen: ["sawRoomCutscene"]
         },
+        {
+            id: "find_finley",
+            type: "main",
+            key: "quest_find_finley",
+            showWhen: ["sawRoomCutscene"]
+        },
     ],
-    [CHAPTERS.CHAPTER_1]: []
+    [CHAPTERS.CHAPTER_1]: [
+        {
+            id: "get_vial",
+            type: "main",
+            key: "quest_get_vial",
+        },
+        {
+            id: "find_finley",
+            type: "main",
+            key: "quest_find_finley",
+            hideWhen: ["finleyFound"]
+        },
+        {
+            id: "talk_to_finley",
+            type: "main",
+            key: "quest_talk_to_finley",
+            showWhen: ["finleyFound"],
+            hideWhen: ["talkedToFinley"]
+        },
+        {
+            id: "find_grace_house",
+            type: "main",
+            key: "quest_find_grace_house",
+            showWhen: ["talkedToFinley"],
+            hideWhen: ["graceDoorOpened"]
+        },
+        {
+            id: "open_grace_door",
+            type: "main",
+            key: "quest_open_grace_door",
+            showWhen: ["checkedGraceDoor"],
+            hideWhen: ["checkedGraceDoor"]
+        },
+        {
+            id: "find_bennet",
+            type: "side",
+            key: "quest_find_bennet",
+            showWhen: ["checkedGraceDoor"],
+            hideWhen: ["talkedBennetCat"]
+        },
+        {
+            id: "talk_to_bennet",
+            type: "side",
+            key: "quest_talk_to_bennet",
+            showWhen: ["talkedBennetCat"],
+            hideWhen: ["talkedToBennetHouse"]
+        },
+        {
+            id: "get_bottle",
+            type: "side",
+            key: "quest_get_bottle",
+            showWhen: ["talkedToBennetHouse"],
+            doneWhen: ["ginGrabbed"],
+            hideWhen: ["graceDoorOpened"]
+        },
+        {
+            id: "get_lockpicks",
+            type: "side",
+            key: "quest_get_lockpicks",
+            showWhen: ["talkedToBennetHouse"],
+            doneWhen: ["lockpicksGrabbed"],
+            hideWhen: ["graceDoorOpened"]
+        },
+        {
+            id: "look_for_clues",
+            type: "main",
+            key: "quest_look_for_clues",
+            showWhen: ["graceDoorOpened"],
+            hideWhen: ["readGracePapers"]
+        },
+        {
+            id: "go_to_assylum",
+            type: "main",
+            key: "quest_go_to_assylum",
+            showWhen: ["readGracePapers"],
+            //hideWhen: ["readGracePapers"]
+        },
+        {
+            id: "go_to_train_station",
+            type: "side",
+            key: "quest_go_to_train_station",
+            showWhen: ["readGracePapers"],
+            //hideWhen: ["readGracePapers"]
+        },
+    ]
 };

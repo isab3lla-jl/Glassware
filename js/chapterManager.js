@@ -23,7 +23,20 @@ export default class ChapterManager {
             checkedDoor: false,
             grabbedKey: false,
             sawRoomCutscene: false,
-            grabbedMoney: false
+            grabbedMoney: true,
+            //act 1 flags
+            finleyFound: false,
+            talkedToFinley: false,
+            graceDoorDialogue: false,
+            checkedGraceDoor:false,
+            talkedBennetCat: false,
+            talkedToBennetHouse: false,
+            lockpicksGrabbed: false,
+            ginGrabbed: false,
+            locksmithSkills: false,
+            graceDoorOpened: false,
+            readGracePapers: false
+
         };
 
 
@@ -41,12 +54,20 @@ export default class ChapterManager {
         }
     }
 
+    checkFlags(flags) {
+        const list = Array.isArray(flags) ? flags : [flags];
+        return list.every(f =>
+            f.startsWith("!") ? !this.getFlag(f.slice(1)) : this.getFlag(f)
+        );
+    }
+
     resolveDialogueKey(baseKey, variants = []) {
         for (const variant of variants) {
-            const expected = variant.value ?? true;
-            if (this.getFlag(variant.flag) === expected) {
-                return variant.key;
-            }
+            const matches = variant.flags
+                ? this.checkFlags(variant.flags)
+                : this.getFlag(variant.flag) === (variant.value ?? true);
+
+            if (matches) return variant.key;
         }
         return baseKey;
     }
