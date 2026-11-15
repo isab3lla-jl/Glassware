@@ -3,230 +3,730 @@
     "title": "Prólogo"
   },
 
-  "hint_move": {"text": "Usa WASD o las flechas para mvoerte" },
+  "hint_move": { "text": "Usa WASD o las flechas para mvoerte" },
   "hint_interact": { "text": "Presiona E para interactuar" },
   "hint_quest": { "text": "Las notas de Opal están en el lado izquierdo de la pantalla. Úsalas como guía." },
 
   "quest_go_home": { "text": "Ir a casa" },
   "quest_find_key": { "text": "Encontrar la llave" },
   "quest_get_vial": { "text": "Encontrar el frasco a tiempo" },
-  
-  "bennet_dialogue": [
-    { 
+  "quest_find_finley": { "text": "Encuentra a Finley" },
+
+  "bennet_bar_dialogue": [
+    {
       "speaker": "Opal",
-      "text":"Tiene rato que no te veo Bennet, ¿Qué vas a tomar?"
+      "text": "Ya tenía rato sin verte, Bennet. ¿Qué vas a tomar esta noche?"
     },
     {
       "speaker": "Bennet",
-      "text":"Sí, ha pasado un tiempo. Lo de siempre está bien."
-     },
+      "text": "Sí, ya tenía tiempo."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Lo de siempre, por favor."
+    },
     {
       "speaker": "Opal",
-      "text":"Sale enseguida."
+      "text": "¡Enseguida!"
     },
     {
-      "speaker":"Opal",
-      "text":"¿Por cierto, cómo va el negocio?"
-    },  
-    {
-      "speaker":"Bennet",
-      "text":"No faltan clientes, pero mis manos ya no son tan firmes como antes"
+      "speaker": "Opal",
+      "text": "¿Cómo sigue ese gato callejero?"
     },
     {
-      "speaker":"Bennet",
-      "text":"Creo que voy a tener que cerrar el taller."
+      "speaker": "Bennet",
+      "text": "Ah, bastante bien, la verdad."
     },
     {
-      "speaker":"Opal",
-      "text":"Lamento que sea así, ¿Quién me va a ayudar cuando se me olviden las llaves?"
+      "speaker": "Bennet",
+      "text": "Come muchísimo."
     },
     {
-      "speaker":"Bennet",
-      "text":"No te preocupes, estoy seguro que hay bastantes cerrajeros de confianza por aquí, Opal"
+      "speaker": "Opal",
+      "text": "Qué bueno, estaba muy bonito."
     },
     {
-      "speaker":"Opal",
-      "text":"Espero que sí."
+      "speaker": "Opal",
+      "text": "Por cierto, ¿cómo va el negocio?"
     },
     {
-      "speaker":"Opal",
-      "text":"Tomese ese trago que va por cuenta de la casa, ya vamos a cerrar."
+      "speaker": "Bennet",
+      "text": "Clientes no faltan, pero las manos ya no me responden como antes."
     },
     {
-      "speaker":"Bennet",
-      "text":"Gracias Opal, lo aprecio."
+      "speaker": "Bennet",
+      "text": "Me temo que voy a tener que cerrar el taller."
     },
     {
-      "speaker":"Bennet",
-      "text":"Ten bonita noche."
+      "speaker": "Opal",
+      "text": "Qué pena escuchar eso. ¿Ahora quién me va a ayudar cuando me quede sin poder entrar?"
     },
     {
-      "speaker":"Opal",
-      "text":"Tú también, cuídiate.",
-      "triggerFlag":"talkedToBennet"
+      "speaker": "Bennet",
+      "text": "Ah, seguro hay varios cerrajeros de confianza por aquí, Opal. Seguro encuentras a alguien que sepa lo que hace."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Eso espero, señor."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Esta última copa va por cuenta de la casa. Ya casi vamos a cerrar."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Gracias, Opal. Te lo agradezco."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Que tengas buena noche."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Igualmente, cuídate.",
+      "triggerFlag": "talkedToBennet"
     }
   ],
-  "bennet_repeat": [
+  "bennet_bar_repeat": [
     {
-      "speaker":"Bennet",
-      "text":"Ten bonita noche."
+      "speaker": "Bennet",
+      "text": "Que tengas buena noche."
     },
     {
-      "speaker":"Opal",
-      "text":"Tú también, cuídiate."
+      "speaker": "Opal",
+      "text": "Igualmente, cuídate."
     }
   ],
   "prologue_kitty": [
     {
-      "speaker":"Estúpido Gato",
-      "text":"Miau"
-    },{
-      "speaker":"Estúpido Gato",
-      "text":":3"
+      "speaker": "Kitty",
+      "text": "Miau"
+    },
+    {
+      "speaker": "Kitty",
+      "text": ":3"
     }
   ],
   "locked_door": [
     {
-      "speaker":"Opal",
-      "text":"Chingada madre, se me volvieron a olvidar las llaves.",
-      "triggerFlag":"checkedDoor"
-  }
+      "speaker": "Opal",
+      "text": "Carajo, otra vez se me olvidó la llave…",
+      "triggerFlag": "checkedDoor"
+    }
   ],
   "check_bar": [
     {
-      "speaker":"Opal",
-      "text":"Debería checar el bar"
+      "speaker": "Opal",
+      "text": "Debería revisar el bar."
     }
   ],
   "need_money": [
     {
-      "speaker":"Opal",
-      "text":"Necesito dinero antes de ir hacia allá...",
-      "triggerFlag":"grabbedMoney"
+      "speaker": "Opal",
+      "text": "Debería recoger mi dinero antes de ir por ahí..."
     }
   ],
   "grabbed_keys": [
     {
-      "speaker":"Opal",
-      "text":"Ahí estan, tengo que cuidarlas mas..."
+      "speaker": "Opal",
+      "text": "Aquí estás. Tengo que dejar de olvidarte…"
     },
     {
-      "speaker":"",
-      "text":"Agarraste la llave de Casa de Opal",
-      "triggerFlag":"grabbedKey"
+      "speaker": "",
+      "text": "Recogiste la llave de la casa.",
+      "triggerFlag": "grabbedKey"
+    }
+  ],
+  "going_to_bed_home": [
+    {
+      "speaker": "Opal",
+      "text": "Estoy cansado de la chingada."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Debería dejar de tomar mientras trabajo..."
     }
   ],
   "first_onyx_cutscene": [
     {
-      "speaker":"Onyx",
-      "text":"Holi!"
+      "speaker": "Onyx",
+      "text": "¡Pero mira quién está aquí!"
     },
     {
-      "speaker":"Opal",
-      "text":"Ay, ya apareciste otra vez"
+      "speaker": "Opal",
+      "text": "Ah, que bien. Tú otra vez."
     },
     {
-      "speaker":"Onyx",
-      "text":"Tu frasquito ese es muy molesto, ¿sabes?"
+      "speaker": "Onyx",
+      "text": "Ese frasquito tuyo es una verdadera molestia, ¿sabías?"
     },
     {
-      "speaker":"Onyx",
-      "text":"Ya nunca me dejas aparecerme."
+      "speaker": "Onyx",
+      "text": "Nunca me dejas quedarme por aquí."
     },
     {
-      "speaker":"Opal",
-      "text":"¿Y por qué crees que es?"
+      "speaker": "Opal",
+      "text": "¿Y por qué crees que sea?"
     },
     {
-      "speaker":"Opal",
-      "text":"Por un dia que duermo bien y te apareces inmediatamente."
+      "speaker": "Opal",
+      "text": "Ni siquiera puedo dormir bien y tú apareces de inmediato."
     },
     {
-      "speaker":"Onyx",
-      "text":"Supongo que lo necesitabas, te ves todavía peor que lo normal ;)"
+      "speaker": "Onyx",
+      "text": "Pues sí te hacía falta dormir… Te ves mucho peor que de costumbre ;)"
     },
     {
-      "speaker":"Opal",
-      "text":"Ya déjame en paz."
+      "speaker": "Opal",
+      "text": "Deja de hacerte el mártir, ya lárgate."
     },
     {
-      "speaker":"Onyx",
-      "text":"Ugh, nunca me dejas divertirme."
+      "speaker": "Onyx",
+      "text": "Contigo nunca se puede."
     }
   ],
   "first_onyx_cutscene_pt2": [
     {
-      "speaker":"Onyx",
-      "text":"Oh, antes de que se me olvide... No te falta algo?"
+      "speaker": "Onyx",
+      "text": "Ya veo que sigues sin enterarte de nada, como siempre."
     },
     {
-      "speaker":"Opal",
-      "text":"¿De qué me estás hablando?"
-
+      "speaker": "Opal",
+      "text": "¿Ahora qué?"
     },
     {
-      "speaker":"Onyx",
-      "text":"Nada, nada, solo es..."
+      "speaker": "Onyx",
+      "text": "Nada, nada…"
     },
     {
-      "speaker":"Onyx",
-      "text":"..."
+      "speaker": "Onyx",
+      "text": "(Silencio)"
     },
     {
-      "speaker":"Opal",
-      "text":"Ya dilo! Tengo cosas que hacer."
+      "speaker": "Opal",
+      "text": "¡Ya suéltalo! Tengo cosas que hacer."
     },
     {
-      "speaker":"Onyx",
-      "text":"Tu cofre está abierto."
+      "speaker": "Onyx",
+      "text": "Tu cofre está abierto."
     },
     {
-      "speaker":"Opal",
-      "text":"¿...qué?"
+      "speaker": "Opal",
+      "text": "..."
     },
     {
-      "speaker":"Onyx",
-      "text":"Creí que te haría saber, ya que tu preciado frasco está ahí ;)"
+      "speaker": "Opal",
+      "text": "¿Qué?"
+    },
+    {
+      "speaker": "Onyx",
+      "text": "De todas tus costumbres raras, caminar en sueños no es una de ellas, ¿o sí?"
     }
   ],
   "first_onyx_cutscene_pt3": [
     {
-      "speaker":"Opal",
-      "text":"Mierda, mierda, mierda! No está aquí..."
+      "speaker": "Opal",
+      "text": "¿Por qué no está aquí?"
     },
     {
-      "speaker":"Onyx",
-      "text":"Pobre de ti, supongo que me tendré que quedar más tiempo"
+      "speaker": "Onyx",
+      "text": "¿Ahora perdiste tu frasquito?"
     },
     {
-      "speaker":"Onyx",
-      "text":"Quizas incluso me convertiré en ti :)"
+      "speaker": "Opal",
+      "text": "¿Dónde carajos está? ¿Alguien se metió?"
     },
     {
-      "speaker":"Opal",
-      "text":"..."
+      "speaker": "Opal",
+      "text": "¿Por qué no se llevaron el dinero?"
     },
     {
-      "speaker":"Onyx",
-      "text":"Claro, si no quieres eso, tienes que actuar rápido ♪♪"
+      "speaker": "Onyx",
+      "text": "¿A lo mejor le encantan los recipientes de vidrio raros?"
     },
     {
-      "speaker":"Onyx",
-      "text":"Recuerda, el tiempo corre"
+      "speaker": "Opal",
+      "text": "¡Cierra la pinche boca! Necesito pensar."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Creo que esa persona tan rara del bar me estuvo siguiendo anoche…"
+    },
+    {
+      "speaker": "Onyx",
+      "text": "A lo mejor, si hicieras algo más que tomar mientras trabajas, te acordarías mejor de las cosas."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Tengo que encontrar a Finley. Anoche estaba tomando con esa persona."
+    },
+    {
+      "speaker": "Opal",
+      "text": "A lo mejor sabe algo."
+    },
+    {
+      "speaker": "Onyx",
+      "text": "¡Un plan hecho a medias, como siempre!"
+    },
+    {
+      "speaker": "Onyx",
+      "text": "Parece que vas a disfrutar de mi compañía un ratito más ;)"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Justo lo que me faltaba…"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Tengo que apurarme. No puedo aguantar a Onyx por mucho tiempo."
     }
   ],
   "grabbed_money": [
     {
-      "speaker":"Opal",
-      "text":"Necesito encontral mi frasco pronto..."
+      "speaker": "Opal",
+      "text": "Nunca está de más traer los bolsillos llenos."
     },
     {
-      "speaker":"",
-      "text":"Agarraste dinero."
-
+      "speaker": "",
+      "text": "Recogiste algo de dinero.",
+      "triggerFlag": "grabbedMoney"
     }
   ],
   "title_chapter_1": {
     "title": "Acto 1"
-  }
+  },
+
+  "quest_talk_to_finley": { "text": "Habla con Finley" },
+  "quest_find_grace_house": { "text": "Encuentra la casa del ladrón" },
+  "quest_open_grace_door": { "text": "Abre la puerta de la casa del ladrón" },
+  "quest_find_bennet": { "text": "Encuentra a Bennet" },
+  "quest_talk_to_bennet": { "text": "Habla con Bennet" },
+  "quest_get_bottle": { "text": "Consigue una botella del bar" },
+  "quest_get_lockpicks": { "text": "Consigue un juego de ganzúas" },
+  "quest_look_for_clues": { "text": "Busca pistas de quien es el ladrón" },
+  "quest_go_to_assylum": { "text": "Ve al psiquiatrico" },
+  "quest_go_to_train_station": { "text": "Ve a la estación de tren" },
+  "quest_get_off_train": { "text": "Sal del vagón" },
+
+  "unavailable_door": [
+    {
+      "speaker": "Opal",
+      "text": "No necesito entrar ahí ahora."
+    }
+  ],
+  "finley_questions": [
+    {
+      "speaker": "Opal",
+      "text": "Finley, necesito hablar contigo."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Es urgente."
+    },
+    {
+      "speaker": "Finley",
+      "text": "Hola, Opal. Perdón por no haberte pagado la cuenta ayer."
+    },
+    {
+      "speaker": "Finley",
+      "text": "Mira, déjame darte…"
+    },
+    {
+      "speaker": "Opal",
+      "text": "No vengo por eso, Finley. Necesito hacerte unas preguntas."
+    },
+    {
+      "speaker": "Finley",
+      "text": "Pues sí, claro… ¿Qué necesitas saber?"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Esa persona con la que estabas tomando ayer, ¿la conoces bien?"
+    },
+    {
+      "speaker": "Finley",
+      "text": "La verdad, no. Intente sacarle plática, pero casi no contestaba."
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Sabes algo de esa persona? Necesito encontrarla."
+    },
+    {
+      "speaker": "Finley",
+      "text": "¿Supongo que le gusta el amarillo? Tenía un reloj de bolsillo muy bonito, con algo amarillo incrustado."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Bueno…"
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Al menos viste hacia dónde se fue cuando salió?"
+    },
+    {
+      "speaker": "Finley",
+      "text": "Ayer no, pero parece que siempre pasa derecho, por la calle justo frente a tu casa."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Está bien. Gracias, Finley."
+    },
+    {
+      "speaker": "Finley",
+      "text": "De nada."
+    },
+    {
+      "speaker": "Finley",
+      "text": "Ah, aquí está tu dine…"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Ahora no, Finley. No tengo tiempo."
+    },
+    {
+      "speaker": "Finley",
+      "text": "Entonces nos vemos luego…"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Adiós.",
+      "triggerFlag": "talkedToFinley"
+    }
+  ],
+  "locked_grace_door": [
+    {
+      "speaker": "Opal",
+      "text": "Mierda, claro que tenía que estar cerrada."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Necesito entrar. El frasco tiene que estar ahí."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Bennet vive por aquí cerca. A lo mejor puede ayudarme.",
+      "triggerFlag": "checkedGraceDoor"
+    }
+  ],
+  "grace_locked_door_repeat": [
+    {
+      "speaker": "Opal",
+      "text": "Sigue cerrada."
+    }
+  ],
+  "bennet_cat_interact": [
+    {
+      "speaker": "Opal",
+      "text": "¡Es el gato callejero que está cuidando Bennet!"
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Cómo estás, amiguito?"
+    },
+    {
+      "speaker": "Cat",
+      "text": "Miauuu."
+    }
+  ],
+  "bennet_help": [
+    {
+      "speaker": "Bennet",
+      "text": "¡Opal, qué sorpresa!"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Hola, Bennet. ¿Cómo va el día?"
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Como siempre, sin mucho que hacer."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "¿Necesitabas algo?"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Me interesa aprender a abrir cerraduras con ganzúas. Me quedé pensando en eso toda la noche, desde que dijiste que ibas a cerrar el taller."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "¿De verdad? ¡Me encantaría enseñarte!"
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Pero me temo que ya vendí mis herramientas. Tendrás que esperar a que consiga otras."
+    },
+    {
+      "speaker": "Opal",
+      "text": "¡Yo puedo conseguírtelas! Prefiero empezar lo antes posible."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Bueno, puede que haya algunas ganzúas de repuesto en uno de los almacenes abandonados de por aquí, pero vas a tener que buscarlas…"
+    },
+    {
+      "speaker": "Bennet",
+      "text": "También voy a tener que pedirte unos tragos, Opal. Me ayudan a que no me tiemblen tanto las manos."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Claro. Voy a buscar las ganzúas y te traeré una botella."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Gracias, Opal."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Me da gusto que tengas tantas ganas de aprender. Aquí te espero."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "¡Y no te dejes engañar por el gato, ya le di de comer!"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Lo tendré en cuenta. Gracias, Bennet."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "¡Anda, pues! ¡Suerte!",
+      "triggerFlag": "talkedToBennetHouse"
+    }
+  ],
+  "trash_interact_1": [
+    {
+      "speaker": "Opal",
+      "text": "Aquí solo hay basura."
+    }
+  ],
+  "trash_interact_2": [
+    {
+      "speaker": "Opal",
+      "text": "Nada útil…"
+    }
+  ],
+  "trash_interact_3": [
+    {
+      "speaker": "Opal",
+      "text": "Qué asco…"
+    }
+  ],
+  "trash_interact_4": [
+    {
+      "speaker": "Opal",
+      "text": "¿Para qué guardan esto?"
+    }
+  ],
+  "hidden_item_interact": [
+    {
+      "speaker": "Opal",
+      "text": "¡Un juego de ganzúas! Está algo oxidado, pero debería servirle a Bennet."
+    },
+    {
+      "speaker": "",
+      "text": "Obtuviste un juego de ganzúas.",
+      "triggerFlag": "lockpicksGrabbed"
+    }
+  ],
+  "grab_bar_bottle": [
+    {
+      "speaker": "Opal",
+      "text": "Ya me he tomado más que suficientes de estas. ¿Qué más da descontar otra de mis propias cuentas?",
+      "triggerFlag": "ginGrabbed"
+    }
+  ],
+  "bennet_interact_bottle_only": [
+    {
+      "speaker": "Opal",
+      "text": "Aquí tienes."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Gracias, Opal. De verdad te lo agradezco."
+    },
+    {
+      "speaker": "Opal",
+      "text": "No hay problema, Bennet. Tú me estás ayudando."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Volveré en cuanto encuentre unas ganzúas."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "¡Suerte!"
+    }
+  ],
+  "bennet_interact_lockpicks_only": [
+    {
+      "speaker": "Opal",
+      "text": "Oye, Bennet, ¿estas sirven?"
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Están algo gastadas, pero deberían servir para alguien que apenas empieza."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Está bien, entonces vuelvo con el Gin."
+    }
+  ],
+  "bennet_interact_with_both_items": [
+    {
+      "speaker": "Opal",
+      "text": "Aquí están las cosas."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "¡Muy bien, Opal! ¡Vamos a empezar!"
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Por ahora solo vas a ver cómo abro esta cerradura, ¿de acuerdo?"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Adelante, tú eres el maestro."
+    },
+    {
+      "speaker": "",
+      "text": "(Bennet abre la cerradura despacio y te explica cada paso)."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "No es tan difícil, ¿verdad?"
+    },
+    {
+      "speaker": "Opal",
+      "text": "No parece tan complicado. ¿Puedo intentarlo?"
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Adelante. Dime si se te dificulta algo."
+    },
+    {
+      "speaker": "",
+      "text": "(Sigues las indicaciones de Bennet y abres la cerradura con facilidad)."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "¡Parece que tienes talento para esto, Opal! ¡Te salió muy bien!"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Gracias, Bennet. Supongo que algo se me pegó de ti."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Pero ya tengo que irme. Tengo unos asuntos que atender."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Claro, ya se hizo un poco tarde con todo lo que tuviste que buscar."
+    },
+    {
+      "speaker": "Bennet",
+      "text": "Llévate las ganzúas para que sigas practicando. Espero verte pronto para otra clase."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Haré lo posible por darme un tiempo. Nos vemos, Bennet."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Ahora sí debería poder abrir esa puerta...",
+      "triggerFlag": "locksmithSkills"
+    }
+  ],
+  "grace_clue_1": [
+    {
+      "speaker": "Opal",
+      "text": "Esto no sirve para nada."
+    }
+  ],
+  "grace_clue_2": [
+    {
+      "speaker": "Opal",
+      "text": "Todos estos se parecen, pero hay algo raro en ellos."
+    }
+  ],
+  "grace_clue_3": [
+    {
+      "speaker": "Opal",
+      "text": "Ni siquiera sé qué es esto. No sé por dónde empezar."
+    }
+  ],
+  "grace_right_clue": [
+    {
+      "speaker": "Opal",
+      "text": "Mmm, ¿qué es esto?"
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Papeles de un psiquiátrico? Con razón esa ropa se me hacía rara…"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Parece que también hay una especie de carta de pago."
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿A nombre de Grace? Bueno, al menos ya tengo un nombre."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Parece que es ese psiquiátrico que está en plena ciudad. Voy a tener que tomar el tren."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Tengo que ir a buscar a esa maldita persona. No puedo quedarme aquí sin hacer nada..",
+      "triggerFlag": "readGracePapers"
+    }
+  ],
+  "train_dialogue": [
+    {
+      "speaker": "Onyx",
+      "text": "¡Pero mírate, haciendo algo útil por una vez!"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Tengo una muy buena razón, carajo."
+    },
+    {
+      "speaker": "Onyx",
+      "text": "Aun así, te estás tardando demasiado ;)"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Cállate, voy a recuperarlo."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Solo necesito encontrar a quien se robó el maldito frasco."
+    },
+    {
+      "speaker": "Onyx",
+      "text": "Ah, sí. Qué plan tan adecuado para alguien que apenas se mantiene a flote."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Lárgate. Necesito pensar cómo entrar a ese psiquiátrico…"
+    },
+    {
+      "speaker": "Onyx",
+      "text": "Pues ni modo, voy a quedarme un rato."
+    },
+    {
+      "speaker": "Onyx",
+      "text": "Te dejaré hundirte un poco más en tu miseria y tus pensamientos."
+    }
+  ],
+  "leave_train": [
+    {
+      "speaker": "Opal",
+      "text": "Tengo que salir."
+    }
+  ]
 }
