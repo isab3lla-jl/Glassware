@@ -773,7 +773,7 @@ export default class Game {
         if (this.mapManager.hasLoaded() && this.gameState === GAME_STATES.PLAY) {
             const triggers = this.mapManager.getTriggers();
             
-            this.ctx.save();
+            /*this.ctx.save();
             triggers.forEach(trigger => {
                 this.ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
                 this.ctx.fillRect(trigger.x, trigger.y, trigger.width, trigger.height);
@@ -792,8 +792,8 @@ export default class Game {
                     trigger.y + (trigger.height / 2)
                 );
             });
-            this.ctx.restore();
-        }//*/
+            this.ctx.restore();*/
+        }
         
         for (let items of this.items) {
             if ((!this.inventory.includes(items.name) && !this.discarded.includes(items.name)) && items.active) {
