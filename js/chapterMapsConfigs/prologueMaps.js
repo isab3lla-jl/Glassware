@@ -29,7 +29,7 @@ export const prologueMaps = {
                 }
             },
             {
-                x: 480, y: 216, key: "finley_dialogue", interactable: false, //true cuando este el diálogo
+                x: 480, y: 216, key: "finley_bar_dialogue", interactable: true, //true cuando este el diálogo
                 animationConfig: {
                     [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/FinleyGW-Sheet.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true }
                 }

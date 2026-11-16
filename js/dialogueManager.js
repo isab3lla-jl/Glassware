@@ -65,6 +65,7 @@ export default class DialogueManager {
         if (this.currentIndex >= this.currentConversation.length) {
             this.checkDialogueTriggers(gameInstance);
             this.endDialogue();
+            gameInstance.onDialogueEnd();
         }
     }
 

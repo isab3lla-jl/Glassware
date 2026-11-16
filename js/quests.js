@@ -118,5 +118,36 @@ export const QUESTS = {
             key: "quest_get_off_train",
             showWhen: ["sawTrainCutscene"]
         },
+    ],
+    [CHAPTERS.CHAPTER_2]: [
+        {
+            id: "get_vial",
+            type: "main",
+            key: "quest_get_vial",
+        },
+        {
+            id: "go_to_assylum",
+            type: "main",
+            key: "quest_go_to_assylum",
+        },
+        {
+            id: "place_to_sleep",
+            type: "main",
+            key: "quest_place_to_sleep",
+            hideWhen:["enterHotel"]
+        },
+        {
+            id: "go_to_sleep",
+            type: "main",
+            key: "quest_go_to_sleep",
+            showWhen: ["enterHotel"],
+            hideWhen: ["nightmare"]
+        },
+        {
+            id: "get_out",
+            type: "main",
+            key: "quest_get_out",
+            showWhen: ["nightmare"],
+        },
     ]
 };

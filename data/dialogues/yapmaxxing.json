@@ -755,6 +755,12 @@
   "title_chapter_2":{
     "title":"Act 2"
   },
+
+  "quest_place_to_sleep": { "text": "Find a place to sleep" },
+  "quest_go_to_sleep": { "text": "Go to sleep" },
+  "quest_get_out": { "text": "Get out of the nightmare" },
+  "quest_choose": { "text": "Choose the right item" },
+
   "Mary_lobby_dialogue":[
     {
       "speaker":"Opal",
@@ -807,7 +813,8 @@
     },
     {
       "speaker":"Opal",
-      "text":"Might actually sleep well for once."
+      "text":"Might actually sleep well for once.",
+      "triggerFlag": "nightmare"
     }
   ],
   "dream_dialogue_1": [
@@ -825,7 +832,8 @@
     },
     {
       "speaker":"Opal",
-      "text":"I'm just trying to rest, just stop with this dream bullshit."
+      "text":"I'm just trying to rest, just stop with this dream bullshit.",
+      "triggerFlag": "nightmare"
     },
     {
       "speaker":"Onyx",

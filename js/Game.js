@@ -56,6 +56,7 @@ export default class Game {
         this.discarded = [];
         this.maxInventorySlots = 6;
         
+        this.pendingCutscene = null;
 
         this.titleCard = null;
 
@@ -145,7 +146,10 @@ export default class Game {
 
         this.chapterManager.reset()
 
-        await this.mapManager.loadMap("bar", this);
+        await this.mapManager.loadMap(
+            this.mapManager.getChapterStartMap(this.chapterManager.currentChapter),
+            this
+        );
         this.mapLoaded = this.mapManager.hasLoaded();
 
         this.timer = this.gameDuration;
@@ -180,7 +184,10 @@ export default class Game {
         document.fonts.add(loadedFont);
         
         await loadDialogueData(this.lang);
-        await this.mapManager.loadMap("bar", this);
+        await this.mapManager.loadMap(
+            this.mapManager.getChapterStartMap(this.chapterManager.currentChapter),
+            this
+        );
         this.mapLoaded = this.mapManager.hasLoaded();
         
         if (this.mapLoaded) {
@@ -404,6 +411,21 @@ export default class Game {
         }
     }
 
+    onDialogueEnd() {
+        const pending = this.pendingCutscene;
+        this.pendingCutscene = null;
+        if (!pending) return;
+
+        if (pending.flag) {
+            if (this.chapterManager.getFlag(pending.flag)) return;
+            this.chapterManager.setFlag(pending.flag, true);
+        }
+
+        if (!this.mapManager.isCutscenePlaying) {
+            this.mapManager.startCutscene(pending.cutscene, this);
+        }
+    }
+    
     advanceChapter(nextChapter = null) {
         this.mapManager.startCutscene([
             { type: "FADE", direction: "IN" },
@@ -509,6 +531,11 @@ export default class Game {
 
                     if (item.dialogueKey) {
                         this.dialogueManager.startDialogue(item.dialogueKey);
+                        if (item.dialogueKey) {
+                            this.dialogueManager.startDialogue(item.dialogueKey);
+                            this.pendingCutscene = this.dialogueManager.isActive ? (item.afterDialogue ?? null) : null;
+                            this.player.enabled = !this.dialogueManager.isActive;
+                        }
                         this.player.enabled = !this.dialogueManager.isActive;
                     }
 

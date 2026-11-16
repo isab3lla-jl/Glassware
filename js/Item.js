@@ -14,6 +14,7 @@ export default class Item extends Sprite{
         this.animationConfig = animationConfig;
         this.pickup = true;
         this.visible = true;
+        this.afterDialogue = null;
         this.once = false;
         this.active = true;
         this.state = ITEM_STATES.IDLE;

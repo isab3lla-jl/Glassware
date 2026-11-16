@@ -5,11 +5,13 @@ export const CHAPTERS = {
     CHAPTER_3: "CHAPTER_3"
 };
 
+export const START_CHAPTER = CHAPTERS.CHAPTER_2; 
+
 const CHAPTER_ORDER = Object.values(CHAPTERS);
 
 export default class ChapterManager {
     constructor() {
-        this.currentChapter = CHAPTERS.PROLOGUE;
+        this.currentChapter = START_CHAPTER;
         
         this.defaultFlags = {
             //tutorial flags
@@ -21,8 +23,8 @@ export default class ChapterManager {
             graceTurn: false,
             doorDialogue: false,
             checkedDoor: false,
-            grabbedKey: false,
-            sawRoomCutscene: false,
+            grabbedKey: true,
+            sawRoomCutscene: true,
             grabbedMoney: false,
             //act 1 flags
             finleyFound: false,
@@ -36,8 +38,12 @@ export default class ChapterManager {
             givenGin: false,
             locksmithSkills: false,
             graceDoorOpened: false,
-            readGracePapers: false,
-            sawTrainCutscene: false,
+            readGracePapers: true,
+            sawTrainCutscene: true,
+            //act 2 flags
+            enterHotel: false,
+            talkedToMary: false,
+            nightmare: false,
         };
 
 
@@ -90,7 +96,7 @@ export default class ChapterManager {
     }
 
     reset() {
-        this.currentChapter = CHAPTERS.PROLOGUE;
+        this.currentChapter = START_CHAPTER;
         this.flags = { ...this.defaultFlags };
     }
 }
