@@ -793,6 +793,16 @@
       "text":"You're welcome! Rest well."
     }
   ],
+  "bed_interaction":[
+    {
+      "speaker":"Opal",
+      "text":"It actually looks comfy."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Might actually sleep well for once."
+    }
+  ],
   "dream_dialogue_1": [
     {
       "speaker":"Onyx",
@@ -883,6 +893,42 @@
     {
       "speaker":"Opal",
       "text":"Another one might just do it..."
+    }
+  ],
+  "choosing_right_item_lantern":[
+    {
+      "speaker":"Opal",
+      "text":"No one ever visits either way, why bother cleaning."
+    }
+  ],
+  "choosing_right_item_gin":[
+    {
+      "speaker":"Opal",
+      "text":"Even Bennet drinks in moderation, what excuse do I have?"
+    }
+  ],
+  "choosing_right_item_cigarettes":[
+    {
+      "speaker":"Opal",
+      "text":"It's just a few puffs..."
+    }
+  ],
+  "choosing_wrong_item_lantern":[
+    {
+      "speaker":"Onyx",
+      "text":"You were never that bright, were you?"
+    }
+  ],
+  "choosing_wrong_item_gin":[
+    {
+      "speaker":"Onyx",
+      "text":"Maybe try thinking for once?"
+    }
+  ],
+  "choosing_wrong_item_cigarettes":[
+    {
+      "speaker":"Onyx",
+      "text":"Really?"
     }
   ],
   "waking_up_from_dream":[
