@@ -20,7 +20,7 @@
     },
     {
       "speaker":"Bennet",
-      "text":"Yeah, it has been."
+      "text":"Hey there Opal."
      },
      {
       "speaker":"Bennet",
@@ -96,6 +96,24 @@
     {
       "speaker":"Opal",
       "text":"You too, take care."
+    }
+  ],
+  "finley_bar_dialogue": [
+    {
+      "speaker":"Finley",
+      "text":"Heeey, can you pour me another drink please?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"I think you've had enough for tonight Finley, go home already."
+    },
+    {
+      "speaker":"Opal",
+      "text":"We're about to close either way."
+    },
+    {
+      "speaker":"Finley",
+      "text":"Yeah..."
     }
   ],
   "prologue_kitty": [
@@ -717,17 +735,164 @@
     },
     {
       "speaker":"Onyx",
-      "text":"Oh well, I'm gonna stick around for a while."
+      "text":"Oh well, I can always visit you later."
     },
     {
       "speaker":"Onyx",
       "text":"I'll let you wallow in your thoughts some more."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I should get some sleep soon..."
     }
   ],
   "leave_train": [
     {
       "speaker": "Opal",
       "text": "I need to leave."
+    }
+  ],
+  "title_chapter_2":{
+    "title":"Act 2"
+  },
+  "Mary_lobby_dialogue":[
+    {
+      "speaker":"Opal",
+      "text":"Good evening ma'am."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Do you have any rooms available"
+    },
+    {
+      "speaker":"Mary",
+      "text":"Hi there!"
+    },
+    {
+      "speaker":"Mary",
+      "text":"I've got one room available."
+    },
+    {
+      "speaker":"Mary",
+      "text":"You go right in! It looks like you need some rest."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Alright, how much do I owe you?"
+    },
+    {
+      "speaker":"Mary",
+      "text":"Don't you worry about it dear, I always keep a spare room in case someone needs it."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Oh, thank you."
+    },
+    {
+      "speaker":"Mary",
+      "text":"You're welcome! Rest well."
+    }
+  ],
+  "dream_dialogue_1": [
+    {
+      "speaker":"Onyx",
+      "text":"Didn't think you'd end up here again."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I wasn't planning on it..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"You can't run from who you are forever."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I'm just trying to rest, just stop with this dream bullshit."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"If you don't hold yourself accountable for your actions then who will?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"I suppose thats my mistake, it isn't like anyone wants to be around you anyways."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Either way, that's not why we're here."
+    },
+    {
+      "speaker":"Opal",
+      "text":"What the hell do you want?"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Just wanna show you some things."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Recognize these?"
+    }
+  ],
+  "lantern_riddle":[
+    {
+      "speaker":"Onyx",
+      "text":"I don't know why you hate the little thing so much, and with the hours you're sleeping at it would be really handy at tidying up though you don't really do that either..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"The house is kind of gross to be honest. But the extra shadows will surely cheer you right up!"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Twisted fucking shadow..."
+    }
+  ],
+  "gin_riddle":[
+    {
+      "speaker":"Onyx",
+      "text":"Everything seems so foggy when you have this, thoughts slipping away as easy as they come, right?"
+    },
+    {
+      "speaker":"Onyx",
+      "text":"I mean, sure, it makes me fuck off for a bit, but there's no way that much is good for you, not to mention the cut in the business profits..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"Besides, I could never go away forever ;)"
+    },
+    {
+      "speaker":"Opal",
+      "text":"..."
+    }
+  ],
+  "cigarettes_riddle":[
+    {
+      "speaker":"Onyx",
+      "text":"Such a tiny thing and yet it clouds your sight so much, you always want to stop yourself but fall right back into it at the slightest inconvenience, its your little break after all..."
+    },
+    {
+      "speaker":"Onyx",
+      "text":"You do know that no cloud can truly cover me though, right?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Another one might just do it..."
+    }
+  ],
+  "waking_up_from_dream":[
+    {
+      "speaker":"Opal",
+      "text":"I didn't even get any rest..."
+    },
+    {
+      "speaker":"Opal",
+      "text":"I just need to deal with that thief and everything will be back to normal."
     }
   ]
 }
