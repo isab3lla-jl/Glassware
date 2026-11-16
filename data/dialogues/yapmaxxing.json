@@ -793,6 +793,12 @@
       "text":"You're welcome! Rest well."
     }
   ],
+  "mary_lobby_repeat": [
+    {
+      "speaker":"Mary",
+      "text":"You're welcome! Rest well."
+    }
+  ],
   "bed_interaction":[
     {
       "speaker":"Opal",
