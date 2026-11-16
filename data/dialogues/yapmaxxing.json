@@ -790,13 +790,14 @@
     },
     {
       "speaker":"Mary",
-      "text":"You're welcome! Rest well."
+      "text":"You're welcome! Rest well.",
+      "triggerFlag": "talkedToMary"
     }
   ],
   "mary_lobby_repeat": [
     {
       "speaker":"Mary",
-      "text":"You're welcome! Rest well."
+      "text":"Rest well."
     }
   ],
   "bed_interaction":[
