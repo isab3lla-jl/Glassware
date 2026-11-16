@@ -5,7 +5,7 @@ export const CHAPTERS = {
     CHAPTER_3: "CHAPTER_3"
 };
 
-export const START_CHAPTER = CHAPTERS.CHAPTER_2; 
+export const START_CHAPTER = CHAPTERS.PROLOGUE; 
 
 const CHAPTER_ORDER = Object.values(CHAPTERS);
 
