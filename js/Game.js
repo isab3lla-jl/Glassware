@@ -402,7 +402,7 @@ export default class Game {
                     { type: "CHANGE_MAP", targetMap: "trainCar1", x: 540, y: 210 },
                     { type: "WALK", who: "player", direction: "LEFT", time: 1400 },
                     { type: "STAND", who: "player", direction: "DOWN", time: 500 },
-                    //{ type: "GAME_END" }
+                    { type: "GAME_END" }
                 ];
 
                 
