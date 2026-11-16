@@ -23,8 +23,8 @@ export default class ChapterManager {
             graceTurn: false,
             doorDialogue: false,
             checkedDoor: false,
-            grabbedKey: true,
-            sawRoomCutscene: true,
+            grabbedKey: false,
+            sawRoomCutscene: false,
             grabbedMoney: false,
             //act 1 flags
             finleyFound: false,
@@ -38,8 +38,8 @@ export default class ChapterManager {
             givenGin: false,
             locksmithSkills: false,
             graceDoorOpened: false,
-            readGracePapers: true,
-            sawTrainCutscene: true,
+            readGracePapers: false,
+            sawTrainCutscene: false,
             //act 2 flags
             enterHotel: false,
             talkedToMary: false,
