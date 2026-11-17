@@ -218,7 +218,7 @@ export const chapter2Maps = {
         items: [
             {
                 x:480, y:144,
-                name:"gin",
+                name:"ginriddle",
                 pickup: false,
                 dialogueKey: "choosing_right_item_gin",
                 animationConfig:{
