@@ -86,7 +86,6 @@
       "triggerFlag": "talkedToBennet"
     }
   ],
-
   "bennet_bar_repeat": [
     {
       "speaker": "Bennet",
@@ -97,7 +96,6 @@
       "text": "Igualmente, cuídate."
     }
   ],
-
   "finley_bar_dialogue": [
     {
       "speaker": "Finley",
@@ -116,7 +114,6 @@
       "text": "Sí..."
     }
   ],
-
   "prologue_kitty": [
     {
       "speaker": "Gato callejero",
@@ -129,7 +126,6 @@
       "text": ":3"
     }
   ],
-
   "locked_door": [
     {
       "speaker": "Opal",
@@ -137,21 +133,18 @@
       "triggerFlag": "checkedDoor"
     }
   ],
-
   "check_bar": [
     {
       "speaker": "Opal",
       "text": "Debería revisar el bar."
     }
   ],
-
   "need_money": [
     {
       "speaker": "Opal",
       "text": "Debería recoger mi dinero antes de ir por ahí..."
     }
   ],
-
   "grabbed_keys": [
     {
       "speaker": "Opal",
@@ -163,7 +156,6 @@
       "triggerFlag": "grabbedKey"
     }
   ],
-
   "going_to_bed_home": [
     {
       "speaker": "Opal",
@@ -174,7 +166,6 @@
       "text": "Debería dejar de tomar a escondidas mientras trabajo..."
     }
   ],
-
   "first_onyx_cutscene": [
     {
       "speaker": "Onyx",
@@ -213,7 +204,6 @@
       "text": "Contigo nunca se puede."
     }
   ],
-
   "first_onyx_cutscene_pt2": [
     {
       "speaker": "Onyx",
@@ -252,7 +242,6 @@
       "text": "De todas tus costumbres raras, caminar en sueños no es una de ellas, ¿o sí?"
     }
   ],
-
   "first_onyx_cutscene_pt3": [
     {
       "speaker": "Opal",
@@ -311,7 +300,6 @@
       "text": "Tengo que apurarme. No puedo aguantar a Onyx por mucho tiempo."
     }
   ],
-
   "grabbed_money": [
     {
       "speaker": "Opal",
@@ -333,10 +321,19 @@
   "quest_talk_to_bennet": { "text": "Hablar con Bennet" },
   "quest_get_bottle": { "text": "Conseguir la botella" },
   "quest_get_lockpicks": { "text": "Conseguir las ganzúas" },
-  "quest_look_for_clues": { "text": "Buscar el frasco dentro de la casa" },
+  "quest_look_for_clues": { "text": "Buscar pistas escondidas dentro de la casa" },
   "quest_go_to_assylum": { "text": "Llegar al psiquiátrico" },
   "quest_go_to_train_station": { "text": "Ir a la estación de tren" },
   "quest_get_off_train": { "text": "Bajar del tren" },
+  "quest_obj_lantern": {"text": "Linterna"},
+  "quest_obj_soap": {"text": "Jabón"},
+  "quest_obj_broom": {"text": "Escoba"},
+  "quest_obj_gin": {"text": "Gin"},
+  "quest_obj_food": {"text": "Postres"},
+  "quest_obj_money": {"text": "Dinero"},
+  "quest_obj_cigarettes": {"text": "Cigarros"},
+  "quest_obj_love": {"text": "Amor"},
+  "quest_obj_book": {"text": "Libro"},
 
   "unavailable_door": [
     {
@@ -344,7 +341,6 @@
       "text": "No necesito entrar ahí ahora."
     }
   ],
-
   "finley_questions": [
     {
       "speaker": "Opal",
@@ -424,7 +420,6 @@
       "triggerFlag": "talkedToFinley"
     }
   ],
-
   "locked_grace_door": [
     {
       "speaker": "Opal",
@@ -440,14 +435,12 @@
       "triggerFlag": "checkedGraceDoor"
     }
   ],
-
   "grace_locked_door_repeat": [
     {
       "speaker": "Opal",
       "text": "Sigue cerrada."
     }
   ],
-
   "bennet_cat_interact": [
     {
       "speaker": "Opal",
@@ -463,7 +456,6 @@
       "text": "Miauuu."
     }
   ],
-
   "bennet_help": [
     {
       "speaker": "Bennet",
@@ -531,35 +523,30 @@
       "triggerFlag": "talkedToBennetHouse"
     }
   ],
-
   "trash_interact_1": [
     {
       "speaker": "Opal",
       "text": "Aquí solo hay basura."
     }
   ],
-
   "trash_interact_2": [
     {
       "speaker": "Opal",
       "text": "Nada útil…"
     }
   ],
-
   "trash_interact_3": [
     {
       "speaker": "Opal",
       "text": "Qué asco…"
     }
   ],
-
   "trash_interact_4": [
     {
       "speaker": "Opal",
       "text": "¿Para qué guardan esto?"
     }
   ],
-
   "hidden_item_interact": [
     {
       "speaker": "Opal",
@@ -571,7 +558,6 @@
       "triggerFlag": "lockpicksGrabbed"
     }
   ],
-
   "grab_bar_bottle": [
     {
       "speaker": "Opal",
@@ -579,7 +565,6 @@
       "triggerFlag": "ginGrabbed"
     }
   ],
-
   "bennet_interact_bottle_only": [
     {
       "speaker": "Opal",
@@ -602,7 +587,6 @@
       "text": "¡Suerte!"
     }
   ],
-
   "bennet_interact_lockpicks_only": [
     {
       "speaker": "Opal",
@@ -617,7 +601,6 @@
       "text": "Está bien, entonces vuelvo con los tragos."
     }
   ],
-
   "bennet_interact_with_both_items": [
     {
       "speaker": "Opal",
@@ -685,7 +668,6 @@
       "triggerFlag": "locksmithSkills"
     }
   ],
-
   "grace_clue_1": [
     {
       "speaker": "Opal",
@@ -703,10 +685,9 @@
   "grace_clue_3": [
     {
       "speaker": "Opal",
-      "text": "Ni siquiera sé qué es esto. No sé por dónde empezar."
+      "text": "Ni siquiera sé qué es esto."
     }
   ],
-
   "grace_right_clue": [
     {
       "speaker": "Opal",
@@ -734,7 +715,6 @@
       "triggerFlag": "readGracePapers"
     }
   ],
-
   "train_dialogue": [
     {
       "speaker": "Onyx",
@@ -774,14 +754,19 @@
     },
     {
       "speaker": "Opal",
-      "text": "Debería dormir un poco pronto..."
+      "text": "Debería dormir pronto..."
     }
   ],
-
   "leave_train": [
     {
       "speaker": "Opal",
-      "text": "Tengo que salir."
+      "text": "Tengo que bajar del tren."
+    }
+  ],
+  "blocked_train": [
+    {
+      "speaker":"Opal",
+      "text":"No puedo volver."
     }
   ],
 
@@ -792,6 +777,12 @@
   "quest_get_out": { "text": "Salir de la pesadilla" },
   "quest_choose": { "text": "Elegir el objeto correcto" },
 
+  "blocked_hotel_door": [
+    {
+      "speaker":"Opal",
+      "text":"Debería hablar con la señora para conseguir un cuarto."
+    }
+  ],
   "Mary_lobby_dialogue": [
     {
       "speaker": "Opal",
@@ -831,14 +822,18 @@
       "triggerFlag": "talkedToMary"
     }
   ],
-
   "mary_lobby_repeat": [
     {
       "speaker": "Mary",
       "text": "Que descanses."
     }
   ],
-
+  "mary_after_sleeping":[
+    {
+      "speaker":"Mary",
+      "text":"Veo que ya te vas, espero que hayas dormido bien."
+    }
+  ],
   "bed_interaction": [
     {
       "speaker": "Opal",
@@ -850,7 +845,12 @@
       "triggerFlag": "nightmare"
     }
   ],
-
+  "dream_door_block":[
+    {
+      "speaker":"Onyx",
+      "text":"¿A donde vas?"
+    }
+  ],
   "dream_dialogue_1": [
     {
       "speaker": "Onyx",
@@ -895,10 +895,10 @@
     },
     {
       "speaker": "Onyx",
-      "text": "¿Reconoces esto?"
+      "text": "¿Reconoces esto?",
+      "triggerFlag":"nightmareyap1"
     }
   ],
-
   "lantern_riddle": [
     {
       "speaker": "Onyx",
@@ -910,10 +910,10 @@
     },
     {
       "speaker": "Opal",
-      "text": "Pinche sombra retorcida..."
+      "text": "Pinche sombra retorcida...",
+      "triggerFlag":"lanternyap"
     }
   ],
-
   "gin_riddle": [
     {
       "speaker": "Onyx",
@@ -929,10 +929,10 @@
     },
     {
       "speaker": "Opal",
-      "text": "..."
+      "text": "...",
+      "triggerFlag":"ginyap"
     }
   ],
-
   "cigarettes_riddle": [
     {
       "speaker": "Onyx",
@@ -944,60 +944,59 @@
     },
     {
       "speaker": "Opal",
-      "text": "A lo mejor con otro sí..."
+      "text": "A lo mejor con otro sí...",
+      "triggerFlag":"cigarettesyap"
     }
   ],
-
   "choosing_right_item_lantern": [
     {
       "speaker": "Opal",
-      "text": "De todos modos, nunca viene nadie. ¿Para qué molestarme en limpiar?"
+      "text": "De todos modos, nunca viene nadie. ¿Para qué molestarme en limpiar?",
+      "triggerFlag":"riddle1correct"
     }
   ],
-
   "choosing_right_item_gin": [
     {
       "speaker": "Opal",
-      "text": "Hasta Bennet toma con moderación. ¿Qué excusa tengo yo?"
+      "text": "Hasta Bennet toma con moderación. ¿Qué excusa tengo yo?",
+      "triggerFlag":"riddle2correct"
     }
   ],
-
   "choosing_right_item_cigarettes": [
     {
       "speaker": "Opal",
-      "text": "Solo son unas cuantas fumadas..."
+      "text": "Solo son unas cuantas fumadas...",
+      "triggerFlag":"riddle3correct"
     }
   ],
-
   "choosing_wrong_item_lantern": [
     {
       "speaker": "Onyx",
       "text": "Nunca has sido muy brillante, ¿verdad?"
     }
   ],
-
   "choosing_wrong_item_gin": [
     {
       "speaker": "Onyx",
       "text": "¿Y si intentas pensar por una vez?"
     }
   ],
-
   "choosing_wrong_item_cigarettes": [
     {
       "speaker": "Onyx",
       "text": "¿En serio?"
     }
   ],
-
   "waking_up_from_dream": [
     {
       "speaker": "Opal",
-      "text": "Ni siquiera pude descansar..."
-    },
+      "text": "Ya dormí."
+    }
+  ],
+  "blocked_asylum":[
     {
-      "speaker": "Opal",
-      "text": "Solo tengo que encargarme de quien me robó el frasco y todo volverá a la normalidad."
+    "speaker":"Opal",
+    "text":"Tengo que dormir primero."
     }
   ]
 }

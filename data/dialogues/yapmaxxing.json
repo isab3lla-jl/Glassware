@@ -1,7 +1,5 @@
 {
-  "title_prologue": {
-    "title": "Prologue"
-  },
+  "title_prologue": { "title": "Prologue" },
 
   "hint_move": { "text": "Use WASD or the arrow keys to move" },
   "hint_interact": { "text": "Press E to interact" },
@@ -316,8 +314,8 @@
   },
 
   "quest_talk_to_finley": { "text": "Talk to Finley" },
-  "quest_find_grace_house": { "text": "Find Grace's house" },
-  "quest_open_grace_door": { "text": "Open Grace's Ddor" },
+  "quest_find_grace_house": { "text": "Find the thief's house" },
+  "quest_open_grace_door": { "text": "Open the thief's door" },
   "quest_find_bennet": { "text": "Find Bennet" },
   "quest_talk_to_bennet": { "text": "Talk to Bennet" },
   "quest_get_bottle": { "text": "Get bottle" },
@@ -758,7 +756,13 @@
   "leave_train": [
     {
       "speaker": "Opal",
-      "text": "I need to leave."
+      "text": "I need to get off the train."
+    }
+  ],
+  "blocked_train": [
+    {
+      "speaker":"Opal",
+      "text":"I can't go back."
     }
   ],
   "title_chapter_2":{
@@ -770,6 +774,12 @@
   "quest_get_out": { "text": "Wake up" },
   "quest_choose": { "text": "Guess the correct item" },
 
+  "blocked_hotel_door": [
+    {
+      "speaker":"Opal",
+      "text":"I should speak to the lady about getting a room for the night."
+    }
+  ],
   "Mary_lobby_dialogue":[
     {
       "speaker":"Opal",
@@ -988,7 +998,6 @@
     {
       "speaker":"Opal",
       "text":"I'm too tired, I need to sleep first."
-
     }
   ]
 }

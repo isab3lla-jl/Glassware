@@ -20,10 +20,10 @@ export default class ChapterManager {
             tutorialQuest: false,
             //prologue flags
             talkedToBennet: false,
-            graceTurn: false,
-            doorDialogue: false,
-            checkedDoor: false,
-            grabbedKey: false,
+            graceTurn: true,
+            doorDialogue: true,
+            checkedDoor: true,
+            grabbedKey: true,
             sawRoomCutscene: false,
             grabbedMoney: false,
             //act 1 flags
@@ -38,7 +38,7 @@ export default class ChapterManager {
             givenGin: false,
             locksmithSkills: false,
             graceDoorOpened: false,
-            readGracePapers: false,
+            readGracePapers: true,
             sawTrainCutscene: false,
             //act 2 flags
             enterHotel: false,

@@ -13,6 +13,11 @@ export const chapter2Maps = {
                 targetMap: "hotelStreet",
                 targetPlayerX: 50, targetPlayerY: 258,
             },
+            {
+                x: 288, y: 170, width: 48, height: 40,
+                dialogueKey: "blocked_train",
+                repeatable: true
+            }
         ]
     },
     "hotelStreet": {
@@ -65,9 +70,16 @@ export const chapter2Maps = {
                 targetPlayerX: 386, targetPlayerY: 193,
             },
             {
+                x: 180, y: 314, width: 40, height: 48,
+                dialogueKey: "blocked_hotel_door",
+                repeatable: true,
+                disabledByFlag: "talkedToMary"
+            },
+            {
                 x: 172, y: 314, width: 40, height: 48,
                 targetMap: "hotelRoom",
                 targetPlayerX: 485, targetPlayerY: 322,
+                flagRequired:"talkedToMary"
             },
         ]
     },
@@ -120,7 +132,7 @@ export const chapter2Maps = {
             {
                 x: 336, y: 67, width: 40, height: 48,
                 targetMap: "opalDream2",
-                targetPlayerX: 336, targetPlayerY: 255,
+                targetPlayerX: 336, targetPlayerY: 230,
                 requiredFlag: "nightmareyap1"
             },
             {
@@ -178,7 +190,7 @@ export const chapter2Maps = {
             {
                 x: 336, y: 67, width: 40, height: 48,
                 targetMap: "opalDream3",
-                targetPlayerX: 336, targetPlayerY: 255,
+                targetPlayerX: 336, targetPlayerY: 230,
                 requiredFlag: "riddle1correct"
             },
             {
@@ -236,7 +248,7 @@ export const chapter2Maps = {
             {
                 x: 336, y: 67, width: 40, height: 48,
                 targetMap: "opalDream4",
-                targetPlayerX: 336, targetPlayerY: 255,
+                targetPlayerX: 336, targetPlayerY: 230,
                 requiredFlag: "riddle2correct"
             },
             {
@@ -346,7 +358,7 @@ export const chapter2Maps = {
         triggers: [
             {
                 x: 338, y: 372, width: 48, height: 40,
-                targetMap: "hotelStreet",
+                targetMap: "hotelStreet2",
                 targetPlayerX: 386, targetPlayerY: 193,
             },
             {
@@ -355,6 +367,32 @@ export const chapter2Maps = {
                 flagRequired:"nightmare",
                 repeatable:true
             },
+        ]
+    },
+    "hotelStreet2": {
+        imageSrc: '../assets/Tilemaps/chap2/hotelStreet.png',
+        jsonDataSrc: '../data/maps/chap2/hotelStreet.json',
+        playerDefaultSpawn: { x: 490, y: 90 },
+        npcs: [
+        ],
+        items: [
+        ],
+        triggers: [
+            {
+                x: 0, y: 180, width: 40, height: 156,
+                targetMap: "trainStation2",
+                targetPlayerX: 654, targetPlayerY: 258,
+            },
+            {
+                x: 680, y: 180, width: 40, height: 156,
+                targetMap: "asylumEntrance",
+                targetPlayerX: 50, targetPlayerY: 240,
+            },
+            {
+                x: 362, y: 120, width: 48, height: 40,
+                targetMap: "hotelLobby2",
+                targetPlayerX: 358, targetPlayerY: 330,
+            }
         ]
     },
     "asylumEntrance": {
