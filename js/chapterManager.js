@@ -44,6 +44,14 @@ export default class ChapterManager {
             enterHotel: false,
             talkedToMary: false,
             nightmare: false,
+            nightmareyap1: false,
+            lanternyap: false,
+            ginyap: false,
+            cigarettesyap: false,
+            riddle1correct: false,
+            riddle2correct: false,
+            riddle3correct: false,
+            endscreen: false,
         };
 
 

@@ -53,14 +53,16 @@ export const QUESTS = {
             type: "main",
             key: "quest_find_grace_house",
             showWhen: ["talkedToFinley"],
-            hideWhen: ["graceDoorOpened"]
+            //hideWhen: ["graceDoorOpened"]
+            hideWhen: ["checkedGraceDoor"]
         },
         {
             id: "open_grace_door",
             type: "main",
             key: "quest_open_grace_door",
             showWhen: ["checkedGraceDoor"],
-            hideWhen: ["checkedGraceDoor"]
+            //hideWhen: ["checkedGraceDoor"]
+            hideWhen: ["graceDoorOpened"]
         },
         {
             id: "find_bennet",
@@ -148,6 +150,75 @@ export const QUESTS = {
             type: "main",
             key: "quest_get_out",
             showWhen: ["nightmare"],
+        },
+        {
+            id: "quest_choose",
+            type: "main",
+            key: "quest_choose",
+            showWhen: ["lanternyap"]
+        },
+        {
+            id: "riddle1option1",
+            type: "side",
+            key: "quest_obj_lantern",
+            showWhen: ["lanternyap"],
+            hideWhen: ["riddle1correct"]
+        },
+        {
+            id: "riddle1option2",
+            type: "side",
+            key: "quest_obj_soap",
+            showWhen: ["lanternyap"],
+            hideWhen: ["riddle1correct"]
+        },
+        {
+            id: "riddle1option3",
+            type: "side",
+            key: "quest_obj_broom",
+            showWhen: ["lanternyap"],
+            hideWhen: ["riddle1correct"]
+        },
+        {
+            id: "riddle2option1",
+            type: "side",
+            key: "quest_obj_money",
+            showWhen: ["ginyap"],
+            hideWhen: ["riddle2correct"]
+        },
+        {
+            id: "riddle2option2",
+            type: "side",
+            key: "quest_obj_food",
+            showWhen: ["ginyap"],
+            hideWhen: ["riddle2correct"]
+        },
+        {
+            id: "riddle3option3",
+            type: "side",
+            key: "quest_obj_gin",
+            showWhen: ["ginyap"],
+            hideWhen: ["riddle2correct"]
+        },
+        {
+            id: "riddle3option1",
+            type: "side",
+            key: "quest_obj_love",
+            showWhen: ["cigarettesyap"],
+            hideWhen: ["riddle3correct"]
+        },
+        {
+            id: "riddle3option2",
+            type: "side",
+            key: "quest_obj_cigarettes",
+            showWhen: ["cigarettesyap"],
+            hideWhen: ["riddle3correct"]
+        },
+        {
+            id: "riddle3option3",
+            type: "side",
+            key: "quest_obj_book",
+            showWhen: ["cigarettesyap"],
+            hideWhen: ["riddle3correct"]
         },
     ]
 };

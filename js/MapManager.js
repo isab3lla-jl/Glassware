@@ -99,7 +99,7 @@ export default class MapManager {
                 
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "bennet_bar_dialogue");
                 runtimeNpcs = runtimeNpcs.filter(n => n.key !== "grace");
-                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "finley_dialogue");
+                runtimeNpcs = runtimeNpcs.filter(n => n.key !== "finley_bar_dialogue");
             }
 
             if (mapKey === "homeStreet" && gameInstance.chapterManager.getFlag("grabbedKey")) {

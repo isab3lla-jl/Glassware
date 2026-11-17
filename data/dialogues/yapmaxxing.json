@@ -326,6 +326,15 @@
   "quest_go_to_assylum": { "text": "Get to the asylum" },
   "quest_go_to_train_station": { "text": "Go to the train station" },
   "quest_get_off_train": { "text": "Get off the train" },
+  "quest_obj_lantern": {"text": "Lantern"},
+  "quest_obj_soap": {"text": "Soap"},
+  "quest_obj_broom": {"text": "Broom"},
+  "quest_obj_gin": {"text": "Gin"},
+  "quest_obj_food": {"text": "Sweets"},
+  "quest_obj_money": {"text": "Money"},
+  "quest_obj_cigarettes": {"text": "Cigarettes"},
+  "quest_obj_love": {"text": "Love"},
+  "quest_obj_book": {"text": "Book"},
 
 "unavailable_door":[
    {
@@ -758,8 +767,8 @@
 
   "quest_place_to_sleep": { "text": "Find a place to sleep" },
   "quest_go_to_sleep": { "text": "Go to sleep" },
-  "quest_get_out": { "text": "Get out of the nightmare" },
-  "quest_choose": { "text": "Choose the right item" },
+  "quest_get_out": { "text": "Wake up" },
+  "quest_choose": { "text": "Guess the correct item" },
 
   "Mary_lobby_dialogue":[
     {
@@ -806,6 +815,12 @@
       "text":"Rest well."
     }
   ],
+  "mary_after_sleeping": [
+    {
+      "speaker":"Mary",
+      "text":"I see you're on your way out, I hope you had a nice sleep."
+    }
+  ],
   "bed_interaction":[
     {
       "speaker":"Opal",
@@ -815,6 +830,12 @@
       "speaker":"Opal",
       "text":"Might actually sleep well for once.",
       "triggerFlag": "nightmare"
+    }
+  ],
+  "dream_door_block":[
+    {
+      "speaker":"Onyx",
+      "text":"Not yet!"
     }
   ],
   "dream_dialogue_1": [
@@ -857,11 +878,16 @@
     },
     {
       "speaker":"Onyx",
-      "text":"Just wanna show you some things."
+      "text":"We're gonna play a little guessing game."
+    },
+    {
+      "speaker":"Opal",
+      "text":"What?"
     },
     {
       "speaker":"Onyx",
-      "text":"Recognize these?"
+      "text":"Just go through the door, you'll see what I mean.",
+      "triggerFlag":"nightmareyap1"
     }
   ],
   "lantern_riddle":[
@@ -875,7 +901,8 @@
     },
     {
       "speaker":"Opal",
-      "text":"Twisted fucking shadow..."
+      "text":"Twisted fucking shadow...",
+      "triggerFlag":"lanternyap"
     }
   ],
   "gin_riddle":[
@@ -893,7 +920,8 @@
     },
     {
       "speaker":"Opal",
-      "text":"..."
+      "text":"...",
+      "triggerFlag":"ginyap"
     }
   ],
   "cigarettes_riddle":[
@@ -907,25 +935,29 @@
     },
     {
       "speaker":"Opal",
-      "text":"Another one might just do it..."
+      "text":"Another one might just do it...",
+      "triggerFlag":"cigarettesyap"
     }
   ],
   "choosing_right_item_lantern":[
     {
       "speaker":"Opal",
-      "text":"No one ever visits either way, why bother cleaning."
+      "text":"No one ever visits either way, why bother cleaning.",
+      "triggerFlag":"riddle1correct"
     }
   ],
   "choosing_right_item_gin":[
     {
       "speaker":"Opal",
-      "text":"Even Bennet drinks in moderation, what excuse do I have?"
+      "text":"Even Bennet drinks in moderation, what excuse do I have?",
+      "triggerFlag":"riddle2correct"
     }
   ],
   "choosing_right_item_cigarettes":[
     {
       "speaker":"Opal",
-      "text":"It's just a few puffs..."
+      "text":"It's just a few puffs...",
+      "triggerFlag":"riddle3correct"
     }
   ],
   "choosing_wrong_item_lantern":[
@@ -949,11 +981,14 @@
   "waking_up_from_dream":[
     {
       "speaker":"Opal",
-      "text":"I didn't even get any rest..."
-    },
+      "text":"I already slept."
+    }
+  ],
+  "blocked_asylum": [
     {
       "speaker":"Opal",
-      "text":"I just need to deal with that thief and everything will be back to normal."
+      "text":"I'm too tired, I need to sleep first."
+
     }
   ]
 }
