@@ -86,6 +86,7 @@
       "triggerFlag": "talkedToBennet"
     }
   ],
+
   "bennet_bar_repeat": [
     {
       "speaker": "Bennet",
@@ -96,6 +97,7 @@
       "text": "Igualmente, cuídate."
     }
   ],
+
   "finley_bar_dialogue": [
     {
       "speaker": "Finley",
@@ -114,6 +116,7 @@
       "text": "Sí..."
     }
   ],
+
   "prologue_kitty": [
     {
       "speaker": "Gato callejero",
@@ -126,6 +129,7 @@
       "text": ":3"
     }
   ],
+
   "locked_door": [
     {
       "speaker": "Opal",
@@ -133,18 +137,21 @@
       "triggerFlag": "checkedDoor"
     }
   ],
+
   "check_bar": [
     {
       "speaker": "Opal",
       "text": "Debería revisar el bar."
     }
   ],
+
   "need_money": [
     {
       "speaker": "Opal",
       "text": "Debería recoger mi dinero antes de ir por ahí..."
     }
   ],
+
   "grabbed_keys": [
     {
       "speaker": "Opal",
@@ -156,6 +163,7 @@
       "triggerFlag": "grabbedKey"
     }
   ],
+
   "going_to_bed_home": [
     {
       "speaker": "Opal",
@@ -166,6 +174,7 @@
       "text": "Debería dejar de tomar a escondidas mientras trabajo..."
     }
   ],
+
   "first_onyx_cutscene": [
     {
       "speaker": "Onyx",
@@ -204,6 +213,7 @@
       "text": "Contigo nunca se puede."
     }
   ],
+
   "first_onyx_cutscene_pt2": [
     {
       "speaker": "Onyx",
@@ -242,6 +252,7 @@
       "text": "De todas tus costumbres raras, caminar en sueños no es una de ellas, ¿o sí?"
     }
   ],
+
   "first_onyx_cutscene_pt3": [
     {
       "speaker": "Opal",
@@ -300,6 +311,7 @@
       "text": "Tengo que apurarme. No puedo aguantar a Onyx por mucho tiempo."
     }
   ],
+
   "grabbed_money": [
     {
       "speaker": "Opal",
@@ -325,15 +337,16 @@
   "quest_go_to_assylum": { "text": "Llegar al psiquiátrico" },
   "quest_go_to_train_station": { "text": "Ir a la estación de tren" },
   "quest_get_off_train": { "text": "Bajar del tren" },
-  "quest_obj_lantern": {"text": "Linterna"},
-  "quest_obj_soap": {"text": "Jabón"},
-  "quest_obj_broom": {"text": "Escoba"},
-  "quest_obj_gin": {"text": "Gin"},
-  "quest_obj_food": {"text": "Postres"},
-  "quest_obj_money": {"text": "Dinero"},
-  "quest_obj_cigarettes": {"text": "Cigarros"},
-  "quest_obj_love": {"text": "Amor"},
-  "quest_obj_book": {"text": "Libro"},
+
+  "quest_obj_lantern": { "text": "Linterna" },
+  "quest_obj_soap": { "text": "Jabón" },
+  "quest_obj_broom": { "text": "Escoba" },
+  "quest_obj_gin": { "text": "Gin" },
+  "quest_obj_food": { "text": "Postres" },
+  "quest_obj_money": { "text": "Dinero" },
+  "quest_obj_cigarettes": { "text": "Cigarros" },
+  "quest_obj_love": { "text": "Amor" },
+  "quest_obj_book": { "text": "Libro" },
 
   "unavailable_door": [
     {
@@ -341,6 +354,7 @@
       "text": "No necesito entrar ahí ahora."
     }
   ],
+
   "finley_questions": [
     {
       "speaker": "Opal",
@@ -420,6 +434,7 @@
       "triggerFlag": "talkedToFinley"
     }
   ],
+
   "locked_grace_door": [
     {
       "speaker": "Opal",
@@ -435,12 +450,14 @@
       "triggerFlag": "checkedGraceDoor"
     }
   ],
+
   "grace_locked_door_repeat": [
     {
       "speaker": "Opal",
       "text": "Sigue cerrada."
     }
   ],
+
   "bennet_cat_interact": [
     {
       "speaker": "Opal",
@@ -456,6 +473,7 @@
       "text": "Miauuu."
     }
   ],
+
   "bennet_help": [
     {
       "speaker": "Bennet",
@@ -523,30 +541,35 @@
       "triggerFlag": "talkedToBennetHouse"
     }
   ],
+
   "trash_interact_1": [
     {
       "speaker": "Opal",
       "text": "Aquí solo hay basura."
     }
   ],
+
   "trash_interact_2": [
     {
       "speaker": "Opal",
       "text": "Nada útil…"
     }
   ],
+
   "trash_interact_3": [
     {
       "speaker": "Opal",
       "text": "Qué asco…"
     }
   ],
+
   "trash_interact_4": [
     {
       "speaker": "Opal",
       "text": "¿Para qué guardan esto?"
     }
   ],
+
   "hidden_item_interact": [
     {
       "speaker": "Opal",
@@ -558,6 +581,7 @@
       "triggerFlag": "lockpicksGrabbed"
     }
   ],
+
   "grab_bar_bottle": [
     {
       "speaker": "Opal",
@@ -565,6 +589,7 @@
       "triggerFlag": "ginGrabbed"
     }
   ],
+
   "bennet_interact_bottle_only": [
     {
       "speaker": "Opal",
@@ -587,6 +612,7 @@
       "text": "¡Suerte!"
     }
   ],
+
   "bennet_interact_lockpicks_only": [
     {
       "speaker": "Opal",
@@ -601,6 +627,7 @@
       "text": "Está bien, entonces vuelvo con los tragos."
     }
   ],
+
   "bennet_interact_with_both_items": [
     {
       "speaker": "Opal",
@@ -668,6 +695,7 @@
       "triggerFlag": "locksmithSkills"
     }
   ],
+
   "grace_clue_1": [
     {
       "speaker": "Opal",
@@ -688,6 +716,7 @@
       "text": "Ni siquiera sé qué es esto."
     }
   ],
+
   "grace_right_clue": [
     {
       "speaker": "Opal",
@@ -715,6 +744,7 @@
       "triggerFlag": "readGracePapers"
     }
   ],
+
   "train_dialogue": [
     {
       "speaker": "Onyx",
@@ -757,16 +787,18 @@
       "text": "Debería dormir pronto..."
     }
   ],
+
   "leave_train": [
     {
       "speaker": "Opal",
       "text": "Tengo que bajar del tren."
     }
   ],
+
   "blocked_train": [
     {
-      "speaker":"Opal",
-      "text":"No puedo volver."
+      "speaker": "Opal",
+      "text": "No puedo volver."
     }
   ],
 
@@ -779,10 +811,11 @@
 
   "blocked_hotel_door": [
     {
-      "speaker":"Opal",
-      "text":"Debería hablar con la señora para conseguir un cuarto."
+      "speaker": "Opal",
+      "text": "Debería hablar con la señora para conseguir un cuarto."
     }
   ],
+
   "Mary_lobby_dialogue": [
     {
       "speaker": "Opal",
@@ -822,18 +855,21 @@
       "triggerFlag": "talkedToMary"
     }
   ],
+
   "mary_lobby_repeat": [
     {
       "speaker": "Mary",
       "text": "Que descanses."
     }
   ],
-  "mary_after_sleeping":[
+
+  "mary_after_sleeping": [
     {
-      "speaker":"Mary",
-      "text":"Veo que ya te vas, espero que hayas dormido bien."
+      "speaker": "Mary",
+      "text": "Veo que ya te vas, espero que hayas dormido bien."
     }
   ],
+
   "bed_interaction": [
     {
       "speaker": "Opal",
@@ -845,12 +881,14 @@
       "triggerFlag": "nightmare"
     }
   ],
-  "dream_door_block":[
+
+  "dream_door_block": [
     {
-      "speaker":"Onyx",
-      "text":"¿A donde vas?"
+      "speaker": "Onyx",
+      "text": "¿A donde vas?"
     }
   ],
+
   "dream_dialogue_1": [
     {
       "speaker": "Onyx",
@@ -891,14 +929,19 @@
     },
     {
       "speaker": "Onyx",
-      "text": "Solo quiero mostrarte unas cosas."
+      "text": "Vamos a jugar a las adivinanzas."
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Qué?"
     },
     {
       "speaker": "Onyx",
-      "text": "¿Reconoces esto?",
-      "triggerFlag":"nightmareyap1"
+      "text": "Tú cruza la puerta. Ya verás.",
+      "triggerFlag": "nightmareyap1"
     }
   ],
+
   "lantern_riddle": [
     {
       "speaker": "Onyx",
@@ -911,9 +954,10 @@
     {
       "speaker": "Opal",
       "text": "Pinche sombra retorcida...",
-      "triggerFlag":"lanternyap"
+      "triggerFlag": "lanternyap"
     }
   ],
+
   "gin_riddle": [
     {
       "speaker": "Onyx",
@@ -930,9 +974,10 @@
     {
       "speaker": "Opal",
       "text": "...",
-      "triggerFlag":"ginyap"
+      "triggerFlag": "ginyap"
     }
   ],
+
   "cigarettes_riddle": [
     {
       "speaker": "Onyx",
@@ -945,58 +990,282 @@
     {
       "speaker": "Opal",
       "text": "A lo mejor con otro sí...",
-      "triggerFlag":"cigarettesyap"
+      "triggerFlag": "cigarettesyap"
     }
   ],
+
   "choosing_right_item_lantern": [
     {
       "speaker": "Opal",
       "text": "De todos modos, nunca viene nadie. ¿Para qué molestarme en limpiar?",
-      "triggerFlag":"riddle1correct"
+      "triggerFlag": "riddle1correct"
     }
   ],
+
   "choosing_right_item_gin": [
     {
       "speaker": "Opal",
       "text": "Hasta Bennet toma con moderación. ¿Qué excusa tengo yo?",
-      "triggerFlag":"riddle2correct"
+      "triggerFlag": "riddle2correct"
     }
   ],
+
   "choosing_right_item_cigarettes": [
     {
       "speaker": "Opal",
       "text": "Solo son unas cuantas fumadas...",
-      "triggerFlag":"riddle3correct"
+      "triggerFlag": "riddle3correct"
     }
   ],
+
   "choosing_wrong_item_lantern": [
     {
       "speaker": "Onyx",
       "text": "Nunca has sido muy brillante, ¿verdad?"
     }
   ],
+
   "choosing_wrong_item_gin": [
     {
       "speaker": "Onyx",
       "text": "¿Y si intentas pensar por una vez?"
     }
   ],
+
   "choosing_wrong_item_cigarettes": [
     {
       "speaker": "Onyx",
       "text": "¿En serio?"
     }
   ],
+
   "waking_up_from_dream": [
     {
       "speaker": "Opal",
       "text": "Ya dormí."
     }
   ],
-  "blocked_asylum":[
+
+  "blocked_asylum": [
     {
-    "speaker":"Opal",
-    "text":"Tengo que dormir primero."
+      "speaker": "Opal",
+      "text": "Tengo que dormir primero."
+    }
+  ],
+
+  "title_chapter_3": { "title": "Acto 3" },
+
+  "asylum_door_block": [
+    {
+      "speaker": "Opal",
+      "text": "Ahora ya no puedo dar marcha atrás."
+    }
+  ],
+
+  "asylum_lobby_convo": [
+    {
+      "speaker": "Opal",
+      "text": "Hola, estoy buscando a alguien."
+    },
+    {
+      "speaker": "Vincent",
+      "text": "¿Quién eres?"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Mira, tengo prisa."
+    },
+    {
+      "speaker": "Vincent",
+      "text": "Está bien... ¿En qué te puedo ayudar?"
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Grace? Creo que es la que trabaja aquí en la morgue."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Bueno, ¿por dónde llego a la morgue?"
+    },
+    {
+      "speaker": "Vincent",
+      "text": "Sigue las flechas. Estos pasillos son medio laberínticos."
+    },
+    {
+      "speaker": "Vincent",
+      "text": "Si te desorientas, puede que acabes aquí otra vez."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Está bien."
+    },
+    {
+      "speaker": "Vincent",
+      "text": "Hubo un incidente y algunas partes del edificio quedaron dañadas. Fíjate en los tableros de avisos, te pueden ayudar a encontrar el camino."
+    }
+  ],
+
+  "notice_board_block": [
+    {
+      "speaker": "Opal",
+      "text": "Primero debería echarle un ojo a ese tablero."
+    }
+  ],
+
+  "arrow_notice_board": [
+    {
+      "speaker": "",
+      "text": "Aviso al personal: Las instalaciones siguen en reparación y las flechas aún están dañadas. Fíjense en las muescas para saber hacia dónde apuntaba cada flecha y evitar demoras en la atención a los pacientes."
+    }
+  ],
+
+  "bodies_notice_board": [
+    {
+      "speaker": "",
+      "text": "Aviso al personal: Si no pueden trasladar un cuerpo en el momento del fallecimiento, déjenlo en una camilla junto a una de las puertas más cercanas a la morgue y cúbranlo con una manta amarilla."
+    }
+  ],
+
+  "grace_confrontation": [
+    {
+      "speaker": "Opal",
+      "text": "¡Tú!"
+    },
+    {
+      "speaker": "Grace",
+      "text": "Perdón, ¿te conozco?"
+    },
+    {
+      "speaker": "Grace",
+      "text": "Voy a tener que pedirte que te vayas. Aquí no puedes estar."
+    },
+    {
+      "speaker": "Opal",
+      "text": "No te hagas. Sé que me robaste."
+    },
+    {
+      "speaker": "Grace",
+      "text": "¿Que te robé? ¿De qué hablas?"
+    },
+    {
+      "speaker": "Opal",
+      "text": "¡Te llevaste mi pinche frasco! Te vi siguiéndome a casa esa noche."
+    },
+    {
+      "speaker": "Grace",
+      "text": "..."
+    },
+    {
+      "speaker": "Grace",
+      "text": "Vaya, estabas lo bastante sobrio para darte cuenta."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Devuélvemelo ahora mismo. Lo necesito."
+    },
+    {
+      "speaker": "Grace",
+      "text": "Sé que lo necesitas, pero me temo que también lo necesito para mis investigaciones."
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Investigaciones? ¿De qué carajos hablas?"
+    },
+    {
+      "speaker": "Grace",
+      "text": "Estoy tratando de averiguar cómo funcionan los frascos y cómo fabricar más."
+    },
+    {
+      "speaker": "Grace",
+      "text": "¿No has notado que parece que se llenan solos, sin ningún motivo? De alguna forma, cada frasco está ligado a su dueño. Voy a averiguar cómo, cueste lo que cueste."
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Los frascos?"
+    },
+    {
+      "speaker": "Grace",
+      "text": "No voy a perder el tiempo explicándote mi trabajo. Tú sabes por experiencia propia lo importante que puede llegar a ser."
+    },
+    {
+      "speaker": "Grace",
+      "text": "Si uso mi propio frasco para los experimentos, no puedo trabajar."
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Y eso qué tiene que ver conmigo? ¡Si tanto sabes de esta mierda, busca otra forma!"
+    },
+    {
+      "speaker": "Grace",
+      "text": "Para experimentar necesito tener con qué."
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Y por eso me robaste el mío?"
+    },
+    {
+      "speaker": "Grace",
+      "text": "Le voy a dar mejor uso del que tú le darías jamás."
+    },
+    {
+      "speaker": "Grace",
+      "text": "Tampoco es que hagas gran cosa con tu vida."
+    },
+    {
+      "speaker": "Opal",
+      "text": "¿Cuánto tiempo llevas vigilándome?"
+    },
+    {
+      "speaker": "Grace",
+      "text": "¿De verdad importa?"
+    },
+    {
+      "speaker": "Opal",
+      "text": "..."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Voy a recuperarlo de una forma u otra. Más te vale que me lo devuelvas."
+    },
+    {
+      "speaker": "Grace",
+      "text": "¿O qué?"
+    },
+    {
+      "speaker": "Grace",
+      "text": "Con esos gritos, los guardias ya vienen para acá. Pareces un loco."
+    },
+    {
+      "speaker": "Grace",
+      "text": "Y aquí cuidamos muy bien a la gente así."
+    },
+    {
+      "speaker": "Opal",
+      "text": "No puedes hacer eso."
+    },
+    {
+      "speaker": "Opal",
+      "text": "Les voy a contar todo."
+    },
+    {
+      "speaker": "Grace",
+      "text": "¿Qué les vas a decir? ¿Que te robé el frasco que necesitas para dejar de ver tu propia sombra retorcida? Ya te imaginarás cómo suena eso, ¿verdad?"
+    },
+    {
+      "speaker": "Grace",
+      "text": "Por la morgue no hay salida. Pero si echas a correr ahora mismo, tal vez logres escapar de los guardias."
+    },
+    {
+      "speaker": "Opal",
+      "text": "..."
+    },
+    {
+      "speaker": "Grace",
+      "text": "¿Te sientes mal? No te preocupes. Aquí te vamos a cuidar muy bien."
+    },
+    {
+      "speaker": "Opal",
+      "text": "No puedo..."
     }
   ]
 }
