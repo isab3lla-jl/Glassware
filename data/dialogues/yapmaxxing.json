@@ -1002,5 +1002,213 @@
   ],
    "title_chapter_3":{
     "title":"Act 3"
-  }
+  },
+  "asylum_door_block": [
+    {
+      "speaker":"Opal",
+      "text":"I can't go back now."
+    }
+  ],
+  "asylum_lobby_convo": [
+    {
+      "speaker":"Opal",
+      "text":"Hey, I'm looking for someone"
+    },
+    {
+      "speaker":"Vincent",
+      "text":"Who are you?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Look, I'm in a hurry."
+    },
+    {
+      "speaker":"Vincent",
+      "text":"Ok... How can I help you?"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Grace? I think thats our morgue worker."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Ok, which way to the morgue?"
+    },
+    {
+      "speaker":"Vincent",
+      "text":"Just follow the arrow signs, its a bit of a maze though."
+    },
+    {
+      "speaker":"Vincent",
+      "text":"If you get turned around you might just end up back here."
+    },
+    {
+      "speaker":"Opal",
+      "text":"Alright."
+    },
+    {
+      "speaker":"Vincent",
+      "text":"We had a situation and some of the facilities are damaged, just keep an eye out for the notice boards, they might help you find your way."
+    }
+    ],
+    "notice_board_block":[
+      {
+        "speaker":"Opal",
+        "text":"I should take a look at that board first."
+      }
+    ],
+    "arrow_notice_board":[
+      {
+        "speaker":"",
+        "text":"Reminded to all workers: Facilities are still under repair and signaling is still damaged, keep a close eye on notches to know the original signaling rotation to avoid delays in patient care."
+      }
+    ],
+    "bodies_notice_board":[
+      {
+        "speaker":"",
+        "text":"Reminder to all workers: Bodies in stretchers need to be covered by yellow blankets and left by the doors closest to the morgue if you're unable to move them at the moment of passing."
+      }
+    ],
+    "grace_confrontation":[
+      {
+        "speaker":"Opal",
+        "text":"You!"
+      },
+      {
+        "speaker":"Grace",
+        "text":"Sorry, do I know you?"
+      },
+      {
+        "speaker":"Grace",
+        "text":"I'm gonna have to ask you to leave, you can't be in here"
+      },
+      {
+        "speaker":"Opal",
+        "text":"Don't play dumb, I know you stole from me."
+      },
+      {
+        "speaker":"Grace",
+        "text":"Steal? what are you talking about?"
+      },
+      {
+        "speaker":"Opal",
+        "text":"You took my fucking Vial, I saw you following me home at night."
+      },
+      {
+        "speaker":"Grace",
+        "text":"..."
+      },
+      {
+        "speaker":"Grace",
+        "text":"I guess you were sober enough to notice."
+      },
+      {
+        "speaker":"Opal",
+        "text":"Give it back to me right now, I need it."
+      },
+      {
+        "speaker":"Grace",
+        "text":"I know you need it, but I'm afraid my studies require it."
+      },
+      {
+        "speaker":"Opal",
+        "text":"Studies? What the hell are you talking about?"
+      },
+      {
+        "speaker":"Grace",
+        "text":"I'm trying to figure out how the Vials work, and how to produce more of them"
+      },
+      {
+        "speaker":"Grace",
+        "text":"Haven't you noticed how they seemingly refill at random? They're connected to whoever owns them in some way, and I intend to find out how by any means necessary."
+      },
+      {
+        "speaker":"Opal",
+        "text":"Vials?"
+      },
+      {
+        "speaker":"Grace",
+        "text":"I'm not going to bother explaining my work to you, but you know from experience how vital it can be."
+      },
+      {
+        "speaker":"Grace",
+        "text":"I can't work if I use my own Vial in my studies."
+      },
+      {
+        "speaker":"Opal",
+        "text":"And how is that my problem? If you know so much about this shit just figure out some other way!"
+      },
+      {
+        "speaker":"Grace",
+        "text":"I can only work if I have the materials to experiment with."
+      },
+      {
+        "speaker":"Opal",
+        "text":"So you stole mine?"
+      },
+      {
+        "speaker":"Grace",
+        "text":"I'm going to make a better use of it than you would ever have."
+      },
+      {
+        "speaker":"Grace",
+        "text":"Its not like you do much with your life."
+      },
+      {
+        "speaker":"Opal",
+        "text":"How long have you been watching me?"
+      },
+      {
+        "speaker":"Grace",
+        "text":"Does it really matter?"
+      },
+      {
+        "speaker":"Opal",
+        "text":"..."
+      },
+      {
+        "speaker":"Opal",
+        "text":"I'm getting it back one way or another, so I suggest you hand it over."
+      },
+      {
+        "speaker":"Grace",
+        "text":"Or what?"
+      },
+      {
+        "speaker":"Grace",
+        "text":"Guards are already on their way with all your yelling, you seem crazed."
+      },
+      {
+        "speaker":"Grace",
+        "text":"And we take very good care of such people in here."
+      },
+      {
+        "speaker":"Opal",
+        "text":"You can't do that."
+      },
+      {
+        "speaker":"Opal",
+        "text":"I'll tell them everything."
+      },
+      {
+        "speaker":"Grace",
+        "text":"What? That I stole the Vial you need to not see your own twisted shadow? You can guess how that sounds right?"
+      },
+      {
+        "speaker":"Grace",
+        "text":"This morgue is a dead end either way, but if you start running right now maybe you can get away from the guards."
+      },
+      {
+        "speaker":"Opal",
+        "text":"..."
+      },
+      {
+        "speaker":"Grace",
+        "text":"Not feeling too well? Don't worry, we'll take good care of you."
+      },
+      {
+        "speaker":"Opal",
+        "text":"I can't..."
+      }
+    ]
 }
