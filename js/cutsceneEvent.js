@@ -61,6 +61,10 @@ export default class CutsceneEvent {
                 targetEntity.state = "IDLE_FRONT";
                 targetEntity.facing = "FRONT";
             }
+            if (dir === "BLEH"){
+                targetEntity.state = "CUTSCENEDEATH";
+                targetEntity.facing = "BLEH";
+            }
         }
 
         if (this.event.time) {

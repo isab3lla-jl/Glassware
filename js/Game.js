@@ -410,16 +410,49 @@ export default class Game {
                 this.mapManager.startCutscene(trainCutscene, this);
             }
 
-            if (nextMapKey === "blank" && !this.chapterManager.getFlag("endscreen")) {
+            if (nextMapKey === "asylumLobby" && !this.chapterManager.getFlag("tppolish")) {
 
-                this.chapterManager.setFlag("endscreen", true);
+                this.chapterManager.setFlag("tppolish", true);
 
-                const endscreenCutscene = [
+                const tpCutscene = [
                     
-                    {type: "GAME_END"},
+                    {type: "FADE", direction: "IN"},
+                    {type: "FADE", direction: "OUT"}
 
                 ];
-                this.mapManager.startCutscene(endscreenCutscene, this);
+                this.mapManager.startCutscene(tpCutscene, this);
+                this.mapManager.startCutscene(tpCutscene, this).then(() => {
+                this.chapterManager.setFlag("tppolish", false);
+                });
+            }
+
+             if (nextMapKey === "asylum9" && !this.chapterManager.getFlag("graceyap")) {
+
+                this.chapterManager.setFlag("graceyap", true);
+
+                const graceendCutscene = [
+                    
+                    
+                    {
+                        type: "ADD_NPC",
+                        npcKey: "Grace",
+                        x: 264,
+                        y: 220,
+                        animationConfig:{ 
+                            [NPC_STATES.IDLE]:       { src: "../assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_FRONT]: { src: "../assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_SIDE]:  { src: "../assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_BACK]:  { src: "../assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true },
+                        }
+                    },
+                    { type: "STAND", who: "Grace", direction: "RIGHT", time: 500},
+                    { type: "WALK", who: "player", direction: "LEFT", time: 1200},
+                    { type: "TEXT", key: "grace_confrontation"},
+                    { type: "GAME_END"}
+                    
+                ];
+               
+                this.mapManager.startCutscene(graceendCutscene, this);
             }
         }
     }

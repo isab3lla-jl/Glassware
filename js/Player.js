@@ -12,13 +12,15 @@ const PLAYER_STATES = {
     GRAB_FRONT: "GRAB_FRONT",
     GRAB_SIDE: "GRAB_SIDE",
     GRAB_BACK: "GRAB_BACK",
-    DEATH: "DEATH"
+    DEATH: "DEATH",
+    CUTSCENEDEATH: "CUTSCENEDEATH"
 };
 
 const FACING = {
     FRONT: "FRONT",
     SIDE: "SIDE",
-    BACK: "BACK"
+    BACK: "BACK",
+    BLEH: "BLEH"
 };
 
 export default class Player extends Sprite {
@@ -49,7 +51,8 @@ export default class Player extends Sprite {
             [PLAYER_STATES.GRAB_SIDE]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 2, totalRows: 8, frameSpeed: 2, loop: false },
             [PLAYER_STATES.GRAB_BACK]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 3, totalRows: 8, frameSpeed: 2, loop: false },
 
-            [PLAYER_STATES.DEATH]: { src: "../assets/CharSprites/OpalDeath-Sheet.png", frameCount: 22, frameSpeed: 8, loop: false }
+            [PLAYER_STATES.DEATH]: { src: "../assets/CharSprites/OpalDeath-Sheet.png", frameCount: 22, frameSpeed: 8, loop: false },
+            [PLAYER_STATES.CUTSCENEDEATH]: { src: "../assets/CharSprites/OpalDeath-Sheet.png", frameCount: 22, frameSpeed: 8, loop: false }
         });
 
         this.hitboxOffset = { x: 3, y: 4 }; //y: 4 (asegurarme que los caminos para personaje tengan 2 tiles de altura)
