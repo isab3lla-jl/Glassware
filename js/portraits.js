@@ -9,4 +9,5 @@ export const PORTRAITS = {
     calicoCat: { src: "./assets/NPCSprites/FrontFacing/CalicoKittyFrontLeft.png", side: "right" },
     tuxCat: { src: "./assets/NPCSprites/FrontFacing/TuxKittyFront.png", side: "right" },
     orangeCat: { src: "./assets/NPCSprites/FrontFacing/OrangeKittyFront.png", side: "right" },
+    ominousCat: { src: "./assets/NPCSprites/FrontFacing/OminousKittyFront.png", side: "right" },
 };

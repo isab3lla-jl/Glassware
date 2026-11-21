@@ -399,7 +399,14 @@ export const chapter2Maps = {
         imageSrc:'../assets/Tilemaps/chap2/asylumEntrance.png',
         jsonDataSrc:'../data/maps/chap2/asylumEntrance.json',
         playerDefaultSpawn: { x: 490, y: 90 },
-        npcs: [],
+        npcs: [
+            {
+                x: 552, y: 144, key:"black_cat", interactable: true,
+                animationConfig: {
+                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/OminousKittySheet.png", frameCount: 2, frameRow: 1, totalRows: 1, frameSpeed: 2, loop: true }
+                }
+            }
+        ],
         items: [],
         triggers: [
             {
