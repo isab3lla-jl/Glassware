@@ -315,7 +315,8 @@
 
   "quest_talk_to_finley": { "text": "Talk to Finley" },
   "quest_find_grace_house": { "text": "Find the thief's house" },
-  "quest_open_grace_door": { "text": "Open the thief's door" },
+  "quest_open_grace_door": { "text": "Find a way to open the thief's door" },
+  "quest_open_thief_door_fr": {"text": "Open the thief's door"},
   "quest_find_bennet": { "text": "Find Bennet" },
   "quest_talk_to_bennet": { "text": "Talk to Bennet" },
   "quest_get_bottle": { "text": "Get bottle" },
@@ -1000,13 +1001,35 @@
       "text":"I'm too tired, I need to sleep first."
     }
   ],
+  "black_cat": [
+    {
+      "speaker":"Opal",
+      "text":"I suppose my luck cant get any worse."
+    },
+    {
+      "speaker":"Black Cat", "portrait": "ominousCat",
+      "text":"Mrrrrp"
+    },
+    {
+      "speaker":"Opal",
+      "text":"Cute."
+    }
+  ],
    "title_chapter_3":{
     "title":"Act 3"
   },
+
+  "quest_maze": {"text":"Find your way through the asylum."},
   "asylum_door_block": [
     {
       "speaker":"Opal",
       "text":"I can't go back now."
+    }
+  ],
+  "vincentblock":[
+    {
+      "speaker":"Opal",
+      "text":"I should speak to the receptionist first."
     }
   ],
   "asylum_lobby_convo": [
@@ -1028,6 +1051,10 @@
     },
     {
       "speaker":"Opal",
+      "text":"I'm looking for someone named Grace."
+    },
+    {
+      "speaker":"Vincent",
       "text":"Grace? I think thats our morgue worker."
     },
     {
@@ -1048,8 +1075,15 @@
     },
     {
       "speaker":"Vincent",
-      "text":"We had a situation and some of the facilities are damaged, just keep an eye out for the notice boards, they might help you find your way."
+      "text":"We had a situation and some of the facilities are damaged, just keep an eye out for the notice boards, they might help you find your way.",
+      "triggerFlag":"vincentyap"
     }
+    ],
+    "vincent_repeat": [
+      {
+        "speaker":"Vincent",
+        "text":"If you get turned around you might just end up back here."
+      }
     ],
     "notice_board_block":[
       {
@@ -1060,13 +1094,22 @@
     "arrow_notice_board":[
       {
         "speaker":"",
-        "text":"Reminded to all workers: Facilities are still under repair and signaling is still damaged, keep a close eye on notches to know the original signaling rotation to avoid delays in patient care."
+        "text":"Reminded to all workers: Facilities are still under repair and signaling is still damaged, keep a close eye on notches to know the original signaling rotation to avoid delays in patient care.",
+        "triggerFlag":"arrows"
+      }
+    ],
+    "pipes_notice_board":[
+      {
+        "speaker":"",
+        "text":"Reminder to all workers: Some of the pipework has gotten damaged, keep an eye out for leaks between the lobby and the morgue.",
+        "triggerFlag":"pipes"
       }
     ],
     "bodies_notice_board":[
       {
         "speaker":"",
-        "text":"Reminder to all workers: Bodies in stretchers need to be covered by yellow blankets and left by the doors closest to the morgue if you're unable to move them at the moment of passing."
+        "text":"Reminder to all workers: Bodies in stretchers need to be covered by yellow blankets and left by the doors closest to the morgue if you're unable to move them at the moment of passing.",
+        "triggerFlag":"bodies"
       }
     ],
     "grace_confrontation":[
@@ -1204,11 +1247,8 @@
       },
       {
         "speaker":"Grace",
-        "text":"Not feeling too well? Don't worry, we'll take good care of you."
-      },
-      {
-        "speaker":"Opal",
-        "text":"I can't..."
+        "text":"Not feeling too well? Don't worry, we'll take good care of you.",
+        "triggerFlag":"graceyap"
       }
     ]
 }

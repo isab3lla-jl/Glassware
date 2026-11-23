@@ -57,7 +57,7 @@ export const QUESTS = {
             hideWhen: ["checkedGraceDoor"]
         },
         {
-            id: "open_grace_door",
+            id: "resuelve_open_grace_door",
             type: "main",
             key: "quest_open_grace_door",
             showWhen: ["checkedGraceDoor"],
@@ -92,6 +92,12 @@ export const QUESTS = {
             key: "quest_get_lockpicks",
             showWhen: ["talkedToBennetHouse"],
             doneWhen: ["lockpicksGrabbed"],
+            hideWhen: ["graceDoorOpened"]
+        },
+        {
+            id: "open_thief_door_fr",
+            key: "quest_open_thief_door_fr",
+            showWhen: ["locksmithSkills"],
             hideWhen: ["graceDoorOpened"]
         },
         {
@@ -150,6 +156,7 @@ export const QUESTS = {
             type: "main",
             key: "quest_get_out",
             showWhen: ["nightmare"],
+            hideWhen: ["riddle3correct"]
         },
         {
             id: "quest_choose",
@@ -220,5 +227,18 @@ export const QUESTS = {
             showWhen: ["cigarettesyap"],
             hideWhen: ["riddle3correct"]
         },
+    ],
+    [CHAPTERS.CHAPTER_3]: [
+        {
+            id: "get_vial",
+            type: "main",
+            key: "quest_get_vial",
+        },
+        {
+            id: "asylum_maze",
+            type: "main",
+            key: "quest_maze",
+            showWhen: ["vincentyap"]
+        }
     ]
 };

@@ -64,6 +64,7 @@ export default class Sprite {
         if (direction === "RIGHT") { this.state = "MOVE_SIDE";  this.facing = "SIDE";  this.flipX = false; }
         if (direction === "UP")    { this.state = "MOVE_BACK";  this.facing = "BACK"; }
         if (direction === "DOWN")  { this.state = "MOVE_FRONT"; this.facing = "FRONT"; }
+        if (direction === "BLEH")  { this.state = "CUTSCENEDEATH"; this.facing = "BLEH";}
     }
 
     updateCutsceneMovement(dt) {
@@ -83,6 +84,7 @@ export default class Sprite {
                 if (this.state === "MOVE_SIDE")  this.state = "IDLE_SIDE";
                 if (this.state === "MOVE_BACK")  this.state = "IDLE_BACK";
                 if (this.state === "MOVE_FRONT") this.state = "IDLE_FRONT";
+                if (this.state === "CUTSCENE_DEATH") this.state ="CUTSCENE_DEATH";
 
                 const event = new CustomEvent("finished_free_walk", {
                     detail: { npcKey: this.key || "player" }

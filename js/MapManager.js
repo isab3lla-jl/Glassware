@@ -5,6 +5,7 @@ import CutsceneEvent from "./cutsceneEvent.js";
 import { prologueMaps } from "./chapterMapsConfigs/prologueMaps.js";
 import { chapter1Maps } from "./chapterMapsConfigs/chap1Maps.js";
 import { chapter2Maps } from "./chapterMapsConfigs/chap2Maps.js";
+import { chapter3Maps } from "./chapterMapsConfigs/chap3Maps.js";
 
 import { CHAPTERS } from "./chapterManager.js";
 
@@ -14,12 +15,14 @@ export default class MapManager {
             [CHAPTERS.PROLOGUE]: prologueMaps,
             [CHAPTERS.CHAPTER_1]: chapter1Maps,
             [CHAPTERS.CHAPTER_2]: chapter2Maps,
+            [CHAPTERS.CHAPTER_3]: chapter3Maps,
         };
 
         this.chapterStartMaps = {
             [CHAPTERS.PROLOGUE]: "bar",
             [CHAPTERS.CHAPTER_1]: "streetOne",
             [CHAPTERS.CHAPTER_2]: "trainStation2",
+            [CHAPTERS.CHAPTER_3]: "asylumLobby",
         };
 
         this.loadId = 0;

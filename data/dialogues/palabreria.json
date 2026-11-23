@@ -328,7 +328,8 @@
 
   "quest_talk_to_finley": { "text": "Hablar con Finley" },
   "quest_find_grace_house": { "text": "Encontrar la casa del ladrón" },
-  "quest_open_grace_door": { "text": "Abrir la puerta del ladrón" },
+  "quest_open_grace_door": { "text": "Encontrar la forma de abrir la puerta del ladrón" },
+  "quest_open_thief_door_fr": { "text": "Abrir la puerta del ladrón" },
   "quest_find_bennet": { "text": "Encontrar a Bennet" },
   "quest_talk_to_bennet": { "text": "Hablar con Bennet" },
   "quest_get_bottle": { "text": "Conseguir la botella" },
@@ -1053,12 +1054,37 @@
     }
   ],
 
+  "black_cat": [
+    {
+      "speaker": "Opal",
+      "text": "Supongo que ya no puedo tener peor suerte."
+    },
+    {
+      "speaker": "Gato negro",
+      "portrait": "ominousCat",
+      "text": "Mrrrrp"
+    },
+    {
+      "speaker": "Opal",
+      "text": "Qué bonito."
+    }
+  ],
+
   "title_chapter_3": { "title": "Acto 3" },
+
+  "quest_maze": { "text": "Encontrar el camino por el psiquiátrico" },
 
   "asylum_door_block": [
     {
       "speaker": "Opal",
       "text": "Ahora ya no puedo dar marcha atrás."
+    }
+  ],
+
+  "vincentblock": [
+    {
+      "speaker": "Opal",
+      "text": "Primero debería hablar con el recepcionista."
     }
   ],
 
@@ -1081,6 +1107,10 @@
     },
     {
       "speaker": "Opal",
+      "text": "Busco a alguien que se llama Grace."
+    },
+    {
+      "speaker": "Vincent",
       "text": "¿Grace? Creo que es la que trabaja aquí en la morgue."
     },
     {
@@ -1089,7 +1119,7 @@
     },
     {
       "speaker": "Vincent",
-      "text": "Sigue las flechas. Estos pasillos son medio laberínticos."
+      "text": "Sigue las flechas. Estos pasillos son medio confusos..."
     },
     {
       "speaker": "Vincent",
@@ -1101,7 +1131,15 @@
     },
     {
       "speaker": "Vincent",
-      "text": "Hubo un incidente y algunas partes del edificio quedaron dañadas. Fíjate en los tableros de avisos, te pueden ayudar a encontrar el camino."
+      "text": "Hubo un incidente y algunas partes del edificio quedaron dañadas. Fíjate en los tableros de avisos, te pueden ayudar a encontrar el camino.",
+      "triggerFlag": "vincentyap"
+    }
+  ],
+
+  "vincent_repeat": [
+    {
+      "speaker": "Vincent",
+      "text": "Si te desorientas, puede que acabes aquí otra vez."
     }
   ],
 
@@ -1115,14 +1153,24 @@
   "arrow_notice_board": [
     {
       "speaker": "",
-      "text": "Aviso al personal: Las instalaciones siguen en reparación y las flechas aún están dañadas. Fíjense en las muescas para saber hacia dónde apuntaba cada flecha y evitar demoras en la atención a los pacientes."
+      "text": "Aviso al personal: Las instalaciones siguen en reparación y las flechas aún están dañadas. Fíjense en las muescas para saber hacia dónde apuntaba cada flecha y evitar demoras en la atención a los pacientes.",
+      "triggerFlag": "arrows"
+    }
+  ],
+
+  "pipes_notice_board": [
+    {
+      "speaker": "",
+      "text": "Aviso al personal: Algunas tuberías quedaron dañadas. Estén atentos a las fugas entre la recepción y la morgue.",
+      "triggerFlag": "pipes"
     }
   ],
 
   "bodies_notice_board": [
     {
       "speaker": "",
-      "text": "Aviso al personal: Si no pueden trasladar un cuerpo en el momento del fallecimiento, déjenlo en una camilla junto a una de las puertas más cercanas a la morgue y cúbranlo con una manta amarilla."
+      "text": "Aviso al personal: Si no pueden trasladar un cuerpo en el momento del fallecimiento, déjenlo en una camilla junto a una de las puertas más cercanas a la morgue y cúbranlo con una manta amarilla.",
+      "triggerFlag": "bodies"
     }
   ],
 
@@ -1161,7 +1209,7 @@
     },
     {
       "speaker": "Opal",
-      "text": "Devuélvemelo ahora mismo. Lo necesito."
+      "text": "Devuélvemelo ahora mismo. ¡Lo necesito!"
     },
     {
       "speaker": "Grace",
@@ -1261,11 +1309,8 @@
     },
     {
       "speaker": "Grace",
-      "text": "¿Te sientes mal? No te preocupes. Aquí te vamos a cuidar muy bien."
-    },
-    {
-      "speaker": "Opal",
-      "text": "No puedo..."
+      "text": "¿Te sientes mal? No te preocupes. Aquí te vamos a cuidar muy bien.",
+      "triggerFlag": "graceyap"
     }
   ]
 }

@@ -48,7 +48,7 @@ export const prologueMaps = {
                 x: 337, y: 330, width: 46, height: 30,
                 flagRequired: "graceTurn",
                 cutscene: [
-                    { type: "STAND", who: "grace", direction: "DOWN", time: 2000 },
+                    { type: "STAND", who: "grace", direction: "DOWN", time: 1 },
                 ]
             }
         ]
@@ -169,5 +169,5 @@ export const prologueMaps = {
                 targetPlayerX: 560, targetPlayerY: 100
             }
         ]
-    }
+    },
 };

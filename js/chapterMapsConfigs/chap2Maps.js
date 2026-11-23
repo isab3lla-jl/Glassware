@@ -79,7 +79,7 @@ export const chapter2Maps = {
                 x: 172, y: 314, width: 40, height: 48,
                 targetMap: "hotelRoom",
                 targetPlayerX: 485, targetPlayerY: 322,
-                flagRequired:"talkedToMary"
+                requiredFlag:"talkedToMary"
             },
         ]
     },
@@ -120,7 +120,7 @@ export const chapter2Maps = {
         playerDefaultSpawn: { x: 336, y: 336 },
         npcs: [
             {
-                x: 336, y: 240, key: "dream_dialogue_1", interactable: true,
+                x: 336, y: 264, key: "dream_dialogue_1", interactable: true,
                 animationConfig: {
                     [NPC_STATES.IDLE]: { src:"../../assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
                 }
@@ -190,7 +190,7 @@ export const chapter2Maps = {
             {
                 x: 336, y: 67, width: 40, height: 48,
                 targetMap: "opalDream3",
-                targetPlayerX: 336, targetPlayerY: 230,
+                targetPlayerX: 336, targetPlayerY: 264,
                 requiredFlag: "riddle1correct"
             },
             {
@@ -248,7 +248,7 @@ export const chapter2Maps = {
             {
                 x: 336, y: 67, width: 40, height: 48,
                 targetMap: "opalDream4",
-                targetPlayerX: 336, targetPlayerY: 230,
+                targetPlayerX: 336, targetPlayerY: 264,
                 requiredFlag: "riddle2correct"
             },
             {
@@ -399,7 +399,14 @@ export const chapter2Maps = {
         imageSrc:'../assets/Tilemaps/chap2/asylumEntrance.png',
         jsonDataSrc:'../data/maps/chap2/asylumEntrance.json',
         playerDefaultSpawn: { x: 490, y: 90 },
-        npcs: [],
+        npcs: [
+            {
+                x: 552, y: 144, key:"black_cat", interactable: true,
+                animationConfig: {
+                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/OminousKittySheet.png", frameCount: 2, frameRow: 1, totalRows: 1, frameSpeed: 2, loop: true }
+                }
+            }
+        ],
         items: [],
         triggers: [
             {
@@ -415,17 +422,17 @@ export const chapter2Maps = {
             },
             {
                 x: 456, y: 80, width: 48, height: 40,
-                targetMap:"blank",
+                advanceChapter: "CHAPTER_3",
                 requiredFlag:"nightmare",
             }
         ]
     },
-    "blank":{
+    /*"blank":{
         imageSrc: '../assets/Tilemaps/chap2/blank.png',
         jsonDataSrc: '../data/maps/chap2/blank.json',
         playerDefaultSpawn: { x: 0, y: 0 },
         npcs: [],
         items: [],
         triggers: []
-    }
+    }*/
 }

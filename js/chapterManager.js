@@ -20,17 +20,17 @@ export default class ChapterManager {
             tutorialQuest: false,
             //prologue flags
             talkedToBennet: false,
-            graceTurn: true,
-            doorDialogue: true,
-            checkedDoor: true,
+            graceTurn: false,
+            doorDialogue: false,
+            checkedDoor: false,
             grabbedKey: false,
             sawRoomCutscene: false,
             grabbedMoney: false,
             //act 1 flags
-            finleyFound: true,
-            talkedToFinley: true,
-            graceDoorDialogue: true,
-            checkedGraceDoor:true,
+            finleyFound: false,
+            talkedToFinley: false,
+            graceDoorDialogue: false,
+            checkedGraceDoor:false,
             talkedBennetCat: false,
             talkedToBennetHouse: false,
             lockpicksGrabbed: false,
@@ -38,7 +38,7 @@ export default class ChapterManager {
             givenGin: false,
             locksmithSkills: false,
             graceDoorOpened: false,
-            readGracePapers: true,
+            readGracePapers: false,
             sawTrainCutscene: false,
             //act 2 flags
             enterHotel: false,
@@ -52,6 +52,13 @@ export default class ChapterManager {
             riddle2correct: false,
             riddle3correct: false,
             endscreen: false,
+            //act 3 flags
+            tppolish: false,
+            vincentyap: false,
+            arrows: false,
+            pipes: false,
+            bodies: false,
+            graceyap: false,
         };
 
 
@@ -63,6 +70,12 @@ export default class ChapterManager {
     }
 
     setFlag(flagName, value = true) {
+        if (flagName in this.flags) {
+            this.flags[flagName] = value;
+            console.log(`Flag '${flagName}' has been updated to: ${value}`);
+        }
+    }
+    unsetFlag(flagName, value = false) {
         if (flagName in this.flags) {
             this.flags[flagName] = value;
             console.log(`Flag '${flagName}' has been updated to: ${value}`);
