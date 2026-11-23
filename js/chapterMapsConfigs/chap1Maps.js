@@ -291,7 +291,7 @@ export const chapter1Maps = {
                 triggerFlag: "talkedBennetCat"
             },
             {
-                x: 552, y: 96, width: 48, height: 50,
+                x: 552, y: 90, width: 48, height: 50,
                 dialogueKey: "unavailable_door",
                 repeatable: true,
                 disabledByFlag: "checkedGraceDoor"

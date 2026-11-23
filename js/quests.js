@@ -238,7 +238,7 @@ export const QUESTS = {
             id: "asylum_maze",
             type: "main",
             key: "quest_maze",
-            showWhen: ["vincentyap"]
+            showWhen: ["arrows"]
         }
     ]
 };
