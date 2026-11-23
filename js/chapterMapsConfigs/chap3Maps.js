@@ -106,8 +106,7 @@ export const chapter3Maps = {
             {
                 //left
                 x: 168, y: 240, width: 40, height: 48,
-                //targetMap: "asylumLobby",
-                targetMap: "asylum9",
+                targetMap: "asylumLobby",
                 targetPlayerX: 450, targetPlayerY: 220,
                // targetPlayerX: 346, targetPlayerY: 288,
                 //requiredFlag:""
