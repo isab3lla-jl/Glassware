@@ -81,8 +81,10 @@ export const prologueMaps = {
         ]
     },
     "homeStreet": {
-        imageSrc: '../assets/Tilemaps/prologue/homeStreetTilemap.png',
-        jsonDataSrc: '../data/maps/prologue/homeStreetTilemap.json',
+        //imageSrc: '../assets/Tilemaps/prologue/homeStreetTilemap.png',
+        //jsonDataSrc: '../data/maps/prologue/homeStreetTilemap.json',
+        imageSrc: '../assets/Tilemaps/prologue/homeStreet.png',
+        jsonDataSrc: '../data/maps/prologue/homeStreet.json',
         playerDefaultSpawn: { x: 560, y: 100 },
         npcs: [
         ],
