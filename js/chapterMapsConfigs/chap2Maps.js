@@ -132,7 +132,7 @@ export const chapter2Maps = {
             {
                 x: 336, y: 67, width: 40, height: 48,
                 targetMap: "opalDream2",
-                targetPlayerX: 336, targetPlayerY: 230,
+                targetPlayerX: 348, targetPlayerY: 336,
                 requiredFlag: "nightmareyap1"
             },
             {
@@ -151,7 +151,7 @@ export const chapter2Maps = {
         playerDefaultSpawn: { x: 305, y: 227 },
         npcs: [
             {
-                x: 240, y: 144, key: "lantern_riddle", interactable: true,
+                x: 348, y: 300, key: "lantern_riddle", interactable: true,
                 animationConfig: {
                     [NPC_STATES.IDLE]: { src:"../../assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
                 }
@@ -190,7 +190,7 @@ export const chapter2Maps = {
             {
                 x: 336, y: 67, width: 40, height: 48,
                 targetMap: "opalDream3",
-                targetPlayerX: 336, targetPlayerY: 264,
+                targetPlayerX: 348, targetPlayerY: 336,
                 requiredFlag: "riddle1correct"
             },
             {
@@ -209,7 +209,7 @@ export const chapter2Maps = {
         playerDefaultSpawn: { x: 305, y: 227 },
         npcs: [
             {
-                x: 240, y: 144, key: "gin_riddle", interactable: true,
+                x: 348, y: 300, key: "gin_riddle", interactable: true,
                 animationConfig: {
                     [NPC_STATES.IDLE]: { src:"../../assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
                 }
@@ -248,7 +248,7 @@ export const chapter2Maps = {
             {
                 x: 336, y: 67, width: 40, height: 48,
                 targetMap: "opalDream4",
-                targetPlayerX: 336, targetPlayerY: 264,
+                targetPlayerX: 348, targetPlayerY: 336,
                 requiredFlag: "riddle2correct"
             },
             {
@@ -267,7 +267,7 @@ export const chapter2Maps = {
         playerDefaultSpawn: { x: 305, y: 227 },
         npcs: [
             {
-                x: 240, y: 144, key: "cigarettes_riddle", interactable: true,
+                x: 348, y: 300, key: "cigarettes_riddle", interactable: true,
                 animationConfig: {
                     [NPC_STATES.IDLE]: { src:"../../assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
                 }

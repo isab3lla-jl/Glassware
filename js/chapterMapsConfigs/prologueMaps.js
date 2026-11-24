@@ -40,8 +40,8 @@ export const prologueMaps = {
         triggers: [
             {
                 x: 337, y: 360, width: 46, height: 55,
-                targetMap: "barStreet",
-                targetPlayerX: 490, targetPlayerY: 90
+               targetMap: "barStreet",
+               targetPlayerX: 490, targetPlayerY: 90
             },
             //cutscene trigger en mapa ej
             {
@@ -81,8 +81,10 @@ export const prologueMaps = {
         ]
     },
     "homeStreet": {
-        imageSrc: '../assets/Tilemaps/prologue/homeStreetTilemap.png',
-        jsonDataSrc: '../data/maps/prologue/homeStreetTilemap.json',
+        //imageSrc: '../assets/Tilemaps/prologue/homeStreetTilemap.png',
+        //jsonDataSrc: '../data/maps/prologue/homeStreetTilemap.json',
+        imageSrc: '../assets/Tilemaps/prologue/homeStreet.png',
+        jsonDataSrc: '../data/maps/prologue/homeStreet.json',
         playerDefaultSpawn: { x: 560, y: 100 },
         npcs: [
         ],
