@@ -180,7 +180,7 @@ export default class DialogueManager {
             ctx.fillText(wrappedLines[i], boxX + paddingX, startY + (i * lineHeight));
         }
         
-        ctx.fillStyle = "#888888";
+        ctx.fillStyle = "#ff9500";
         ctx.font = "12px 'PixelifySans'";
         ctx.fillText("[Enter or space to continue]", boxX + boxWidth - 220, boxY + boxHeight - 15);
     }

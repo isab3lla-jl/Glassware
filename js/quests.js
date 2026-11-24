@@ -95,6 +95,12 @@ export const QUESTS = {
             hideWhen: ["graceDoorOpened"]
         },
         {
+            id: "bennet_yap_again",
+            key: "quest_talk_to_bennet_again",
+            showWhen: ["lockpicksGrabbed", "ginGrabbed"],
+            doneWhen: ["locksmithSkills"]
+        },
+        {
             id: "open_thief_door_fr",
             key: "quest_open_thief_door_fr",
             showWhen: ["locksmithSkills"],

@@ -319,6 +319,7 @@
   "quest_open_thief_door_fr": {"text": "Open the thief's door"},
   "quest_find_bennet": { "text": "Find Bennet" },
   "quest_talk_to_bennet": { "text": "Talk to Bennet" },
+  "quest_talk_to_bennet_again": {"text": "Return to Bennet" },
   "quest_get_bottle": { "text": "Get bottle" },
   "quest_get_lockpicks": { "text": "Get lockpicking tools" },
   "quest_look_for_clues": { "text": "Look for hidden clues inside the house" },
