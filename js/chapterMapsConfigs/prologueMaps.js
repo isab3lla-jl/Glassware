@@ -40,8 +40,8 @@ export const prologueMaps = {
         triggers: [
             {
                 x: 337, y: 360, width: 46, height: 55,
-                targetMap: "barStreet",
-                targetPlayerX: 490, targetPlayerY: 90
+               targetMap: "barStreet",
+               targetPlayerX: 490, targetPlayerY: 90
             },
             //cutscene trigger en mapa ej
             {
