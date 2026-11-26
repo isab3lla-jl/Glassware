@@ -4,7 +4,7 @@ export const chapter3Maps = {
 
      "asylumLobby":{
         imageSrc: 'assets/Tilemaps/chap3/AsylumLobby.png',
-        jsonDataSrc: 'data/maps/chap3/asylumLobby.json',
+        jsonDataSrc: 'data/maps/chap3/AsylumLobby.json',
         playerDefaultSpawn: { x: 346, y: 288 },
         npcs:[
             {
