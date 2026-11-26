@@ -2,8 +2,8 @@ import { NPC_STATES } from "../Npc.js";
 
 export const chapter2Maps = {
     "trainStation2": {
-        imageSrc: '../assets/Tilemaps/chap2/trainStation2.png',
-        jsonDataSrc: '../data/maps/chap2/trainStation2.json',
+        imageSrc: 'assets/Tilemaps/chap2/trainStation2.png',
+        jsonDataSrc: 'data/maps/chap2/trainStation2.json',
         playerDefaultSpawn: { x: 305, y: 240 },
         npcs: [],
         items: [],
@@ -21,8 +21,8 @@ export const chapter2Maps = {
         ]
     },
     "hotelStreet": {
-        imageSrc: '../assets/Tilemaps/chap2/hotelStreet.png',
-        jsonDataSrc: '../data/maps/chap2/hotelStreet.json',
+        imageSrc: 'assets/Tilemaps/chap2/hotelStreet.png',
+        jsonDataSrc: 'data/maps/chap2/hotelStreet.json',
         playerDefaultSpawn: { x: 490, y: 90 },
         npcs: [
         ],
@@ -48,8 +48,8 @@ export const chapter2Maps = {
         ]
     },
     "hotelLobby": {
-        imageSrc: '../assets/Tilemaps/chap2/hotellobby.png',
-        jsonDataSrc: '../data/maps/chap2/hotelLobby.json',
+        imageSrc: 'assets/Tilemaps/chap2/hotellobby.png',
+        jsonDataSrc: 'data/maps/chap2/hotelLobby.json',
         playerDefaultSpawn: { x: 305, y: 227 },
         npcs: [
             {
@@ -58,7 +58,7 @@ export const chapter2Maps = {
                     { flag: "talkedToMary", key: "mary_lobby_repeat" }
                 ],
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/MaryGWSheet.png", frameCount: 2, frameSpeed: 4, loop: true }
+                    [NPC_STATES.IDLE]: { src: "assets/NPCSprites/MaryGWSheet.png", frameCount: 2, frameSpeed: 4, loop: true }
                 }
             },
         ],
@@ -84,8 +84,8 @@ export const chapter2Maps = {
         ]
     },
     "hotelRoom": {
-        imageSrc: '../assets/Tilemaps/chap2/hotelRoom.png',
-        jsonDataSrc: '../data/maps/chap2/hotelRoom.json',
+        imageSrc: 'assets/Tilemaps/chap2/hotelRoom.png',
+        jsonDataSrc: 'data/maps/chap2/hotelRoom.json',
         playerDefaultSpawn: { x: 305, y: 227 },
         npcs: [
         ],
@@ -115,14 +115,14 @@ export const chapter2Maps = {
         ]
     },
     "opalDream": {
-        imageSrc: '../assets/Tilemaps/chap2/opalDream.png',
-        jsonDataSrc: '../data/maps/chap2/opalDream.json',
+        imageSrc: 'assets/Tilemaps/chap2/opalDream.png',
+        jsonDataSrc: 'data/maps/chap2/opalDream.json',
         playerDefaultSpawn: { x: 336, y: 336 },
         npcs: [
             {
                 x: 336, y: 264, key: "dream_dialogue_1", interactable: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src:"../../assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
+                    [NPC_STATES.IDLE]: { src:"assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
                 }
             }
         ],
@@ -146,14 +146,14 @@ export const chapter2Maps = {
         ]
     },
     "opalDream2": {
-        imageSrc: '../assets/Tilemaps/chap2/opalDream.png',
-        jsonDataSrc: '../data/maps/chap2/opalDream.json',
+        imageSrc: 'assets/Tilemaps/chap2/opalDream.png',
+        jsonDataSrc: 'data/maps/chap2/opalDream.json',
         playerDefaultSpawn: { x: 305, y: 227 },
         npcs: [
             {
                 x: 348, y: 300, key: "lantern_riddle", interactable: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src:"../../assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
+                    [NPC_STATES.IDLE]: { src:"assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
                 }
             }
         ],
@@ -204,14 +204,14 @@ export const chapter2Maps = {
         ]
     },
     "opalDream3": {
-        imageSrc: '../assets/Tilemaps/chap2/opalDream.png',
-        jsonDataSrc: '../data/maps/chap2/opalDream.json',
+        imageSrc: 'assets/Tilemaps/chap2/opalDream.png',
+        jsonDataSrc: 'data/maps/chap2/opalDream.json',
         playerDefaultSpawn: { x: 305, y: 227 },
         npcs: [
             {
                 x: 348, y: 300, key: "gin_riddle", interactable: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src:"../../assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
+                    [NPC_STATES.IDLE]: { src:"assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
                 }
             }
         ],
@@ -262,14 +262,14 @@ export const chapter2Maps = {
         ]
     },
     "opalDream4": {
-        imageSrc: '../assets/Tilemaps/chap2/opalDream.png',
-        jsonDataSrc: '../data/maps/chap2/opalDream.json',
+        imageSrc: 'assets/Tilemaps/chap2/opalDream.png',
+        jsonDataSrc: 'data/maps/chap2/opalDream.json',
         playerDefaultSpawn: { x: 305, y: 227 },
         npcs: [
             {
                 x: 348, y: 300, key: "cigarettes_riddle", interactable: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src:"../../assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
+                    [NPC_STATES.IDLE]: { src:"assets/CharSprites/Onyx-Sheet.png", frameCount:2, frameRow: 6, totalRows: 6, frameSpeed:2, loop: true}
                 }
             }
         ],
@@ -320,8 +320,8 @@ export const chapter2Maps = {
         ]
     },
     "hotelRoom2": {
-        imageSrc: '../assets/Tilemaps/chap2/hotelRoom.png',
-        jsonDataSrc: '../data/maps/chap2/hotelRoom.json',
+        imageSrc: 'assets/Tilemaps/chap2/hotelRoom.png',
+        jsonDataSrc: 'data/maps/chap2/hotelRoom.json',
         playerDefaultSpawn: { x: 305, y: 227 },
         npcs: [
         ],
@@ -343,14 +343,14 @@ export const chapter2Maps = {
         ]
     },
     "hotelLobby2": {
-        imageSrc: '../assets/Tilemaps/chap2/hotellobby.png',
-        jsonDataSrc: '../data/maps/chap2/hotelLobby.json',
+        imageSrc: 'assets/Tilemaps/chap2/hotellobby.png',
+        jsonDataSrc: 'data/maps/chap2/hotelLobby.json',
         playerDefaultSpawn: { x: 305, y: 227 },
         npcs: [
             {
                 x: 365, y: 165, key: "mary_after_sleeping", interactable: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/MaryGWSheet.png", frameCount: 2, frameSpeed: 4, loop: true }
+                    [NPC_STATES.IDLE]: { src: "assets/NPCSprites/MaryGWSheet.png", frameCount: 2, frameSpeed: 4, loop: true }
                 }
             },
         ],
@@ -370,8 +370,8 @@ export const chapter2Maps = {
         ]
     },
     "hotelStreet2": {
-        imageSrc: '../assets/Tilemaps/chap2/hotelStreet.png',
-        jsonDataSrc: '../data/maps/chap2/hotelStreet.json',
+        imageSrc: 'assets/Tilemaps/chap2/hotelStreet.png',
+        jsonDataSrc: 'data/maps/chap2/hotelStreet.json',
         playerDefaultSpawn: { x: 490, y: 90 },
         npcs: [
         ],
@@ -396,14 +396,14 @@ export const chapter2Maps = {
         ]
     },
     "asylumEntrance": {
-        imageSrc:'../assets/Tilemaps/chap2/asylumEntrance.png',
-        jsonDataSrc:'../data/maps/chap2/asylumEntrance.json',
+        imageSrc:'assets/Tilemaps/chap2/asylumEntrance.png',
+        jsonDataSrc:'data/maps/chap2/asylumEntrance.json',
         playerDefaultSpawn: { x: 490, y: 90 },
         npcs: [
             {
                 x: 552, y: 144, key:"black_cat", interactable: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/OminousKittySheet.png", frameCount: 2, frameRow: 1, totalRows: 1, frameSpeed: 2, loop: true }
+                    [NPC_STATES.IDLE]: { src: "assets/NPCSprites/OminousKittySheet.png", frameCount: 2, frameRow: 1, totalRows: 1, frameSpeed: 2, loop: true }
                 }
             }
         ],

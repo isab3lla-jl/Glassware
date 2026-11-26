@@ -3,8 +3,8 @@ import { NPC_STATES } from "../Npc.js";
 export const chapter3Maps = {
 
      "asylumLobby":{
-        imageSrc: '../assets/Tilemaps/chap3/AsylumLobby.png',
-        jsonDataSrc: '../data/maps/chap3/asylumLobby.json',
+        imageSrc: 'assets/Tilemaps/chap3/AsylumLobby.png',
+        jsonDataSrc: 'data/maps/chap3/asylumLobby.json',
         playerDefaultSpawn: { x: 346, y: 288 },
         npcs:[
             {
@@ -13,7 +13,7 @@ export const chapter3Maps = {
                     {flag: "vincentyap", key: "vincent_repeat"}
                 ],
                 animationConfig: {
-                    [NPC_STATES.IDLE]: {src: "../../assets/NPCSprites/Vincent-Sheet.png", frameCount: 2, frameSpeed: 4, loop: true}
+                    [NPC_STATES.IDLE]: {src: "assets/NPCSprites/Vincent-Sheet.png", frameCount: 2, frameSpeed: 4, loop: true}
                 }
             },
         ],
@@ -83,8 +83,8 @@ export const chapter3Maps = {
         ],
     },
     "asylum1": {
-        imageSrc: '../assets/Tilemaps/chap3/asylum1.png',
-        jsonDataSrc:'../data/maps/chap3/asylum1.json',
+        imageSrc: 'assets/Tilemaps/chap3/asylum1.png',
+        jsonDataSrc:'data/maps/chap3/asylum1.json',
         playerDefaulSpawn: { x: 346, y: 288},
         npcs:[],
         items:[],
@@ -151,8 +151,8 @@ export const chapter3Maps = {
 
     },
     "asylum2": {
-        imageSrc: '../assets/Tilemaps/chap3/asylum2.png',
-        jsonDataSrc:'../data/maps/chap3/asylum2.json',
+        imageSrc: 'assets/Tilemaps/chap3/asylum2.png',
+        jsonDataSrc:'data/maps/chap3/asylum2.json',
         playerDefaulSpawn: { x: 346, y: 288},
         npcs:[],
         items:[],
@@ -218,8 +218,8 @@ export const chapter3Maps = {
 
     },
     "asylum3": {
-        imageSrc: '../assets/Tilemaps/chap3/asylum3.png',
-        jsonDataSrc:'../data/maps/chap3/asylum3.json',
+        imageSrc: 'assets/Tilemaps/chap3/asylum3.png',
+        jsonDataSrc:'data/maps/chap3/asylum3.json',
         playerDefaulSpawn: { x: 346, y: 288},
         npcs:[],
         items:[],
@@ -285,8 +285,8 @@ export const chapter3Maps = {
 
     },
     "asylum4": {
-        imageSrc: '../assets/Tilemaps/chap3/asylum4.png',
-        jsonDataSrc:'../data/maps/chap3/asylum4.json',
+        imageSrc: 'assets/Tilemaps/chap3/asylum4.png',
+        jsonDataSrc:'data/maps/chap3/asylum4.json',
         playerDefaulSpawn: { x: 346, y: 288},
         npcs:[],
         items:[
@@ -362,8 +362,8 @@ export const chapter3Maps = {
 
     },
     "asylum5": {
-        imageSrc: '../assets/Tilemaps/chap3/asylum5.png',
-        jsonDataSrc:'../data/maps/chap3/asylum5.json',
+        imageSrc: 'assets/Tilemaps/chap3/asylum5.png',
+        jsonDataSrc:'data/maps/chap3/asylum5.json',
         playerDefaulSpawn: { x: 346, y: 288},
         npcs:[],
         items:[],
@@ -429,8 +429,8 @@ export const chapter3Maps = {
 
     },
     "asylum6": {
-        imageSrc: '../assets/Tilemaps/chap3/asylum6.png',
-        jsonDataSrc:'../data/maps/chap3/asylum6.json',
+        imageSrc: 'assets/Tilemaps/chap3/asylum6.png',
+        jsonDataSrc:'data/maps/chap3/asylum6.json',
         playerDefaulSpawn: { x: 346, y: 288},
         npcs:[],
         items:[],
@@ -496,8 +496,8 @@ export const chapter3Maps = {
 
     },
     "asylum7": {
-        imageSrc: '../assets/Tilemaps/chap3/asylum7.png',
-        jsonDataSrc:'../data/maps/chap3/asylum7.json',
+        imageSrc: 'assets/Tilemaps/chap3/asylum7.png',
+        jsonDataSrc:'data/maps/chap3/asylum7.json',
         playerDefaulSpawn: { x: 346, y: 288},
         npcs:[],
         items:[
@@ -572,8 +572,8 @@ export const chapter3Maps = {
 
     },
     "asylum8": {
-        imageSrc: '../assets/Tilemaps/chap3/asylum8.png',
-        jsonDataSrc:'../data/maps/chap3/asylum8.json',
+        imageSrc: 'assets/Tilemaps/chap3/asylum8.png',
+        jsonDataSrc:'data/maps/chap3/asylum8.json',
         playerDefaulSpawn: { x: 346, y: 288},
         npcs:[],
         items:[],
@@ -639,14 +639,14 @@ export const chapter3Maps = {
 
     },
     "asylum9": {
-        imageSrc: '../assets/Tilemaps/chap3/asylum9.png',
-        jsonDataSrc:'../data/maps/chap3/asylum9.json',
+        imageSrc: 'assets/Tilemaps/chap3/asylum9.png',
+        jsonDataSrc:'data/maps/chap3/asylum9.json',
         playerDefaulSpawn: { x: 346, y: 288},
         npcs:[
             /*{
                 x: 264, y: 288, key: "grace_confrontation", interactable: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: {src: "../../assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true},
+                    [NPC_STATES.IDLE]: {src: "../assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true},
                 }
             }*/
         ],

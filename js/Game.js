@@ -315,13 +315,13 @@ export default class Game {
                         x: 250, 
                         y: 290,
                         animationConfig: {
-                            [NPC_STATES.IDLE]:       { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 4, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 5, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.MOVE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.MOVE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.MOVE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 6, frameSpeed: 4, loop: true }
+                            [NPC_STATES.IDLE]:       { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_FRONT]: { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_SIDE]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 4, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_BACK]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 5, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_FRONT]: { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_SIDE]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_BACK]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 6, frameSpeed: 4, loop: true }
                         }
                     },
                     { type: "FADE", direction: "OUT"},
@@ -341,13 +341,13 @@ export default class Game {
                         x: 250, 
                         y: 170,
                         animationConfig: {
-                            [NPC_STATES.IDLE]:       { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 4, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 5, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.MOVE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.MOVE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.MOVE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 6, frameSpeed: 4, loop: true }
+                            [NPC_STATES.IDLE]:       { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_FRONT]: { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_SIDE]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 4, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_BACK]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 5, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_FRONT]: { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_SIDE]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_BACK]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 6, frameSpeed: 4, loop: true }
                         }
                     },
                     { type: "STAND", who: "onyx", direction: "DOWN", time: 1000 },
@@ -383,13 +383,13 @@ export default class Game {
                         x: 168, 
                         y: 153,
                         animationConfig: {
-                            [NPC_STATES.IDLE]:       { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 4, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 5, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.MOVE_FRONT]: { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.MOVE_SIDE]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 6, frameSpeed: 4, loop: true },
-                            [NPC_STATES.MOVE_BACK]:  { src: "../assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 6, frameSpeed: 4, loop: true }
+                            [NPC_STATES.IDLE]:       { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_FRONT]: { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 6, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_SIDE]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 4, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_BACK]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 5, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_FRONT]: { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_SIDE]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 6, frameSpeed: 4, loop: true },
+                            [NPC_STATES.MOVE_BACK]:  { src: "assets/CharSprites/Onyx-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 6, frameSpeed: 4, loop: true }
                         }
                     },
                     { type: "STAND", who: "onyx", direction: "RIGHT", time: 500 },
@@ -439,10 +439,10 @@ export default class Game {
                         x: 264,
                         y: 220,
                         animationConfig:{ 
-                            [NPC_STATES.IDLE]:       { src: "../assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_FRONT]: { src: "../assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_SIDE]:  { src: "../assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
-                            [NPC_STATES.IDLE_BACK]:  { src: "../assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE]:       { src: "assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_FRONT]: { src: "assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_SIDE]:  { src: "assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
+                            [NPC_STATES.IDLE_BACK]:  { src: "assets/NPCSprites/GraceGWHAT-Sheet.png", frameCount: 2, colsPerRow: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true },
                         }
                     },
                     { type: "STAND", who: "Grace", direction: "RIGHT", time: 500},

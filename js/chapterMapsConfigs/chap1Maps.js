@@ -2,8 +2,8 @@ import { NPC_STATES } from "../Npc.js";
 
 export const chapter1Maps = {
     "streetOne": {
-        imageSrc: '../assets/Tilemaps/chap1/streetOneTilemap.png',
-        jsonDataSrc: '../data/maps/chap1/streetOneTilemap.json',
+        imageSrc: 'assets/Tilemaps/chap1/streetOneTilemap.png',
+        jsonDataSrc: 'data/maps/chap1/streetOneTilemap.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [],
         items: [],
@@ -22,8 +22,8 @@ export const chapter1Maps = {
         ]
     },
     "tStreet": {
-        imageSrc: '../assets/Tilemaps/chap1/tStreet.png',
-        jsonDataSrc: '../data/maps/chap1/tStreet.json',
+        imageSrc: 'assets/Tilemaps/chap1/tStreet.png',
+        jsonDataSrc: 'data/maps/chap1/tStreet.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [],
         items: [],
@@ -59,8 +59,8 @@ export const chapter1Maps = {
         ]
     },
     "warehouseOne": {
-        imageSrc: '../assets/Tilemaps/chap1/warehouse1.png',
-        jsonDataSrc: '../data/maps/chap1/warehouse1.json',
+        imageSrc: 'assets/Tilemaps/chap1/warehouse1.png',
+        jsonDataSrc: 'data/maps/chap1/warehouse1.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [],
         items: [
@@ -109,8 +109,8 @@ export const chapter1Maps = {
         ]
     },
     "warehouseTwo": {
-        imageSrc: '../assets/Tilemaps/chap1/warehouse2.png',
-        jsonDataSrc: '../data/maps/chap1/warehouse2.json',
+        imageSrc: 'assets/Tilemaps/chap1/warehouse2.png',
+        jsonDataSrc: 'data/maps/chap1/warehouse2.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [],
         items: [
@@ -151,8 +151,8 @@ export const chapter1Maps = {
         ]
     },
     "crossStreet": {
-        imageSrc: '../assets/Tilemaps/chap1/crossStreet.png',
-        jsonDataSrc: '../data/maps/chap1/crossStreet.json',
+        imageSrc: 'assets/Tilemaps/chap1/crossStreet.png',
+        jsonDataSrc: 'data/maps/chap1/crossStreet.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [],
         items: [],
@@ -193,8 +193,8 @@ export const chapter1Maps = {
         ]
     },
     "trainStation": {
-        imageSrc: '../assets/Tilemaps/chap1/trainStation.png',
-        jsonDataSrc: '../data/maps/chap1/trainStation.json',
+        imageSrc: 'assets/Tilemaps/chap1/trainStation.png',
+        jsonDataSrc: 'data/maps/chap1/trainStation.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [],
         items: [],
@@ -221,8 +221,8 @@ export const chapter1Maps = {
         ]
     },
     "trainCar1": {
-        imageSrc: '../assets/Tilemaps/chap1/trainCar2.png',
-        jsonDataSrc: '../data/maps/chap1/trainCar2.json',
+        imageSrc: 'assets/Tilemaps/chap1/trainCar2.png',
+        jsonDataSrc: 'data/maps/chap1/trainCar2.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         triggers: [
             {
@@ -238,19 +238,19 @@ export const chapter1Maps = {
         ]
     },
     "trainCar2": {
-        imageSrc: '../assets/Tilemaps/chap1/trainCar1.png',
-        jsonDataSrc: '../data/maps/chap1/trainCar1.json',
+        imageSrc: 'assets/Tilemaps/chap1/trainCar1.png',
+        jsonDataSrc: 'data/maps/chap1/trainCar1.json',
         playerDefaultSpawn: { x: 360, y: 50 },
     },
     "finleyStreet": {
-        imageSrc: '../assets/Tilemaps/chap1/finleyStreet.png',
-        jsonDataSrc: '../data/maps/chap1/finleyStreet.json',
+        imageSrc: 'assets/Tilemaps/chap1/finleyStreet.png',
+        jsonDataSrc: 'data/maps/chap1/finleyStreet.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [
             {
                 x: 624, y: 72, key: "finley_questions", interactable: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/FinleyGW-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true }
+                    [NPC_STATES.IDLE]: { src: "assets/NPCSprites/FinleyGW-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true }
                 }
             }
         ],
@@ -265,14 +265,14 @@ export const chapter1Maps = {
         ]
     },
     "kittyStreet": {
-        imageSrc: '../assets/Tilemaps/chap1/kittyStreet.png',
-        jsonDataSrc: '../data/maps/chap1/kittyStreet.json',
+        imageSrc: 'assets/Tilemaps/chap1/kittyStreet.png',
+        jsonDataSrc: 'data/maps/chap1/kittyStreet.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [
             {
                 x: 648, y: 144, key: "bennet_cat_interact", interactable: true, flipX: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/Kitties-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 2, loop: true }
+                    [NPC_STATES.IDLE]: { src: "assets/NPCSprites/Kitties-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 2, loop: true }
                 }
             }
         ], //kitty
@@ -299,8 +299,8 @@ export const chapter1Maps = {
         ]
     },
     "bennetHouse": {
-        imageSrc: '../assets/Tilemaps/chap1/bennetHouse.png',
-        jsonDataSrc: '../data/maps/chap1/bennetHouse.json',
+        imageSrc: 'assets/Tilemaps/chap1/bennetHouse.png',
+        jsonDataSrc: 'data/maps/chap1/bennetHouse.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [
             {
@@ -316,7 +316,7 @@ export const chapter1Maps = {
                     { flag: "lockpicksGrabbed", key: "bennet_interact_lockpicks_only" },
                 ],
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 2, loop: true }
+                    [NPC_STATES.IDLE]: { src: "assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 2, loop: true }
                 }
             }
         ], //bennet
@@ -330,8 +330,8 @@ export const chapter1Maps = {
         ],
     },
     "graceStreet": {
-        imageSrc: '../assets/Tilemaps/chap1/graceStreet.png',
-        jsonDataSrc: '../data/maps/chap1/graceStreet.json',
+        imageSrc: 'assets/Tilemaps/chap1/graceStreet.png',
+        jsonDataSrc: 'data/maps/chap1/graceStreet.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [],
         items: [], //4 i think
@@ -368,8 +368,8 @@ export const chapter1Maps = {
         ]
     },
     "graceHouse": {
-        imageSrc: '../assets/Tilemaps/chap1/graceHouse.png',
-        jsonDataSrc: '../data/maps/chap1/graceHouse.json',
+        imageSrc: 'assets/Tilemaps/chap1/graceHouse.png',
+        jsonDataSrc: 'data/maps/chap1/graceHouse.json',
         playerDefaultSpawn: { x: 360, y: 50 },
         npcs: [],
         items: [
@@ -404,8 +404,8 @@ export const chapter1Maps = {
         ]
     },
     "homeStreet": {
-        imageSrc: '../assets/Tilemaps/prologue/homeStreetTilemap.png',
-        jsonDataSrc: '../data/maps/prologue/homeStreetTilemap.json',
+        imageSrc: 'assets/Tilemaps/prologue/homeStreetTilemap.png',
+        jsonDataSrc: 'data/maps/prologue/homeStreetTilemap.json',
         playerDefaultSpawn: { x: 560, y: 100 },
         npcs: [
         ],
@@ -441,8 +441,8 @@ export const chapter1Maps = {
         ]
     },
     "roomChest": {
-        imageSrc: '../assets/Tilemaps/prologue/roomChestTilemap.png',
-        jsonDataSrc: '../data/maps/prologue/roomTilemap.json',
+        imageSrc: 'assets/Tilemaps/prologue/roomChestTilemap.png',
+        jsonDataSrc: 'data/maps/prologue/roomTilemap.json',
         playerDefaultSpawn: { x: 422, y: 168 },
         npcs: [
         ],
@@ -457,14 +457,14 @@ export const chapter1Maps = {
         ]
     },
     "barStreet": {
-        imageSrc: '../assets/Tilemaps/prologue/barStreetTilemap.png',
-        jsonDataSrc: '../data/maps/prologue/barStreetTilemap.json',
+        imageSrc: 'assets/Tilemaps/prologue/barStreetTilemap.png',
+        jsonDataSrc: 'data/maps/prologue/barStreetTilemap.json',
         playerDefaultSpawn: { x: 490, y: 90 },
         npcs: [
             {
                 x: 100, y: 100, key: "prologue_kitty", interactable: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/Kitties-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 2, loop: true }
+                    [NPC_STATES.IDLE]: { src: "assets/NPCSprites/Kitties-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 2, loop: true }
                 }
             }
         ],
@@ -484,8 +484,8 @@ export const chapter1Maps = {
         ]
     },
     "bar": {
-            imageSrc: '../assets/Tilemaps/prologue/barTilemap.png',
-            jsonDataSrc: '../data/maps/prologue/barTilemap.json',
+            imageSrc: 'assets/Tilemaps/prologue/barTilemap.png',
+            jsonDataSrc: 'data/maps/prologue/barTilemap.json',
             playerDefaultSpawn: { x: 350, y: 150 },
             npcs: [
             ],

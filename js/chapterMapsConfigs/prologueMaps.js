@@ -3,8 +3,8 @@ import { NPC_STATES } from "../Npc.js";
 
 export const prologueMaps = {
     "bar": {
-        imageSrc: '../assets/Tilemaps/prologue/barTilemap.png',
-        jsonDataSrc: '../data/maps/prologue/barTilemap.json',
+        imageSrc: 'assets/Tilemaps/prologue/barTilemap.png',
+        jsonDataSrc: 'data/maps/prologue/barTilemap.json',
         playerDefaultSpawn: { x: 350, y: 150 },
         npcs: [
             {
@@ -13,9 +13,9 @@ export const prologueMaps = {
                     { flag: "talkedToBennet", key: "bennet_bar_repeat" }
                 ],
                 animationConfig: {
-                    [NPC_STATES.SIDE]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
-                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true },
-                    [NPC_STATES.FRONT]: { src: "../../assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true }
+                    [NPC_STATES.SIDE]: { src: "assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
+                    [NPC_STATES.IDLE]: { src: "assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true },
+                    [NPC_STATES.FRONT]: { src: "assets/NPCSprites/BennetGW-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true }
                 }
             },
             {
@@ -23,15 +23,15 @@ export const prologueMaps = {
                 state: NPC_STATES.SIDE,
                 flipX: true,
                 animationConfig: {
-                    [NPC_STATES.SIDE]: { src: "../../assets/NPCSprites/GraceGWNOHAT.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
-                    [NPC_STATES.IDLE_FRONT]: { src: "../../assets/NPCSprites/GraceGWNOHAT.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true },
-                    [NPC_STATES.FRONT]: { src: "../../assets/NPCSprites/GraceGWNOHAT.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true }
+                    [NPC_STATES.SIDE]: { src: "assets/NPCSprites/GraceGWNOHAT.png", frameCount: 2, frameRow: 1, totalRows: 3, frameSpeed: 4, loop: true },
+                    [NPC_STATES.IDLE_FRONT]: { src: "assets/NPCSprites/GraceGWNOHAT.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 4, loop: true },
+                    [NPC_STATES.FRONT]: { src: "assets/NPCSprites/GraceGWNOHAT.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true }
                 }
             },
             {
                 x: 480, y: 216, key: "finley_bar_dialogue", interactable: true, //true cuando este el diálogo
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/FinleyGW-Sheet.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true }
+                    [NPC_STATES.IDLE]: { src: "assets/NPCSprites/FinleyGW-Sheet.png", frameCount: 2, frameRow: 2, totalRows: 3, frameSpeed: 4, loop: true }
                 }
             }
         ],
@@ -54,14 +54,14 @@ export const prologueMaps = {
         ]
     },
     "barStreet": {
-        imageSrc: '../assets/Tilemaps/prologue/barStreetTilemap.png',
-        jsonDataSrc: '../data/maps/prologue/barStreetTilemap.json',
+        imageSrc: 'assets/Tilemaps/prologue/barStreetTilemap.png',
+        jsonDataSrc: 'data/maps/prologue/barStreetTilemap.json',
         playerDefaultSpawn: { x: 490, y: 90 },
         npcs: [
             {
                 x: 100, y: 100, key: "prologue_kitty", interactable: true,
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "../../assets/NPCSprites/Kitties-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 2, loop: true }
+                    [NPC_STATES.IDLE]: { src: "assets/NPCSprites/Kitties-Sheet.png", frameCount: 2, frameRow: 3, totalRows: 3, frameSpeed: 2, loop: true }
                 }
             }
         ],
@@ -83,8 +83,8 @@ export const prologueMaps = {
     "homeStreet": {
         //imageSrc: '../assets/Tilemaps/prologue/homeStreetTilemap.png',
         //jsonDataSrc: '../data/maps/prologue/homeStreetTilemap.json',
-        imageSrc: '../assets/Tilemaps/prologue/homeStreet.png',
-        jsonDataSrc: '../data/maps/prologue/homeStreet.json',
+        imageSrc: 'assets/Tilemaps/prologue/homeStreet.png',
+        jsonDataSrc: 'data/maps/prologue/homeStreet.json',
         playerDefaultSpawn: { x: 560, y: 100 },
         npcs: [
         ],
@@ -132,8 +132,8 @@ export const prologueMaps = {
         ]
     },
     "room": {
-        imageSrc: '../assets/Tilemaps/prologue/roomTilemap.png',
-        jsonDataSrc: '../data/maps/prologue/roomTilemap.json',
+        imageSrc: 'assets/Tilemaps/prologue/roomTilemap.png',
+        jsonDataSrc: 'data/maps/prologue/roomTilemap.json',
         playerDefaultSpawn: { x: 350, y: 150 },
         npcs: [
         ],
@@ -148,8 +148,8 @@ export const prologueMaps = {
         ]
     },
     "roomChest": {
-        imageSrc: '../assets/Tilemaps/prologue/roomChestTilemap.png',
-        jsonDataSrc: '../data/maps/prologue/roomTilemap.json',
+        imageSrc: 'assets/Tilemaps/prologue/roomChestTilemap.png',
+        jsonDataSrc: 'data/maps/prologue/roomTilemap.json',
         playerDefaultSpawn: { x: 422, y: 168 },
         npcs: [
         ],
@@ -159,7 +159,7 @@ export const prologueMaps = {
                 name: "money",
                 dialogueKey: "grabbed_money", 
                 animationConfig: {
-                    [NPC_STATES.IDLE]: { src: "./assets/ItemSprites/Coins.png", frameCount: 1, frameSpeed: 1, loop: true }
+                    [NPC_STATES.IDLE]: { src: "assets/ItemSprites/Coins.png", frameCount: 1, frameSpeed: 1, loop: true }
                 },
                 triggerFlag: "grabbedMoney"
             }
