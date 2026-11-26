@@ -39,20 +39,20 @@ export default class Player extends Sprite {
         this.state = PLAYER_STATES.IDLE_FRONT;
         this.facing = FACING.FRONT; 
         this.initAnimations({
-            [PLAYER_STATES.IDLE_FRONT]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 8, totalRows: 8, frameSpeed: 4, loop: true },
-            [PLAYER_STATES.IDLE_SIDE]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 2, totalRows: 8, frameSpeed: 4, loop: true },
-            [PLAYER_STATES.IDLE_BACK]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 5, totalRows: 8, frameSpeed: 4, loop: true },
+            [PLAYER_STATES.IDLE_FRONT]:  { src: "assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 8, totalRows: 8, frameSpeed: 4, loop: true },
+            [PLAYER_STATES.IDLE_SIDE]:  { src: "assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 2, totalRows: 8, frameSpeed: 4, loop: true },
+            [PLAYER_STATES.IDLE_BACK]:  { src: "assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 5, totalRows: 8, frameSpeed: 4, loop: true },
 
-            [PLAYER_STATES.MOVE_FRONT]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 7, totalRows: 8, frameSpeed: 4, loop: true },
-            [PLAYER_STATES.MOVE_SIDE]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 4, colsPerRow: 4, frameRow: 1, totalRows: 8, frameSpeed: 4, loop: true },
-            [PLAYER_STATES.MOVE_BACK]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 4, totalRows: 8, frameSpeed: 4, loop: true },
+            [PLAYER_STATES.MOVE_FRONT]:  { src: "assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 7, totalRows: 8, frameSpeed: 4, loop: true },
+            [PLAYER_STATES.MOVE_SIDE]:  { src: "assets/CharSprites/Opal-Sheet.png",  frameCount: 4, colsPerRow: 4, frameRow: 1, totalRows: 8, frameSpeed: 4, loop: true },
+            [PLAYER_STATES.MOVE_BACK]:  { src: "assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 4, totalRows: 8, frameSpeed: 4, loop: true },
 
-            [PLAYER_STATES.GRAB_FRONT]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 6, totalRows: 8, frameSpeed: 2, loop: false },
-            [PLAYER_STATES.GRAB_SIDE]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 2, totalRows: 8, frameSpeed: 2, loop: false },
-            [PLAYER_STATES.GRAB_BACK]:  { src: "../assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 3, totalRows: 8, frameSpeed: 2, loop: false },
+            [PLAYER_STATES.GRAB_FRONT]:  { src: "assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 6, totalRows: 8, frameSpeed: 2, loop: false },
+            [PLAYER_STATES.GRAB_SIDE]:  { src: "assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 2, totalRows: 8, frameSpeed: 2, loop: false },
+            [PLAYER_STATES.GRAB_BACK]:  { src: "assets/CharSprites/Opal-Sheet.png",  frameCount: 2, colsPerRow: 4, frameRow: 3, totalRows: 8, frameSpeed: 2, loop: false },
 
-            [PLAYER_STATES.DEATH]: { src: "../assets/CharSprites/OpalDeath-Sheet.png", frameCount: 22, frameSpeed: 8, loop: false },
-            [PLAYER_STATES.CUTSCENEDEATH]: { src: "../assets/CharSprites/OpalDeath-Sheet.png", frameCount: 22, frameSpeed: 8, loop: false }
+            [PLAYER_STATES.DEATH]: { src: "assets/CharSprites/OpalDeath-Sheet.png", frameCount: 22, frameSpeed: 8, loop: false },
+            [PLAYER_STATES.CUTSCENEDEATH]: { src: "assets/CharSprites/OpalDeath-Sheet.png", frameCount: 22, frameSpeed: 8, loop: false }
         });
 
         this.hitboxOffset = { x: 3, y: 4 }; //y: 4 (asegurarme que los caminos para personaje tengan 2 tiles de altura)
